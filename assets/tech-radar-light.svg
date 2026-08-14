@@ -1,17 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 280" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 280" width="100%" height="100%">
   <defs>
     <style>
-      @keyframes pulseRadar {
-        0%, 100% { opacity: 0.3; }
-        50% { opacity: 0.7; }
+      @keyframes pulseRadarArea {
+        0%, 100% { opacity: 0.25; }
+        50% { opacity: 0.65; }
       }
-      .radar-title {
+      @keyframes sweepBeam {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .radar-header {
         font-family: 'JetBrains Mono', monospace;
         font-weight: 700;
-        font-size: 13px;
+        font-size: 12.5px;
         letter-spacing: 0.08em;
       }
-      .radar-label {
+      .radar-tag {
         font-family: 'JetBrains Mono', monospace;
         font-size: 11px;
         font-weight: 600;
@@ -21,64 +25,63 @@
         font-size: 11.5px;
       }
       .radar-poly {
-        animation: pulseRadar 5s ease-in-out infinite;
+        animation: pulseRadarArea 5s ease-in-out infinite;
+      }
+      .radar-sweep-line {
+        transform-origin: 660px 160px;
+        animation: sweepBeam 5s linear infinite;
       }
     </style>
   </defs>
 
-  <rect width="920" height="280" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect width="960" height="280" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
   
-  <!-- Header -->
-  <path d="M 0 14 Q 0 0 14 0 L 906 0 Q 920 0 920 14 L 920 40 L 0 40 Z" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
-  <text x="35" y="25" class="radar-title" fill="#00f0ff">CAPABILITY RADAR // MULTIDISCIPLINARY ENGINEERING AXES</text>
+  <path d="M 0 14 Q 0 0 14 0 L 946 0 Q 960 0 960 14 L 960 40 L 0 40 Z" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="35" y="24" class="radar-header" fill="#00f0ff">ENGINEERING CAPABILITY RADAR // MULTIDISCIPLINARY DOMAINS</text>
 
   <!-- Left: 4 Domain Cards -->
-  <g transform="translate(35, 60)">
-    <!-- Domain 1: Systems & Security -->
-    <rect x="0" y="0" width="310" height="42" rx="6" fill="#f8fafc" stroke="#10b981" stroke-width="1"/>
-    <text x="12" y="18" class="radar-label" fill="#10b981">🛡️ SYSTEMS, HARDENING &amp; PQC</text>
-    <text x="12" y="33" class="radar-desc" fill="#475569">C UNIX Shells, OQS Kyber-1024, Electron Sandbox</text>
+  <g transform="translate(35, 58)">
+    <rect x="0" y="0" width="340" height="44" rx="6" fill="#f8fafc" stroke="#10b981" stroke-width="1"/>
+    <text x="14" y="18" class="radar-tag" fill="#10b981">01 // SYSTEMS, HARDENING &amp; PQC</text>
+    <text x="14" y="34" class="radar-desc" fill="#475569">C UNIX Shells, OQS Kyber-1024, Electron Sandboxing</text>
 
-    <!-- Domain 2: 3D & Graphics -->
-    <rect x="0" y="52" width="310" height="42" rx="6" fill="#f8fafc" stroke="#00f0ff" stroke-width="1"/>
-    <text x="12" y="70" class="radar-label" fill="#00f0ff">💎 INTERACTIVE 3D &amp; WEBGL</text>
-    <text x="12" y="85" class="radar-desc" fill="#475569">Three.js 60fps, GLSL Shaders, R3F, PySide6 Blender</text>
+    <rect x="0" y="54" width="340" height="44" rx="6" fill="#f8fafc" stroke="#00f0ff" stroke-width="1"/>
+    <text x="14" y="72" class="radar-tag" fill="#00f0ff">02 // INTERACTIVE 3D &amp; WEBGL</text>
+    <text x="14" y="88" class="radar-desc" fill="#475569">Three.js 60fps, GLSL Shaders, R3F, PySide6 Blender</text>
 
-    <!-- Domain 3: Web OS & UI Systems -->
-    <rect x="0" y="104" width="310" height="42" rx="6" fill="#f8fafc" stroke="#818cf8" stroke-width="1"/>
-    <text x="12" y="122" class="radar-label" fill="#818cf8">🖥️ DESKTOP OS &amp; DESIGN SYSTEMS</text>
-    <text x="12" y="137" class="radar-desc" fill="#475569">React 19, TypeScript, Virtual FS, 140+ CSS Tokens</text>
+    <rect x="0" y="108" width="340" height="44" rx="6" fill="#f8fafc" stroke="#818cf8" stroke-width="1"/>
+    <text x="14" y="126" class="radar-tag" fill="#818cf8">03 // DESKTOP OS &amp; DESIGN SYSTEMS</text>
+    <text x="14" y="142" class="radar-desc" fill="#475569">React 19, TypeScript, Virtual FS, 140+ CSS Tokens</text>
 
-    <!-- Domain 4: DSP & Architectures -->
-    <rect x="0" y="156" width="310" height="42" rx="6" fill="#f8fafc" stroke="#f59e0b" stroke-width="1"/>
-    <text x="12" y="174" class="radar-label" fill="#f59e0b">⚡ SIGNAL DSP &amp; CLEAN ARCHITECTURE</text>
-    <text x="12" y="189" class="radar-desc" fill="#475569">Neural Signal Processing, SOLID Patterns, CI/CD</text>
+    <rect x="0" y="162" width="340" height="44" rx="6" fill="#f8fafc" stroke="#f59e0b" stroke-width="1"/>
+    <text x="14" y="180" class="radar-tag" fill="#f59e0b">04 // SIGNAL DSP &amp; ARCHITECTURES</text>
+    <text x="14" y="196" class="radar-desc" fill="#475569">Neural Signal Processing, SOLID Patterns, CI/CD</text>
   </g>
 
   <!-- Right: Radar Chart Visualization -->
-  <g transform="translate(630, 160)">
-    <!-- Radar concentric circles -->
-    <circle cx="0" cy="0" r="90" fill="none" stroke="#e2e8f0" stroke-width="1"/>
-    <circle cx="0" cy="0" r="65" fill="none" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/>
-    <circle cx="0" cy="0" r="40" fill="none" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="2 2"/>
-    <circle cx="0" cy="0" r="15" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+  <g transform="translate(660, 160)">
+    <circle cx="0" cy="0" r="92" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+    <circle cx="0" cy="0" r="68" fill="none" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3 3"/>
+    <circle cx="0" cy="0" r="44" fill="none" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="2 2"/>
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#e2e8f0" stroke-width="1"/>
 
-    <!-- Radar Cross Axes -->
     <line x1="-100" y1="0" x2="100" y2="0" stroke="#e2e8f0" stroke-width="1"/>
     <line x1="0" y1="-100" x2="0" y2="100" stroke="#e2e8f0" stroke-width="1"/>
 
-    <!-- Radar Labels -->
-    <text x="0" y="-105" text-anchor="middle" class="radar-label" fill="#10b981">SYSTEMS</text>
-    <text x="110" y="4" class="radar-label" fill="#00f0ff">3D GRAPHICS</text>
-    <text x="0" y="115" text-anchor="middle" class="radar-label" fill="#818cf8">WEB DESKTOPS</text>
-    <text x="-110" y="4" text-anchor="end" class="radar-label" fill="#f59e0b">SIGNAL / AI</text>
+    <text x="0" y="-105" text-anchor="middle" class="radar-tag" fill="#10b981">SYSTEMS (95%)</text>
+    <text x="110" y="4" class="radar-tag" fill="#00f0ff">3D GRAPHICS (92%)</text>
+    <text x="0" y="115" text-anchor="middle" class="radar-tag" fill="#818cf8">WEB OS (96%)</text>
+    <text x="-110" y="4" text-anchor="end" class="radar-tag" fill="#f59e0b">SIGNAL/AI (88%)</text>
+
+    <!-- Radar Sweep Beam -->
+    <line class="radar-sweep-line" x1="0" y1="0" x2="92" y2="0" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.8"/>
 
     <!-- Polygon Skill Level -->
-    <polygon points="0,-82 78,0 0,85 -75,0" fill="#00f0ff" fill-opacity="0.2" stroke="#00f0ff" stroke-width="2" class="radar-poly"/>
+    <polygon points="0,-86 84,0 0,88 -80,0" fill="#00f0ff" fill-opacity="0.2" stroke="#00f0ff" stroke-width="2" class="radar-poly"/>
     
-    <circle cx="0" cy="-82" r="4" fill="#10b981"/>
-    <circle cx="78" cy="0" r="4" fill="#00f0ff"/>
-    <circle cx="0" cy="85" r="4" fill="#818cf8"/>
-    <circle cx="-75" cy="0" r="4" fill="#f59e0b"/>
+    <circle cx="0" cy="-86" r="4" fill="#10b981"/>
+    <circle cx="84" cy="0" r="4" fill="#00f0ff"/>
+    <circle cx="0" cy="88" r="4" fill="#818cf8"/>
+    <circle cx="-80" cy="0" r="4" fill="#f59e0b"/>
   </g>
 </svg>
