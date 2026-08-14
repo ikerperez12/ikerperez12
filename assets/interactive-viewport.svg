@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="100%" height="100%">
+  <defs>
+    <filter id="glow3d" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      .vp-title {
+        font-family: 'JetBrains Mono', monospace;
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+      }
+      .vp-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10.5px;
+        font-weight: 600;
+      }
+      .vp-hud {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 9.5px;
+        letter-spacing: 0.05em;
+      }
+    </style>
+  </defs>
+
+  <!-- Viewport Base Canvas -->
+  <rect width="960" height="380" rx="12" fill="#06090e" stroke="#1a2333" stroke-width="1.5"/>
+  
+  <!-- Viewport Grid & Crosshair Accents -->
+  <line x1="480" y1="40" x2="480" y2="360" stroke="#1a2333" stroke-width="0.8" stroke-dasharray="4 4"/>
+  <line x1="30" y1="200" x2="930" y2="200" stroke="#1a2333" stroke-width="0.8" stroke-dasharray="4 4"/>
+  <circle cx="480" cy="200" r="120" fill="none" stroke="#1a2333" stroke-width="0.5" stroke-dasharray="2 6"/>
+
+  <!-- Top System Header Bar -->
+  <path d="M 0 12 Q 0 0 12 0 L 948 0 Q 960 0 960 12 L 960 38 L 0 38 Z" fill="#06090e" stroke="#1a2333" stroke-width="1"/>
+  
+  <circle cx="25" cy="19" r="4.5" fill="#00f0ff"/>
+  <text x="38" y="23" class="vp-title" fill="#f8fafc">NEXO-IP // LIVING 3D VIEWPORT ENGINE</text>
+  <text x="440" y="23" class="vp-label" fill="#00f0ff">MODEL: BMW E36 318is COUPE</text>
+  <text x="750" y="23" class="vp-hud" fill="#94a3b8">RENDER: GPU WIREFRAME (60 FPS)</text>
+
+  <!-- Real-Time Camera Telemetry Overlay -->
+  <g transform="translate(30, 60)" class="vp-hud" fill="#94a3b8">
+    <rect width="180" height="75" rx="6" fill="#06090e" stroke="#1a2333" stroke-width="0.8" fill-opacity="0.85"/>
+    <text x="12" y="20" fill="#00f0ff" font-weight="700">CAMERA MATRIX</text>
+    <text x="12" y="38">YAW: <tspan fill="#f8fafc" font-weight="700">90°</tspan></text>
+    <text x="12" y="54">PITCH: <tspan fill="#f8fafc" font-weight="700">20°</tspan></text>
+    <text x="12" y="68">VERTICES: <tspan fill="#f8fafc">20</tspan> | EDGES: <tspan fill="#f8fafc">34</tspan></text>
+  </g>
+
+  <!-- Operator State Stamp -->
+  <g transform="translate(730, 60)" class="vp-hud" fill="#94a3b8">
+    <rect width="200" height="75" rx="6" fill="#06090e" stroke="#1a2333" stroke-width="0.8" fill-opacity="0.85"/>
+    <text x="12" y="20" fill="#00f0ff" font-weight="700">COMMUNITY OPERATOR</text>
+    <text x="12" y="38">OPERATOR: <tspan fill="#f8fafc" font-weight="700">@ikerperez12</tspan></text>
+    <text x="12" y="54">ACTION: <tspan fill="#f8fafc">ROTATE_RIGHT</tspan></text>
+    <text x="12" y="68">TOTAL CYCLES: <tspan fill="#00f0ff">2</tspan></text>
+  </g>
+
+  <!-- 3D Rendered Wireframe Geometry -->
+  <g filter="url(#glow3d)">
+    <line x1="413.5" y1="260.1" x2="546.5" y2="260.1" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.20" stroke-linecap="round"/><line x1="415.2" y1="287.0" x2="413.5" y2="260.1" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.20" stroke-linecap="round"/><line x1="544.8" y1="287.0" x2="546.5" y2="260.1" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.20" stroke-linecap="round"/><line x1="415.2" y1="287.0" x2="544.8" y2="287.0" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.20" stroke-linecap="round"/><line x1="427.7" y1="216.8" x2="413.5" y2="260.1" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.20" stroke-linecap="round"/><line x1="532.3" y1="216.8" x2="546.5" y2="260.1" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.20" stroke-linecap="round"/><line x1="423.8" y1="256.2" x2="413.5" y2="260.1" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.20" stroke-linecap="round"/><line x1="536.2" y1="256.2" x2="546.5" y2="260.1" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.20" stroke-linecap="round"/><line x1="423.8" y1="256.2" x2="415.2" y2="287.0" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.22" stroke-linecap="round"/><line x1="536.2" y1="256.2" x2="544.8" y2="287.0" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.22" stroke-linecap="round"/><line x1="427.7" y1="216.8" x2="532.3" y2="216.8" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.28" stroke-linecap="round"/><line x1="427.7" y1="216.8" x2="443.0" y2="163.1" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.31" stroke-linecap="round"/><line x1="532.3" y1="216.8" x2="517.0" y2="163.1" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.31" stroke-linecap="round"/><line x1="443.0" y1="163.1" x2="517.0" y2="163.1" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.34" stroke-linecap="round"/><line x1="450.8" y1="149.8" x2="443.0" y2="163.1" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.45" stroke-linecap="round"/><line x1="509.2" y1="149.8" x2="517.0" y2="163.1" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.45" stroke-linecap="round"/><line x1="443.8" y1="177.7" x2="427.7" y2="216.8" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.46" stroke-linecap="round"/><line x1="516.2" y1="177.7" x2="532.3" y2="216.8" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.46" stroke-linecap="round"/><line x1="449.7" y1="187.0" x2="415.2" y2="287.0" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.53" stroke-linecap="round"/><line x1="544.8" y1="287.0" x2="510.3" y2="187.0" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.53" stroke-linecap="round"/><line x1="450.8" y1="149.8" x2="509.2" y2="149.8" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.57" stroke-linecap="round"/><line x1="443.8" y1="177.7" x2="450.8" y2="149.8" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.60" stroke-linecap="round"/><line x1="516.2" y1="177.7" x2="509.2" y2="149.8" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.60" stroke-linecap="round"/><line x1="443.8" y1="177.7" x2="516.2" y2="177.7" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.63" stroke-linecap="round"/><line x1="450.7" y1="167.7" x2="443.8" y2="177.7" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.77" stroke-linecap="round"/><line x1="509.3" y1="167.7" x2="516.2" y2="177.7" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.77" stroke-linecap="round"/><line x1="445.4" y1="195.9" x2="450.7" y2="167.7" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.84" stroke-linecap="round"/><line x1="514.6" y1="195.9" x2="509.3" y2="167.7" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.84" stroke-linecap="round"/><line x1="445.4" y1="195.9" x2="449.7" y2="187.0" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.85" stroke-linecap="round"/><line x1="514.6" y1="195.9" x2="510.3" y2="187.0" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.85" stroke-linecap="round"/><line x1="450.7" y1="167.7" x2="509.3" y2="167.7" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.90" stroke-linecap="round"/><line x1="449.7" y1="187.0" x2="450.7" y2="167.7" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.90" stroke-linecap="round"/><line x1="510.3" y1="187.0" x2="509.3" y2="167.7" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.90" stroke-linecap="round"/><line x1="510.3" y1="187.0" x2="449.7" y2="187.0" stroke="#00f0ff" stroke-width="1.8" stroke-opacity="0.91" stroke-linecap="round"/>
+    <circle cx="449.7" cy="187.0" r="3" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/><circle cx="415.2" cy="287.0" r="3" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/><circle cx="544.8" cy="287.0" r="3" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/><circle cx="510.3" cy="187.0" r="3" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/><circle cx="450.7" cy="167.7" r="3" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/><circle cx="443.8" cy="177.7" r="3" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/><circle cx="427.7" cy="216.8" r="3" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/><circle cx="413.5" cy="260.1" r="3" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/><circle cx="509.3" cy="167.7" r="3" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/><circle cx="516.2" cy="177.7" r="3" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/><circle cx="532.3" cy="216.8" r="3" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/><circle cx="546.5" cy="260.1" r="3" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/><circle cx="450.8" cy="149.8" r="3" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/><circle cx="443.0" cy="163.1" r="3" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/><circle cx="509.2" cy="149.8" r="3" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/><circle cx="517.0" cy="163.1" r="3" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/><circle cx="445.4" cy="195.9" r="3" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/><circle cx="423.8" cy="256.2" r="3" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/><circle cx="514.6" cy="195.9" r="3" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/><circle cx="536.2" cy="256.2" r="3" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/>
+  </g>
+
+  <!-- Viewport Corner Brackets -->
+  <path d="M 20 50 L 20 40 L 30 40" fill="none" stroke="#00f0ff" stroke-width="2"/>
+  <path d="M 940 50 L 940 40 L 930 40" fill="none" stroke="#00f0ff" stroke-width="2"/>
+  <path d="M 20 350 L 20 360 L 30 360" fill="none" stroke="#00f0ff" stroke-width="2"/>
+  <path d="M 940 350 L 940 360 L 930 360" fill="none" stroke="#00f0ff" stroke-width="2"/>
+
+  <!-- Footer Navigation Info -->
+  <text x="30" y="368" class="vp-hud" fill="#64748b">3D PROJECTION: ORTHO-PERSPECTIVE // DRIVEN BY GITHUB ACTIONS CI/CD</text>
+  <text x="710" y="368" class="vp-hud" fill="#00f0ff">INTERACT VIA ISSUES BELOW ↓</text>
+</svg>
