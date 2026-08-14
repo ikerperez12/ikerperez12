@@ -1,59 +1,20 @@
 <!--
   =============================================================================
   IKER PEREZ // SYSTEMS & CREATIVE COMPUTING
-  The Living 3D Viewport & Engineered Systems Showcase
-  Zero Emojis • Pure 3D Vector Math • GitHub Actions State Engine
   =============================================================================
 -->
 
-# [ 01 // LIVING 3D VIEWPORT ENGINE ]
-
-*A real-time 3D wireframe projection engine operating directly on GitHub Actions. Rotate the camera, switch 3D geometry models, or change phosphor themes using the interactive control pad below.*
-
 <p align="center">
-  <img src="assets/interactive-viewport.svg" alt="Nexo-IP Living 3D Viewport Engine" width="100%">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg">
+    <img src="assets/hero-dark.svg" alt="Iker Perez — Software Engineer &amp; Systems Technologist" width="100%">
+  </picture>
 </p>
-
-<table align="center" width="100%">
-  <tr>
-    <th width="33%" align="center"><b>CAMERA ROTATION (YAW / PITCH)</b></th>
-    <th width="33%" align="center"><b>LOAD 3D GEOMETRY MODEL</b></th>
-    <th width="33%" align="center"><b>VIEWPORT PHOSPHOR THEME</b></th>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=nexo3d%7Crotate_left&body=Command:+Rotate+Camera+Yaw+-45+degrees"><img src="https://img.shields.io/badge/CAMERA-YAW__--45°_%5B⟲%5D-00f0ff?style=flat-square" alt="Yaw Left"></a>
-      &nbsp;
-      <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=nexo3d%7Crotate_right&body=Command:+Rotate+Camera+Yaw+%2B45+degrees"><img src="https://img.shields.io/badge/CAMERA-YAW__%2B45°_%5B⟳%5D-00f0ff?style=flat-square" alt="Yaw Right"></a>
-      <br><br>
-      <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=nexo3d%7Cpitch_up&body=Command:+Tilt+Camera+Pitch+%2B20+degrees"><img src="https://img.shields.io/badge/CAMERA-PITCH__%2B20°_%5B▲%5D-10b981?style=flat-square" alt="Pitch Up"></a>
-      &nbsp;
-      <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=nexo3d%7Cpitch_down&body=Command:+Tilt+Camera+Pitch+-20+degrees"><img src="https://img.shields.io/badge/CAMERA-PITCH__--20°_%5B▼%5D-10b981?style=flat-square" alt="Pitch Down"></a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=nexo3d%7Cmodel%7Ce36&body=Command:+Load+BMW+E36+Chassis+Wireframe"><img src="https://img.shields.io/badge/MODEL-BMW__E36__COUPE-f59e0b?style=flat-square" alt="Load E36"></a>
-      <br><br>
-      <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=nexo3d%7Cmodel%7Ctesseract&body=Command:+Load+Nexo+Tesseract+4D+Model"><img src="https://img.shields.io/badge/MODEL-TESSERACT__4D-00f0ff?style=flat-square" alt="Load Tesseract"></a>
-      <br><br>
-      <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=nexo3d%7Cmodel%7Cquantum&body=Command:+Load+Quantum+Icosahedron+Model"><img src="https://img.shields.io/badge/MODEL-QUANTUM__ICOSA-818cf8?style=flat-square" alt="Load Quantum"></a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=nexo3d%7Ctheme%7Ccyan&body=Command:+Set+Theme+Cyan+Phosphor"><img src="https://img.shields.io/badge/THEME-CYAN__PHOSPHOR-00f0ff?style=flat-square" alt="Theme Cyan"></a>
-      &nbsp;
-      <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=nexo3d%7Ctheme%7Cemerald&body=Command:+Set+Theme+Matrix+Emerald"><img src="https://img.shields.io/badge/THEME-MATRIX__EMERALD-10b981?style=flat-square" alt="Theme Emerald"></a>
-      <br><br>
-      <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=nexo3d%7Ctheme%7Camber&body=Command:+Set+Theme+Amber+Retro"><img src="https://img.shields.io/badge/THEME-AMBER__RETRO-f59e0b?style=flat-square" alt="Theme Amber"></a>
-      &nbsp;
-      <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=nexo3d%7Ctheme%7Cviolet&body=Command:+Set+Theme+Hyper+Violet"><img src="https://img.shields.io/badge/THEME-HYPER__VIOLET-818cf8?style=flat-square" alt="Theme Violet"></a>
-      <br><br>
-      <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=nexo3d%7Creset&body=Command:+Reset+Default+Camera"><img src="https://img.shields.io/badge/RESET-DEFAULT__VIEW-64748b?style=flat-square" alt="Reset View"></a>
-    </td>
-  </tr>
-</table>
 
 ---
 
-# [ 02 // FEATURED SYSTEMS &amp; PRODUCT REPOSITORIES ]
+## [ FEATURED ENGINEERING PRODUCTS ]
 
 <table>
   <tr>
@@ -64,7 +25,7 @@
       <br>
       <b>NexoIP 3D Viewer</b> <code>v1.0.0</code>
       <br>
-      <sub>Private, offline-first 3D model viewer for Windows (Electron + Three.js + WebGL). Isolated <code>nexoip://</code> custom protocol, CycloneDX v1.5 SBOM &amp; SHA-256 binary verification.</sub>
+      <sub>Private, offline-first 3D model viewer for Windows (Electron + Three.js + WebGL). Isolated <code>nexoip://</code> custom protocol, CycloneDX v1.5 SBOM &amp; SHA-256 binary validation.</sub>
       <br><br>
       <a href="https://github.com/ikerperez12/NexoIP-3D-Viewer"><img src="https://img.shields.io/badge/SOURCE-NEXOIP--3D--VIEWER-00f0ff?style=flat-square" alt="Source"></a>
       <a href="https://github.com/ikerperez12/NexoIP-3D-Viewer/releases"><img src="https://img.shields.io/badge/RELEASE-v1.0.0_SIGNED-10b981?style=flat-square" alt="Download"></a>
@@ -114,5 +75,5 @@
 
 <p align="center">
   <sub><b>IKER PEREZ</b> • A Coruña, Galicia, Spain</sub><br>
-  <sub><i>Living Computational 3D Profile • Automated via GitHub Actions</i></sub>
+  <sub><i>Living Engineering Portfolio • Automated Daily via GitHub Actions</i></sub>
 </p>

@@ -1,160 +1,119 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 300" width="100%" height="100%">
   <defs>
-    <linearGradient id="heroTitleGradD" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="glowMeshD" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.18"/>
+      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0.15"/>
+    </linearGradient>
+
+    <linearGradient id="textGradD" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#f8fafc"/>
-      <stop offset="60%" stop-color="#00f0ff"/>
+      <stop offset="50%" stop-color="#00f0ff"/>
       <stop offset="100%" stop-color="#10b981"/>
     </linearGradient>
 
-    <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.1"/>
-      <stop offset="50%" stop-color="#00f0ff" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#10b981" stop-opacity="0.2"/>
-    </linearGradient>
-
-    <pattern id="dotPatternD" width="24" height="24" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.2" fill="rgba(30, 41, 59, 0.45)"/>
+    <pattern id="dotGridD" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="rgba(30, 41, 59, 0.4)"/>
     </pattern>
 
     <style>
-      @keyframes spinTorus {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+      @keyframes floatMesh {
+        0%, 100% { transform: translate(0, 0) scale(1); }
+        50% { transform: translate(30px, -20px) scale(1.08); }
       }
-      @keyframes spinTorusRev {
-        0% { transform: rotate(360deg); }
-        100% { transform: rotate(0deg); }
+      @keyframes pulseBeam {
+        0%, 100% { stroke-dashoffset: 0; opacity: 0.4; }
+        50% { stroke-dashoffset: -200; opacity: 0.9; }
       }
-      @keyframes pulseNode {
-        0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px #00f0ff); }
-        50% { transform: scale(1.15); filter: drop-shadow(0 0 12px #00f0ff); }
-      }
-      @keyframes waveScroll {
-        0% { stroke-dashoffset: 600; }
-        100% { stroke-dashoffset: 0; }
-      }
-      @keyframes radarSweep {
+      @keyframes rotateOrbit {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
       }
       .hero-title {
         font-family: 'Space Grotesk', -apple-system, system-ui, sans-serif;
         font-weight: 900;
-        letter-spacing: -0.02em;
+        letter-spacing: -0.03em;
       }
-      .mono-label {
+      .mono-text {
         font-family: 'JetBrains Mono', ui-monospace, monospace;
         font-size: 11px;
         font-weight: 600;
-        letter-spacing: 0.06em;
+        letter-spacing: 0.08em;
       }
-      .hero-sub {
+      .mono-sub {
         font-family: 'JetBrains Mono', ui-monospace, monospace;
         font-size: 12px;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.1em;
       }
-      .gyro-ring1 {
-        transform-origin: 800px 170px;
-        animation: spinTorus 20s linear infinite;
+      .ambient-glow {
+        animation: floatMesh 12s ease-in-out infinite;
+        transform-origin: center;
       }
-      .gyro-ring2 {
-        transform-origin: 800px 170px;
-        animation: spinTorusRev 14s linear infinite;
+      .flowing-signal {
+        stroke-dasharray: 60 140;
+        animation: pulseBeam 5s linear infinite;
       }
-      .core-pulse {
-        transform-origin: 800px 170px;
-        animation: pulseNode 3.5s ease-in-out infinite;
-      }
-      .animated-wave {
-        stroke-dasharray: 200 400;
-        animation: waveScroll 6s linear infinite;
-      }
-      .radar-arm {
-        transform-origin: 885px 45px;
-        animation: radarSweep 4s linear infinite;
+      .orbital-ring {
+        transform-origin: 780px 150px;
+        animation: rotateOrbit 24s linear infinite;
       }
     </style>
   </defs>
 
   <!-- Frame Background -->
-  <rect width="960" height="340" rx="14" fill="#06090e" stroke="#1a2333" stroke-width="1.5"/>
-  <rect width="960" height="340" rx="14" fill="url(#dotPatternD)"/>
+  <rect width="960" height="300" rx="16" fill="#05070b" stroke="#162235" stroke-width="1.5"/>
+  <rect width="960" height="300" rx="16" fill="url(#dotGridD)"/>
 
-  <!-- Top System Bar -->
-  <path d="M 0 14 Q 0 0 14 0 L 946 0 Q 960 0 960 14 L 960 40 L 0 40 Z" fill="#0b1019" stroke="#1a2333" stroke-width="1"/>
+  <!-- Ambient Fluid Mesh Backdrop -->
+  <ellipse class="ambient-glow" cx="800" cy="150" rx="260" ry="140" fill="url(#glowMeshD)"/>
+
+  <!-- Top System Telemetry Bar -->
+  <path d="M 0 16 Q 0 0 16 0 L 944 0 Q 960 0 960 16 L 960 42 L 0 42 Z" fill="#0a0f18" stroke="#162235" stroke-width="1"/>
   
-  <circle cx="28" cy="20" r="4.5" fill="#10b981"/>
-  <text x="44" y="24" class="mono-label" fill="#f8fafc">IKER PEREZ // SYSTEMS &amp; CREATIVE COMPUTING</text>
-  <text x="460" y="24" class="mono-label" fill="#10b981">[STATUS: PRODUCTION HARDENED]</text>
-  <text x="740" y="24" class="mono-label" fill="#64748b">43.36° N, 8.41° W [ES]</text>
+  <circle cx="28" cy="21" r="4.5" fill="#10b981"/>
+  <text x="44" y="25" class="mono-text" fill="#f8fafc">IKER PEREZ // SYSTEMS &amp; CREATIVE COMPUTING</text>
+  <text x="560" y="25" class="mono-text" fill="#10b981">[ONLINE • 2627 CONTRIBUTIONS / YEAR]</text>
+  <text x="820" y="25" class="mono-text" fill="#64748b">A CORUÑA [ES]</text>
 
-  <!-- Mini Radar Reticle Top Right -->
-  <circle cx="885" cy="45" r="16" fill="#0b1019" stroke="#00f0ff" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.7"/>
-  <line class="radar-arm" x1="885" y1="45" x2="885" y2="30" stroke="#00f0ff" stroke-width="1.5"/>
-
-  <!-- Left Editorial Hero Content -->
+  <!-- Left Hero Content -->
   <g transform="translate(48, 65)">
-    <text x="0" y="55" class="hero-title" font-size="46" fill="url(#heroTitleGradD)">IKER PEREZ</text>
-    <text x="0" y="86" class="hero-sub" fill="#00f0ff">FULL-TECH COMPUTER ENGINEER // SYSTEMS &amp; 3D TECHNOLOGIST</text>
+    <text x="0" y="52" class="hero-title" font-size="44" fill="url(#textGradD)">IKER PEREZ</text>
+    <text x="0" y="82" class="mono-sub" fill="#00f0ff">SOFTWARE ENGINEER &amp; SYSTEMS TECHNOLOGIST</text>
     
-    <text x="0" y="125" font-family="system-ui, -apple-system, sans-serif" font-size="14.5" fill="#94a3b8">
-      Architecting <tspan fill="#f8fafc" font-weight="700">Low-Level Systems</tspan>, <tspan fill="#00f0ff" font-weight="700">Interactive 3D / WebGL Runtimes</tspan>,
+    <text x="0" y="118" font-family="system-ui, -apple-system, sans-serif" font-size="14.5" fill="#94a3b8">
+      Building <tspan fill="#f8fafc" font-weight="700">Offline-First 3D Systems</tspan>, <tspan fill="#00f0ff" font-weight="700">Interactive WebGL Experiences</tspan>,
     </text>
-    <text x="0" y="148" font-family="system-ui, -apple-system, sans-serif" font-size="14.5" fill="#94a3b8">
-      <tspan fill="#818cf8" font-weight="700">Desktop Web Environments</tspan>, and <tspan fill="#10b981" font-weight="700">Post-Quantum Security</tspan>.
+    <text x="0" y="140" font-family="system-ui, -apple-system, sans-serif" font-size="14.5" fill="#94a3b8">
+      <tspan fill="#818cf8" font-weight="700">Desktop Web Environments</tspan>, and <tspan fill="#10b981" font-weight="700">Post-Quantum Cryptography</tspan>.
     </text>
 
-    <!-- High-Precision Vector Architecture Badges (Zero Emojis) -->
-    <g transform="translate(0, 180)">
-      <!-- Badge 1: Offline First -->
-      <rect x="0" y="0" width="135" height="28" rx="6" fill="#0b1019" stroke="#10b981" stroke-width="1"/>
-      <path d="M 12 14 L 16 18 L 24 10" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
-      <text x="32" y="18" class="mono-label" font-size="10" fill="#10b981">OFFLINE-FIRST</text>
+    <!-- Clean Vector Pills -->
+    <g transform="translate(0, 168)">
+      <rect x="0" y="0" width="130" height="26" rx="5" fill="#0a0f18" stroke="#10b981" stroke-width="1"/>
+      <text x="14" y="17" class="mono-text" font-size="10" fill="#10b981">[✓] OFFLINE-FIRST</text>
 
-      <!-- Badge 2: CycloneDX SBOM -->
-      <rect x="145" y="0" width="150" height="28" rx="6" fill="#0b1019" stroke="#00f0ff" stroke-width="1"/>
-      <polygon points="160,8 168,14 168,22 160,28 152,22 152,14" fill="none" stroke="#00f0ff" stroke-width="1.5"/>
-      <text x="175" y="18" class="mono-label" font-size="10" fill="#00f0ff">CYCLONEDX SBOM</text>
+      <rect x="140" y="0" width="145" height="26" rx="5" fill="#0a0f18" stroke="#00f0ff" stroke-width="1"/>
+      <text x="154" y="17" class="mono-text" font-size="10" fill="#00f0ff">[⬡] CYCLONEDX SBOM</text>
 
-      <!-- Badge 3: SHA-256 -->
-      <rect x="305" y="0" width="145" height="28" rx="6" fill="#0b1019" stroke="#818cf8" stroke-width="1"/>
-      <rect x="317" y="9" width="10" height="10" fill="none" stroke="#818cf8" stroke-width="1.5" transform="rotate(45 322 14)"/>
-      <text x="335" y="18" class="mono-label" font-size="10" fill="#818cf8">SHA-256 SIGNED</text>
+      <rect x="295" y="0" width="140" height="26" rx="5" fill="#0a0f18" stroke="#818cf8" stroke-width="1"/>
+      <text x="309" y="17" class="mono-text" font-size="10" fill="#818cf8">[❖] SHA-256 SIGNED</text>
 
-      <!-- Badge 4: WCAG AAA -->
-      <rect x="460" y="0" width="140" height="28" rx="6" fill="#0b1019" stroke="#f59e0b" stroke-width="1"/>
-      <circle cx="473" cy="14" r="5" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
-      <text x="486" y="18" class="mono-label" font-size="10" fill="#f59e0b">WCAG AAA A11Y</text>
+      <rect x="445" y="0" width="135" height="26" rx="5" fill="#0a0f18" stroke="#94a3b8" stroke-width="1"/>
+      <text x="459" y="17" class="mono-text" font-size="10" fill="#f8fafc">[◎] WCAG AAA A11Y</text>
     </g>
   </g>
 
-  <!-- Oscilloscope Waveform Vector along Bottom Left -->
-  <path d="M 48 305 Q 120 280 180 305 T 320 305 T 460 305 T 600 305" fill="none" stroke="url(#waveGrad)" stroke-width="2.5" class="animated-wave"/>
-
-  <!-- Right Visual 3D Gyroscope & Polyhedral Reactor Core -->
-  <g transform="translate(0, 0)">
-    <!-- Outer Orbital Ring -->
-    <g class="gyro-ring1">
-      <ellipse cx="800" cy="170" rx="90" ry="38" fill="none" stroke="#00f0ff" stroke-width="1.2" stroke-opacity="0.4" stroke-dasharray="8 6" transform="rotate(40 800 170)"/>
-    </g>
-
-    <!-- Inner Counter-Rotating Ring -->
-    <g class="gyro-ring2">
-      <ellipse cx="800" cy="170" rx="90" ry="38" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-opacity="0.6" transform="rotate(-40 800 170)"/>
-    </g>
-
-    <!-- Equatorial Emerald Ring -->
-    <circle cx="800" cy="170" r="90" fill="none" stroke="#10b981" stroke-width="0.8" stroke-opacity="0.25"/>
-
-    <!-- Central 3D Faceted Octahedron Core -->
-    <g class="core-pulse">
-      <polygon points="800,105 850,170 800,235 750,170" fill="none" stroke="#00f0ff" stroke-width="2"/>
-      <line x1="750" y1="170" x2="850" y2="170" stroke="#00f0ff" stroke-width="1.2"/>
-      <line x1="800" y1="105" x2="800" y2="235" stroke="#00f0ff" stroke-width="1.2"/>
-      
-      <!-- Core Photon Center -->
-      <circle cx="800" cy="170" r="8" fill="#00f0ff"/>
-      <circle cx="800" cy="170" r="16" fill="none" stroke="#00f0ff" stroke-width="1" stroke-dasharray="3 3"/>
-    </g>
+  <!-- Right Visual Kinetic Geometry -->
+  <g class="orbital-ring">
+    <circle cx="780" cy="150" r="85" fill="none" stroke="#00f0ff" stroke-width="1.2" stroke-opacity="0.3" stroke-dasharray="6 4"/>
+    <ellipse cx="780" cy="150" rx="85" ry="36" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-opacity="0.6" transform="rotate(30 780 150)"/>
+    <ellipse cx="780" cy="150" rx="85" ry="36" fill="none" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.6" transform="rotate(-30 780 150)"/>
+    
+    <!-- Central Polyhedron -->
+    <polygon points="780,95 825,150 780,205 735,150" fill="none" stroke="#00f0ff" stroke-width="1.8"/>
+    <circle cx="780" cy="150" r="6" fill="#00f0ff"/>
   </g>
+
+  <!-- Flowing Signal Pulse along Bottom -->
+  <path d="M 48 275 L 700 275" fill="none" stroke="#00f0ff" stroke-width="1.5" class="flowing-signal"/>
 </svg>
