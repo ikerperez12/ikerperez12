@@ -1,165 +1,112 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 280" width="100%" height="100%">
   <defs>
-    <linearGradient id="headerGradDark" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.9"/>
-      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#10b981" stop-opacity="0.9"/>
+    <linearGradient id="heroTitleGradD" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="60%" stop-color="#00f0ff"/>
+      <stop offset="100%" stop-color="#10b981"/>
     </linearGradient>
 
-    <linearGradient id="scanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0"/>
-      <stop offset="50%" stop-color="#00f0ff" stop-opacity="0.8"/>
-      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0"/>
-    </linearGradient>
-
-    <pattern id="gridPatternDark" width="30" height="30" patternUnits="userSpaceOnUse">
-      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(30, 41, 59, 0.45)" stroke-width="1"/>
+    <pattern id="dotPatternD" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="rgba(30, 41, 59, 0.4)"/>
     </pattern>
 
     <style>
-      @keyframes laserScan {
-        0% { transform: translateY(0px); opacity: 0.1; }
-        50% { opacity: 0.7; }
-        100% { transform: translateY(320px); opacity: 0.1; }
+      @keyframes spin3D {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
       }
-      @keyframes pulseGlow {
-        0%, 100% { opacity: 0.4; filter: drop-shadow(0 0 2px #00f0ff); }
-        50% { opacity: 1; filter: drop-shadow(0 0 8px #00f0ff); }
+      @keyframes waveFloat {
+        0%, 100% { stroke-dashoffset: 0; }
+        50% { stroke-dashoffset: -120; }
       }
       @keyframes radarSweep {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
       }
-      @keyframes blinkDot {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.2; }
+      .hero-title {
+        font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+        font-weight: 900;
+        letter-spacing: -0.03em;
       }
-      .telemetry-title {
-        font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
-        font-weight: 800;
-        letter-spacing: 0.18em;
-      }
-      .telemetry-sub {
-        font-family: 'JetBrains Mono', ui-monospace, monospace;
-        font-weight: 600;
-        letter-spacing: 0.12em;
-      }
-      .telemetry-label {
-        font-family: 'JetBrains Mono', ui-monospace, monospace;
+      .hero-sub {
+        font-family: 'JetBrains Mono', monospace;
         font-weight: 500;
-        font-size: 11px;
-        letter-spacing: 0.08em;
+        letter-spacing: 0.04em;
       }
-      .telemetry-val {
-        font-family: 'JetBrains Mono', ui-monospace, monospace;
-        font-weight: 700;
-        font-size: 13px;
+      .rotating-wireframe {
+        transform-origin: 770px 140px;
+        animation: spin3D 24s linear infinite;
       }
-      .scan-beam {
-        animation: laserScan 6s ease-in-out infinite alternate;
+      .wave-line {
+        stroke-dasharray: 12 8;
+        animation: waveFloat 8s linear infinite;
       }
-      .pulse-indicator {
-        animation: pulseGlow 3s ease-in-out infinite;
-      }
-      .radar-arm {
-        transform-origin: 905px 45px;
+      .radar-needle {
+        transform-origin: 840px 45px;
         animation: radarSweep 4s linear infinite;
-      }
-      .blink {
-        animation: blinkDot 1.5s ease-in-out infinite;
       }
     </style>
   </defs>
 
-  <!-- Background Base -->
-  <rect width="960" height="320" rx="14" fill="#090d14" stroke="#1e293b" stroke-width="1.5"/>
-  <rect width="960" height="320" rx="14" fill="url(#gridPatternDark)"/>
+  <!-- Frame Canvas -->
+  <rect width="920" height="280" rx="14" fill="#070a0f" stroke="#1a2333" stroke-width="1.5"/>
+  <rect width="920" height="280" rx="14" fill="url(#dotPatternD)"/>
 
-  <!-- Scanning Laser Line -->
-  <rect class="scan-beam" x="0" y="0" width="960" height="2" fill="url(#scanGrad)"/>
+  <!-- Left Editorial Hero Content -->
+  <g transform="translate(45, 50)">
+    <!-- Top System Header Badge -->
+    <g transform="translate(0, 0)">
+      <rect width="260" height="24" rx="12" fill="#0d131d" stroke="#10b981" stroke-width="1"/>
+      <circle cx="12" cy="12" r="3.5" fill="#10b981"/>
+      <text x="24" y="16" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#10b981">SYSTEMS &amp; CREATIVE COMPUTING</text>
+    </g>
 
-  <!-- Top System Bar -->
-  <path d="M 0 14 Q 0 0 14 0 L 946 0 Q 960 0 960 14 L 960 38 L 0 38 Z" fill="#0f1724" stroke="#1e293b" stroke-width="1"/>
-  
-  <!-- Terminal Dots -->
-  <circle cx="25" cy="19" r="4.5" fill="#ef4444" opacity="0.85"/>
-  <circle cx="42" cy="19" r="4.5" fill="#f59e0b" opacity="0.85"/>
-  <circle cx="59" cy="19" r="4.5" fill="#10b981" opacity="0.85"/>
-
-  <!-- Status HUD Label -->
-  <text x="85" y="23" class="telemetry-label" fill="#64748b">SYSTEM HUD // NODE: <tspan fill="#00f0ff">IKERPEREZ12-CORE</tspan></text>
-  <text x="420" y="23" class="telemetry-label" fill="#10b981"><tspan class="blink">●</tspan> STATUS: PRODUCTION HARDENED // VERIFIED</text>
-  <text x="830" y="23" class="telemetry-label" fill="#64748b">LOC: A CORUÑA [ES]</text>
-
-  <!-- Mini Radar Widget Top Right -->
-  <circle cx="905" cy="45" r="18" fill="#0f1724" stroke="#00f0ff" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.6"/>
-  <circle cx="905" cy="45" r="9" fill="none" stroke="#00f0ff" stroke-width="0.5" opacity="0.4"/>
-  <line class="radar-arm" x1="905" y1="45" x2="905" y2="27" stroke="#00f0ff" stroke-width="1.5" stroke-linecap="round"/>
-
-  <!-- Main Hero Title Section -->
-  <g transform="translate(35, 75)">
-    <!-- Decorative Bracket -->
-    <path d="M 0 35 L 0 0 L 25 0" fill="none" stroke="#00f0ff" stroke-width="2.5"/>
+    <!-- Main Name Title -->
+    <text x="0" y="70" class="hero-title" font-size="44" fill="url(#heroTitleGradD)">IKER PEREZ</text>
     
-    <text x="18" y="32" class="telemetry-title" font-size="34" fill="url(#headerGradDark)">IKER PEREZ</text>
-    <text x="18" y="58" class="telemetry-sub" font-size="13" fill="#94a3b8">FULL-TECH COMPUTER ENGINEER // SYSTEMS &amp; CREATIVE TECHNOLOGIST</text>
-    
-    <!-- Verified Engineering Badges Bar -->
-    <g transform="translate(18, 75)">
-      <!-- Badge 1: 0-Telemetry -->
-      <rect x="0" y="0" width="168" height="24" rx="5" fill="#0f1724" stroke="#10b981" stroke-width="1"/>
-      <circle cx="12" cy="12" r="3.5" fill="#10b981" class="blink"/>
-      <text x="24" y="16" class="telemetry-label" fill="#10b981">ZERO-TELEMETRY</text>
+    <!-- Editorial Description -->
+    <text x="0" y="102" font-family="system-ui, -apple-system, sans-serif" font-size="14.5" fill="#94a3b8">
+      Computer Engineer architecting <tspan fill="#f8fafc" font-weight="700">Low-Level Systems</tspan>, <tspan fill="#00f0ff" font-weight="700">Interactive 3D / WebGL</tspan>,
+    </text>
+    <text x="0" y="125" font-family="system-ui, -apple-system, sans-serif" font-size="14.5" fill="#94a3b8">
+      <tspan fill="#818cf8" font-weight="700">Desktop Web Environments</tspan>, and <tspan fill="#10b981" font-weight="700">Post-Quantum Security</tspan>.
+    </text>
 
-      <!-- Badge 2: CycloneDX SBOM -->
-      <rect x="178" y="0" width="160" height="24" rx="5" fill="#0f1724" stroke="#00f0ff" stroke-width="1"/>
-      <circle cx="190" cy="12" r="3.5" fill="#00f0ff"/>
-      <text x="202" y="16" class="telemetry-label" fill="#00f0ff">SBOM: CYCLONEDX</text>
+    <!-- Verified Architecture Seals -->
+    <g transform="translate(0, 155)">
+      <!-- Seal 1: Offline First -->
+      <rect x="0" y="0" width="132" height="26" rx="6" fill="#0d131d" stroke="#1a2333" stroke-width="1"/>
+      <text x="12" y="17" class="hero-sub" font-size="10.5" fill="#10b981">🛡️ OFFLINE-FIRST</text>
 
-      <!-- Badge 3: SHA-256 Checksums -->
-      <rect x="348" y="0" width="165" height="24" rx="5" fill="#0f1724" stroke="#818cf8" stroke-width="1"/>
-      <circle cx="360" cy="12" r="3.5" fill="#818cf8"/>
-      <text x="372" y="16" class="telemetry-label" fill="#818cf8">SHA-256 VERIFIED</text>
+      <!-- Seal 2: CycloneDX SBOM -->
+      <rect x="142" y="0" width="145" height="26" rx="6" fill="#0d131d" stroke="#1a2333" stroke-width="1"/>
+      <text x="154" y="17" class="hero-sub" font-size="10.5" fill="#00f0ff">📦 CYCLONEDX SBOM</text>
 
-      <!-- Badge 4: A11y Automated -->
-      <rect x="523" y="0" width="165" height="24" rx="5" fill="#0f1724" stroke="#f59e0b" stroke-width="1"/>
-      <circle cx="535" cy="12" r="3.5" fill="#f59e0b"/>
-      <text x="547" y="16" class="telemetry-label" fill="#f59e0b">AXE-CORE CI TESTED</text>
+      <!-- Seal 3: SHA-256 -->
+      <rect x="297" y="0" width="145" height="26" rx="6" fill="#0d131d" stroke="#1a2333" stroke-width="1"/>
+      <text x="309" y="17" class="hero-sub" font-size="10.5" fill="#818cf8">🔑 SHA-256 SIGNED</text>
+
+      <!-- Seal 4: WCAG AAA -->
+      <rect x="452" y="0" width="135" height="26" rx="6" fill="#0d131d" stroke="#1a2333" stroke-width="1"/>
+      <text x="464" y="17" class="hero-sub" font-size="10.5" fill="#f8fafc">♿ WCAG AAA A11Y</text>
     </g>
   </g>
 
-  <!-- Lower Telemetry Metric Cards (4 Pillars) -->
-  <g transform="translate(35, 195)">
-    <!-- Card 1: Systems & Security -->
-    <rect x="0" y="0" width="212" height="100" rx="8" fill="#0f1724" stroke="#10b981" stroke-width="1.2" opacity="0.95"/>
-    <path d="M 0 0 L 212 0 L 212 24 L 0 24 Z" fill="#10b981" fill-opacity="0.12"/>
-    <text x="12" y="17" class="telemetry-label" fill="#10b981">🛡️ SYSTEMS &amp; SECURITY</text>
-    <text x="12" y="44" class="telemetry-label" fill="#64748b">FLAGSHIP: <tspan fill="#f8fafc" class="telemetry-val">NexoIP 3D</tspan></text>
-    <text x="12" y="64" class="telemetry-label" fill="#64748b">LAB: <tspan fill="#f8fafc" class="telemetry-val">Post-Quantum PQC</tspan></text>
-    <text x="12" y="84" class="telemetry-label" fill="#64748b">POLICY: <tspan fill="#10b981">Sandboxed Offline</tspan></text>
-
-    <!-- Card 2: Graphics & 3D -->
-    <rect x="226" y="0" width="212" height="100" rx="8" fill="#0f1724" stroke="#00f0ff" stroke-width="1.2" opacity="0.95"/>
-    <path d="M 0 0 L 212 0 L 212 24 L 0 24 Z" fill="#00f0ff" fill-opacity="0.12"/>
-    <text x="238" y="17" class="telemetry-label" fill="#00f0ff">💎 3D &amp; GRAPHICS</text>
-    <text x="238" y="44" class="telemetry-label" fill="#64748b">ENGINE: <tspan fill="#f8fafc" class="telemetry-val">Three.js / WebGL</tspan></text>
-    <text x="238" y="64" class="telemetry-label" fill="#64748b">SHOWCASE: <tspan fill="#f8fafc" class="telemetry-val">e36 318is Coupe</tspan></text>
-    <text x="238" y="84" class="telemetry-label" fill="#64748b">PIPELINE: <tspan fill="#00f0ff">PySide6 / R3F</tspan></text>
-
-    <!-- Card 3: Web OS & UI Systems -->
-    <rect x="452" y="0" width="212" height="100" rx="8" fill="#0f1724" stroke="#818cf8" stroke-width="1.2" opacity="0.95"/>
-    <path d="M 0 0 L 212 0 L 212 24 L 0 24 Z" fill="#818cf8" fill-opacity="0.12"/>
-    <text x="464" y="17" class="telemetry-label" fill="#818cf8">🖥️ WEB OS &amp; TOOLKITS</text>
-    <text x="464" y="44" class="telemetry-label" fill="#64748b">DESKTOP: <tspan fill="#f8fafc" class="telemetry-val">IP Linux (10★)</tspan></text>
-    <text x="464" y="64" class="telemetry-label" fill="#64748b">DESIGN SYS: <tspan fill="#f8fafc" class="telemetry-val">UI-IP Toolkit v4</tspan></text>
-    <text x="464" y="84" class="telemetry-label" fill="#64748b">DEPLOY: <tspan fill="#818cf8">Vercel Static CDN</tspan></text>
-
-    <!-- Card 4: Verified Artifacts -->
-    <rect x="678" y="0" width="212" height="100" rx="8" fill="#0f1724" stroke="#f59e0b" stroke-width="1.2" opacity="0.95"/>
-    <path d="M 0 0 L 212 0 L 212 24 L 0 24 Z" fill="#f59e0b" fill-opacity="0.12"/>
-    <text x="690" y="17" class="telemetry-label" fill="#f59e0b">⚡ VERIFIED TELEMETRY</text>
-    <text x="690" y="44" class="telemetry-label" fill="#64748b">PUBLIC REPOS: <tspan fill="#f8fafc" class="telemetry-val">27 Active</tspan></text>
-    <text x="690" y="64" class="telemetry-label" fill="#64748b">SIGNED RELEASES: <tspan fill="#f8fafc" class="telemetry-val">12 Published</tspan></text>
-    <text x="690" y="84" class="telemetry-label" fill="#64748b">INTEGRITY: <tspan fill="#f59e0b">100% Verifiable</tspan></text>
+  <!-- Right Visual 3D Geometry & Wave Visualizer -->
+  <g class="rotating-wireframe">
+    <!-- Isometric 3D Polyhedron / Gyroscope rings -->
+    <circle cx="770" cy="140" r="75" fill="none" stroke="#00f0ff" stroke-width="1.2" stroke-opacity="0.3" stroke-dasharray="6 4"/>
+    <ellipse cx="770" cy="140" rx="75" ry="32" fill="none" stroke="#818cf8" stroke-width="1.5" stroke-opacity="0.6" transform="rotate(35 770 140)"/>
+    <ellipse cx="770" cy="140" rx="75" ry="32" fill="none" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.6" transform="rotate(-35 770 140)"/>
+    
+    <!-- Central Octahedron Core -->
+    <polygon points="770,85 815,140 770,195 725,140" fill="none" stroke="#00f0ff" stroke-width="1.8"/>
+    <line x1="725" y1="140" x2="815" y2="140" stroke="#00f0ff" stroke-width="1"/>
+    <line x1="770" y1="85" x2="770" y2="195" stroke="#00f0ff" stroke-width="1"/>
+    <circle cx="770" cy="140" r="6" fill="#00f0ff"/>
   </g>
+
+  <!-- Radar Telemetry Widget Top Right -->
+  <circle cx="840" cy="45" r="16" fill="#0d131d" stroke="#00f0ff" stroke-width="0.8" stroke-dasharray="2 2"/>
+  <line class="radar-needle" x1="840" y1="45" x2="840" y2="30" stroke="#00f0ff" stroke-width="1.5"/>
 </svg>
