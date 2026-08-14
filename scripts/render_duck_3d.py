@@ -46,7 +46,7 @@ def load_glb(glb_path):
 
     return pos, norms, uvs, indices, texture_img
 
-def render_duck_beauty(yaw_deg=-32, pitch_deg=10, out_name="duck_beauty.png"):
+def render_duck_beauty(yaw_deg=148, pitch_deg=10, out_name="duck_beauty.png"):
     glb_path = r"C:\Users\ijpg1\projects\nexoip-final-integration\public\assets\models\duck.glb"
     pos, norms, uvs, indices, texture_img = load_glb(glb_path)
 
@@ -101,11 +101,11 @@ def render_duck_beauty(yaw_deg=-32, pitch_deg=10, out_name="duck_beauty.png"):
     tex_w, tex_h = texture_img.size
     tex_np = np.array(texture_img, dtype=np.float32)
 
-    # 3-Point Studio Lights
-    key_light = np.array([0.4, 0.9, 0.8])
+    # 3-Point Studio Lights (front-facing)
+    key_light = np.array([0.4, 0.8, 0.8])
     key_light /= np.linalg.norm(key_light)
 
-    fill_light = np.array([-0.7, 0.4, 0.5])
+    fill_light = np.array([-0.6, 0.3, 0.6])
     fill_light /= np.linalg.norm(fill_light)
 
     rim_light = np.array([0.0, -0.5, -0.8])
@@ -179,7 +179,6 @@ def render_duck_beauty(yaw_deg=-32, pitch_deg=10, out_name="duck_beauty.png"):
     bbox = raw_img.getbbox()
     if bbox:
         cropped = raw_img.crop(bbox)
-        # Pad slightly to square
         w_c, h_c = cropped.size
         side = max(w_c, h_c) + 20
         square_img = Image.new('RGBA', (side, side), (0, 0, 0, 0))
@@ -192,7 +191,7 @@ def render_duck_beauty(yaw_deg=-32, pitch_deg=10, out_name="duck_beauty.png"):
     
     out_path = rf"C:\Users\ijpg1\Documents\antigravity\ikerperez12\assets\{out_name}"
     final_img.save(out_path, "PNG", optimize=True)
-    print("Rendered beauty cropped duck to:", out_path)
+    print("Rendered 180-deg rotated beauty duck to:", out_path)
 
 if __name__ == '__main__':
-    render_duck_beauty(yaw_deg=-32, pitch_deg=10, out_name="duck_beauty.png")
+    render_duck_beauty(yaw_deg=148, pitch_deg=10, out_name="duck_beauty.png")
