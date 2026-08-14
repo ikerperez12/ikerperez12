@@ -33,7 +33,7 @@ async function fetchStats() {
   return { totalContribs };
 }
 
-// 1. BESPOKE AURORA HERO WITH REAL 3D DUCK.GLB (960 x 340)
+// 1. HERO WITH CLEAN, PROMINENTLY CENTERED 3D DUCK (960 x 340)
 function generateHeroSVG(stats, isDark = true) {
   const bg = isDark ? '#05070c' : '#ffffff';
   const surface = isDark ? '#0a0e18' : '#f8fafc';
@@ -45,7 +45,7 @@ function generateHeroSVG(stats, isDark = true) {
   const pink = '#fb8dff';
   const emerald = '#4ade80';
   const cyan = '#38bdf8';
-  const yellow = '#fde047';
+  const amber = '#f59e0b';
 
   // Read base64 duck image
   let duckB64 = '';
@@ -77,44 +77,21 @@ function generateHeroSVG(stats, isDark = true) {
       <stop offset="100%" stop-color="transparent"/>
     </linearGradient>
 
-    <!-- Silky Ambient Radial Glow (NO DOTS, NO GRIDS) -->
-    <radialGradient id="duckBacklight" cx="78%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="${yellow}" stop-opacity="${isDark ? '0.22' : '0.15'}"/>
-      <stop offset="40%" stop-color="${violet}" stop-opacity="${isDark ? '0.15' : '0.08'}"/>
-      <stop offset="80%" stop-color="${cyan}" stop-opacity="${isDark ? '0.08' : '0.04'}"/>
+    <!-- Soft Ambient Duck Glow (No Grid / No Dots) -->
+    <radialGradient id="duckBacklight" cx="78%" cy="52%" r="42%">
+      <stop offset="0%" stop-color="${amber}" stop-opacity="${isDark ? '0.16' : '0.10'}"/>
+      <stop offset="50%" stop-color="${violet}" stop-opacity="${isDark ? '0.08' : '0.04'}"/>
       <stop offset="100%" stop-color="${bg}" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- Glow Filter -->
-    <filter id="glowHolo" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-
     <style>
-      @keyframes duckBobbing {
-        0%, 100% { transform: translateY(0px) rotate(0deg); }
-        35% { transform: translateY(-8px) rotate(1.5deg); }
-        70% { transform: translateY(-3px) rotate(-1.5deg); }
-      }
-      @keyframes orbitSpin1 {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-      @keyframes orbitSpin2 {
-        0% { transform: rotate(360deg); }
-        100% { transform: rotate(0deg); }
+      @keyframes duckFloat {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-7px); }
       }
       @keyframes lbarAnim {
         0% { transform: translateX(-100%); }
         100% { transform: translateX(100%); }
-      }
-      @keyframes rippleWave {
-        0% { r: 45px; opacity: 0.8; }
-        100% { r: 95px; opacity: 0; }
       }
       @keyframes wv2_1 { 0%, 100% { height: 6px; } 50% { height: 22px; } }
       @keyframes wv2_2 { 0%, 100% { height: 8px; } 50% { height: 26px; } }
@@ -137,21 +114,9 @@ function generateHeroSVG(stats, isDark = true) {
         font-size: 10px;
         font-weight: 600;
       }
-      .duck-3d-group {
+      .duck-clean-float {
         transform-origin: 775px 170px;
-        animation: duckBobbing 4s ease-in-out infinite;
-      }
-      .orbit-ring1 {
-        transform-origin: 775px 170px;
-        animation: orbitSpin1 22s linear infinite;
-      }
-      .orbit-ring2 {
-        transform-origin: 775px 170px;
-        animation: orbitSpin2 16s linear infinite;
-      }
-      .ripple-ring {
-        transform-origin: 775px 230px;
-        animation: rippleWave 3s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+        animation: duckFloat 4s ease-in-out infinite;
       }
       .lbar {
         animation: lbarAnim 2s infinite linear;
@@ -163,10 +128,10 @@ function generateHeroSVG(stats, isDark = true) {
     </style>
   </defs>
 
-  <!-- Aurora Prismatic Gradient Border -->
+  <!-- Outer Aurora Border -->
   <rect width="960" height="340" rx="18" fill="url(#auroraBorder)"/>
   
-  <!-- Obsidian Canvas (Pure Silky Gradient, NO Dots, NO Grid) -->
+  <!-- Obsidian Canvas (Pure, Clean, Silky, NO Grid, NO Dots) -->
   <rect x="2" y="2" width="956" height="336" rx="16" fill="${bg}"/>
   <rect x="2" y="2" width="956" height="336" rx="16" fill="url(#duckBacklight)"/>
 
@@ -223,27 +188,9 @@ function generateHeroSVG(stats, isDark = true) {
     <text x="38" y="16" class="mono-tag" fill="${violet}">AURASYNTH DSP ENGINE // 44.1 kHz REAL-TIME</text>
   </g>
 
-  <!-- ==================== RIGHT VISUAL: 3D DUCK.GLB CENTERED ==================== -->
-  <g transform="translate(0, 0)">
-    <!-- Water Hologram Ripples -->
-    <ellipse class="ripple-ring" cx="775" cy="225" rx="75" ry="24" fill="none" stroke="${cyan}" stroke-width="1.2"/>
-    <ellipse cx="775" cy="225" rx="85" ry="26" fill="none" stroke="${violet}" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="4 4"/>
-
-    <!-- Orbital Gimbal Rings around 3D Duck -->
-    <g class="orbit-ring1">
-      <ellipse cx="775" cy="170" rx="98" ry="42" fill="none" stroke="url(#auroraBorder)" stroke-width="1.5" stroke-opacity="0.75" stroke-dasharray="10 6" transform="rotate(-25 775 170)"/>
-      <circle cx="865" cy="140" r="3.5" fill="${cyan}"/>
-    </g>
-    <g class="orbit-ring2">
-      <ellipse cx="775" cy="170" rx="95" ry="38" fill="none" stroke="${pink}" stroke-width="1.2" stroke-opacity="0.6" transform="rotate(45 775 170)"/>
-      <circle cx="705" cy="130" r="3.5" fill="${yellow}"/>
-    </g>
-
-    <!-- Embedded Real 3D Duck (Rendered directly from duck.glb) -->
-    <g class="duck-3d-group" filter="url(#glowHolo)">
-      <image href="data:image/png;base64,${duckB64}" x="685" y="80" width="180" height="180" preserveAspectRatio="xMidYMid meet"/>
-      <text x="775" y="270" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="${yellow}" font-weight="700">DUCK.GLB // 3D NEXO RUNTIME</text>
-    </g>
+  <!-- ==================== RIGHT VISUAL: ONLY THE CLEAN 3D DUCK ==================== -->
+  <g class="duck-clean-float">
+    <image href="data:image/png;base64,${duckB64}" x="665" y="70" width="220" height="220" preserveAspectRatio="xMidYMid meet"/>
   </g>
 </svg>`;
 }
@@ -376,7 +323,7 @@ function generateFooterSVG(isDark = true) {
 }
 
 async function main() {
-  console.log('[Generator] Building 3D duck.glb Hero, Section Header, and Footer...');
+  console.log('[Generator] Building clean 3D duck hero, section header, and footer...');
   const stats = await fetchStats();
 
   fs.mkdirSync(ASSETS_DIR, { recursive: true });
@@ -390,7 +337,7 @@ async function main() {
   fs.writeFileSync(path.join(ASSETS_DIR, 'footer-dark.svg'), generateFooterSVG(true));
   fs.writeFileSync(path.join(ASSETS_DIR, 'footer-light.svg'), generateFooterSVG(false));
 
-  console.log('[Generator] Completed rendering 3D duck.glb Hero and assets.');
+  console.log('[Generator] Rendered clean 3D duck hero and assets successfully.');
 }
 
 main().catch(err => {

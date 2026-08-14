@@ -3,6 +3,7 @@ import json
 import math
 import numpy as np
 from PIL import Image
+import io
 
 def load_glb(glb_path):
     with open(glb_path, 'rb') as f:
@@ -50,32 +51,32 @@ def load_glb(glb_path):
     # Texture image
     bv_img = gltf['bufferViews'][gltf['images'][0]['bufferView']]
     img_bytes = binary[bv_img.get('byteOffset', 0):bv_img.get('byteOffset', 0) + bv_img['byteLength']]
-    import io
     texture_img = Image.open(io.BytesIO(img_bytes)).convert('RGB')
 
     return pos, norms, uvs, indices, texture_img
 
-def render_duck_image():
+def render_duck_angle(yaw_deg=125, pitch_deg=12, out_name="duck_3d.png"):
     glb_path = r"C:\Users\ijpg1\projects\nexoip-final-integration\public\assets\models\duck.glb"
     pos, norms, uvs, indices, texture_img = load_glb(glb_path)
 
-    # Center and normalize positions
-    center = np.mean(pos, axis=0)
+    # Bounding box center
+    min_bound = np.min(pos, axis=0)
+    max_bound = np.max(pos, axis=0)
+    center = (min_bound + max_bound) / 2.0
+    
     pos_centered = pos - center
-    max_span = np.max(np.abs(pos_centered))
+    max_span = np.max(max_bound - min_bound)
     pos_norm = pos_centered / max_span
 
-    # Resolution (2x for supersampling)
-    w_out, h_out = 320, 320
-    scale_factor = 2
-    W, H = w_out * scale_factor, h_out * scale_factor
+    # Resolution (High Res supersampling)
+    w_out, h_out = 400, 400
+    scale = 2
+    W, H = w_out * scale, h_out * scale
 
-    # Rotation: Yaw = -55 deg, Pitch = 15 deg
-    yaw = math.radians(-55)
-    pitch = math.radians(18)
-    roll = math.radians(0)
+    # Rotation: Looking from front 3/4 left towards user
+    yaw = math.radians(yaw_deg)
+    pitch = math.radians(pitch_deg)
 
-    # Rotation matrices
     Ry = np.array([
         [math.cos(yaw), 0, math.sin(yaw)],
         [0, 1, 0],
@@ -92,103 +93,94 @@ def render_duck_image():
     rot_pos = pos_norm @ R.T
     rot_norms = norms @ R.T
 
-    # Perspective projection
-    fov = 2.4
-    dist = 2.6
+    # Camera perspective
+    fov = 2.1
+    dist = 2.4
     z = rot_pos[:, 2] + dist
     proj_x = (rot_pos[:, 0] / z) * fov * (W / 2) + (W / 2)
-    proj_y = (-rot_pos[:, 1] / z) * fov * (H / 2) + (H / 2) + 15
+    proj_y = (-rot_pos[:, 1] / z) * fov * (H / 2) + (H / 2) - 10
 
-    # Rasterize triangles to frame buffer
     color_buf = np.zeros((H, W, 4), dtype=np.uint8)
     depth_buf = np.full((H, W), np.inf, dtype=np.float32)
 
     tex_w, tex_h = texture_img.size
-    tex_np = np.array(texture_img)
+    tex_np = np.array(texture_img, dtype=np.float32)
 
-    # Lights
-    light1 = np.array([0.5, 0.8, 0.7])
-    light1 /= np.linalg.norm(light1)
-    light2 = np.array([-0.7, -0.2, 0.4])
-    light2 /= np.linalg.norm(light2)
+    # Clean studio lights
+    light_main = np.array([0.4, 0.8, 0.8])
+    light_main /= np.linalg.norm(light_main)
+
+    light_fill = np.array([-0.6, 0.3, 0.5])
+    light_fill /= np.linalg.norm(light_fill)
 
     triangles = indices.reshape(-1, 3)
 
-    # Sort triangles by centroid depth (Painter's algorithm fallback + Z-buffer)
-    tri_depths = np.mean(z[triangles], axis=1)
-    sorted_tri_indices = np.argsort(-tri_depths)
+    for tri in triangles:
+        i0, i1, i2 = tri
+        x0, y0, z0 = proj_x[i0], proj_y[i0], z[i0]
+        x1, y1, z1 = proj_x[i1], proj_y[i1], z[i1]
+        x2, y2, z2 = proj_x[i2], proj_y[i2], z[i2]
 
-    for tri_idx in sorted_tri_indices:
-        idx = triangles[tri_idx]
-        p0 = np.array([proj_x[idx[0]], proj_y[idx[0]], z[idx[0]]])
-        p1 = np.array([proj_x[idx[1]], proj_y[idx[1]], z[idx[1]]])
-        p2 = np.array([proj_x[idx[2]], proj_y[idx[2]], z[idx[2]]])
-
-        # Bounding box
-        min_x = max(0, int(math.floor(min(p0[0], p1[0], p2[0]))))
-        max_x = min(W - 1, int(math.ceil(max(p0[0], p1[0], p2[0]))))
-        min_y = max(0, int(math.floor(min(p0[1], p1[1], p2[1]))))
-        max_y = min(H - 1, int(math.ceil(max(p0[1], p1[1], p2[1]))))
+        min_x = max(0, int(math.floor(min(x0, x1, x2))))
+        max_x = min(W - 1, int(math.ceil(max(x0, x1, x2))))
+        min_y = max(0, int(math.floor(min(y0, y1, y2))))
+        max_y = min(H - 1, int(math.ceil(max(y0, y1, y2))))
 
         if min_x > max_x or min_y > max_y:
             continue
 
-        # Area
-        area = (p1[0] - p0[0]) * (p2[1] - p0[1]) - (p1[1] - p0[1]) * (p2[0] - p0[0])
-        if abs(area) < 1e-5:
+        denom = (y1 - y2) * (x0 - x2) + (x2 - x1) * (y0 - y2)
+        if abs(denom) < 1e-6:
             continue
 
-        # Normal lighting
-        avg_n = np.mean(rot_norms[idx], axis=0)
-        norm_len = np.linalg.norm(avg_n)
-        if norm_len > 0:
-            avg_n /= norm_len
-        diffuse1 = max(0, float(np.dot(avg_n, light1)))
-        diffuse2 = max(0, float(np.dot(avg_n, light2))) * 0.4
-        ambient = 0.45
-        intensity = min(1.3, ambient + diffuse1 * 0.8 + diffuse2)
+        uv0, uv1, uv2 = uvs[i0], uvs[i1], uvs[i2]
+        n0, n1, n2 = rot_norms[i0], rot_norms[i1], rot_norms[i2]
 
-        # Average UV
-        avg_uv = np.mean(uvs[idx], axis=0)
-        u_coord = int(np.clip(avg_uv[0] * (tex_w - 1), 0, tex_w - 1))
-        v_coord = int(np.clip((1.0 - avg_uv[1]) * (tex_h - 1), 0, tex_h - 1))
-        base_col = tex_np[v_coord, u_coord]
+        # Rasterize pixels in bbox with full Barycentric interpolation
+        for y_pix in range(min_y, max_y + 1):
+            for x_pix in range(min_x, max_x + 1):
+                w0 = ((y1 - y2) * (x_pix - x2) + (x2 - x1) * (y_pix - y2)) / denom
+                w1 = ((y2 - y0) * (x_pix - x2) + (x0 - x2) * (y_pix - y2)) / denom
+                w2 = 1.0 - w0 - w1
 
-        r = int(np.clip(base_col[0] * intensity, 0, 255))
-        g = int(np.clip(base_col[1] * intensity, 0, 255))
-        b = int(np.clip(base_col[2] * intensity, 0, 255))
+                if w0 >= -1e-4 and w1 >= -1e-4 and w2 >= -1e-4:
+                    pix_z = w0 * z0 + w1 * z1 + w2 * z2
+                    if pix_z < depth_buf[y_pix, x_pix]:
+                        depth_buf[y_pix, x_pix] = pix_z
 
-        avg_z = float(np.mean(p0[2] + p1[2] + p2[2]) / 3.0)
+                        # Interpolated UV
+                        u = w0 * uv0[0] + w1 * uv1[0] + w2 * uv2[0]
+                        v = 1.0 - (w0 * uv0[1] + w1 * uv1[1] + w2 * uv2[1])
 
-        # Draw filled triangle
-        xs = np.arange(min_x, max_x + 1)
-        ys = np.arange(min_y, max_y + 1)
-        grid_x, grid_y = np.meshgrid(xs, ys)
+                        u_idx = int(np.clip(u * (tex_w - 1), 0, tex_w - 1))
+                        v_idx = int(np.clip(v * (tex_h - 1), 0, tex_h - 1))
+                        tex_color = tex_np[v_idx, u_idx]
 
-        w0 = (p1[0] - grid_x) * (p2[1] - grid_y) - (p1[1] - grid_y) * (p2[0] - grid_x)
-        w1 = (p2[0] - grid_x) * (p0[1] - grid_y) - (p2[1] - grid_y) * (p0[0] - grid_x)
-        w2 = (p0[0] - grid_x) * (p1[1] - grid_y) - (p0[1] - grid_y) * (p1[0] - grid_x)
+                        # Interpolated normal
+                        norm = w0 * n0 + w1 * n1 + w2 * n2
+                        n_len = np.linalg.norm(norm)
+                        if n_len > 0:
+                            norm /= n_len
 
-        if area > 0:
-            inside = (w0 >= 0) & (w1 >= 0) & (w2 >= 0)
-        else:
-            inside = (w0 <= 0) & (w1 <= 0) & (w2 <= 0)
+                        # Studio Shading
+                        diffuse_main = max(0.0, float(np.dot(norm, light_main)))
+                        diffuse_fill = max(0.0, float(np.dot(norm, light_fill))) * 0.35
+                        ambient = 0.55
+                        lighting = min(1.4, ambient + diffuse_main * 0.75 + diffuse_fill)
 
-        for y_idx in range(min_y, max_y + 1):
-            for x_idx in range(min_x, max_x + 1):
-                if inside[y_idx - min_y, x_idx - min_x]:
-                    if avg_z < depth_buf[y_idx, x_idx]:
-                        depth_buf[y_idx, x_idx] = avg_z
-                        color_buf[y_idx, x_idx] = [r, g, b, 255]
+                        r = int(np.clip(tex_color[0] * lighting, 0, 255))
+                        g = int(np.clip(tex_color[1] * lighting, 0, 255))
+                        b = int(np.clip(tex_color[2] * lighting, 0, 255))
 
-    # Supersampled image
+                        color_buf[y_pix, x_pix] = [r, g, b, 255]
+
+    # Convert to image and downsample with Lanczos for smooth anti-aliased edges
     img = Image.fromarray(color_buf, 'RGBA')
-    # Downsample with Lanczos for anti-aliasing
     final_img = img.resize((w_out, h_out), Image.Resampling.LANCZOS)
     
-    out_path = r"C:\Users\ijpg1\Documents\antigravity\ikerperez12\assets\duck_3d.png"
+    out_path = rf"C:\Users\ijpg1\Documents\antigravity\ikerperez12\assets\{out_name}"
     final_img.save(out_path, "PNG", optimize=True)
-    print("Successfully rendered 3D duck from duck.glb to:", out_path)
+    print("Rendered front 3D duck to:", out_path)
 
 if __name__ == '__main__':
-    render_duck_image()
+    render_duck_angle(yaw_deg=125, pitch_deg=10, out_name="duck_3d.png")
