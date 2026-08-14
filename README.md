@@ -884,7 +884,7 @@ A workflow reads every project each morning and records what it can confirm —
 not what I would like to claim. Gaps are left visible on purpose.
 
 <!-- audit:start -->
-| Project | CI | CodeQL | SECURITY.md | License | CONTRIBUTING.md | Architecture doc | axe-core in CI | Dependency audit | SHA-256 sums | SBOM | Verified |
+| Project | CI | CQL | SEC | LIC | CTB | ARC | A11Y | DEP | SHA | SBOM | Verified |
 | --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
 | [NexoIP 3D Viewer](https://github.com/ikerperez12/NexoIP-3D-Viewer) | ● | ● | ● | ● | ● | ● | ● | · | ● | ● | 9/10 |
 | [IP Linux](https://github.com/ikerperez12/IP-OS-LINUX) | ● | · | ● | ● | · | · | · | ● | · | · | 4/10 |
@@ -895,6 +895,28 @@ not what I would like to claim. Gaps are left visible on purpose.
 | [Easy Localhost](https://github.com/ikerperez12/EASY-LOCALHOST) | ● | · | ● | ● | · | · | · | ● | ● | · | 5/10 |
 | [QuantumGuard PQC lab](https://github.com/ikerperez12/1.2-AuditoriaPQC) | · | · | · | ● | · | · | · | · | · | · | 1/10 |
 <!-- audit:end -->
+
+<details>
+<summary>What each column means</summary>
+
+<!-- auditlegend:start -->
+- `CI` — a CI workflow exists
+- `CQL` — CodeQL analysis runs
+- `SEC` — SECURITY.md is published
+- `LIC` — the repository is licensed
+- `CTB` — CONTRIBUTING.md is published
+- `ARC` — an architecture document exists
+- `A11Y` — accessibility tests run in CI
+- `DEP` — dependencies are audited in CI
+- `SHA` — releases publish SHA-256 sums
+- `SBOM` — releases publish a software bill of materials
+<!-- auditlegend:end -->
+
+A dot is not a criticism. A static catalogue does not need a software bill of
+materials, and a research lab does not need a signed release. The table records
+what is present, so the shape of each row says what kind of project it is.
+
+</details>
 
 <details>
 <summary>Deployments, last checked this morning</summary>

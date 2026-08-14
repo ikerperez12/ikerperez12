@@ -21,17 +21,32 @@ export function replaceChunk(text, marker, content) {
   return text.replace(re, `${start}\n${content}\n${end}`);
 }
 
+// Headers stay short because the matrix is eleven columns wide; the full names
+// live in the legend below it, where they have room to be read.
 const CONTROL_LABELS = {
   ci: "CI",
-  codeql: "CodeQL",
-  security: "SECURITY.md",
-  license: "License",
-  contributing: "CONTRIBUTING.md",
-  architecture: "Architecture doc",
-  a11y_ci: "axe-core in CI",
-  dep_audit: "Dependency audit",
-  signed_release: "SHA-256 sums",
+  codeql: "CQL",
+  security: "SEC",
+  license: "LIC",
+  contributing: "CTB",
+  architecture: "ARC",
+  a11y_ci: "A11Y",
+  dep_audit: "DEP",
+  signed_release: "SHA",
   sbom: "SBOM",
+};
+
+const CONTROL_MEANING = {
+  ci: "a CI workflow exists",
+  codeql: "CodeQL analysis runs",
+  security: "SECURITY.md is published",
+  license: "the repository is licensed",
+  contributing: "CONTRIBUTING.md is published",
+  architecture: "an architecture document exists",
+  a11y_ci: "accessibility tests run in CI",
+  dep_audit: "dependencies are audited in CI",
+  signed_release: "releases publish SHA-256 sums",
+  sbom: "releases publish a software bill of materials",
 };
 
 const DISPLAY = {
@@ -85,6 +100,13 @@ export function writeReadme(root, data) {
   const path = join(root, "README.md");
   let text = readFileSync(path, "utf8").replace(/^﻿/, "");
   text = replaceChunk(text, "audit", auditTable(data));
+  text = replaceChunk(
+    text,
+    "auditlegend",
+    Object.keys(CONTROL_LABELS)
+      .map((k) => `- \`${CONTROL_LABELS[k]}\` — ${CONTROL_MEANING[k]}`)
+      .join("\n")
+  );
   text = replaceChunk(text, "probes", probeList(data));
   text = replaceChunk(text, "core", coreBlock(data));
   text = replaceChunk(text, "corelegend", coreLegendTable(data));
