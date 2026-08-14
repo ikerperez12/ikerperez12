@@ -30,8 +30,8 @@
       <br>
       <sub>Visor 3D offline-first para Windows (Electron + Three.js + WebGL). Protocolo aislado <code>nexoip://</code>, SBOM CycloneDX v1.5 y validación de binarios SHA-256.</sub>
       <br><br>
-      <a href="https://github.com/ikerperez12/NexoIP-3D-Viewer"><img src="https://img.shields.io/badge/SOURCE-NEXOIP--3D--VIEWER-00f0ff?style=flat-square" alt="Source"></a>
-      <a href="https://github.com/ikerperez12/NexoIP-3D-Viewer/releases"><img src="https://img.shields.io/badge/RELEASE-v1.0.0_SIGNED-10b981?style=flat-square" alt="Download"></a>
+      <a href="https://github.com/ikerperez12/NexoIP-3D-Viewer"><img src="https://img.shields.io/badge/SOURCE-NEXOIP--3D--VIEWER-38bdf8?style=flat-square" alt="Source"></a>
+      <a href="https://github.com/ikerperez12/NexoIP-3D-Viewer/releases"><img src="https://img.shields.io/badge/RELEASE-v1.0.0_SIGNED-4ade80?style=flat-square" alt="Download"></a>
     </td>
     <td width="50%" valign="top">
       <a href="https://github.com/ikerperez12/IP-OS-LINUX">
@@ -42,8 +42,8 @@
       <br>
       <sub>Entorno de escritorio web tipo Linux (React 19 + TypeScript + Vite). Sistema de archivos virtual con IndexedDB, window manager, DOMPurify y accesibilidad WCAG AAA.</sub>
       <br><br>
-      <a href="https://ip-os-linux.vercel.app"><img src="https://img.shields.io/badge/DEMO-IP--OS--LINUX.VERCEL.APP-818cf8?style=flat-square" alt="Live Demo"></a>
-      <a href="https://github.com/ikerperez12/IP-OS-LINUX"><img src="https://img.shields.io/badge/SOURCE-IP--OS--LINUX-10b981?style=flat-square" alt="Source"></a>
+      <a href="https://ip-os-linux.vercel.app"><img src="https://img.shields.io/badge/DEMO-IP--OS--LINUX.VERCEL.APP-c2a4ff?style=flat-square" alt="Live Demo"></a>
+      <a href="https://github.com/ikerperez12/IP-OS-LINUX"><img src="https://img.shields.io/badge/SOURCE-IP--OS--LINUX-4ade80?style=flat-square" alt="Source"></a>
     </td>
   </tr>
   <tr>
@@ -56,8 +56,8 @@
       <br>
       <sub>Experiencia interactiva 3D del BMW 318is Coupe Pack M. Transiciones Three.js a 60 FPS, motor táctil 9:16 mobile-first, diseño de audio DSP y vanilla JS.</sub>
       <br><br>
-      <a href="https://e36.vercel.app"><img src="https://img.shields.io/badge/EXPERIENCE-E36.VERCEL.APP-f59e0b?style=flat-square" alt="Live Experience"></a>
-      <a href="https://github.com/ikerperez12/e36"><img src="https://img.shields.io/badge/SOURCE-E36-00f0ff?style=flat-square" alt="Source"></a>
+      <a href="https://e36.vercel.app"><img src="https://img.shields.io/badge/EXPERIENCE-E36.VERCEL.APP-fb8dff?style=flat-square" alt="Live Experience"></a>
+      <a href="https://github.com/ikerperez12/e36"><img src="https://img.shields.io/badge/SOURCE-E36-38bdf8?style=flat-square" alt="Source"></a>
     </td>
     <td width="50%" valign="top">
       <a href="https://github.com/ikerperez12/1.2-AuditoriaPQC">
@@ -68,8 +68,8 @@
       <br>
       <sub>Laboratorio de auditoría de Criptografía Post-Cuántica (PQC). Integración Open Quantum Safe (OQS), algoritmos Kyber-1024 / Dilithium-5 y análisis side-channel a 60 FPS.</sub>
       <br><br>
-      <a href="https://github.com/ikerperez12/1.2-AuditoriaPQC"><img src="https://img.shields.io/badge/LAB-QUANTUMGUARD_PQC-10b981?style=flat-square" alt="Lab"></a>
-      <a href="https://github.com/ikerperez12/1.2-AuditoriaPQC"><img src="https://img.shields.io/badge/PROTOCOL-KYBER--1024-818cf8?style=flat-square" alt="Protocol"></a>
+      <a href="https://github.com/ikerperez12/1.2-AuditoriaPQC"><img src="https://img.shields.io/badge/LAB-QUANTUMGUARD_PQC-4ade80?style=flat-square" alt="Lab"></a>
+      <a href="https://github.com/ikerperez12/1.2-AuditoriaPQC"><img src="https://img.shields.io/badge/PROTOCOL-KYBER--1024-c2a4ff?style=flat-square" alt="Protocol"></a>
     </td>
   </tr>
 </table>
