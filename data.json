@@ -1,5 +1,5 @@
-﻿{
-  "generated": "2026-08-14T01:15:32.035Z",
+{
+  "generated": "2026-08-14T17:18:22.303Z",
   "user": "ikerperez12",
   "products": [
     {
@@ -7,7 +7,7 @@
       "description": "Alpha technical preview: private, offline-first 3D model viewer for Windows. Active hardening toward a stable open-source release.",
       "stars": 0,
       "forks": 0,
-      "pushed": "2026-08-13T19:16:27Z",
+      "pushed": "2026-08-14T16:56:38Z",
       "created": "2026-08-13T16:45:39Z",
       "homepage": "",
       "topics": [
@@ -20,7 +20,7 @@
       ],
       "license": "MIT",
       "languages": {
-        "JavaScript": 248539,
+        "JavaScript": 318244,
         "CSS": 4608,
         "HTML": 903
       },
@@ -55,15 +55,15 @@
         "sbom": true,
         "checksums": true,
         "notices": true,
-        "downloads": 5
+        "downloads": 7
       }
     },
     {
       "repo": "IP-OS-LINUX",
       "description": "Public browser desktop OS built with React, Vite, local-first apps, glass UI, and Vercel static deployment.",
-      "stars": 10,
+      "stars": 12,
       "forks": 0,
-      "pushed": "2026-06-15T13:14:28Z",
+      "pushed": "2026-08-14T16:56:43Z",
       "created": "2026-05-03T21:14:31Z",
       "homepage": "https://ip-os-linux.vercel.app",
       "topics": [
@@ -104,9 +104,9 @@
     {
       "repo": "UI-IP-Toolkit-v4.0",
       "description": "UI IP Toolkit",
-      "stars": 7,
+      "stars": 9,
       "forks": 2,
-      "pushed": "2026-06-15T13:14:32Z",
+      "pushed": "2026-08-14T16:57:28Z",
       "created": "2026-04-12T21:20:06Z",
       "homepage": "https://ui-ip-toolkit.vercel.app/",
       "topics": [
@@ -148,7 +148,7 @@
       "description": "Cinematic BMW E36 318is Coupe Pack M web experience",
       "stars": 4,
       "forks": 0,
-      "pushed": "2026-08-07T14:24:19Z",
+      "pushed": "2026-08-14T16:57:23Z",
       "created": "2026-05-07T23:53:13Z",
       "homepage": "https://e36.vercel.app",
       "topics": [],
@@ -177,9 +177,9 @@
     {
       "repo": "warpod",
       "description": "",
-      "stars": 2,
+      "stars": 4,
       "forks": 0,
-      "pushed": "2026-05-11T16:59:15Z",
+      "pushed": "2026-08-14T17:00:27Z",
       "created": "2026-04-12T16:38:37Z",
       "homepage": "https://warpod.vercel.app",
       "topics": [],
@@ -209,7 +209,7 @@
       "description": "",
       "stars": 2,
       "forks": 0,
-      "pushed": "2026-06-17T18:00:30Z",
+      "pushed": "2026-08-14T17:00:48Z",
       "created": "2026-06-16T11:57:44Z",
       "homepage": "",
       "topics": [],
@@ -248,9 +248,9 @@
     {
       "repo": "EASY-LOCALHOST",
       "description": "",
-      "stars": 2,
+      "stars": 4,
       "forks": 0,
-      "pushed": "2026-05-08T20:06:14Z",
+      "pushed": "2026-08-14T17:00:20Z",
       "created": "2026-04-22T11:06:50Z",
       "homepage": "",
       "topics": [],
@@ -291,9 +291,9 @@
     {
       "repo": "1.2-AuditoriaPQC",
       "description": "",
-      "stars": 3,
+      "stars": 5,
       "forks": 0,
-      "pushed": "2026-02-28T21:45:38Z",
+      "pushed": "2026-08-14T17:00:34Z",
       "created": "2025-12-10T19:59:15Z",
       "homepage": "",
       "topics": [],
@@ -324,32 +324,32 @@
       "url": "https://ip-os-linux.vercel.app",
       "status": 200,
       "ok": true,
-      "ms": 126
+      "ms": 107
     },
     {
       "url": "https://ui-ip-toolkit.vercel.app/",
       "status": 200,
       "ok": true,
-      "ms": 272
+      "ms": 282
     },
     {
       "url": "https://e36.vercel.app",
       "status": 200,
       "ok": true,
-      "ms": 226
+      "ms": 387
     },
     {
       "url": "https://warpod.vercel.app",
       "status": 200,
       "ok": true,
-      "ms": 256
+      "ms": 315
     }
   ],
   "github": {
     "createdAt": "2020-10-21T14:49:26Z",
-    "totalContributions": 2611,
-    "commits": 1517,
-    "publicRepos": 17,
+    "totalContributions": 2779,
+    "commits": 927,
+    "publicRepos": 18,
     "calendar": [
       [
         "2025-08-10",
@@ -585,7 +585,7 @@
       ],
       [
         "2025-10-07",
-        0
+        1
       ],
       [
         "2025-10-08",
@@ -597,7 +597,7 @@
       ],
       [
         "2025-10-10",
-        0
+        4
       ],
       [
         "2025-10-11",
@@ -1433,11 +1433,11 @@
       ],
       [
         "2026-05-07",
-        6
+        7
       ],
       [
         "2026-05-08",
-        21
+        20
       ],
       [
         "2026-05-09",
@@ -1829,7 +1829,7 @@
       ],
       [
         "2026-08-14",
-        2
+        165
       ]
     ]
   },
@@ -1841,7 +1841,7 @@
     },
     {
       "name": "Python",
-      "bytes": 1325295,
+      "bytes": 1349073,
       "color": "#3572A5"
     },
     {
@@ -1851,7 +1851,7 @@
     },
     {
       "name": "JavaScript",
-      "bytes": 828514,
+      "bytes": 924088,
       "color": "#f1e05a"
     },
     {
