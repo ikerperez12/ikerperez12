@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" width="100%" height="100%">
   <defs>
-    <!-- 1. Aurora Conic-like Linear Multi-stop Gradient -->
+    <!-- 1. Aurora Conic-like Prismatic Gradient Border -->
     <linearGradient id="auroraEdgeL" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#c2a4ff"/>
       <stop offset="35%" stop-color="#fb8dff"/>
@@ -10,8 +10,8 @@
 
     <!-- 2. Metallic Silver / Cyan Gradient for Typography -->
     <linearGradient id="metallicGradL" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f8fafc"/>
-      <stop offset="50%" stop-color="#cbd5e1"/>
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="45%" stop-color="#e2e8f0"/>
       <stop offset="100%" stop-color="#38bdf8"/>
     </linearGradient>
 
@@ -22,21 +22,22 @@
       <stop offset="100%" stop-color="transparent"/>
     </linearGradient>
 
-    <!-- 4. Ambient Radial Glow -->
-    <radialGradient id="auroraCoreGlow" cx="80%" cy="50%" r="50%">
+    <!-- 4. Atmospheric Luxury Ambient Lighting (No harsh dot grid) -->
+    <radialGradient id="ambientLight" cx="78%" cy="50%" r="55%">
       <stop offset="0%" stop-color="#c2a4ff" stop-opacity="0.12"/>
-      <stop offset="50%" stop-color="#fb8dff" stop-opacity="0.06"/>
+      <stop offset="45%" stop-color="#38bdf8" stop-opacity="0.06"/>
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- Background Pattern -->
-    <pattern id="heroGridL" width="24" height="24" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.2" fill="rgba(0, 0, 0, 0.04)"/>
-    </pattern>
+    <radialGradient id="crystalGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8"/>
+      <stop offset="40%" stop-color="#c2a4ff" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#fb8dff" stop-opacity="0"/>
+    </radialGradient>
 
     <!-- Glow Filter -->
-    <filter id="glowAurora" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
+    <filter id="glowHyper" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="4.5" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -44,17 +45,21 @@
     </filter>
 
     <style>
-      @keyframes spinOrbit1 {
+      @keyframes spinGimbal1 {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
       }
-      @keyframes spinOrbit2 {
+      @keyframes spinGimbal2 {
         0% { transform: rotate(360deg); }
         100% { transform: rotate(0deg); }
       }
-      @keyframes pulseReactor {
-        0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px #c2a4ff); }
-        50% { transform: scale(1.12); filter: drop-shadow(0 0 16px #fb8dff); }
+      @keyframes float3D {
+        0%, 100% { transform: translateY(0px) scale(1); }
+        50% { transform: translateY(-8px) scale(1.03); }
+      }
+      @keyframes pulseInnerCore {
+        0%, 100% { opacity: 0.6; filter: drop-shadow(0 0 6px #38bdf8); }
+        50% { opacity: 1; filter: drop-shadow(0 0 18px #fb8dff); }
       }
       @keyframes lbar {
         0% { transform: translateX(-100%); }
@@ -81,17 +86,20 @@
         font-size: 10px;
         font-weight: 600;
       }
-      .orbit-1 {
+      .gimbal-ring1 {
         transform-origin: 775px 170px;
-        animation: spinOrbit1 20s linear infinite;
+        animation: spinGimbal1 22s linear infinite;
       }
-      .orbit-2 {
+      .gimbal-ring2 {
         transform-origin: 775px 170px;
-        animation: spinOrbit2 14s linear infinite;
+        animation: spinGimbal2 16s linear infinite;
       }
-      .reactor-hub {
+      .hyper-core-float {
         transform-origin: 775px 170px;
-        animation: pulseReactor 4s ease-in-out infinite;
+        animation: float3D 5s ease-in-out infinite;
+      }
+      .crystal-pulse {
+        animation: pulseInnerCore 3.5s ease-in-out infinite;
       }
       .lbar-anim {
         animation: lbar 2s infinite linear;
@@ -106,22 +114,21 @@
   <!-- Outer Aurora Gradient Border Frame (conic-style padding: 2px) -->
   <rect width="960" height="340" rx="18" fill="url(#auroraEdgeL)"/>
   
-  <!-- Inner Obsidian Luxury Background Canvas -->
+  <!-- Inner Obsidian Luxury Background Canvas (Smooth & Silky, NO Dot Grid) -->
   <rect x="2" y="2" width="956" height="336" rx="16" fill="#ffffff"/>
-  <rect x="2" y="2" width="956" height="336" rx="16" fill="url(#heroGridL)"/>
-  <rect x="2" y="2" width="956" height="336" rx="16" fill="url(#auroraCoreGlow)"/>
+  <rect x="2" y="2" width="956" height="336" rx="16" fill="url(#ambientLight)"/>
 
   <!-- Top System Bar -->
-  <path d="M 2 18 Q 2 2 18 2 L 942 2 Q 958 2 958 18 L 958 44 L 2 44 Z" fill="#f8fafc" stroke="rgba(194, 164, 255, 0.15)" stroke-width="1"/>
+  <path d="M 2 18 Q 2 2 18 2 L 942 2 Q 958 2 958 18 L 958 44 L 2 44 Z" fill="#f8fafc" stroke="rgba(194, 164, 255, 0.12)" stroke-width="1"/>
   
   <circle cx="28" cy="23" r="4.5" fill="#4ade80"/>
   <text x="44" y="27" class="mono-header" fill="#090d14">IKER PÉREZ GARCÍA // NEXO-IP SYSTEMS &amp; INTERACTIVE RUNTIMES</text>
-  <text x="610" y="27" class="mono-tag" fill="#4ade80">[ONLINE • 2,623 CONTRIBUTIONS / YEAR]</text>
+  <text x="610" y="27" class="mono-tag" fill="#4ade80">[ONLINE • 2632 CONTRIBUTIONS / YEAR]</text>
   <text x="825" y="27" class="mono-tag" fill="#94a3b8">A CORUÑA [ES]</text>
 
   <!-- Indeterminate Scanline Progress Beam under Top Bar -->
   <g transform="translate(2, 43)">
-    <rect width="956" height="2" fill="rgba(255,255,255,0.05)"/>
+    <rect width="956" height="2" fill="rgba(255,255,255,0.04)"/>
     <g class="lbar-anim">
       <rect width="350" height="2" fill="url(#progGrad)"/>
     </g>
@@ -164,29 +171,42 @@
     <text x="38" y="16" class="mono-tag" fill="#c2a4ff">AURASYNTH DSP ENGINE // 44.1 kHz REAL-TIME</text>
   </g>
 
-  <!-- Right Visual: The Bespoke Nexo-IP Quantum Core & Multi-Ring Gyroscope -->
-  <g transform="translate(0, 0)">
-    <!-- Outer Aurora Prismatic Orbit Ring -->
-    <g class="orbit-1">
-      <circle cx="775" cy="170" r="100" fill="none" stroke="url(#auroraEdgeL)" stroke-width="1.8" stroke-opacity="0.8" stroke-dasharray="8 6"/>
-      <polygon points="775,70 862,220 688,220" fill="none" stroke="#c2a4ff" stroke-width="1.2" stroke-opacity="0.5"/>
+  <!-- Right Visual: The Bespoke 3D Prismatic Nexo-IP Hyper-Core (Floating & Rotating) -->
+  <g class="hyper-core-float">
+    <!-- Ambient Core Backlight -->
+    <circle cx="775" cy="170" r="70" fill="url(#crystalGlow)"/>
+
+    <!-- Outer Prismatic Gimbal Orbit Ring 1 -->
+    <g class="gimbal-ring1">
+      <ellipse cx="775" cy="170" rx="98" ry="42" fill="none" stroke="url(#auroraEdgeL)" stroke-width="1.8" stroke-opacity="0.8" stroke-dasharray="12 6" transform="rotate(-25 775 170)"/>
+      <circle cx="865" cy="140" r="4" fill="#38bdf8"/>
+      <circle cx="685" cy="200" r="4" fill="#fb8dff"/>
     </g>
 
-    <!-- Counter-Rotating Equatorial Orbit Rings -->
-    <g class="orbit-2">
-      <ellipse cx="775" cy="170" rx="96" ry="42" fill="none" stroke="#fb8dff" stroke-width="1.5" stroke-opacity="0.6" transform="rotate(35 775 170)"/>
-      <ellipse cx="775" cy="170" rx="96" ry="42" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.6" transform="rotate(-35 775 170)"/>
+    <!-- Inner Counter-Rotating Gimbal Orbit Ring 2 -->
+    <g class="gimbal-ring2">
+      <ellipse cx="775" cy="170" rx="96" ry="38" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.65" transform="rotate(45 775 170)"/>
+      <circle cx="845" cy="220" r="3.5" fill="#c2a4ff"/>
+      <circle cx="705" cy="120" r="3.5" fill="#4ade80"/>
     </g>
 
-    <!-- Central Quantum Reactor Core (Pulsing Glow) -->
-    <g class="reactor-hub" filter="url(#glowAurora)">
-      <circle cx="775" cy="170" r="32" fill="#f8fafc" stroke="#c2a4ff" stroke-width="2"/>
-      <circle cx="775" cy="170" r="16" fill="none" stroke="#4ade80" stroke-width="1.5" stroke-dasharray="3 3"/>
-      <circle cx="775" cy="170" r="7" fill="#38bdf8"/>
-      
-      <!-- Holographic Reticle Crosshairs -->
-      <line x1="735" y1="170" x2="815" y2="170" stroke="#c2a4ff" stroke-width="1" stroke-opacity="0.7"/>
-      <line x1="775" y1="130" x2="775" y2="210" stroke="#c2a4ff" stroke-width="1" stroke-opacity="0.7"/>
+    <!-- Central 3D Isometric Crystal Prism Structure -->
+    <g class="crystal-pulse" filter="url(#glowHyper)" transform="translate(775, 170)">
+      <!-- Isometric Faceted Polyhedron -->
+      <!-- Top Face -->
+      <polygon points="0,-45 38,-22 0,0 -38,-22" fill="#f8fafc" stroke="#c2a4ff" stroke-width="1.8" fill-opacity="0.85"/>
+      <!-- Right Face -->
+      <polygon points="0,0 38,-22 38,24 0,46" fill="#131122" stroke="#fb8dff" stroke-width="1.8" fill-opacity="0.9"/>
+      <!-- Left Face -->
+      <polygon points="-38,-22 0,0 0,46 -38,24" fill="#0d1424" stroke="#38bdf8" stroke-width="1.8" fill-opacity="0.9"/>
+
+      <!-- Inner Holographic Geometry -->
+      <line x1="0" y1="-45" x2="0" y2="46" stroke="#4ade80" stroke-width="1.2" stroke-dasharray="3 3"/>
+      <line x1="-38" y1="-22" x2="38" y2="24" stroke="#c2a4ff" stroke-width="1" stroke-opacity="0.6"/>
+      <line x1="-38" y1="24" x2="38" y2="-22" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.6"/>
+
+      <!-- Photon Center -->
+      <circle cx="0" cy="0" r="6" fill="#ffffff" filter="url(#glowHyper)"/>
     </g>
   </g>
 </svg>
