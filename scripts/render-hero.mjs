@@ -62,7 +62,7 @@ export function renderHero(data, { theme = "dark", variant = "wide" } = {}) {
   const chipH = wide ? 28 : 34;
   const chipRows = wide ? 1 : Math.ceil(chips.length / 2);
   const footY = chipY + chipRows * chipH + (wide ? 20 : 26) * chipRows - (chipRows - 1) * 4 + (wide ? 22 : 26);
-  const H = footY + (wide ? 24 : 28);
+  const H = footY + (wide ? 24 : 50);
 
   let body = `<rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" rx="10" fill="${t.panel}" stroke="${t.line}"/>`;
   body += `<rect x="1" y="${barH}" width="${W - 2}" height="1" fill="${t.line}"/>`;
@@ -91,8 +91,16 @@ export function renderHero(data, { theme = "dark", variant = "wide" } = {}) {
     cx += w + 10;
   });
 
-  const foot = `${data.github.publicRepos} public repositories · ${verified} engineering controls verified today · ${live} deployments answering`;
-  body += `<text x="${tx}" y="${footY}" class="mono" font-size="${fs.foot}" fill="${t.faint}">${esc(foot)}</text>`;
+  // The narrow banner cannot hold this on one line without clipping.
+  const footLines = wide
+    ? [`${data.github.publicRepos} public repositories · ${verified} engineering controls verified today · ${live} deployments answering`]
+    : [
+        `${data.github.publicRepos} public repositories · ${live} deployments answering`,
+        `${verified} engineering controls verified today`,
+      ];
+  footLines.forEach((l, i) => {
+    body += `<text x="${tx}" y="${footY + i * (wide ? 0 : 22)}" class="mono" font-size="${fs.foot}" fill="${t.faint}">${esc(l)}</text>`;
+  });
 
   const defs = `<defs><linearGradient id="sw" x1="0" x2="1" y1="0" y2="0">
 <stop offset="0" stop-color="${t.accent}" stop-opacity="0"/>

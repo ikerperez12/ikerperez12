@@ -31,7 +31,10 @@ something you can actually run.
 
 ## The work
 
-<table>
+<!-- width is required: GitHub only wraps Markdown tables in a scroll container,
+     so a raw HTML table sizes to its content and drags the whole page wider
+     than the viewport on a phone. -->
+<table width="100%">
 <tr>
 <td width="33%" valign="top">
 <a href="https://github.com/ikerperez12/NexoIP-3D-Viewer"><img src=".github/assets/p-nexoip.webp" width="100%" alt="NexoIP 3D Viewer inspecting a local model"></a>
