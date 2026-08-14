@@ -954,7 +954,7 @@ The keyboard is a derivative of *NZXT miniTKL — mechanical Keyboard* by
 original author and NZXT do not endorse it.
 
 <!-- stamp:start -->
-Last audit: **2026-08-14 17:18 UTC**. Everything above is read from the GitHub API by [`scripts/collect.mjs`](scripts/collect.mjs) — nothing is typed in by hand.
+Last audit: **2026-08-14 17:21 UTC**. Everything above is read from the GitHub API by [`scripts/collect.mjs`](scripts/collect.mjs) — nothing is typed in by hand.
 <!-- stamp:end -->
 
 <sub>A Coruña, Galicia · [ikerperez12](https://github.com/ikerperez12)</sub>
