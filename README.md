@@ -1,27 +1,17 @@
 <!--
   =============================================================================
   IKER PEREZ // SYSTEMS & CREATIVE COMPUTING
-  The Living 3D Viewport & Computational Systems Portfolio
+  The Living 3D Viewport & Engineered Systems Showcase
   Zero Emojis • Pure 3D Vector Math • GitHub Actions State Engine
   =============================================================================
 -->
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/hero-light.svg">
-    <img src="assets/hero-dark.svg" alt="Iker Perez — Systems &amp; Creative Computing" width="100%">
-  </picture>
-</p>
+# [ 01 // LIVING 3D VIEWPORT ENGINE ]
 
----
-
-## [ LIVING 3D VIEWPORT ENGINE // COMMUNITY INTERACTION ]
-
-*A real-time 3D wireframe renderer running on GitHub Actions vector projection math. Rotate the camera, swap models, or change the render shading using the interactive control pad below.*
+*A real-time 3D wireframe projection engine operating directly on GitHub Actions. Rotate the camera, switch 3D geometry models, or change phosphor themes using the interactive control pad below.*
 
 <p align="center">
-  <img src="assets/interactive-viewport.svg" alt="Nexo-IP Living 3D Viewport" width="100%">
+  <img src="assets/interactive-viewport.svg" alt="Nexo-IP Living 3D Viewport Engine" width="100%">
 </p>
 
 <table align="center" width="100%">
@@ -63,43 +53,7 @@
 
 ---
 
-## [ SUBSYSTEM ARCHITECTURE TOPOLOGY ]
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/subsystem-matrix-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/subsystem-matrix-light.svg">
-    <img src="assets/subsystem-matrix-dark.svg" alt="Subsystem Architecture Topology" width="100%">
-  </picture>
-</p>
-
----
-
-## [ LIVING SYSTEM VELOCITY &amp; 52-WEEK TELEMETRY ]
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/velocity-matrix-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/velocity-matrix-light.svg">
-    <img src="assets/velocity-matrix-dark.svg" alt="Living System Velocity" width="100%">
-  </picture>
-</p>
-
----
-
-## [ MULTIDISCIPLINARY CAPABILITY RADAR ]
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/tech-radar-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/tech-radar-light.svg">
-    <img src="assets/tech-radar-dark.svg" alt="Engineering Capability Radar" width="100%">
-  </picture>
-</p>
-
----
-
-## [ FEATURED SYSTEMS &amp; PRODUCT REPOSITORIES ]
+# [ 02 // FEATURED SYSTEMS &amp; PRODUCT REPOSITORIES ]
 
 <table>
   <tr>
@@ -110,7 +64,7 @@
       <br>
       <b>NexoIP 3D Viewer</b> <code>v1.0.0</code>
       <br>
-      <sub>Private, offline-first 3D model viewer for Windows (Electron + Three.js + WebGL). Isolated <code>nexoip://</code> custom protocol, CycloneDX v1.5 SBOM &amp; SHA-256 binary validation.</sub>
+      <sub>Private, offline-first 3D model viewer for Windows (Electron + Three.js + WebGL). Isolated <code>nexoip://</code> custom protocol, CycloneDX v1.5 SBOM &amp; SHA-256 binary verification.</sub>
       <br><br>
       <a href="https://github.com/ikerperez12/NexoIP-3D-Viewer"><img src="https://img.shields.io/badge/SOURCE-NEXOIP--3D--VIEWER-00f0ff?style=flat-square" alt="Source"></a>
       <a href="https://github.com/ikerperez12/NexoIP-3D-Viewer/releases"><img src="https://img.shields.io/badge/RELEASE-v1.0.0_SIGNED-10b981?style=flat-square" alt="Download"></a>
@@ -122,7 +76,7 @@
       <br>
       <b>IP-OS-LINUX</b> <code>10 Stars</code>
       <br>
-      <sub>Public browser desktop operating environment (React 19 + TypeScript + Vite). Virtual filesystem with IndexedDB, window manager, DOMPurify &amp; WCAG AAA compliance.</sub>
+      <sub>Public browser desktop operating environment (React 19 + TypeScript + Vite). Virtual filesystem with IndexedDB, window manager, DOMPurify &amp; WCAG AAA accessibility.</sub>
       <br><br>
       <a href="https://ip-os-linux.vercel.app"><img src="https://img.shields.io/badge/DEMO-IP--OS--LINUX.VERCEL.APP-818cf8?style=flat-square" alt="Live Demo"></a>
       <a href="https://github.com/ikerperez12/IP-OS-LINUX"><img src="https://img.shields.io/badge/SOURCE-IP--OS--LINUX-10b981?style=flat-square" alt="Source"></a>

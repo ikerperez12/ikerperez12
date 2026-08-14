@@ -8,66 +8,50 @@ const ROOT_DIR = path.resolve(__dirname, '..');
 const ASSETS_DIR = path.join(ROOT_DIR, 'assets');
 const STATE_FILE = path.join(ROOT_DIR, 'state_3d.json');
 
-// 3D MODELS DEFINITIONS (Vertices & Edges)
+// 3D MODEL DEFINITIONS (Vertices & Edges)
 const MODELS = {
-  // 1. NEXO TESSERACT (Hypercube)
-  tesseract: {
-    name: "NEXO TESSERACT 4D",
-    vertices: [
-      // Inner cube
-      [-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1],
-      [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1],
-      // Outer cube
-      [-2, -2, -2], [2, -2, -2], [2, 2, -2], [-2, 2, -2],
-      [-2, -2, 2], [2, -2, 2], [2, 2, 2], [-2, 2, 2]
-    ],
-    edges: [
-      // Inner cube edges
-      [0,1], [1,2], [2,3], [3,0], [4,5], [5,6], [6,7], [7,4], [0,4], [1,5], [2,6], [3,7],
-      // Outer cube edges
-      [8,9], [9,10], [10,11], [11,8], [12,13], [13,14], [14,15], [15,12], [8,12], [9,13], [10,14], [11,15],
-      // Connecting struts
-      [0,8], [1,9], [2,10], [3,11], [4,12], [5,13], [6,14], [7,15]
-    ],
-    scale: 32
-  },
-
-  // 2. BMW E36 CHASSIS WIREFRAME
   e36: {
     name: "BMW E36 318is COUPE",
+    category: "AUTOMOTIVE WEBGL 3D",
     vertices: [
-      // Base / Wheelbase
       [-3.2, 0.8, -1.3], [3.2, 0.8, -1.3], [3.2, 0.8, 1.3], [-3.2, 0.8, 1.3],
-      // Beltline / Hood
       [-3.4, 0.0, -1.25], [-1.2, -0.2, -1.25], [1.8, -0.1, -1.25], [3.3, 0.1, -1.25],
       [-3.4, 0.0, 1.25], [-1.2, -0.2, 1.25], [1.8, -0.1, 1.25], [3.3, 0.1, 1.25],
-      // Roof / Cabin
       [-1.0, -1.2, -0.95], [0.9, -1.2, -0.95],
       [-1.0, -1.2, 0.95], [0.9, -1.2, 0.95],
-      // Wheels
       [-2.1, 0.8, -1.35], [2.1, 0.8, -1.35],
       [-2.1, 0.8, 1.35], [2.1, 0.8, 1.35]
     ],
     edges: [
-      // Chassis lower loop
       [0,1], [1,2], [2,3], [3,0],
-      // Beltline
       [4,5], [5,6], [6,7], [8,9], [9,10], [10,11],
       [4,8], [5,9], [6,10], [7,11],
-      // Pillars to base
       [0,4], [1,7], [2,11], [3,8],
-      // Windshield & Roof
       [5,12], [9,14], [6,13], [10,15],
       [12,13], [14,15], [12,14], [13,15],
-      // Wheels / Accents
       [16,0], [16,4], [17,1], [17,7], [18,3], [18,8], [19,2], [19,11]
     ],
-    scale: 35
+    scale: 36
   },
-
-  // 3. QUANTUM ICOSAHEDRON (Polyhedral Diamond)
+  tesseract: {
+    name: "NEXO TESSERACT 4D",
+    category: "GEOMETRIC RUNTIME 3D",
+    vertices: [
+      [-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1],
+      [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1],
+      [-2, -2, -2], [2, -2, -2], [2, 2, -2], [-2, 2, -2],
+      [-2, -2, 2], [2, -2, 2], [2, 2, 2], [-2, 2, 2]
+    ],
+    edges: [
+      [0,1], [1,2], [2,3], [3,0], [4,5], [5,6], [6,7], [7,4], [0,4], [1,5], [2,6], [3,7],
+      [8,9], [9,10], [10,11], [11,8], [12,13], [13,14], [14,15], [15,12], [8,12], [9,13], [10,14], [11,15],
+      [0,8], [1,9], [2,10], [3,11], [4,12], [5,13], [6,14], [7,15]
+    ],
+    scale: 34
+  },
   quantum: {
     name: "QUANTUMGUARD ICOSAHEDRON",
+    category: "CRYPTOGRAPHIC PQC 3D",
     vertices: (() => {
       const phi = (1 + Math.sqrt(5)) / 2;
       return [
@@ -84,67 +68,62 @@ const MODELS = {
       [4, 5], [5, 9], [9, 1], [1, 8], [8, 7],
       [7, 6], [6, 10], [10, 2], [2, 11], [11, 4]
     ],
-    scale: 48
+    scale: 50
   }
 };
 
 const THEMES = {
   cyan: {
-    name: "CYAN_PHOSPHOR",
+    name: "CYAN PHOSPHOR",
     stroke: "#00f0ff",
-    glow: "rgba(0, 240, 255, 0.4)",
     vertex: "#ffffff",
-    bg: "#06090e",
-    border: "#1a2333"
+    bg: "#070a0f",
+    surface: "#0c111a",
+    border: "#172131"
   },
   emerald: {
-    name: "MATRIX_EMERALD",
+    name: "MATRIX EMERALD",
     stroke: "#10b981",
-    glow: "rgba(16, 185, 129, 0.4)",
-    vertex: "#34d399",
+    vertex: "#6ee7b7",
     bg: "#040d0a",
+    surface: "#081813",
     border: "#13382c"
   },
   amber: {
-    name: "AMBER_RETRO",
+    name: "AMBER RETRO",
     stroke: "#f59e0b",
-    glow: "rgba(245, 158, 11, 0.4)",
     vertex: "#fde68a",
     bg: "#0d0904",
+    surface: "#181107",
     border: "#382713"
   },
   violet: {
-    name: "HYPER_VIOLET",
+    name: "HYPER VIOLET",
     stroke: "#818cf8",
-    glow: "rgba(129, 140, 248, 0.4)",
     vertex: "#c7d2fe",
     bg: "#080711",
-    border: "#231f42"
+    surface: "#100d22",
+    border: "#241e44"
   }
 };
 
-// Vector Rotation & 3D Projection Math
 function rotatePoint(point, yawDeg, pitchDeg) {
   const radX = (pitchDeg * Math.PI) / 180;
   const radY = (yawDeg * Math.PI) / 180;
-
   let [x, y, z] = point;
 
-  // Rotate around Y axis (Yaw)
   const x1 = x * Math.cos(radY) + z * Math.sin(radY);
   const z1 = -x * Math.sin(radY) + z * Math.cos(radY);
 
-  // Rotate around X axis (Pitch)
   const y2 = y * Math.cos(radX) - z1 * Math.sin(radX);
   const z2 = y * Math.sin(radX) + z1 * Math.cos(radX);
 
   return [x1, y2, z2];
 }
 
-function projectPoint(point3d, width, height, scale, fov = 300) {
+function projectPoint(point3d, width, height, scale, fov = 320) {
   const [x, y, z] = point3d;
-  // Perspective projection
-  const distance = 8;
+  const distance = 8.5;
   const sz = z + distance;
   const factor = fov / (sz > 0.1 ? sz : 0.1);
 
@@ -154,33 +133,31 @@ function projectPoint(point3d, width, height, scale, fov = 300) {
   return [projX, projY, z];
 }
 
-function render3DViewportSVG(state) {
+export function renderInteractiveViewportSVG(state) {
   const width = 960;
-  const height = 380;
+  const height = 400;
   const modelKey = state.model in MODELS ? state.model : 'e36';
   const themeKey = state.theme in THEMES ? state.theme : 'cyan';
   const model = MODELS[modelKey];
   const theme = THEMES[themeKey];
 
-  // Rotate and project all vertices
   const projected = model.vertices.map(v => {
     const rot = rotatePoint(v, state.yaw, state.pitch);
-    return projectPoint(rot, width, height + 10, model.scale);
+    return projectPoint(rot, width, height + 15, model.scale);
   });
 
-  // Sort edges by average Z depth for correct rendering hierarchy
   const edgesWithDepth = model.edges.map(e => {
     const p1 = projected[e[0]];
     const p2 = projected[e[1]];
     const avgZ = (p1[2] + p2[2]) / 2;
-    return { e, p1, p2, avgZ };
+    return { p1, p2, avgZ };
   });
 
   edgesWithDepth.sort((a, b) => a.avgZ - b.avgZ);
 
   let edgesSvg = '';
   edgesWithDepth.forEach(edge => {
-    const alpha = Math.min(1, Math.max(0.2, (edge.avgZ + 4) / 8));
+    const alpha = Math.min(1, Math.max(0.25, (edge.avgZ + 4) / 8));
     edgesSvg += `<line x1="${edge.p1[0].toFixed(1)}" y1="${edge.p1[1].toFixed(1)}" x2="${edge.p2[0].toFixed(1)}" y2="${edge.p2[1].toFixed(1)}" stroke="${theme.stroke}" stroke-width="1.8" stroke-opacity="${alpha.toFixed(2)}" stroke-linecap="round"/>`;
   });
 
@@ -199,57 +176,58 @@ function render3DViewportSVG(state) {
       </feMerge>
     </filter>
     <style>
-      .vp-title {
+      .hero-name {
+        font-family: 'Space Grotesk', -apple-system, system-ui, sans-serif;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+      }
+      .mono-header {
         font-family: 'JetBrains Mono', monospace;
         font-weight: 700;
-        font-size: 12px;
+        font-size: 11.5px;
         letter-spacing: 0.08em;
       }
-      .vp-label {
+      .mono-hud {
         font-family: 'JetBrains Mono', monospace;
-        font-size: 10.5px;
-        font-weight: 600;
-      }
-      .vp-hud {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 9.5px;
-        letter-spacing: 0.05em;
+        font-size: 10px;
+        letter-spacing: 0.04em;
       }
     </style>
   </defs>
 
-  <!-- Viewport Base Canvas -->
-  <rect width="${width}" height="${height}" rx="12" fill="${theme.bg}" stroke="${theme.border}" stroke-width="1.5"/>
-  
-  <!-- Viewport Grid & Crosshair Accents -->
-  <line x1="${width/2}" y1="40" x2="${width/2}" y2="${height - 20}" stroke="${theme.border}" stroke-width="0.8" stroke-dasharray="4 4"/>
-  <line x1="30" y1="${height/2 + 10}" x2="${width - 30}" y2="${height/2 + 10}" stroke="${theme.border}" stroke-width="0.8" stroke-dasharray="4 4"/>
-  <circle cx="${width/2}" cy="${height/2 + 10}" r="120" fill="none" stroke="${theme.border}" stroke-width="0.5" stroke-dasharray="2 6"/>
+  <!-- Frame Background -->
+  <rect width="${width}" height="${height}" rx="14" fill="${theme.bg}" stroke="${theme.border}" stroke-width="1.5"/>
 
-  <!-- Top System Header Bar -->
-  <path d="M 0 12 Q 0 0 12 0 L ${width-12} 0 Q ${width} 0 ${width} 12 L ${width} 38 L 0 38 Z" fill="${theme.bg}" stroke="${theme.border}" stroke-width="1"/>
+  <!-- Top Identity Header Bar -->
+  <path d="M 0 14 Q 0 0 14 0 L ${width-14} 0 Q ${width} 0 ${width} 14 L ${width} 52 L 0 52 Z" fill="${theme.surface}" stroke="${theme.border}" stroke-width="1"/>
   
-  <circle cx="25" cy="19" r="4.5" fill="${theme.stroke}"/>
-  <text x="38" y="23" class="vp-title" fill="#f8fafc">NEXO-IP // LIVING 3D VIEWPORT ENGINE</text>
-  <text x="440" y="23" class="vp-label" fill="${theme.stroke}">MODEL: ${model.name}</text>
-  <text x="750" y="23" class="vp-hud" fill="#94a3b8">RENDER: GPU WIREFRAME (60 FPS)</text>
+  <circle cx="28" cy="26" r="5" fill="${theme.stroke}"/>
+  <text x="44" y="30" class="hero-name" font-size="20" fill="#f8fafc">IKER PEREZ</text>
+  <text x="175" y="30" class="mono-header" fill="${theme.stroke}">// FULL-TECH COMPUTER ENGINEER</text>
+  <text x="640" y="30" class="mono-hud" fill="#94a3b8">A CORUÑA [ES] • 2,623 CONTRIBUTIONS</text>
+  <text x="865" y="30" class="mono-hud" fill="${theme.stroke}">[3D ENGINE ●]</text>
 
-  <!-- Real-Time Camera Telemetry Overlay -->
-  <g transform="translate(30, 60)" class="vp-hud" fill="#94a3b8">
-    <rect width="180" height="75" rx="6" fill="${theme.bg}" stroke="${theme.border}" stroke-width="0.8" fill-opacity="0.85"/>
-    <text x="12" y="20" fill="${theme.stroke}" font-weight="700">CAMERA MATRIX</text>
-    <text x="12" y="38">YAW: <tspan fill="#f8fafc" font-weight="700">${state.yaw}°</tspan></text>
-    <text x="12" y="54">PITCH: <tspan fill="#f8fafc" font-weight="700">${state.pitch}°</tspan></text>
-    <text x="12" y="68">VERTICES: <tspan fill="#f8fafc">${model.vertices.length}</tspan> | EDGES: <tspan fill="#f8fafc">${model.edges.length}</tspan></text>
+  <!-- Grid & Reticle Accents -->
+  <line x1="${width/2}" y1="52" x2="${width/2}" y2="${height - 25}" stroke="${theme.border}" stroke-width="0.8" stroke-dasharray="4 4"/>
+  <line x1="30" y1="${height/2 + 25}" x2="${width - 30}" y2="${height/2 + 25}" stroke="${theme.border}" stroke-width="0.8" stroke-dasharray="4 4"/>
+  <circle cx="${width/2}" cy="${height/2 + 25}" r="130" fill="none" stroke="${theme.border}" stroke-width="0.6" stroke-dasharray="2 6"/>
+
+  <!-- Left Camera HUD Panel -->
+  <g transform="translate(35, 75)" class="mono-hud" fill="#94a3b8">
+    <rect width="190" height="84" rx="6" fill="${theme.surface}" stroke="${theme.border}" stroke-width="0.8" fill-opacity="0.9"/>
+    <text x="12" y="22" fill="${theme.stroke}" font-weight="700">CAMERA PROJECTION</text>
+    <text x="12" y="42">YAW: <tspan fill="#f8fafc" font-weight="700">${state.yaw}°</tspan> | PITCH: <tspan fill="#f8fafc" font-weight="700">${state.pitch}°</tspan></text>
+    <text x="12" y="58">MODEL: <tspan fill="${theme.stroke}">${model.name}</tspan></text>
+    <text x="12" y="74">VERTS: <tspan fill="#f8fafc">${model.vertices.length}</tspan> | EDGES: <tspan fill="#f8fafc">${model.edges.length}</tspan></text>
   </g>
 
-  <!-- Operator State Stamp -->
-  <g transform="translate(${width - 230}, 60)" class="vp-hud" fill="#94a3b8">
-    <rect width="200" height="75" rx="6" fill="${theme.bg}" stroke="${theme.border}" stroke-width="0.8" fill-opacity="0.85"/>
-    <text x="12" y="20" fill="${theme.stroke}" font-weight="700">COMMUNITY OPERATOR</text>
-    <text x="12" y="38">OPERATOR: <tspan fill="#f8fafc" font-weight="700">@${state.lastOperator || 'ikerperez12'}</tspan></text>
-    <text x="12" y="54">ACTION: <tspan fill="#f8fafc">${state.lastAction || 'rotate'}</tspan></text>
-    <text x="12" y="68">TOTAL CYCLES: <tspan fill="${theme.stroke}">${state.totalInteractions || 1}</tspan></text>
+  <!-- Right Community Operator Stamp -->
+  <g transform="translate(${width - 245}, 75)" class="mono-hud" fill="#94a3b8">
+    <rect width="210" height="84" rx="6" fill="${theme.surface}" stroke="${theme.border}" stroke-width="0.8" fill-opacity="0.9"/>
+    <text x="12" y="22" fill="${theme.stroke}" font-weight="700">COMMUNITY CONTROLLER</text>
+    <text x="12" y="42">OPERATOR: <tspan fill="#f8fafc" font-weight="700">@${state.lastOperator || 'ikerperez12'}</tspan></text>
+    <text x="12" y="58">ACTION: <tspan fill="#f8fafc">${state.lastAction || 'BOOT'}</tspan></text>
+    <text x="12" y="74">INTERACTION CYCLES: <tspan fill="${theme.stroke}">${state.totalInteractions || 1}</tspan></text>
   </g>
 
   <!-- 3D Rendered Wireframe Geometry -->
@@ -258,15 +236,15 @@ function render3DViewportSVG(state) {
     ${verticesSvg}
   </g>
 
-  <!-- Viewport Corner Brackets -->
-  <path d="M 20 50 L 20 40 L 30 40" fill="none" stroke="${theme.stroke}" stroke-width="2"/>
-  <path d="M ${width-20} 50 L ${width-20} 40 L ${width-30} 40" fill="none" stroke="${theme.stroke}" stroke-width="2"/>
-  <path d="M 20 ${height-30} L 20 ${height-20} L 30 ${height-20}" fill="none" stroke="${theme.stroke}" stroke-width="2"/>
-  <path d="M ${width-20} ${height-30} L ${width-20} ${height-20} L ${width-30} ${height-20}" fill="none" stroke="${theme.stroke}" stroke-width="2"/>
+  <!-- Viewport Corner Reticles -->
+  <path d="M 25 70 L 25 60 L 35 60" fill="none" stroke="${theme.stroke}" stroke-width="2"/>
+  <path d="M ${width-25} 70 L ${width-25} 60 L ${width-35} 60" fill="none" stroke="${theme.stroke}" stroke-width="2"/>
+  <path d="M 25 ${height-35} L 25 ${height-25} L 35 ${height-25}" fill="none" stroke="${theme.stroke}" stroke-width="2"/>
+  <path d="M ${width-25} ${height-35} L ${width-25} ${height-25} L ${width-35} ${height-25}" fill="none" stroke="${theme.stroke}" stroke-width="2"/>
 
   <!-- Footer Navigation Info -->
-  <text x="30" y="${height - 12}" class="vp-hud" fill="#64748b">3D PROJECTION: ORTHO-PERSPECTIVE // DRIVEN BY GITHUB ACTIONS CI/CD</text>
-  <text x="${width - 250}" y="${height - 12}" class="vp-hud" fill="${theme.stroke}">INTERACT VIA ISSUES BELOW ↓</text>
+  <text x="35" y="${height - 14}" class="mono-hud" fill="#64748b">INTERACTIVE 3D PROJECTION ENGINE // OPERATED BY GITHUB ACTIONS</text>
+  <text x="${width - 240}" y="${height - 14}" class="mono-hud" fill="${theme.stroke}">CLICK CONTROLS BELOW TO ROTATE ↓</text>
 </svg>`;
 }
 
@@ -294,7 +272,7 @@ export function saveState(state) {
 
 export function generateAll(state) {
   fs.mkdirSync(ASSETS_DIR, { recursive: true });
-  const svg = render3DViewportSVG(state);
+  const svg = renderInteractiveViewportSVG(state);
   fs.writeFileSync(path.join(ASSETS_DIR, 'interactive-viewport.svg'), svg);
   console.log('[Engine] Generated assets/interactive-viewport.svg');
 }
@@ -308,11 +286,10 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     if (args[i] === '--command' && args[i+1]) {
       const cmdStr = args[i+1];
       const parts = cmdStr.split('|');
-      // e.g. nexo3d|rotate_left OR nexo3d|model|tesseract OR nexo3d|theme|emerald
       if (parts[1] === 'rotate_left') state.yaw = (state.yaw - 45 + 360) % 360;
       if (parts[1] === 'rotate_right') state.yaw = (state.yaw + 45) % 360;
-      if (parts[1] === 'pitch_up') state.pitch = Math.min(80, state.pitch + 20);
-      if (parts[1] === 'pitch_down') state.pitch = Math.max(-80, state.pitch - 20);
+      if (parts[1] === 'pitch_up') state.pitch = Math.min(75, state.pitch + 20);
+      if (parts[1] === 'pitch_down') state.pitch = Math.max(-75, state.pitch - 20);
       if (parts[1] === 'model' && parts[2] && MODELS[parts[2]]) state.model = parts[2];
       if (parts[1] === 'theme' && parts[2] && THEMES[parts[2]]) state.theme = parts[2];
       if (parts[1] === 'reset') { state.yaw = 45; state.pitch = 20; state.model = 'e36'; state.theme = 'cyan'; }
