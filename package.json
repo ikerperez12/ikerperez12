@@ -1,21 +1,14 @@
 {
   "name": "ikerperez12",
-  "version": "1.0.0",
-  "description": "Bespoke GitHub Profile README & Living Telemetry Engine for @ikerperez12",
-  "main": "scripts/generate-telemetry.mjs",
+  "version": "2.0.0",
+  "description": "Generator for @ikerperez12's GitHub profile README: reads verifiable facts from the GitHub API and renders the page from them.",
   "type": "module",
+  "private": true,
   "scripts": {
-    "generate": "node scripts/generate-telemetry.mjs",
-    "optimize": "$env:PYTHONDONTWRITEBYTECODE=1; python scripts/optimize-assets.py"
+    "collect": "node scripts/collect.mjs > data.json",
+    "build": "node scripts/build.mjs",
+    "thumbs": "python scripts/make-thumbs.py"
   },
-  "keywords": [
-    "profile",
-    "readme",
-    "telemetry",
-    "svg",
-    "living-system",
-    "security-hardened"
-  ],
   "author": "Iker Perez (https://github.com/ikerperez12)",
   "license": "MIT"
 }

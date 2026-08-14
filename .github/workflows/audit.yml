@@ -1,0 +1,68 @@
+name: Audit
+
+# Re-reads every repository, re-renders the generated assets, and commits
+# whatever actually changed. Runs on a schedule, on demand, and on any change to
+# the generator itself so the code path is exercised constantly rather than only
+# once a day.
+on:
+  schedule:
+    # Offset from the hour: scheduled runs queued at :00 are the most likely to
+    # be delayed or dropped when GitHub is busy.
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - "README.md"
+      - ".github/workflows/audit.yml"
+
+# The default GITHUB_TOKEN can read the public data this needs, including the
+# owner's contributionsCollection, so no personal access token is involved.
+permissions:
+  contents: write
+
+# Queue overlapping runs rather than cancelling them: a cancelled run would
+# leave the committed assets describing a state that no longer matches data.json.
+concurrency:
+  group: profile-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+
+      - name: Collect verified facts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PROFILE_USER: ${{ github.repository_owner }}
+        run: node scripts/collect.mjs > data.json
+
+      - name: Render assets and README
+        run: node scripts/build.mjs
+
+      - name: Commit if anything changed
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data.json README.md .github/assets
+          # An unchanged tree makes `git commit` exit non-zero; that is the
+          # normal quiet outcome, not a failure.
+          if git diff --cached --quiet; then
+            echo "nothing changed"
+            exit 0
+          fi
+          git commit -m "Audit $(date -u +%Y-%m-%d)"
+          # A concurrent push (a manual edit landing mid-run) would otherwise
+          # make this a non-fast-forward and fail the job.
+          git pull --rebase --autostash
+          git push
