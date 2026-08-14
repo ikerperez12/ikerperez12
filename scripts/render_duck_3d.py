@@ -18,22 +18,13 @@ def load_glb(glb_path):
         bv = gltf['bufferViews'][acc['bufferView']]
         offset = bv.get('byteOffset', 0) + acc.get('byteOffset', 0)
         count = acc['count']
-        
         comp_type = acc['componentType']
         type_str = acc['type']
 
-        if comp_type == 5126: # FLOAT
-            fmt_char = 'f'
-            item_size = 4
-        elif comp_type == 5123: # UNSIGNED_SHORT
-            fmt_char = 'H'
-            item_size = 2
-        elif comp_type == 5125: # UNSIGNED_INT
-            fmt_char = 'I'
-            item_size = 4
-        else:
-            fmt_char = 'f'
-            item_size = 4
+        if comp_type == 5126: fmt_char = 'f'; item_size = 4
+        elif comp_type == 5123: fmt_char = 'H'; item_size = 2
+        elif comp_type == 5125: fmt_char = 'I'; item_size = 4
+        else: fmt_char = 'f'; item_size = 4
 
         num_components = {'SCALAR': 1, 'VEC2': 2, 'VEC3': 3, 'VEC4': 4}[type_str]
         total_items = count * num_components
@@ -48,32 +39,29 @@ def load_glb(glb_path):
     uvs = get_buffer(prim['attributes']['TEXCOORD_0'])
     indices = get_buffer(prim['indices']).astype(int)
 
-    # Texture image
+    # Texture
     bv_img = gltf['bufferViews'][gltf['images'][0]['bufferView']]
     img_bytes = binary[bv_img.get('byteOffset', 0):bv_img.get('byteOffset', 0) + bv_img['byteLength']]
-    texture_img = Image.open(io.BytesIO(img_bytes)).convert('RGB')
+    texture_img = Image.open(io.BytesIO(img_bytes)).convert('RGBA')
 
     return pos, norms, uvs, indices, texture_img
 
-def render_duck_angle(yaw_deg=125, pitch_deg=12, out_name="duck_3d.png"):
+def render_duck_beauty(yaw_deg=-32, pitch_deg=10, out_name="duck_beauty.png"):
     glb_path = r"C:\Users\ijpg1\projects\nexoip-final-integration\public\assets\models\duck.glb"
     pos, norms, uvs, indices, texture_img = load_glb(glb_path)
 
-    # Bounding box center
-    min_bound = np.min(pos, axis=0)
-    max_bound = np.max(pos, axis=0)
-    center = (min_bound + max_bound) / 2.0
+    # Center of mass / bounding box
+    min_b = np.min(pos, axis=0)
+    max_b = np.max(pos, axis=0)
+    center = (min_b + max_b) / 2.0
     
     pos_centered = pos - center
-    max_span = np.max(max_bound - min_bound)
+    max_span = np.max(max_b - min_b)
     pos_norm = pos_centered / max_span
 
-    # Resolution (High Res supersampling)
-    w_out, h_out = 400, 400
-    scale = 2
-    W, H = w_out * scale, h_out * scale
+    # Super-sampling for extreme crispness (800x800 internal)
+    W, H = 800, 800
 
-    # Rotation: Looking from front 3/4 left towards user
     yaw = math.radians(yaw_deg)
     pitch = math.radians(pitch_deg)
 
@@ -88,17 +76,24 @@ def render_duck_angle(yaw_deg=125, pitch_deg=12, out_name="duck_3d.png"):
         [0, math.sin(pitch), math.cos(pitch)]
     ])
 
-    R = Rx @ Ry
+    # Initial transform: swap X to Z (camera facing -Z)
+    R_base = np.array([
+        [0, 0, -1],
+        [0, 1, 0],
+        [1, 0, 0]
+    ])
+    
+    R = Rx @ Ry @ R_base
 
     rot_pos = pos_norm @ R.T
     rot_norms = norms @ R.T
 
-    # Camera perspective
-    fov = 2.1
-    dist = 2.4
+    # Perspective camera - close up
+    fov = 2.4
+    dist = 1.8
     z = rot_pos[:, 2] + dist
     proj_x = (rot_pos[:, 0] / z) * fov * (W / 2) + (W / 2)
-    proj_y = (-rot_pos[:, 1] / z) * fov * (H / 2) + (H / 2) - 10
+    proj_y = (-rot_pos[:, 1] / z) * fov * (H / 2) + (H / 2)
 
     color_buf = np.zeros((H, W, 4), dtype=np.uint8)
     depth_buf = np.full((H, W), np.inf, dtype=np.float32)
@@ -106,12 +101,15 @@ def render_duck_angle(yaw_deg=125, pitch_deg=12, out_name="duck_3d.png"):
     tex_w, tex_h = texture_img.size
     tex_np = np.array(texture_img, dtype=np.float32)
 
-    # Clean studio lights
-    light_main = np.array([0.4, 0.8, 0.8])
-    light_main /= np.linalg.norm(light_main)
+    # 3-Point Studio Lights
+    key_light = np.array([0.4, 0.9, 0.8])
+    key_light /= np.linalg.norm(key_light)
 
-    light_fill = np.array([-0.6, 0.3, 0.5])
-    light_fill /= np.linalg.norm(light_fill)
+    fill_light = np.array([-0.7, 0.4, 0.5])
+    fill_light /= np.linalg.norm(fill_light)
+
+    rim_light = np.array([0.0, -0.5, -0.8])
+    rim_light /= np.linalg.norm(rim_light)
 
     triangles = indices.reshape(-1, 3)
 
@@ -136,7 +134,6 @@ def render_duck_angle(yaw_deg=125, pitch_deg=12, out_name="duck_3d.png"):
         uv0, uv1, uv2 = uvs[i0], uvs[i1], uvs[i2]
         n0, n1, n2 = rot_norms[i0], rot_norms[i1], rot_norms[i2]
 
-        # Rasterize pixels in bbox with full Barycentric interpolation
         for y_pix in range(min_y, max_y + 1):
             for x_pix in range(min_x, max_x + 1):
                 w0 = ((y1 - y2) * (x_pix - x2) + (x2 - x1) * (y_pix - y2)) / denom
@@ -148,39 +145,54 @@ def render_duck_angle(yaw_deg=125, pitch_deg=12, out_name="duck_3d.png"):
                     if pix_z < depth_buf[y_pix, x_pix]:
                         depth_buf[y_pix, x_pix] = pix_z
 
-                        # Interpolated UV
+                        # Exact glTF UV Mapping (v is top-to-bottom)
                         u = w0 * uv0[0] + w1 * uv1[0] + w2 * uv2[0]
-                        v = 1.0 - (w0 * uv0[1] + w1 * uv1[1] + w2 * uv2[1])
+                        v = w0 * uv0[1] + w1 * uv1[1] + w2 * uv2[1]
 
                         u_idx = int(np.clip(u * (tex_w - 1), 0, tex_w - 1))
                         v_idx = int(np.clip(v * (tex_h - 1), 0, tex_h - 1))
                         tex_color = tex_np[v_idx, u_idx]
 
-                        # Interpolated normal
+                        # Interpolated Normal
                         norm = w0 * n0 + w1 * n1 + w2 * n2
                         n_len = np.linalg.norm(norm)
                         if n_len > 0:
                             norm /= n_len
 
-                        # Studio Shading
-                        diffuse_main = max(0.0, float(np.dot(norm, light_main)))
-                        diffuse_fill = max(0.0, float(np.dot(norm, light_fill))) * 0.35
-                        ambient = 0.55
-                        lighting = min(1.4, ambient + diffuse_main * 0.75 + diffuse_fill)
+                        # Studio Shading & Specular
+                        diff_key = max(0.0, float(np.dot(norm, key_light)))
+                        diff_fill = max(0.0, float(np.dot(norm, fill_light))) * 0.4
+                        diff_rim = max(0.0, float(np.dot(norm, rim_light))) * 0.25
+                        ambient = 0.52
 
-                        r = int(np.clip(tex_color[0] * lighting, 0, 255))
-                        g = int(np.clip(tex_color[1] * lighting, 0, 255))
-                        b = int(np.clip(tex_color[2] * lighting, 0, 255))
+                        intensity = min(1.45, ambient + diff_key * 0.75 + diff_fill + diff_rim)
+
+                        r = int(np.clip(tex_color[0] * intensity, 0, 255))
+                        g = int(np.clip(tex_color[1] * intensity, 0, 255))
+                        b = int(np.clip(tex_color[2] * intensity, 0, 255))
 
                         color_buf[y_pix, x_pix] = [r, g, b, 255]
 
-    # Convert to image and downsample with Lanczos for smooth anti-aliased edges
-    img = Image.fromarray(color_buf, 'RGBA')
-    final_img = img.resize((w_out, h_out), Image.Resampling.LANCZOS)
+    raw_img = Image.fromarray(color_buf, 'RGBA')
+    
+    # Auto-crop tightly to non-zero alpha
+    bbox = raw_img.getbbox()
+    if bbox:
+        cropped = raw_img.crop(bbox)
+        # Pad slightly to square
+        w_c, h_c = cropped.size
+        side = max(w_c, h_c) + 20
+        square_img = Image.new('RGBA', (side, side), (0, 0, 0, 0))
+        square_img.paste(cropped, ((side - w_c) // 2, (side - h_c) // 2))
+        
+        # High-res output (400x400 square)
+        final_img = square_img.resize((400, 400), Image.Resampling.LANCZOS)
+    else:
+        final_img = raw_img.resize((400, 400), Image.Resampling.LANCZOS)
     
     out_path = rf"C:\Users\ijpg1\Documents\antigravity\ikerperez12\assets\{out_name}"
     final_img.save(out_path, "PNG", optimize=True)
-    print("Rendered front 3D duck to:", out_path)
+    print("Rendered beauty cropped duck to:", out_path)
 
 if __name__ == '__main__':
-    render_duck_angle(yaw_deg=125, pitch_deg=10, out_name="duck_3d.png")
+    render_duck_beauty(yaw_deg=-32, pitch_deg=10, out_name="duck_beauty.png")

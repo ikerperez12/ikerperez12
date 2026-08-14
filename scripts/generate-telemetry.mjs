@@ -33,7 +33,7 @@ async function fetchStats() {
   return { totalContribs };
 }
 
-// 1. HERO WITH CLEAN, PROMINENTLY CENTERED 3D DUCK (960 x 340)
+// 1. HERO WITH BEAUTIFULLY CENTERED, LARGE, CRISP 3D DUCK (960 x 340)
 function generateHeroSVG(stats, isDark = true) {
   const bg = isDark ? '#05070c' : '#ffffff';
   const surface = isDark ? '#0a0e18' : '#f8fafc';
@@ -78,8 +78,8 @@ function generateHeroSVG(stats, isDark = true) {
     </linearGradient>
 
     <!-- Soft Ambient Duck Glow (No Grid / No Dots) -->
-    <radialGradient id="duckBacklight" cx="78%" cy="52%" r="42%">
-      <stop offset="0%" stop-color="${amber}" stop-opacity="${isDark ? '0.16' : '0.10'}"/>
+    <radialGradient id="duckBacklight" cx="80%" cy="52%" r="42%">
+      <stop offset="0%" stop-color="${amber}" stop-opacity="${isDark ? '0.18' : '0.12'}"/>
       <stop offset="50%" stop-color="${violet}" stop-opacity="${isDark ? '0.08' : '0.04'}"/>
       <stop offset="100%" stop-color="${bg}" stop-opacity="0"/>
     </radialGradient>
@@ -87,7 +87,7 @@ function generateHeroSVG(stats, isDark = true) {
     <style>
       @keyframes duckFloat {
         0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-7px); }
+        50% { transform: translateY(-8px); }
       }
       @keyframes lbarAnim {
         0% { transform: translateX(-100%); }
@@ -115,7 +115,7 @@ function generateHeroSVG(stats, isDark = true) {
         font-weight: 600;
       }
       .duck-clean-float {
-        transform-origin: 775px 170px;
+        transform-origin: 780px 175px;
         animation: duckFloat 4s ease-in-out infinite;
       }
       .lbar {
@@ -188,9 +188,9 @@ function generateHeroSVG(stats, isDark = true) {
     <text x="38" y="16" class="mono-tag" fill="${violet}">AURASYNTH DSP ENGINE // 44.1 kHz REAL-TIME</text>
   </g>
 
-  <!-- ==================== RIGHT VISUAL: ONLY THE CLEAN 3D DUCK ==================== -->
+  <!-- ==================== RIGHT VISUAL: LARGE, CRISP BEAUTY 3D DUCK ==================== -->
   <g class="duck-clean-float">
-    <image href="data:image/png;base64,${duckB64}" x="665" y="70" width="220" height="220" preserveAspectRatio="xMidYMid meet"/>
+    <image href="data:image/png;base64,${duckB64}" x="660" y="55" width="240" height="240" preserveAspectRatio="xMidYMid meet"/>
   </g>
 </svg>`;
 }
@@ -323,7 +323,7 @@ function generateFooterSVG(isDark = true) {
 }
 
 async function main() {
-  console.log('[Generator] Building clean 3D duck hero, section header, and footer...');
+  console.log('[Generator] Building large crisp beauty 3D duck hero...');
   const stats = await fetchStats();
 
   fs.mkdirSync(ASSETS_DIR, { recursive: true });
@@ -337,7 +337,7 @@ async function main() {
   fs.writeFileSync(path.join(ASSETS_DIR, 'footer-dark.svg'), generateFooterSVG(true));
   fs.writeFileSync(path.join(ASSETS_DIR, 'footer-light.svg'), generateFooterSVG(false));
 
-  console.log('[Generator] Rendered clean 3D duck hero and assets successfully.');
+  console.log('[Generator] Completed rendering large crisp beauty 3D duck hero.');
 }
 
 main().catch(err => {
