@@ -15,7 +15,13 @@
 
 ---
 
-# [ 02 // PROYECTOS PÚBLICOS Y GALERÍA BENTO ]
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/section-header-projects-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/section-header-projects-light.svg">
+    <img src="assets/section-header-projects-dark.svg" alt="02 // Proyectos Públicos &amp; Galería Bento" width="100%">
+  </picture>
+</p>
 
 <table width="100%">
   <!-- ROW 1: NexoIP & IP-OS -->
@@ -178,6 +184,9 @@
 ---
 
 <p align="center">
-  <sub><b>IKER PÉREZ GARCÍA</b> • A Coruña, Galicia, Spain</sub><br>
-  <sub>Portfolio Web: <a href="https://nexoip.click"><b>nexoip.click</b></a> • <i>Living Engineering Profile</i></sub>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/footer-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="assets/footer-light.svg">
+    <img src="assets/footer-dark.svg" alt="Iker Pérez García • Living Computational Profile" width="100%">
+  </picture>
 </p>

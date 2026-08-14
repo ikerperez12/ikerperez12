@@ -1,6 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" width="100%" height="100%">
   <defs>
-    <!-- 1. Aurora Conic-like Prismatic Gradient Border -->
     <linearGradient id="auroraEdgeD" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#c2a4ff"/>
       <stop offset="35%" stop-color="#fb8dff"/>
@@ -8,21 +7,18 @@
       <stop offset="100%" stop-color="#38bdf8"/>
     </linearGradient>
 
-    <!-- 2. Metallic Silver / Cyan Gradient for Typography -->
     <linearGradient id="metallicGradD" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#ffffff"/>
       <stop offset="45%" stop-color="#e2e8f0"/>
       <stop offset="100%" stop-color="#38bdf8"/>
     </linearGradient>
 
-    <!-- 3. Indeterminate Progress Bar Gradient -->
     <linearGradient id="progGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="transparent"/>
       <stop offset="50%" stop-color="#c2a4ff"/>
       <stop offset="100%" stop-color="transparent"/>
     </linearGradient>
 
-    <!-- 4. Atmospheric Luxury Ambient Lighting (No harsh dot grid) -->
     <radialGradient id="ambientLight" cx="78%" cy="50%" r="55%">
       <stop offset="0%" stop-color="#c2a4ff" stop-opacity="0.22"/>
       <stop offset="45%" stop-color="#38bdf8" stop-opacity="0.12"/>
@@ -35,7 +31,6 @@
       <stop offset="100%" stop-color="#fb8dff" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- Glow Filter -->
     <filter id="glowHyper" x="-40%" y="-40%" width="180%" height="180%">
       <feGaussianBlur stdDeviation="4.5" result="blur"/>
       <feMerge>
@@ -111,22 +106,17 @@
     </style>
   </defs>
 
-  <!-- Outer Aurora Gradient Border Frame (conic-style padding: 2px) -->
   <rect width="960" height="340" rx="18" fill="url(#auroraEdgeD)"/>
-  
-  <!-- Inner Obsidian Luxury Background Canvas (Smooth & Silky, NO Dot Grid) -->
   <rect x="2" y="2" width="956" height="336" rx="16" fill="#05070c"/>
   <rect x="2" y="2" width="956" height="336" rx="16" fill="url(#ambientLight)"/>
 
-  <!-- Top System Bar -->
   <path d="M 2 18 Q 2 2 18 2 L 942 2 Q 958 2 958 18 L 958 44 L 2 44 Z" fill="#090d16" stroke="rgba(194, 164, 255, 0.12)" stroke-width="1"/>
   
   <circle cx="28" cy="23" r="4.5" fill="#4ade80"/>
   <text x="44" y="27" class="mono-header" fill="#f8fafc">IKER PÉREZ GARCÍA // NEXO-IP SYSTEMS &amp; INTERACTIVE RUNTIMES</text>
-  <text x="610" y="27" class="mono-tag" fill="#4ade80">[ONLINE • 2,623 CONTRIBUTIONS / YEAR]</text>
+  <text x="610" y="27" class="mono-tag" fill="#4ade80">[ONLINE • 2633 CONTRIBUTIONS / YEAR]</text>
   <text x="825" y="27" class="mono-tag" fill="#64748b">A CORUÑA [ES]</text>
 
-  <!-- Indeterminate Scanline Progress Beam under Top Bar -->
   <g transform="translate(2, 43)">
     <rect width="956" height="2" fill="rgba(255,255,255,0.04)"/>
     <g class="lbar-anim">
@@ -134,7 +124,6 @@
     </g>
   </g>
 
-  <!-- Left Editorial Content (Aligned with nexoip.click) -->
   <g transform="translate(48, 75)">
     <text x="0" y="48" class="hero-main-title" font-size="44" fill="url(#metallicGradD)">IKER PÉREZ GARCÍA</text>
     <text x="0" y="78" class="mono-header" font-size="12" fill="#c2a4ff">SOFTWARE, SISTEMAS Y EXPERIENCIAS INTERACTIVAS</text>
@@ -146,7 +135,6 @@
       <tspan fill="#c2a4ff" font-weight="700">entornos desktop web</tspan> y <tspan fill="#4ade80" font-weight="700">criptografía post-cuántica</tspan> con evidencia pública.
     </text>
 
-    <!-- Technical Badges (Aurora styled, Zero Emojis) -->
     <g transform="translate(0, 168)">
       <rect x="0" y="0" width="130" height="28" rx="6" fill="#090d16" stroke="#4ade80" stroke-width="1.2"/>
       <text x="14" y="18" class="mono-tag" fill="#4ade80">[✓] OFFLINE-FIRST</text>
@@ -162,7 +150,6 @@
     </g>
   </g>
 
-  <!-- Audio Equalizer Bars (Connecting to AURASYNTH & DSP) -->
   <g transform="translate(48, 290)">
     <rect class="eq-bar-1" x="0" y="0" width="5" rx="2.5" fill="#fb8dff"/>
     <rect class="eq-bar-2" x="8" y="0" width="5" rx="2.5" fill="#c2a4ff"/>
@@ -171,41 +158,30 @@
     <text x="38" y="16" class="mono-tag" fill="#c2a4ff">AURASYNTH DSP ENGINE // 44.1 kHz REAL-TIME</text>
   </g>
 
-  <!-- Right Visual: The Bespoke 3D Prismatic Nexo-IP Hyper-Core (Floating & Rotating) -->
   <g class="hyper-core-float">
-    <!-- Ambient Core Backlight -->
     <circle cx="775" cy="170" r="70" fill="url(#crystalGlow)"/>
 
-    <!-- Outer Prismatic Gimbal Orbit Ring 1 -->
     <g class="gimbal-ring1">
       <ellipse cx="775" cy="170" rx="98" ry="42" fill="none" stroke="url(#auroraEdgeD)" stroke-width="1.8" stroke-opacity="0.8" stroke-dasharray="12 6" transform="rotate(-25 775 170)"/>
       <circle cx="865" cy="140" r="4" fill="#38bdf8"/>
       <circle cx="685" cy="200" r="4" fill="#fb8dff"/>
     </g>
 
-    <!-- Inner Counter-Rotating Gimbal Orbit Ring 2 -->
     <g class="gimbal-ring2">
       <ellipse cx="775" cy="170" rx="96" ry="38" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.65" transform="rotate(45 775 170)"/>
       <circle cx="845" cy="220" r="3.5" fill="#c2a4ff"/>
       <circle cx="705" cy="120" r="3.5" fill="#4ade80"/>
     </g>
 
-    <!-- Central 3D Isometric Crystal Prism Structure -->
     <g class="crystal-pulse" filter="url(#glowHyper)" transform="translate(775, 170)">
-      <!-- Isometric Faceted Polyhedron -->
-      <!-- Top Face -->
       <polygon points="0,-45 38,-22 0,0 -38,-22" fill="#090d16" stroke="#c2a4ff" stroke-width="1.8" fill-opacity="0.85"/>
-      <!-- Right Face -->
       <polygon points="0,0 38,-22 38,24 0,46" fill="#131122" stroke="#fb8dff" stroke-width="1.8" fill-opacity="0.9"/>
-      <!-- Left Face -->
       <polygon points="-38,-22 0,0 0,46 -38,24" fill="#0d1424" stroke="#38bdf8" stroke-width="1.8" fill-opacity="0.9"/>
 
-      <!-- Inner Holographic Geometry -->
       <line x1="0" y1="-45" x2="0" y2="46" stroke="#4ade80" stroke-width="1.2" stroke-dasharray="3 3"/>
       <line x1="-38" y1="-22" x2="38" y2="24" stroke="#c2a4ff" stroke-width="1" stroke-opacity="0.6"/>
       <line x1="-38" y1="24" x2="38" y2="-22" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.6"/>
 
-      <!-- Photon Center -->
       <circle cx="0" cy="0" r="6" fill="#ffffff" filter="url(#glowHyper)"/>
     </g>
   </g>
