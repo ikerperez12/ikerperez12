@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 440" width="100%" height="100%">
+  <defs>
+    <pattern id="matrixGridLight" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(226, 232, 240, 0.8)" stroke-width="1"/>
+    </pattern>
+
+    <style>
+      @keyframes signalFlow1 {
+        0% { stroke-dashoffset: 200; }
+        100% { stroke-dashoffset: 0; }
+      }
+      @keyframes signalFlow2 {
+        0% { stroke-dashoffset: 0; }
+        100% { stroke-dashoffset: -200; }
+      }
+      @keyframes pulseCore {
+        0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px #00f0ff); }
+        50% { transform: scale(1.03); filter: drop-shadow(0 0 14px #00f0ff); }
+      }
+      .matrix-node-title {
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 0.08em;
+      }
+      .matrix-sub {
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 11px;
+        letter-spacing: 0.05em;
+      }
+      .matrix-desc {
+        font-family: system-ui, -apple-system, sans-serif;
+        font-size: 11.5px;
+      }
+      .flow-line-cyan {
+        stroke: #00f0ff;
+        stroke-dasharray: 8 6;
+        animation: signalFlow1 3s linear infinite;
+      }
+      .flow-line-emerald {
+        stroke: #10b981;
+        stroke-dasharray: 8 6;
+        animation: signalFlow2 3.5s linear infinite;
+      }
+      .flow-line-indigo {
+        stroke: #818cf8;
+        stroke-dasharray: 8 6;
+        animation: signalFlow1 4s linear infinite;
+      }
+      .flow-line-amber {
+        stroke: #f59e0b;
+        stroke-dasharray: 8 6;
+        animation: signalFlow2 3.2s linear infinite;
+      }
+      .core-pulse {
+        transform-origin: 480px 220px;
+        animation: pulseCore 4s ease-in-out infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Frame & Grid -->
+  <rect width="960" height="440" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+  <rect width="960" height="440" rx="14" fill="url(#matrixGridLight)"/>
+
+  <!-- Top Title Bar -->
+  <path d="M 0 14 Q 0 0 14 0 L 946 0 Q 960 0 960 14 L 960 36 L 0 36 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="30" y="23" class="matrix-node-title" fill="#00f0ff">SIGNATURE ARCHITECTURE // LIVING SUBSYSTEM TOPOLOGY &amp; SIGNAL MATRIX</text>
+  <text x="800" y="23" class="matrix-sub" fill="#94a3b8">BUS FREQ: <tspan fill="#10b981">REAL-TIME</tspan></text>
+
+  <!-- Connecting Bus Signal Lines from Central Hub to 4 Nodes -->
+  <!-- Line to Node 1 (Top Left) -->
+  <path d="M 480 220 L 260 220 L 260 120" fill="none" class="flow-line-emerald" stroke-width="2"/>
+  <!-- Line to Node 2 (Top Right) -->
+  <path d="M 480 220 L 700 220 L 700 120" fill="none" class="flow-line-cyan" stroke-width="2"/>
+  <!-- Line to Node 3 (Bottom Left) -->
+  <path d="M 480 220 L 260 220 L 260 320" fill="none" class="flow-line-indigo" stroke-width="2"/>
+  <!-- Line to Node 4 (Bottom Right) -->
+  <path d="M 480 220 L 700 220 L 700 320" fill="none" class="flow-line-amber" stroke-width="2"/>
+
+  <!-- ==================== NODE 01: SYSTEMS & SECURITY ==================== -->
+  <g transform="translate(30, 50)">
+    <rect width="430" height="150" rx="10" fill="#f1f5f9" stroke="#10b981" stroke-width="1.5"/>
+    <path d="M 0 0 L 430 0 L 430 28 L 0 28 Z" fill="#10b981" fill-opacity="0.15"/>
+    <circle cx="18" cy="14" r="5" fill="#10b981"/>
+    <text x="32" y="19" class="matrix-node-title" fill="#10b981">NODE 01: SYSTEMS, RUNTIME &amp; CRYPTOGRAPHY</text>
+    
+    <text x="20" y="52" class="matrix-sub" fill="#0f172a">• NexoIP 3D Viewer</text>
+    <text x="185" y="52" class="matrix-desc" fill="#475569">Electron sandbox, nexoip:// protocol, zero telemetry</text>
+    
+    <text x="20" y="76" class="matrix-sub" fill="#0f172a">• 1.2-AuditoriaPQC</text>
+    <text x="185" y="76" class="matrix-desc" fill="#475569">QuantumGuard, OQS, Kyber-1024, HNDL risk matrix</text>
+
+    <text x="20" y="100" class="matrix-sub" fill="#0f172a">• SO-SHELL-p2 / C</text>
+    <text x="185" y="100" class="matrix-desc" fill="#475569">Low-level UNIX shell, process lifecycle, memory mgmt</text>
+    
+    <g transform="translate(20, 118)">
+      <rect x="0" y="0" width="115" height="20" rx="4" fill="#ffffff" stroke="#10b981" stroke-width="0.8"/>
+      <text x="8" y="14" class="matrix-sub" font-size="9.5" fill="#10b981">SBOM: CycloneDX</text>
+
+      <rect x="125" y="0" width="115" height="20" rx="4" fill="#ffffff" stroke="#10b981" stroke-width="0.8"/>
+      <text x="133" y="14" class="matrix-sub" font-size="9.5" fill="#10b981">SHA-256 Checksums</text>
+
+      <rect x="250" y="0" width="130" height="20" rx="4" fill="#ffffff" stroke="#10b981" stroke-width="0.8"/>
+      <text x="258" y="14" class="matrix-sub" font-size="9.5" fill="#10b981">100% Offline-First</text>
+    </g>
+  </g>
+
+  <!-- ==================== NODE 02: 3D & CREATIVE COMPUTING ==================== -->
+  <g transform="translate(500, 50)">
+    <rect width="430" height="150" rx="10" fill="#f1f5f9" stroke="#00f0ff" stroke-width="1.5"/>
+    <path d="M 0 0 L 430 0 L 430 28 L 0 28 Z" fill="#00f0ff" fill-opacity="0.15"/>
+    <circle cx="18" cy="14" r="5" fill="#00f0ff"/>
+    <text x="32" y="19" class="matrix-node-title" fill="#00f0ff">NODE 02: INTERACTIVE 3D &amp; GRAPHICS</text>
+
+    <text x="20" y="52" class="matrix-sub" fill="#0f172a">• NexoIP 3D Viewer</text>
+    <text x="185" y="52" class="matrix-desc" fill="#475569">Multi-format 3D pipeline (GLTF, OBJ, STL, DAE)</text>
+
+    <text x="20" y="76" class="matrix-sub" fill="#0f172a">• e36 Web Experience</text>
+    <text x="185" y="76" class="matrix-desc" fill="#475569">BMW 318is Pack M cinematic WebGL scrollytelling</text>
+
+    <text x="20" y="100" class="matrix-sub" fill="#0f172a">• warpod / BLENDER</text>
+    <text x="185" y="100" class="matrix-desc" fill="#475569">React Three Fiber + GSAP motion &amp; PySide6 tools</text>
+
+    <g transform="translate(20, 118)">
+      <rect x="0" y="0" width="115" height="20" rx="4" fill="#ffffff" stroke="#00f0ff" stroke-width="0.8"/>
+      <text x="8" y="14" class="matrix-sub" font-size="9.5" fill="#00f0ff">Three.js / WebGL</text>
+
+      <rect x="125" y="0" width="115" height="20" rx="4" fill="#ffffff" stroke="#00f0ff" stroke-width="0.8"/>
+      <text x="133" y="14" class="matrix-sub" font-size="9.5" fill="#00f0ff">Shader Pipelines</text>
+
+      <rect x="250" y="0" width="130" height="20" rx="4" fill="#ffffff" stroke="#00f0ff" stroke-width="0.8"/>
+      <text x="258" y="14" class="matrix-sub" font-size="9.5" fill="#00f0ff">60 FPS Render Loop</text>
+    </g>
+  </g>
+
+  <!-- ==================== NODE 03: WEB OS & DESIGN SYSTEMS ==================== -->
+  <g transform="translate(30, 240)">
+    <rect width="430" height="150" rx="10" fill="#f1f5f9" stroke="#818cf8" stroke-width="1.5"/>
+    <path d="M 0 0 L 430 0 L 430 28 L 0 28 Z" fill="#818cf8" fill-opacity="0.15"/>
+    <circle cx="18" cy="14" r="5" fill="#818cf8"/>
+    <text x="32" y="19" class="matrix-node-title" fill="#818cf8">NODE 03: WEB OS &amp; DESIGN TOOLKITS</text>
+
+    <text x="20" y="52" class="matrix-sub" fill="#0f172a">• IP-OS-LINUX (10★)</text>
+    <text x="185" y="52" class="matrix-desc" fill="#475569">Browser Linux OS shell, window manager, IndexedDB</text>
+
+    <text x="20" y="76" class="matrix-sub" fill="#0f172a">• UI-IP-Toolkit-v4.0 (7★)</text>
+    <text x="185" y="76" class="matrix-desc" fill="#475569">Modular component design system, CSS precision</text>
+
+    <text x="20" y="100" class="matrix-sub" fill="#0f172a">• EASY-LOCALHOST</text>
+    <text x="185" y="100" class="matrix-desc" fill="#475569">10 signed standalone releases, local server runtime</text>
+
+    <g transform="translate(20, 118)">
+      <rect x="0" y="0" width="115" height="20" rx="4" fill="#ffffff" stroke="#818cf8" stroke-width="0.8"/>
+      <text x="8" y="14" class="matrix-sub" font-size="9.5" fill="#818cf8">React 19 + Vite</text>
+
+      <rect x="125" y="0" width="115" height="20" rx="4" fill="#ffffff" stroke="#818cf8" stroke-width="0.8"/>
+      <text x="133" y="14" class="matrix-sub" font-size="9.5" fill="#818cf8">WCAG AAA A11y</text>
+
+      <rect x="250" y="0" width="130" height="20" rx="4" fill="#ffffff" stroke="#818cf8" stroke-width="0.8"/>
+      <text x="258" y="14" class="matrix-sub" font-size="9.5" fill="#818cf8">DOMPurify + Strict CSP</text>
+    </g>
+  </g>
+
+  <!-- ==================== NODE 04: INTELLIGENT ARCHITECTURES ==================== -->
+  <g transform="translate(500, 240)">
+    <rect width="430" height="150" rx="10" fill="#f1f5f9" stroke="#f59e0b" stroke-width="1.5"/>
+    <path d="M 0 0 L 430 0 L 430 28 L 0 28 Z" fill="#f59e0b" fill-opacity="0.15"/>
+    <circle cx="18" cy="14" r="5" fill="#f59e0b"/>
+    <text x="32" y="19" class="matrix-node-title" fill="#f59e0b">NODE 04: INTELLIGENT SYSTEMS &amp; CORE ARCH</text>
+
+    <text x="20" y="52" class="matrix-sub" fill="#0f172a">• SIGNAL-NEURALNETWORK</text>
+    <text x="185" y="52" class="matrix-desc" fill="#475569">Signal processing, spectral analysis &amp; neural models</text>
+
+    <text x="20" y="76" class="matrix-sub" fill="#0f172a">• Software-Design</text>
+    <text x="185" y="76" class="matrix-desc" fill="#475569">Enterprise design patterns, SOLID, clean architectures</text>
+
+    <text x="20" y="100" class="matrix-sub" fill="#0f172a">• GPT_CMD / Automation</text>
+    <text x="185" y="100" class="matrix-desc" fill="#475569">CLI intelligence agents, automated workflow pipelines</text>
+
+    <g transform="translate(20, 118)">
+      <rect x="0" y="0" width="115" height="20" rx="4" fill="#ffffff" stroke="#f59e0b" stroke-width="0.8"/>
+      <text x="8" y="14" class="matrix-sub" font-size="9.5" fill="#f59e0b">Python / NumPy</text>
+
+      <rect x="125" y="0" width="115" height="20" rx="4" fill="#ffffff" stroke="#f59e0b" stroke-width="0.8"/>
+      <text x="133" y="14" class="matrix-sub" font-size="9.5" fill="#f59e0b">Java Architecture</text>
+
+      <rect x="250" y="0" width="130" height="20" rx="4" fill="#ffffff" stroke="#f59e0b" stroke-width="0.8"/>
+      <text x="258" y="14" class="matrix-sub" font-size="9.5" fill="#f59e0b">DSP &amp; Signal Theory</text>
+    </g>
+  </g>
+
+  <!-- ==================== CENTRAL CORE PROCESSOR HUB ==================== -->
+  <g class="core-pulse">
+    <rect x="420" y="185" width="120" height="70" rx="8" fill="#ffffff" stroke="#00f0ff" stroke-width="2"/>
+    <circle cx="480" cy="210" r="12" fill="none" stroke="#00f0ff" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <circle cx="480" cy="210" r="5" fill="#00f0ff"/>
+    <text x="480" y="242" text-anchor="middle" class="matrix-sub" font-weight="700" fill="#0f172a">CORE ENGINE</text>
+  </g>
+</svg>

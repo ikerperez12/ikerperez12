@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" width="100%" height="100%">
+  <defs>
+    <linearGradient id="headerGradLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <linearGradient id="scanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#00f0ff" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0"/>
+    </linearGradient>
+
+    <pattern id="gridPatternLight" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(226, 232, 240, 0.8)" stroke-width="1"/>
+    </pattern>
+
+    <style>
+      @keyframes laserScan {
+        0% { transform: translateY(0px); opacity: 0.1; }
+        50% { opacity: 0.7; }
+        100% { transform: translateY(320px); opacity: 0.1; }
+      }
+      @keyframes pulseGlow {
+        0%, 100% { opacity: 0.4; filter: drop-shadow(0 0 2px #00f0ff); }
+        50% { opacity: 1; filter: drop-shadow(0 0 8px #00f0ff); }
+      }
+      @keyframes radarSweep {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      @keyframes blinkDot {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.2; }
+      }
+      .telemetry-title {
+        font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+      }
+      .telemetry-sub {
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+      }
+      .telemetry-label {
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-weight: 500;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+      }
+      .telemetry-val {
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-weight: 700;
+        font-size: 13px;
+      }
+      .scan-beam {
+        animation: laserScan 6s ease-in-out infinite alternate;
+      }
+      .pulse-indicator {
+        animation: pulseGlow 3s ease-in-out infinite;
+      }
+      .radar-arm {
+        transform-origin: 905px 45px;
+        animation: radarSweep 4s linear infinite;
+      }
+      .blink {
+        animation: blinkDot 1.5s ease-in-out infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="960" height="320" rx="14" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+  <rect width="960" height="320" rx="14" fill="url(#gridPatternLight)"/>
+
+  <!-- Scanning Laser Line -->
+  <rect class="scan-beam" x="0" y="0" width="960" height="2" fill="url(#scanGrad)"/>
+
+  <!-- Top System Bar -->
+  <path d="M 0 14 Q 0 0 14 0 L 946 0 Q 960 0 960 14 L 960 38 L 0 38 Z" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  
+  <!-- Terminal Dots -->
+  <circle cx="25" cy="19" r="4.5" fill="#ef4444" opacity="0.85"/>
+  <circle cx="42" cy="19" r="4.5" fill="#f59e0b" opacity="0.85"/>
+  <circle cx="59" cy="19" r="4.5" fill="#10b981" opacity="0.85"/>
+
+  <!-- Status HUD Label -->
+  <text x="85" y="23" class="telemetry-label" fill="#94a3b8">SYSTEM HUD // NODE: <tspan fill="#00f0ff">IKERPEREZ12-CORE</tspan></text>
+  <text x="420" y="23" class="telemetry-label" fill="#10b981"><tspan class="blink">●</tspan> STATUS: PRODUCTION HARDENED // VERIFIED</text>
+  <text x="830" y="23" class="telemetry-label" fill="#94a3b8">LOC: A CORUÑA [ES]</text>
+
+  <!-- Mini Radar Widget Top Right -->
+  <circle cx="905" cy="45" r="18" fill="#ffffff" stroke="#00f0ff" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.6"/>
+  <circle cx="905" cy="45" r="9" fill="none" stroke="#00f0ff" stroke-width="0.5" opacity="0.4"/>
+  <line class="radar-arm" x1="905" y1="45" x2="905" y2="27" stroke="#00f0ff" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Main Hero Title Section -->
+  <g transform="translate(35, 75)">
+    <!-- Decorative Bracket -->
+    <path d="M 0 35 L 0 0 L 25 0" fill="none" stroke="#00f0ff" stroke-width="2.5"/>
+    
+    <text x="18" y="32" class="telemetry-title" font-size="34" fill="url(#headerGradLight)">IKER PEREZ</text>
+    <text x="18" y="58" class="telemetry-sub" font-size="13" fill="#64748b">FULL-TECH COMPUTER ENGINEER // SYSTEMS &amp; CREATIVE TECHNOLOGIST</text>
+    
+    <!-- Verified Engineering Badges Bar -->
+    <g transform="translate(18, 75)">
+      <!-- Badge 1: 0-Telemetry -->
+      <rect x="0" y="0" width="168" height="24" rx="5" fill="#ffffff" stroke="#10b981" stroke-width="1"/>
+      <circle cx="12" cy="12" r="3.5" fill="#10b981" class="blink"/>
+      <text x="24" y="16" class="telemetry-label" fill="#10b981">ZERO-TELEMETRY</text>
+
+      <!-- Badge 2: CycloneDX SBOM -->
+      <rect x="178" y="0" width="160" height="24" rx="5" fill="#ffffff" stroke="#00f0ff" stroke-width="1"/>
+      <circle cx="190" cy="12" r="3.5" fill="#00f0ff"/>
+      <text x="202" y="16" class="telemetry-label" fill="#00f0ff">SBOM: CYCLONEDX</text>
+
+      <!-- Badge 3: SHA-256 Checksums -->
+      <rect x="348" y="0" width="165" height="24" rx="5" fill="#ffffff" stroke="#818cf8" stroke-width="1"/>
+      <circle cx="360" cy="12" r="3.5" fill="#818cf8"/>
+      <text x="372" y="16" class="telemetry-label" fill="#818cf8">SHA-256 VERIFIED</text>
+
+      <!-- Badge 4: A11y Automated -->
+      <rect x="523" y="0" width="165" height="24" rx="5" fill="#ffffff" stroke="#f59e0b" stroke-width="1"/>
+      <circle cx="535" cy="12" r="3.5" fill="#f59e0b"/>
+      <text x="547" y="16" class="telemetry-label" fill="#f59e0b">AXE-CORE CI TESTED</text>
+    </g>
+  </g>
+
+  <!-- Lower Telemetry Metric Cards (4 Pillars) -->
+  <g transform="translate(35, 195)">
+    <!-- Card 1: Systems & Security -->
+    <rect x="0" y="0" width="212" height="100" rx="8" fill="#ffffff" stroke="#10b981" stroke-width="1.2" opacity="0.95"/>
+    <path d="M 0 0 L 212 0 L 212 24 L 0 24 Z" fill="#10b981" fill-opacity="0.12"/>
+    <text x="12" y="17" class="telemetry-label" fill="#10b981">🛡️ SYSTEMS &amp; SECURITY</text>
+    <text x="12" y="44" class="telemetry-label" fill="#94a3b8">FLAGSHIP: <tspan fill="#0f172a" class="telemetry-val">NexoIP 3D</tspan></text>
+    <text x="12" y="64" class="telemetry-label" fill="#94a3b8">LAB: <tspan fill="#0f172a" class="telemetry-val">Post-Quantum PQC</tspan></text>
+    <text x="12" y="84" class="telemetry-label" fill="#94a3b8">POLICY: <tspan fill="#10b981">Sandboxed Offline</tspan></text>
+
+    <!-- Card 2: Graphics & 3D -->
+    <rect x="226" y="0" width="212" height="100" rx="8" fill="#ffffff" stroke="#00f0ff" stroke-width="1.2" opacity="0.95"/>
+    <path d="M 0 0 L 212 0 L 212 24 L 0 24 Z" fill="#00f0ff" fill-opacity="0.12"/>
+    <text x="238" y="17" class="telemetry-label" fill="#00f0ff">💎 3D &amp; GRAPHICS</text>
+    <text x="238" y="44" class="telemetry-label" fill="#94a3b8">ENGINE: <tspan fill="#0f172a" class="telemetry-val">Three.js / WebGL</tspan></text>
+    <text x="238" y="64" class="telemetry-label" fill="#94a3b8">SHOWCASE: <tspan fill="#0f172a" class="telemetry-val">e36 318is Coupe</tspan></text>
+    <text x="238" y="84" class="telemetry-label" fill="#94a3b8">PIPELINE: <tspan fill="#00f0ff">PySide6 / R3F</tspan></text>
+
+    <!-- Card 3: Web OS & UI Systems -->
+    <rect x="452" y="0" width="212" height="100" rx="8" fill="#ffffff" stroke="#818cf8" stroke-width="1.2" opacity="0.95"/>
+    <path d="M 0 0 L 212 0 L 212 24 L 0 24 Z" fill="#818cf8" fill-opacity="0.12"/>
+    <text x="464" y="17" class="telemetry-label" fill="#818cf8">🖥️ WEB OS &amp; TOOLKITS</text>
+    <text x="464" y="44" class="telemetry-label" fill="#94a3b8">DESKTOP: <tspan fill="#0f172a" class="telemetry-val">IP Linux (10★)</tspan></text>
+    <text x="464" y="64" class="telemetry-label" fill="#94a3b8">DESIGN SYS: <tspan fill="#0f172a" class="telemetry-val">UI-IP Toolkit v4</tspan></text>
+    <text x="464" y="84" class="telemetry-label" fill="#94a3b8">DEPLOY: <tspan fill="#818cf8">Vercel Static CDN</tspan></text>
+
+    <!-- Card 4: Verified Artifacts -->
+    <rect x="678" y="0" width="212" height="100" rx="8" fill="#ffffff" stroke="#f59e0b" stroke-width="1.2" opacity="0.95"/>
+    <path d="M 0 0 L 212 0 L 212 24 L 0 24 Z" fill="#f59e0b" fill-opacity="0.12"/>
+    <text x="690" y="17" class="telemetry-label" fill="#f59e0b">⚡ VERIFIED TELEMETRY</text>
+    <text x="690" y="44" class="telemetry-label" fill="#94a3b8">PUBLIC REPOS: <tspan fill="#0f172a" class="telemetry-val">27 Active</tspan></text>
+    <text x="690" y="64" class="telemetry-label" fill="#94a3b8">SIGNED RELEASES: <tspan fill="#0f172a" class="telemetry-val">12 Published</tspan></text>
+    <text x="690" y="84" class="telemetry-label" fill="#94a3b8">INTEGRITY: <tspan fill="#f59e0b">100% Verifiable</tspan></text>
+  </g>
+</svg>

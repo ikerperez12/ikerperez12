@@ -1,0 +1,21 @@
+{
+  "name": "ikerperez12",
+  "version": "1.0.0",
+  "description": "Bespoke GitHub Profile README & Living Telemetry Engine for @ikerperez12",
+  "main": "scripts/generate-telemetry.mjs",
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate-telemetry.mjs",
+    "optimize": "$env:PYTHONDONTWRITEBYTECODE=1; python scripts/optimize-assets.py"
+  },
+  "keywords": [
+    "profile",
+    "readme",
+    "telemetry",
+    "svg",
+    "living-system",
+    "security-hardened"
+  ],
+  "author": "Iker Perez (https://github.com/ikerperez12)",
+  "license": "MIT"
+}

@@ -1,0 +1,41 @@
+name: Profile Telemetry Generator
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Daily at midnight UTC
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'scripts/**'
+
+permissions:
+  contents: write
+
+jobs:
+  telemetry:
+    name: Refresh Dynamic Profile Telemetry
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generate Dynamic SVG Telemetry HUD & Subsystem Matrix
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          node scripts/generate-telemetry.mjs
+
+      - name: Commit & Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/ README.md
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(telemetry): update live profile SVGs [skip ci]" && git push)
