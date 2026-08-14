@@ -33,10 +33,10 @@ async function fetchStats() {
   return { totalContribs };
 }
 
-// 1. BESPOKE AURORA EDGE HERO WITH LUXURY 3D PRISMATIC HYPER-CORE (960 x 340)
+// 1. BESPOKE AURORA HERO WITH 3D CYBER-DUCK (960 x 340)
 function generateHeroSVG(stats, isDark = true) {
   const bg = isDark ? '#05070c' : '#ffffff';
-  const surface = isDark ? '#090d16' : '#f8fafc';
+  const surface = isDark ? '#0a0e18' : '#f8fafc';
   const textPrimary = isDark ? '#f8fafc' : '#090d14';
   const textSecondary = isDark ? '#94a3b8' : '#475569';
   const textMuted = isDark ? '#64748b' : '#94a3b8';
@@ -45,42 +45,63 @@ function generateHeroSVG(stats, isDark = true) {
   const pink = '#fb8dff';
   const emerald = '#4ade80';
   const cyan = '#38bdf8';
+  const yellow = '#fde047';
+  const orange = '#fb923c';
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" width="100%" height="100%">
   <defs>
-    <linearGradient id="auroraEdge${isDark ? 'D' : 'L'}" x1="0%" y1="0%" x2="100%" y2="100%">
+    <!-- Aurora Prismatic Gradient Border -->
+    <linearGradient id="auroraBorder" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="${violet}"/>
       <stop offset="35%" stop-color="${pink}"/>
       <stop offset="70%" stop-color="${emerald}"/>
       <stop offset="100%" stop-color="${cyan}"/>
     </linearGradient>
 
-    <linearGradient id="metallicGrad${isDark ? 'D' : 'L'}" x1="0%" y1="0%" x2="100%" y2="100%">
+    <!-- Metallic Typography Gradient -->
+    <linearGradient id="metallicText" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#ffffff"/>
       <stop offset="45%" stop-color="#e2e8f0"/>
       <stop offset="100%" stop-color="${cyan}"/>
     </linearGradient>
 
-    <linearGradient id="progGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <!-- Indeterminate Progress Bar Gradient -->
+    <linearGradient id="progBeam" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="transparent"/>
       <stop offset="50%" stop-color="${violet}"/>
       <stop offset="100%" stop-color="transparent"/>
     </linearGradient>
 
-    <radialGradient id="ambientLight" cx="78%" cy="50%" r="55%">
-      <stop offset="0%" stop-color="${violet}" stop-opacity="${isDark ? '0.22' : '0.12'}"/>
-      <stop offset="45%" stop-color="${cyan}" stop-opacity="${isDark ? '0.12' : '0.06'}"/>
+    <!-- Silky Ambient Radial Glow (NO DOTS, NO GRIDS) -->
+    <radialGradient id="duckBacklight" cx="78%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="${yellow}" stop-opacity="${isDark ? '0.22' : '0.15'}"/>
+      <stop offset="40%" stop-color="${violet}" stop-opacity="${isDark ? '0.15' : '0.08'}"/>
+      <stop offset="80%" stop-color="${cyan}" stop-opacity="${isDark ? '0.08' : '0.04'}"/>
       <stop offset="100%" stop-color="${bg}" stop-opacity="0"/>
     </radialGradient>
 
-    <radialGradient id="crystalGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="${cyan}" stop-opacity="0.8"/>
-      <stop offset="40%" stop-color="${violet}" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="${pink}" stop-opacity="0"/>
-    </radialGradient>
+    <!-- Shading Gradients for 3D Cyber-Duck Facets -->
+    <linearGradient id="duckBodyTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="100%" stop-color="#facc15"/>
+    </linearGradient>
+    <linearGradient id="duckBodySide" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#facc15"/>
+      <stop offset="100%" stop-color="#ca8a04"/>
+    </linearGradient>
+    <linearGradient id="duckBodyDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a16207"/>
+      <stop offset="100%" stop-color="#713f12"/>
+    </linearGradient>
 
-    <filter id="glowHyper" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="4.5" result="blur"/>
+    <linearGradient id="duckBeak" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb923c"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="glowHolo" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -88,25 +109,26 @@ function generateHeroSVG(stats, isDark = true) {
     </filter>
 
     <style>
-      @keyframes spinGimbal1 {
+      @keyframes duckBobbing {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        35% { transform: translateY(-10px) rotate(2deg); }
+        70% { transform: translateY(-4px) rotate(-2deg); }
+      }
+      @keyframes orbitSpin1 {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
       }
-      @keyframes spinGimbal2 {
+      @keyframes orbitSpin2 {
         0% { transform: rotate(360deg); }
         100% { transform: rotate(0deg); }
       }
-      @keyframes float3D {
-        0%, 100% { transform: translateY(0px) scale(1); }
-        50% { transform: translateY(-8px) scale(1.03); }
-      }
-      @keyframes pulseInnerCore {
-        0%, 100% { opacity: 0.6; filter: drop-shadow(0 0 6px ${cyan}); }
-        50% { opacity: 1; filter: drop-shadow(0 0 18px ${pink}); }
-      }
-      @keyframes lbar {
+      @keyframes lbarAnim {
         0% { transform: translateX(-100%); }
         100% { transform: translateX(100%); }
+      }
+      @keyframes rippleWave {
+        0% { r: 50px; opacity: 0.8; }
+        100% { r: 105px; opacity: 0; }
       }
       @keyframes wv2_1 { 0%, 100% { height: 6px; } 50% { height: 22px; } }
       @keyframes wv2_2 { 0%, 100% { height: 8px; } 50% { height: 26px; } }
@@ -129,51 +151,58 @@ function generateHeroSVG(stats, isDark = true) {
         font-size: 10px;
         font-weight: 600;
       }
-      .gimbal-ring1 {
+      .duck-3d-group {
         transform-origin: 775px 170px;
-        animation: spinGimbal1 22s linear infinite;
+        animation: duckBobbing 4s ease-in-out infinite;
       }
-      .gimbal-ring2 {
+      .orbit-ring1 {
         transform-origin: 775px 170px;
-        animation: spinGimbal2 16s linear infinite;
+        animation: orbitSpin1 20s linear infinite;
       }
-      .hyper-core-float {
+      .orbit-ring2 {
         transform-origin: 775px 170px;
-        animation: float3D 5s ease-in-out infinite;
+        animation: orbitSpin2 14s linear infinite;
       }
-      .crystal-pulse {
-        animation: pulseInnerCore 3.5s ease-in-out infinite;
+      .ripple-ring {
+        transform-origin: 775px 230px;
+        animation: rippleWave 3s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
       }
-      .lbar-anim {
-        animation: lbar 2s infinite linear;
+      .lbar {
+        animation: lbarAnim 2s infinite linear;
       }
-      .eq-bar-1 { animation: wv2_1 1s ease-in-out infinite; }
-      .eq-bar-2 { animation: wv2_2 1s ease-in-out infinite 0.15s; }
-      .eq-bar-3 { animation: wv2_3 1s ease-in-out infinite 0.3s; }
-      .eq-bar-4 { animation: wv2_4 1s ease-in-out infinite 0.45s; }
+      .eq-1 { animation: wv2_1 1s ease-in-out infinite; }
+      .eq-2 { animation: wv2_2 1s ease-in-out infinite 0.15s; }
+      .eq-3 { animation: wv2_3 1s ease-in-out infinite 0.3s; }
+      .eq-4 { animation: wv2_4 1s ease-in-out infinite 0.45s; }
     </style>
   </defs>
 
-  <rect width="960" height="340" rx="18" fill="url(#auroraEdge${isDark ? 'D' : 'L'})"/>
+  <!-- Aurora Prismatic Gradient Border -->
+  <rect width="960" height="340" rx="18" fill="url(#auroraBorder)"/>
+  
+  <!-- Obsidian Canvas (Clean, Soft, NO Dots, NO Grid) -->
   <rect x="2" y="2" width="956" height="336" rx="16" fill="${bg}"/>
-  <rect x="2" y="2" width="956" height="336" rx="16" fill="url(#ambientLight)"/>
+  <rect x="2" y="2" width="956" height="336" rx="16" fill="url(#duckBacklight)"/>
 
-  <path d="M 2 18 Q 2 2 18 2 L 942 2 Q 958 2 958 18 L 958 44 L 2 44 Z" fill="${surface}" stroke="rgba(194, 164, 255, 0.12)" stroke-width="1"/>
+  <!-- Top System Telemetry Bar -->
+  <path d="M 2 18 Q 2 2 18 2 L 942 2 Q 958 2 958 18 L 958 44 L 2 44 Z" fill="${surface}" stroke="rgba(194, 164, 255, 0.15)" stroke-width="1"/>
   
   <circle cx="28" cy="23" r="4.5" fill="${emerald}"/>
-  <text x="44" y="27" class="mono-header" fill="${textPrimary}">IKER PÉREZ GARCÍA // NEXO-IP SYSTEMS &amp; INTERACTIVE RUNTIMES</text>
+  <text x="44" y="27" class="mono-header" fill="${textPrimary}">IKER PÉREZ GARCÍA // NEXO-IP 3D &amp; COMPUTATIONAL SYSTEMS</text>
   <text x="610" y="27" class="mono-tag" fill="${emerald}">[ONLINE • ${stats.totalContribs.toLocaleString()} CONTRIBUTIONS / YEAR]</text>
   <text x="825" y="27" class="mono-tag" fill="${textMuted}">A CORUÑA [ES]</text>
 
+  <!-- Scanline Beam -->
   <g transform="translate(2, 43)">
     <rect width="956" height="2" fill="rgba(255,255,255,0.04)"/>
-    <g class="lbar-anim">
-      <rect width="350" height="2" fill="url(#progGrad)"/>
+    <g class="lbar">
+      <rect width="350" height="2" fill="url(#progBeam)"/>
     </g>
   </g>
 
+  <!-- Left Editorial Content (Aligned with nexoip.click) -->
   <g transform="translate(48, 75)">
-    <text x="0" y="48" class="hero-main-title" font-size="44" fill="url(#metallicGrad${isDark ? 'D' : 'L'})">IKER PÉREZ GARCÍA</text>
+    <text x="0" y="48" class="hero-main-title" font-size="44" fill="url(#metallicText)">IKER PÉREZ GARCÍA</text>
     <text x="0" y="78" class="mono-header" font-size="12" fill="${violet}">SOFTWARE, SISTEMAS Y EXPERIENCIAS INTERACTIVAS</text>
     
     <text x="0" y="114" font-family="system-ui, -apple-system, sans-serif" font-size="14.5" fill="${textSecondary}">
@@ -183,6 +212,7 @@ function generateHeroSVG(stats, isDark = true) {
       <tspan fill="${violet}" font-weight="700">entornos desktop web</tspan> y <tspan fill="${emerald}" font-weight="700">criptografía post-cuántica</tspan> con evidencia pública.
     </text>
 
+    <!-- Technical Badges -->
     <g transform="translate(0, 168)">
       <rect x="0" y="0" width="130" height="28" rx="6" fill="${surface}" stroke="${emerald}" stroke-width="1.2"/>
       <text x="14" y="18" class="mono-tag" fill="${emerald}">[✓] OFFLINE-FIRST</text>
@@ -198,39 +228,75 @@ function generateHeroSVG(stats, isDark = true) {
     </g>
   </g>
 
+  <!-- Audio Equalizer Bars -->
   <g transform="translate(48, 290)">
-    <rect class="eq-bar-1" x="0" y="0" width="5" rx="2.5" fill="${pink}"/>
-    <rect class="eq-bar-2" x="8" y="0" width="5" rx="2.5" fill="${violet}"/>
-    <rect class="eq-bar-3" x="16" y="0" width="5" rx="2.5" fill="${cyan}"/>
-    <rect class="eq-bar-4" x="24" y="0" width="5" rx="2.5" fill="${emerald}"/>
+    <rect class="eq-1" x="0" y="0" width="5" rx="2.5" fill="${pink}"/>
+    <rect class="eq-2" x="8" y="0" width="5" rx="2.5" fill="${violet}"/>
+    <rect class="eq-3" x="16" y="0" width="5" rx="2.5" fill="${cyan}"/>
+    <rect class="eq-4" x="24" y="0" width="5" rx="2.5" fill="${emerald}"/>
     <text x="38" y="16" class="mono-tag" fill="${violet}">AURASYNTH DSP ENGINE // 44.1 kHz REAL-TIME</text>
   </g>
 
-  <g class="hyper-core-float">
-    <circle cx="775" cy="170" r="70" fill="url(#crystalGlow)"/>
+  <!-- ==================== RIGHT VISUAL: 3D CYBER-DUCK MASCOT ==================== -->
+  <g transform="translate(0, 0)">
+    <!-- Water Hologram Ripples -->
+    <ellipse class="ripple-ring" cx="775" cy="225" rx="75" ry="24" fill="none" stroke="${cyan}" stroke-width="1.2"/>
+    <ellipse cx="775" cy="225" rx="85" ry="26" fill="none" stroke="${violet}" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="4 4"/>
 
-    <g class="gimbal-ring1">
-      <ellipse cx="775" cy="170" rx="98" ry="42" fill="none" stroke="url(#auroraEdge${isDark ? 'D' : 'L'})" stroke-width="1.8" stroke-opacity="0.8" stroke-dasharray="12 6" transform="rotate(-25 775 170)"/>
-      <circle cx="865" cy="140" r="4" fill="${cyan}"/>
-      <circle cx="685" cy="200" r="4" fill="${pink}"/>
+    <!-- Orbital Gimbal Rings around 3D Duck -->
+    <g class="orbit-ring1">
+      <ellipse cx="775" cy="170" rx="98" ry="42" fill="none" stroke="url(#auroraBorder)" stroke-width="1.5" stroke-opacity="0.75" stroke-dasharray="10 6" transform="rotate(-30 775 170)"/>
+      <circle cx="865" cy="140" r="3.5" fill="${cyan}"/>
+    </g>
+    <g class="orbit-ring2">
+      <ellipse cx="775" cy="170" rx="95" ry="38" fill="none" stroke="${pink}" stroke-width="1.2" stroke-opacity="0.6" transform="rotate(45 775 170)"/>
+      <circle cx="705" cy="130" r="3.5" fill="${yellow}"/>
     </g>
 
-    <g class="gimbal-ring2">
-      <ellipse cx="775" cy="170" rx="96" ry="38" fill="none" stroke="${cyan}" stroke-width="1.5" stroke-opacity="0.65" transform="rotate(45 775 170)"/>
-      <circle cx="845" cy="220" r="3.5" fill="${violet}"/>
-      <circle cx="705" cy="120" r="3.5" fill="${emerald}"/>
-    </g>
+    <!-- 3D LOW-POLY CYBER DUCK GROUP (Floating & Bobbing) -->
+    <g class="duck-3d-group" filter="url(#glowHolo)" transform="translate(775, 165)">
+      <!-- 1. Tail Feathers (Isometric low-poly back facets) -->
+      <polygon points="-55,10 -35,-5 -38,20" fill="url(#duckBodyDark)" stroke="#ca8a04" stroke-width="1"/>
+      <polygon points="-65,15 -55,10 -45,25" fill="#713f12" stroke="#ca8a04" stroke-width="1"/>
 
-    <g class="crystal-pulse" filter="url(#glowHyper)" transform="translate(775, 170)">
-      <polygon points="0,-45 38,-22 0,0 -38,-22" fill="${surface}" stroke="${violet}" stroke-width="1.8" fill-opacity="0.85"/>
-      <polygon points="0,0 38,-22 38,24 0,46" fill="#131122" stroke="${pink}" stroke-width="1.8" fill-opacity="0.9"/>
-      <polygon points="-38,-22 0,0 0,46 -38,24" fill="#0d1424" stroke="${cyan}" stroke-width="1.8" fill-opacity="0.9"/>
+      <!-- 2. Main Duck Body (Low-poly 3D Facets) -->
+      <!-- Bottom Keel Face -->
+      <polygon points="-40,25 25,35 45,20 -10,35" fill="url(#duckBodyDark)" stroke="#ca8a04" stroke-width="1"/>
+      <!-- Lower Side Body -->
+      <polygon points="-45,5 -10,25 35,20 40,-5 -15,5" fill="url(#duckBodySide)" stroke="#eab308" stroke-width="1.2"/>
+      <!-- Upper Side / Chest -->
+      <polygon points="-15,5 40,-5 30,-30 0,-25" fill="url(#duckBodyTop)" stroke="#fde047" stroke-width="1.2"/>
+      <!-- Back Flank -->
+      <polygon points="-45,5 -15,5 0,-25 -35,-15" fill="url(#duckBodySide)" stroke="#eab308" stroke-width="1"/>
 
-      <line x1="0" y1="-45" x2="0" y2="46" stroke="${emerald}" stroke-width="1.2" stroke-dasharray="3 3"/>
-      <line x1="-38" y1="-22" x2="38" y2="24" stroke="${violet}" stroke-width="1" stroke-opacity="0.6"/>
-      <line x1="-38" y1="24" x2="38" y2="-22" stroke="${cyan}" stroke-width="1" stroke-opacity="0.6"/>
+      <!-- 3. Low-Poly Wing Structure -->
+      <polygon points="-25,-5 15,-10 5,15 -20,12" fill="url(#duckBodyTop)" stroke="#fef08a" stroke-width="1.5"/>
+      <polygon points="5,15 15,-10 25,5" fill="url(#duckBodySide)" stroke="#ca8a04" stroke-width="1"/>
 
-      <circle cx="0" cy="0" r="6" fill="#ffffff" filter="url(#glowHyper)"/>
+      <!-- 4. Duck Neck & Head Facets -->
+      <polygon points="10,-25 30,-30 38,-45 20,-48" fill="url(#duckBodyTop)" stroke="#fef08a" stroke-width="1.2"/>
+      <polygon points="20,-48 38,-45 48,-60 28,-65" fill="url(#duckBodyTop)" stroke="#fde047" stroke-width="1.2"/>
+      <polygon points="28,-65 48,-60 42,-75 22,-75" fill="url(#duckBodyTop)" stroke="#fef08a" stroke-width="1.5"/>
+      <polygon points="22,-75 42,-75 35,-85 18,-82" fill="#fef08a" stroke="#ffffff" stroke-width="1.2"/>
+
+      <!-- 5. Head Back / Crown Facets -->
+      <polygon points="10,-25 20,-48 8,-55 0,-35" fill="url(#duckBodySide)" stroke="#ca8a04" stroke-width="1"/>
+      <polygon points="8,-55 28,-65 14,-75 0,-60" fill="url(#duckBodySide)" stroke="#ca8a04" stroke-width="1"/>
+      <polygon points="14,-75 22,-75 18,-82 8,-80" fill="url(#duckBodySide)" stroke="#ca8a04" stroke-width="1"/>
+
+      <!-- 6. Cybernetic Eye / HUD Glass -->
+      <polygon points="36,-66 44,-64 42,-70 34,-70" fill="#06090e" stroke="${cyan}" stroke-width="1.2"/>
+      <circle cx="39" cy="-67" r="2" fill="${cyan}"/>
+      <circle cx="39" cy="-67" r="4" fill="none" stroke="${cyan}" stroke-width="0.8" stroke-dasharray="2 2"/>
+
+      <!-- 7. 3D Low-Poly Beak (Orange & Amber facets) -->
+      <!-- Upper Beak Face -->
+      <polygon points="48,-60 42,-75 68,-65 62,-55" fill="url(#duckBeak)" stroke="#f97316" stroke-width="1.2"/>
+      <!-- Lower Beak Face -->
+      <polygon points="48,-60 62,-55 58,-50 42,-52" fill="#c2410c" stroke="#9a3412" stroke-width="1.2"/>
+
+      <!-- Holographic Coordinates Tag on Mascot -->
+      <text x="-40" y="48" font-family="'JetBrains Mono', monospace" font-size="9" fill="${yellow}" font-weight="700">GLTF_DUCK // 3D RUNTIME</text>
     </g>
   </g>
 </svg>`;
@@ -238,10 +304,9 @@ function generateHeroSVG(stats, isDark = true) {
 
 // 2. LUXURY SECTION HEADER BANNER (960 x 85)
 function generateSectionHeaderSVG(isDark = true) {
-  const bg = isDark ? '#06080e' : '#ffffff';
+  const bg = isDark ? '#05070c' : '#ffffff';
   const surface = isDark ? '#0a0e18' : '#f8fafc';
   const textPrimary = isDark ? '#ffffff' : '#090d14';
-  const textSecondary = isDark ? '#94a3b8' : '#475569';
   const violet = '#c2a4ff';
   const pink = '#fb8dff';
   const emerald = '#4ade80';
@@ -249,14 +314,14 @@ function generateSectionHeaderSVG(isDark = true) {
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 85" width="100%" height="100%">
   <defs>
-    <linearGradient id="headerAurora${isDark ? 'D' : 'L'}" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="headerAurora" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="${violet}"/>
       <stop offset="35%" stop-color="${pink}"/>
       <stop offset="70%" stop-color="${emerald}"/>
       <stop offset="100%" stop-color="${cyan}"/>
     </linearGradient>
 
-    <linearGradient id="headerTitleGrad${isDark ? 'D' : 'L'}" x1="0%" y1="0%" x2="100%" y2="0%">
+    <linearGradient id="headerTitleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="${textPrimary}"/>
       <stop offset="50%" stop-color="${cyan}"/>
       <stop offset="100%" stop-color="${emerald}"/>
@@ -295,11 +360,9 @@ function generateSectionHeaderSVG(isDark = true) {
     </style>
   </defs>
 
-  <!-- Aurora Outer Accent Border -->
-  <rect width="960" height="85" rx="14" fill="url(#headerAurora${isDark ? 'D' : 'L'})"/>
+  <rect width="960" height="85" rx="14" fill="url(#headerAurora)"/>
   <rect x="2" y="2" width="956" height="81" rx="12" fill="${bg}"/>
 
-  <!-- Top Laser Beam Accent -->
   <g transform="translate(2, 2)">
     <rect width="956" height="2" fill="rgba(255,255,255,0.05)"/>
     <g class="beam-loop">
@@ -307,15 +370,12 @@ function generateSectionHeaderSVG(isDark = true) {
     </g>
   </g>
 
-  <!-- Section Number Badge & Title -->
   <g transform="translate(30, 48)">
     <rect x="0" y="-20" width="38" height="24" rx="5" fill="${surface}" stroke="${violet}" stroke-width="1.2"/>
     <text x="19" y="-4" text-anchor="middle" class="sec-mono" fill="${violet}">02</text>
-
-    <text x="50" y="-2" class="sec-title" font-size="22" fill="url(#headerTitleGrad${isDark ? 'D' : 'L'})">PROYECTOS PÚBLICOS &amp; GALERÍA BENTO</text>
+    <text x="50" y="-2" class="sec-title" font-size="22" fill="url(#headerTitleGrad)">PROYECTOS PÚBLICOS &amp; GALERÍA BENTO</text>
   </g>
 
-  <!-- Right Telemetry Badge -->
   <g transform="translate(680, 28)">
     <rect width="250" height="30" rx="6" fill="${surface}" stroke="${cyan}" stroke-width="1"/>
     <circle cx="15" cy="15" r="4" fill="${emerald}"/>
@@ -324,12 +384,10 @@ function generateSectionHeaderSVG(isDark = true) {
 </svg>`;
 }
 
-// 3. LUXURY FOOTER MONOLITH (960 x 85)
+// 3. LUXURY FOOTER (960 x 85)
 function generateFooterSVG(isDark = true) {
-  const bg = isDark ? '#06080e' : '#ffffff';
-  const surface = isDark ? '#0a0e18' : '#f8fafc';
+  const bg = isDark ? '#05070c' : '#ffffff';
   const textPrimary = isDark ? '#ffffff' : '#090d14';
-  const textSecondary = isDark ? '#94a3b8' : '#475569';
   const violet = '#c2a4ff';
   const pink = '#fb8dff';
   const emerald = '#4ade80';
@@ -337,7 +395,7 @@ function generateFooterSVG(isDark = true) {
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 85" width="100%" height="100%">
   <defs>
-    <linearGradient id="footerAurora${isDark ? 'D' : 'L'}" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="footerAurora" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="${violet}"/>
       <stop offset="35%" stop-color="${pink}"/>
       <stop offset="70%" stop-color="${emerald}"/>
@@ -359,7 +417,7 @@ function generateFooterSVG(isDark = true) {
     </style>
   </defs>
 
-  <rect width="960" height="85" rx="14" fill="url(#footerAurora${isDark ? 'D' : 'L'})"/>
+  <rect width="960" height="85" rx="14" fill="url(#footerAurora)"/>
   <rect x="2" y="2" width="956" height="81" rx="12" fill="${bg}"/>
 
   <g transform="translate(35, 48)">
@@ -372,7 +430,7 @@ function generateFooterSVG(isDark = true) {
 }
 
 async function main() {
-  console.log('[Generator] Building luxury SVGs and section headers...');
+  console.log('[Generator] Building 3D Cyber-Duck Hero, Bento Section Header, and Footer...');
   const stats = await fetchStats();
 
   fs.mkdirSync(ASSETS_DIR, { recursive: true });
@@ -386,7 +444,7 @@ async function main() {
   fs.writeFileSync(path.join(ASSETS_DIR, 'footer-dark.svg'), generateFooterSVG(true));
   fs.writeFileSync(path.join(ASSETS_DIR, 'footer-light.svg'), generateFooterSVG(false));
 
-  console.log('[Generator] Rendered all luxury hero and section header assets.');
+  console.log('[Generator] Completed rendering 3D Cyber-Duck Hero and assets.');
 }
 
 main().catch(err => {
