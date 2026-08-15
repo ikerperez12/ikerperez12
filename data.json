@@ -1,5 +1,5 @@
-﻿{
-  "generated": "2026-08-15T00:42:38.897Z",
+{
+  "generated": "2026-08-15T01:13:52.110Z",
   "user": "ikerperez12",
   "products": [
     {
@@ -324,31 +324,31 @@
       "url": "https://ip-os-linux.vercel.app",
       "status": 200,
       "ok": true,
-      "ms": 113
+      "ms": 134
     },
     {
       "url": "https://ui-ip-toolkit.vercel.app/",
       "status": 200,
       "ok": true,
-      "ms": 124
+      "ms": 170
     },
     {
       "url": "https://e36.vercel.app",
       "status": 200,
       "ok": true,
-      "ms": 280
+      "ms": 118
     },
     {
       "url": "https://warpod.vercel.app",
       "status": 200,
       "ok": true,
-      "ms": 219
+      "ms": 136
     }
   ],
   "github": {
     "createdAt": "2020-10-21T14:49:26Z",
-    "totalContributions": 2775,
-    "commits": 1572,
+    "totalContributions": 2780,
+    "commits": 927,
     "publicRepos": 18,
     "calendar": [
       [
@@ -585,7 +585,7 @@
       ],
       [
         "2025-10-07",
-        0
+        1
       ],
       [
         "2025-10-08",
@@ -597,7 +597,7 @@
       ],
       [
         "2025-10-10",
-        0
+        4
       ],
       [
         "2025-10-11",
@@ -1433,11 +1433,11 @@
       ],
       [
         "2026-05-07",
-        6
+        7
       ],
       [
         "2026-05-08",
-        21
+        20
       ],
       [
         "2026-05-09",
@@ -1839,25 +1839,6 @@
   },
   "repos": [
     {
-      "repo": "ikerperez12",
-      "description": "",
-      "stars": 0,
-      "forks": 0,
-      "homepage": "",
-      "pushed": "2026-08-14T17:22:33Z",
-      "license": "MIT",
-      "topics": [],
-      "release": null,
-      "languages": {
-        "JavaScript": 42947,
-        "Python": 6703
-      },
-      "langColors": {
-        "JavaScript": "#f1e05a",
-        "Python": "#3572A5"
-      }
-    },
-    {
       "repo": "BLENDER-TOOL",
       "description": "",
       "stars": 2,
@@ -2140,19 +2121,6 @@
       }
     },
     {
-      "repo": "ISD",
-      "description": "",
-      "stars": 1,
-      "forks": 0,
-      "homepage": "",
-      "pushed": "2025-10-02T07:31:19Z",
-      "license": "Apache-2.0",
-      "topics": [],
-      "release": null,
-      "languages": {},
-      "langColors": {}
-    },
-    {
       "repo": "Basketball-API",
       "description": "API REST , DJANGO. BACKEND + FRONTEND",
       "stars": 0,
@@ -2197,19 +2165,6 @@
         "Makefile": "#427819",
         "TypeScript": "#3178c6"
       }
-    },
-    {
-      "repo": "JAVA",
-      "description": "",
-      "stars": 0,
-      "forks": 0,
-      "homepage": "",
-      "pushed": "2023-06-17T17:47:31Z",
-      "license": null,
-      "topics": [],
-      "release": null,
-      "languages": {},
-      "langColors": {}
     }
   ],
   "languages": [
@@ -2220,7 +2175,7 @@
     },
     {
       "name": "Python",
-      "bytes": 1331998,
+      "bytes": 1332586,
       "color": "#3572A5"
     },
     {
@@ -2230,7 +2185,7 @@
     },
     {
       "name": "JavaScript",
-      "bytes": 941166,
+      "bytes": 957748,
       "color": "#f1e05a"
     },
     {
