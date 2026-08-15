@@ -6,7 +6,7 @@
  * be re-rendered offline while iterating on the design.
  */
 
-import { readFileSync, writeFileSync, mkdirSync, readdirSync, unlinkSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, unlinkSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { newCrystal, renderCrystal } from "./crystal.mjs";
@@ -64,18 +64,23 @@ for (const f of readdirSync(out)) {
 emit("closer-scope.svg", CLOSERS.scope());
 
 // ---- supporter crystal ------------------------------------------------------
-// Rendered from the committed ledger, so a fresh clone reproduces exactly the
-// crystal the supporters actually grew.
+// crystal-add.mjs owns this image. Regenerating it here would let the audit
+// run, whose checkout predates a support press, overwrite a freshly grown
+// crystal with the version its own stale ledger implies — which is exactly
+// what happened once. Only create it if it is missing.
 const statePath = join(root, ".github", "state", "crystal.json");
-let crystal;
-try {
-  crystal = JSON.parse(readFileSync(statePath, "utf8"));
-} catch {
-  crystal = newCrystal();
-  mkdirSync(dirname(statePath), { recursive: true });
-  writeFileSync(statePath, JSON.stringify(crystal, null, 2), "utf8");
+const crystalPath = join(out, "crystal.svg");
+if (!existsSync(crystalPath) || !existsSync(statePath)) {
+  let crystal;
+  try {
+    crystal = JSON.parse(readFileSync(statePath, "utf8"));
+  } catch {
+    crystal = newCrystal();
+    mkdirSync(dirname(statePath), { recursive: true });
+    writeFileSync(statePath, JSON.stringify(crystal, null, 2), "utf8");
+  }
+  emit("crystal.svg", renderCrystal(crystal));
 }
-emit("crystal.svg", renderCrystal(crystal));
 
 console.log(`assets: hero x4, covers x${covers}, closer x1, crystal x1`);
 console.log(`generated total ${(total / 1024).toFixed(1)} KB`);
