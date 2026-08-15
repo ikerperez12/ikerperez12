@@ -9,7 +9,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { newCrystal, support, renderSupport, supportTooltip } from "./crystal.mjs";
+import { newCrystal, support, renderSupport, supportTooltip, hash } from "./crystal.mjs";
 import { replaceChunk } from "./render-readme.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -45,7 +45,11 @@ if (rawTitle !== "support") {
 mkdirSync(dirname(statePath), { recursive: true });
 writeFileSync(statePath, JSON.stringify(state, null, 2), "utf8");
 mkdirSync(assets, { recursive: true });
-writeFileSync(join(assets, "support.svg"), renderSupport(state), "utf8");
+const svg = renderSupport(state);
+writeFileSync(join(assets, "support.svg"), svg, "utf8");
+// Key the cache-buster to the image itself, not to the count: a redesign that
+// leaves the count unchanged must still defeat GitHub's asset cache.
+const version = hash(svg).toString(36);
 
 
 // The img title is the only hover GitHub will fire, so it carries the names.
@@ -60,7 +64,7 @@ writeFileSync(
     readme,
     "crystal",
     `<p align="center">
-  <a href="${link}"><img src=".github/assets/support.svg?v=${state.cells.length}" title="${supportTooltip(state).replace(/"/g, "&quot;")}" alt="I was here. ${state.cells.length} ${state.cells.length === 1 ? "person has" : "people have"} left a cell."></a>
+  <a href="${link}"><img src=".github/assets/support.svg?v=${version}" title="${supportTooltip(state).replace(/"/g, "&quot;")}" alt="I was here. ${state.cells.length} ${state.cells.length === 1 ? "person has" : "people have"} left a cell."></a>
 </p>`
   ),
   "utf8"

@@ -37,7 +37,7 @@
 
 <!-- crystal:start -->
 <p align="center">
-  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=support&body=Just+press+Create.+Nothing+here+needs+changing."><img src=".github/assets/support.svg?v=2" title="1 here: @ikerperez12" alt="I was here. 1 person has left a cell."></a>
+  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=support&body=Just+press+Create.+Nothing+here+needs+changing."><img src=".github/assets/support.svg?v=16m0r0j" title="1 here: @ikerperez12" alt="I was here. 1 person has left a cell."></a>
 </p>
 <!-- crystal:end -->
 
@@ -84,7 +84,7 @@ such rather than quietly dropped.
 </details>
 
 <!-- stamp:start -->
-Last audit: **2026-08-15 02:12 UTC**. Everything above is read from the GitHub API by [`scripts/collect.mjs`](scripts/collect.mjs) — nothing is typed in by hand.
+Last audit: **2026-08-15 00:42 UTC**. Everything above is read from the GitHub API by [`scripts/collect.mjs`](scripts/collect.mjs) — nothing is typed in by hand.
 <!-- stamp:end -->
 
 <sub>A Coruña, Galicia · [ikerperez12](https://github.com/ikerperez12)</sub>

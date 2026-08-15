@@ -79,12 +79,17 @@ export function support(state, user, identity = {}) {
   return { state: s, added: true };
 }
 
-/** Hue is constrained to one cool band so the crystal reads as a palette. */
+/**
+ * A wide but continuous ramp — teal, cyan, indigo, violet, magenta — so the
+ * cluster carries real colour variety while still reading as one palette. A
+ * full hue wheel would put yellows and greens next to the accent and turn it
+ * into confetti.
+ */
 function colourFor(user) {
   const h = hash(user);
-  const hue = 188 + (h % 104); // cyan through violet
-  const sat = 62 + ((h >> 8) % 22);
-  const lig = 56 + ((h >> 16) % 16);
+  const hue = 158 + (h % 182); // teal through magenta
+  const sat = 64 + ((h >> 8) % 26);
+  const lig = 54 + ((h >> 16) % 20);
   return `hsl(${hue} ${sat}% ${lig}%)`;
 }
 
@@ -101,7 +106,7 @@ function colourFor(user) {
  * serves both GitHub themes.
  */
 export function renderSupport(state) {
-  const cell = 17;
+  const cell = 22;
   const btnW = 152;
   const btnH = 36;
   const gap = 20;
@@ -141,17 +146,23 @@ export function renderSupport(state) {
   // however many tiles there are, without a rule per tile.
   let edgeCss = "";
   for (let i = 0; i < 12; i++) {
-    edgeCss += `.e${i}{animation-delay:-${n(4.8 - (i / 12) * 4.8)}s}`;
+    edgeCss += `.e${i}{animation-delay:-${n(5.4 - (i / 12) * 5.4)}s,-${n(5.4 - (i / 12) * 5.4)}s}`;
   }
 
   const style = `
 .run{animation:chase 7s linear infinite}
 .r0{animation-delay:0s}.r1{animation-delay:-2.33s}.r2{animation-delay:-4.66s}
 @keyframes chase{to{stroke-dashoffset:-100}}
-.edge{stroke-opacity:.22;animation:shine 4.8s ease-in-out infinite}
-@keyframes shine{0%,60%,100%{stroke-opacity:.22}18%{stroke-opacity:.85}}
+.edge{stroke:#38bdf8;stroke-opacity:.85;animation:edgerun 5.4s linear infinite,edgehue 5.4s linear infinite}
+@keyframes edgerun{to{stroke-dashoffset:-100}}
+@keyframes edgehue{0%{stroke:#38bdf8}33%{stroke:#818cf8}66%{stroke:#c084fc}100%{stroke:#38bdf8}}
 ${edgeCss}
-@media (prefers-reduced-motion:reduce){.run,.edge{animation:none}.edge{stroke-opacity:.4}}
+/* Pointer events never reach an SVG shown through an img, so this only comes
+   alive when the file itself is opened — where each tile is also a link. */
+.tile{transition:opacity .18s ease}
+.tile:hover{opacity:.82}
+.tile:hover .edge{stroke-opacity:1;stroke-width:2.4;animation-duration:1.6s}
+@media (prefers-reduced-motion:reduce){.run,.edge{animation:none}.edge{stroke-dasharray:none;stroke-opacity:.5}}
 `;
 
   const count = state.cells.length;
@@ -212,11 +223,13 @@ function renderCells(state, cell) {
     // brightens in a wave across the cluster so the field is alive without any
     // tile ever moving.
     body +=
-      `<a href="${esc(href)}" target="_blank">` +
+      `<a href="${esc(href)}" target="_blank" class="tile">` +
       `<title>${esc(c.label || "@" + c.user)}</title>` +
-      `<rect x="${x}" y="${y}" width="${size}" height="${size}" rx="3.4" fill="${col}"/>` +
-      `<rect x="${x}" y="${y}" width="${size}" height="${size}" rx="3.4" fill="url(#sheen)"/>` +
-      `<rect x="${n(x + 0.6)}" y="${n(y + 0.6)}" width="${n(size - 1.2)}" height="${n(size - 1.2)}" rx="3" fill="none" stroke="#ffffff" class="edge e${i % 12}"/>` +
+      `<rect x="${x}" y="${y}" width="${size}" height="${size}" rx="4.5" fill="${col}"/>` +
+      `<rect x="${x}" y="${y}" width="${size}" height="${size}" rx="4.5" fill="url(#sheen)"/>` +
+      // The same trick as the banner frame, one tile at a time: a short lit dash
+      // travelling the perimeter while its colour cycles through the ramp.
+      `<rect x="${n(x + 0.9)}" y="${n(y + 0.9)}" width="${n(size - 1.8)}" height="${n(size - 1.8)}" rx="4" fill="none" stroke-width="1.6" pathLength="100" stroke-dasharray="26 74" stroke-linecap="round" class="edge e${i % 12}"/>` +
       `</a>`;
   });
 
