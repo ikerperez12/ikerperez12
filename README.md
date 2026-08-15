@@ -62,6 +62,33 @@ viewer cannot exist on this page.</sub>
 
 ---
 
+## Snake
+
+<sub>Everyone shares one board. Press a direction: it opens a prefilled issue,
+a workflow moves the snake one cell, redraws this image and closes the issue.
+The edges wrap, so only running into the tail ends a run. State lives in
+<a href=".github/state/snake.json"><code>.github/state/snake.json</code></a> and
+every move is a commit — the history is the replay.</sub>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/snake-dark.svg">
+    <img alt="A shared snake board. Press a direction link to take a turn." src=".github/assets/snake-light.svg" width="86%">
+  </picture>
+</p>
+
+<p align="center">
+  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=snake%7Cup&body=Press+the+green+button.+Nothing+else+is+needed."><b>&nbsp;↑&nbsp;up&nbsp;</b></a> &nbsp;·&nbsp;
+  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=snake%7Cleft&body=Press+the+green+button.+Nothing+else+is+needed."><b>&nbsp;←&nbsp;left&nbsp;</b></a> &nbsp;·&nbsp;
+  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=snake%7Cdown&body=Press+the+green+button.+Nothing+else+is+needed."><b>&nbsp;↓&nbsp;down&nbsp;</b></a> &nbsp;·&nbsp;
+  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=snake%7Cright&body=Press+the+green+button.+Nothing+else+is+needed."><b>&nbsp;→&nbsp;right&nbsp;</b></a>
+</p>
+
+<!-- snake:start -->
+<!-- snake:end -->
+
+---
+
 ## Closing piece — six candidates
 
 <sub>Temporary: all six are here so one can be chosen, and the rest come out.

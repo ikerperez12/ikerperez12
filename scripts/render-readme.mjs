@@ -210,6 +210,7 @@ export function writeReadme(root, data) {
   let text = readFileSync(path, "utf8").replace(/^﻿/, "");
   text = replaceChunk(text, "gallery", gallery(data));
   text = replaceChunk(text, "probes", probeList(data));
+  // The snake scoreboard is owned by snake-move.mjs; leave whatever is there.
   text = replaceChunk(
     text,
     "stamp",

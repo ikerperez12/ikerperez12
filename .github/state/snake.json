@@ -1,0 +1,28 @@
+{
+  "snake": [
+    [
+      10,
+      6
+    ],
+    [
+      9,
+      6
+    ],
+    [
+      8,
+      6
+    ]
+  ],
+  "dir": "right",
+  "food": [
+    15,
+    6
+  ],
+  "score": 0,
+  "high": 0,
+  "moves": 0,
+  "players": [],
+  "last": null,
+  "over": false,
+  "message": "New game."
+}

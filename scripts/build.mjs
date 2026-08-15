@@ -9,6 +9,7 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, unlinkSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { newGame, renderBoard } from "./snake.mjs";
 import { renderHero } from "./render-hero.mjs";
 import { renderCover } from "./render-cover.mjs";
 import { CLOSERS } from "./render-closers.mjs";
@@ -61,7 +62,22 @@ for (const [name, fn] of Object.entries(CLOSERS)) {
   emit(`closer-${name}-light.svg`, fn(data, "light"));
 }
 
-console.log(`assets: hero x4, covers x${covers}, closers x${Object.keys(CLOSERS).length * 2}`);
+// ---- snake board ------------------------------------------------------------
+// Rendered from whatever state the last player left behind, so a fresh clone
+// and a running game both produce a board that matches .github/state.
+const statePath = join(root, ".github", "state", "snake.json");
+let snakeState;
+try {
+  snakeState = JSON.parse(readFileSync(statePath, "utf8"));
+} catch {
+  snakeState = newGame();
+  mkdirSync(dirname(statePath), { recursive: true });
+  writeFileSync(statePath, JSON.stringify(snakeState, null, 2), "utf8");
+}
+emit("snake-dark.svg", renderBoard(snakeState, "dark"));
+emit("snake-light.svg", renderBoard(snakeState, "light"));
+
+console.log(`assets: hero x4, covers x${covers}, closers x${Object.keys(CLOSERS).length * 2}, snake x2`);
 console.log(`generated total ${(total / 1024).toFixed(1)} KB`);
 
 writeReadme(root, data);

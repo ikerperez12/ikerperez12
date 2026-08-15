@@ -106,15 +106,35 @@ add_area("Fill", (3.2 * r, -1.4 * r, 1.2 * r), 45 * r * r, 4.4 * r, (0.76, 0.85,
 add_area("RimA", (1.8 * r, 3.2 * r, 1.6 * r), 620 * r * r, 1.6 * r, (0.45, 0.75, 1.0))
 add_area("RimB", (-3.2 * r, 2.4 * r, 1.2 * r), 480 * r * r, 1.6 * r, (0.78, 0.60, 1.0))
 
-# ---- orbit ------------------------------------------------------------------
+# ---- shoot ------------------------------------------------------------------
+# Two modes. `orbit` circles a static object; `keys` holds the camera still and
+# plays the model's own `Open` action, which lifts the keycaps off the switches.
+# The second is the one that shows what the object is made of.
+MODE = arg("--mode", "keys")
 el = math.radians(ELEV)
 dist = radius * DIST
-for i in range(NF):
-    az = 2 * math.pi * i / NF + math.radians(35)
+AZ = math.radians(float(arg("--az", 48)))
+A0 = float(arg("--a0", 0))
+A1 = float(arg("--a1", 34))
+
+if MODE == "keys":
     cam.location = center + mathutils.Vector(
-        (math.cos(el) * math.cos(az), math.cos(el) * math.sin(az), math.sin(el))
+        (math.cos(el) * math.cos(AZ), math.cos(el) * math.sin(AZ), math.sin(el))
     ) * dist
     cam.rotation_euler = (center - cam.location).to_track_quat("-Z", "Y").to_euler()
+
+for i in range(NF):
+    if MODE == "orbit":
+        az = 2 * math.pi * i / NF + math.radians(35)
+        cam.location = center + mathutils.Vector(
+            (math.cos(el) * math.cos(az), math.cos(el) * math.sin(az), math.sin(el))
+        ) * dist
+        cam.rotation_euler = (center - cam.location).to_track_quat("-Z", "Y").to_euler()
+    else:
+        # Ease in and out of the action so the loop has no visible hard stop.
+        u = i / max(1, NF - 1)
+        eased = 0.5 - 0.5 * math.cos(math.pi * u)
+        scene.frame_set(int(round(A0 + (A1 - A0) * eased)))
     scene.render.filepath = os.path.join(OUT, f"t{i:03d}.png")
     bpy.ops.render.render(write_still=True)
     print(f"###FRAME {i}")
