@@ -100,9 +100,9 @@ every move is a commit — the history is the replay.</sub>
 </p>
 
 <!-- snake:start -->
-**Move 1** · score **0** · best **0**
+**Move 2** · score **0** · best **0**
 
-@ikerperez12 moved right.
+@ikerperez12 moved up.
 
 <sub>Recent players: [@ikerperez12](https://github.com/ikerperez12)</sub>
 <!-- snake:end -->

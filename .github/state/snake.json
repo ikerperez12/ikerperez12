@@ -2,29 +2,29 @@
   "snake": [
     [
       11,
+      5
+    ],
+    [
+      11,
       6
     ],
     [
       10,
       6
-    ],
-    [
-      9,
-      6
     ]
   ],
-  "dir": "right",
+  "dir": "up",
   "food": [
     15,
     6
   ],
   "score": 0,
   "high": 0,
-  "moves": 1,
+  "moves": 2,
   "players": [
     "ikerperez12"
   ],
   "last": "ikerperez12",
   "over": false,
-  "message": "@ikerperez12 moved right."
+  "message": "@ikerperez12 moved up."
 }
