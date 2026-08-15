@@ -8,7 +8,6 @@
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { renderCoreSTL, coreLegend } from "./render-core.mjs";
 
 /** Replace the interior of a marker pair, leaving the markers in place. */
 export function replaceChunk(text, marker, content) {
@@ -21,34 +20,6 @@ export function replaceChunk(text, marker, content) {
   return text.replace(re, `${start}\n${content}\n${end}`);
 }
 
-// Headers stay short because the matrix is eleven columns wide; the full names
-// live in the legend below it, where they have room to be read.
-const CONTROL_LABELS = {
-  ci: "CI",
-  codeql: "CQL",
-  security: "SEC",
-  license: "LIC",
-  contributing: "CTB",
-  architecture: "ARC",
-  a11y_ci: "A11Y",
-  dep_audit: "DEP",
-  signed_release: "SHA",
-  sbom: "SBOM",
-};
-
-const CONTROL_MEANING = {
-  ci: "a CI workflow exists",
-  codeql: "CodeQL analysis runs",
-  security: "SECURITY.md is published",
-  license: "the repository is licensed",
-  contributing: "CONTRIBUTING.md is published",
-  architecture: "an architecture document exists",
-  a11y_ci: "accessibility tests run in CI",
-  dep_audit: "dependencies are audited in CI",
-  signed_release: "releases publish SHA-256 sums",
-  sbom: "releases publish a software bill of materials",
-};
-
 const DISPLAY = {
   "NexoIP-3D-Viewer": "NexoIP 3D Viewer",
   "IP-OS-LINUX": "IP Linux",
@@ -60,19 +31,6 @@ const DISPLAY = {
   "1.2-AuditoriaPQC": "QuantumGuard PQC lab",
 };
 
-/** The audit table: one row per project, one column per control. */
-function auditTable(data) {
-  const keys = Object.keys(CONTROL_LABELS);
-  const head = `| Project | ${keys.map((k) => CONTROL_LABELS[k]).join(" | ")} | Verified |`;
-  const sep = `| --- | ${keys.map(() => ":-:").join(" | ")} | :-: |`;
-  const rows = data.products.map((p) => {
-    const cells = keys.map((k) => (p.controls[k] ? "●" : "·"));
-    const n = keys.filter((k) => p.controls[k]).length;
-    return `| [${DISPLAY[p.repo] || p.repo}](https://github.com/${data.user}/${p.repo}) | ${cells.join(" | ")} | ${n}/${keys.length} |`;
-  });
-  return [head, sep, ...rows].join("\n");
-}
-
 /** Live deployment probe results, reported without embellishment. */
 function probeList(data) {
   if (!data.probes.length) return "_No deployments probed._";
@@ -82,18 +40,6 @@ function probeList(data) {
       return `- \`${state}\` — [${p.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}](${p.url})`;
     })
     .join("\n");
-}
-
-function coreBlock(data) {
-  return "```stl\n" + renderCoreSTL(data) + "\n```";
-}
-
-function coreLegendTable(data) {
-  const rows = coreLegend(data).map(
-    (l) =>
-      `| ${l.tier} | ${l.layer} | [${DISPLAY[l.repo] || l.repo}](https://github.com/${data.user}/${l.repo}) | ${l.verified} |`
-  );
-  return ["| Tier | Layer | Repository | Controls verified |", "| :-: | --- | --- | :-: |", ...rows].join("\n");
 }
 
 /** Projects that have a real screenshot; everything else gets generated cover art. */
