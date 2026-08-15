@@ -1,0 +1,72 @@
+name: Support
+
+# Anyone can add a cell to the crystal by opening an issue titled `support`;
+# the link on the profile prefills it. This is the only workflow a stranger can
+# start, so it is written defensively throughout.
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+# Queue, never cancel: two people pressing at once must both get a cell, and a
+# cancelled run would leave the committed image disagreeing with the ledger.
+concurrency:
+  group: crystal
+  cancel-in-progress: false
+
+jobs:
+  grow:
+    if: github.event.issue.title == 'support'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+
+      - name: Add the cell
+        id: grow
+        # Both values are attacker-controlled. Binding them to environment
+        # variables keeps them out of the generated shell script; the script
+        # then validates the username before using it.
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_USER: ${{ github.event.issue.user.login }}
+        run: |
+          set -euo pipefail
+          RESULT=$(node scripts/crystal-add.mjs)
+          echo "result<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$RESULT" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Commit the new crystal
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A .github/state/crystal.json .github/assets/crystal-dark.svg .github/assets/crystal-light.svg README.md
+          if git diff --cached --quiet; then
+            echo "no change"
+            exit 0
+          fi
+          git commit -m "Crystal: ${GITHUB_ACTOR} left a cell"
+          git pull --rebase --autostash
+          git push
+
+      - name: Thank them and close
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          RESULT: ${{ steps.grow.outputs.result }}
+        run: |
+          set -euo pipefail
+          gh issue comment "$ISSUE_NUMBER" --body "$RESULT
+
+          Your cell is on [the profile](https://github.com/${GITHUB_REPOSITORY_OWNER}) now. Thank you."
+          gh issue close "$ISSUE_NUMBER"

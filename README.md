@@ -68,44 +68,29 @@ because STL carries no materials. Pipeline in
 
 ---
 
-## Snake
+## Crystal
 
-<sub>Everyone shares one board, and it takes <b>two clicks</b>: a direction below
-opens GitHub's new-issue form with the move already filled in, and then you press
-the green <b>Create</b> button. That second click is the move. A workflow reads
-it, advances the snake one cell, redraws this image and closes the issue —
-usually within a minute. There is no one-click version: GitHub has no way to
-create an issue straight from a link.</sub>
-
-<sub>The edges wrap, so only running into the tail ends a run. State lives in
-<a href=".github/state/snake.json"><code>.github/state/snake.json</code></a> and
-every move is a commit — the history is the replay.</sub>
+<sub>One cell per person. Press support below: it opens GitHub's new-issue form
+with the title already filled in, and pressing the green <b>Create</b> button
+adds your cell. Where it lands and what colour it is both come from a hash of
+your username, so you can find yourself in it. Cells attach only where the
+crystal already has mass, which is why the shape is organic and depends on the
+order people arrived in. One per account — this is a headcount, not a score.</sub>
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/snake-dark.svg">
-    <img alt="A shared snake board. Press a direction link to take a turn." src=".github/assets/snake-light.svg" width="86%">
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/crystal-dark.svg">
+    <img alt="A crystal grown one cell per supporter, each cell coloured from that person's username." src=".github/assets/crystal-light.svg" width="94%">
   </picture>
 </p>
 
 <p align="center">
-  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=snake%7Cstart&body=Opens+GitHub%27s+new-issue+form+with+the+move+already+filled+in.+Press+the+green+Create+button+below+-+that+is+the+move.+You+can+leave+this+text+as+it+is."><b>▶&nbsp;start&nbsp;a&nbsp;new&nbsp;game</b></a>
+  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=support&body=Press+the+green+Create+button+below+-+that+is+all.+You+can+leave+this+text+as+it+is."><b>&nbsp;◆&nbsp;leave a cell&nbsp;</b></a>
 </p>
 
-<p align="center">
-  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=snake%7Cup&body=Opens+GitHub%27s+new-issue+form+with+the+move+already+filled+in.+Press+the+green+Create+button+below+-+that+is+the+move.+You+can+leave+this+text+as+it+is."><b>&nbsp;↑&nbsp;up&nbsp;</b></a> &nbsp;·&nbsp;
-  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=snake%7Cleft&body=Opens+GitHub%27s+new-issue+form+with+the+move+already+filled+in.+Press+the+green+Create+button+below+-+that+is+the+move.+You+can+leave+this+text+as+it+is."><b>&nbsp;←&nbsp;left&nbsp;</b></a> &nbsp;·&nbsp;
-  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=snake%7Cdown&body=Opens+GitHub%27s+new-issue+form+with+the+move+already+filled+in.+Press+the+green+Create+button+below+-+that+is+the+move.+You+can+leave+this+text+as+it+is."><b>&nbsp;↓&nbsp;down&nbsp;</b></a> &nbsp;·&nbsp;
-  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=snake%7Cright&body=Opens+GitHub%27s+new-issue+form+with+the+move+already+filled+in.+Press+the+green+Create+button+below+-+that+is+the+move.+You+can+leave+this+text+as+it+is."><b>&nbsp;→&nbsp;right&nbsp;</b></a>
-</p>
-
-<!-- snake:start -->
-**Move 2** · score **0** · best **0**
-
-@ikerperez12 moved up.
-
-<sub>Recent players: [@ikerperez12](https://github.com/ikerperez12)</sub>
-<!-- snake:end -->
+<!-- crystal:start -->
+<sub>**0** people have left a cell.</sub>
+<!-- crystal:end -->
 
 ---
 
@@ -150,7 +135,7 @@ such rather than quietly dropped.
 </details>
 
 <!-- stamp:start -->
-Last audit: **2026-08-15 01:36 UTC**. Everything above is read from the GitHub API by [`scripts/collect.mjs`](scripts/collect.mjs) — nothing is typed in by hand.
+Last audit: **2026-08-15 00:42 UTC**. Everything above is read from the GitHub API by [`scripts/collect.mjs`](scripts/collect.mjs) — nothing is typed in by hand.
 <!-- stamp:end -->
 
 <sub>A Coruña, Galicia · [ikerperez12](https://github.com/ikerperez12)</sub>

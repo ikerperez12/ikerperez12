@@ -9,7 +9,7 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, unlinkSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { newGame, renderBoard } from "./snake.mjs";
+import { newCrystal, renderCrystal } from "./crystal.mjs";
 import { renderHero } from "./render-hero.mjs";
 import { renderCover } from "./render-cover.mjs";
 import { CLOSERS } from "./render-closers.mjs";
@@ -63,22 +63,22 @@ for (const f of readdirSync(out)) {
 }
 emit("closer-scope.svg", CLOSERS.scope());
 
-// ---- snake board ------------------------------------------------------------
-// Rendered from whatever state the last player left behind, so a fresh clone
-// and a running game both produce a board that matches .github/state.
-const statePath = join(root, ".github", "state", "snake.json");
-let snakeState;
+// ---- supporter crystal ------------------------------------------------------
+// Rendered from the committed ledger, so a fresh clone reproduces exactly the
+// crystal the supporters actually grew.
+const statePath = join(root, ".github", "state", "crystal.json");
+let crystal;
 try {
-  snakeState = JSON.parse(readFileSync(statePath, "utf8"));
+  crystal = JSON.parse(readFileSync(statePath, "utf8"));
 } catch {
-  snakeState = newGame();
+  crystal = newCrystal();
   mkdirSync(dirname(statePath), { recursive: true });
-  writeFileSync(statePath, JSON.stringify(snakeState, null, 2), "utf8");
+  writeFileSync(statePath, JSON.stringify(crystal, null, 2), "utf8");
 }
-emit("snake-dark.svg", renderBoard(snakeState, "dark"));
-emit("snake-light.svg", renderBoard(snakeState, "light"));
+emit("crystal-dark.svg", renderCrystal(crystal, "dark"));
+emit("crystal-light.svg", renderCrystal(crystal, "light"));
 
-console.log(`assets: hero x4, covers x${covers}, closer x1, snake x2`);
+console.log(`assets: hero x4, covers x${covers}, closer x1, crystal x2`);
 console.log(`generated total ${(total / 1024).toFixed(1)} KB`);
 
 writeReadme(root, data);
