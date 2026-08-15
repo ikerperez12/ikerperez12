@@ -15,7 +15,7 @@
  * alone, and anyone can find their own cell.
  */
 
-import { esc, MONO, SANS, n } from "./design.mjs";
+import { esc, n } from "./design.mjs";
 
 export const COLS = 47;
 export const ROWS = 23;
@@ -86,20 +86,19 @@ function colourFor(user) {
   return `hsl(${hue} ${sat}% ${lig}%)`;
 }
 
-export function renderCrystal(state, theme) {
-  const dark = theme === "dark";
-  const bg = dark ? "#0d1117" : "#ffffff";
-  const line = dark ? "#1c222b" : "#e4e8ed";
-  const ink = dark ? "#e6edf3" : "#1f2328";
-  const faint = dark ? "#6e7681" : "#818b98";
-
-  // The frame follows the crystal rather than the lattice. A fixed canvas sized
-  // for a full board leaves a tiny cluster marooned in empty space for the first
-  // few hundred supporters, which is exactly when it needs to look deliberate.
-  const cell = 22;
-  const pad = 26;
-  const head = 42;
-  const margin = 2;
+/**
+ * Cells and nothing else.
+ *
+ * No frame, no heading, no padding, and no background — which also means one
+ * file serves both GitHub themes instead of two. The image is cropped to the
+ * cells themselves, so it starts almost invisible and grows only as people
+ * arrive; the count and the button live in the README as plain text.
+ */
+export function renderCrystal(state) {
+  const cell = 13;
+  const pad = 0;
+  const head = 0;
+  const margin = 0;
 
   const xs = [state.seed[0], ...state.cells.map((c) => c.x)];
   const ys = [state.seed[1], ...state.cells.map((c) => c.y)];
@@ -108,9 +107,10 @@ export function renderCrystal(state, theme) {
   let y0 = Math.min(...ys) - margin;
   let y1 = Math.max(...ys) + margin;
 
-  // Keep a minimum footprint so a nearly empty crystal is not a postage stamp.
-  const minW = 22;
-  const minH = 9;
+  // A modest floor so the very first cells still read as a mark rather than a
+  // rendering glitch. Everything past that is growth.
+  const minW = 6;
+  const minH = 3;
   while (x1 - x0 + 1 < minW) {
     x0 -= 1;
     x1 += 1;
@@ -122,45 +122,32 @@ export function renderCrystal(state, theme) {
 
   const gw = x1 - x0 + 1;
   const gh = y1 - y0 + 1;
-  const W = gw * cell + pad * 2;
-  const H = gh * cell + pad * 2 + head + 26;
-  const top = head + pad;
+  const W = gw * cell;
+  const H = gh * cell;
 
-  const px = (x) => pad + (x - x0) * cell;
-  const py = (y) => top + (y - y0) * cell;
+  const px = (x) => (x - x0) * cell;
+  const py = (y) => (y - y0) * cell;
 
-  let body = `<rect width="${W}" height="${H}" rx="10" fill="${bg}"/>`;
-  body += `<rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" rx="10" fill="none" stroke="${line}"/>`;
-
-  // The seed, drawn plainly so the origin of the shape is visible.
-  body += `<rect x="${px(state.seed[0]) + 5}" y="${py(state.seed[1]) + 5}" width="${cell - 10}" height="${cell - 10}" rx="3" fill="${faint}"/>`;
-
+  let body = "";
   state.cells.forEach((c, i) => {
     const newest = i === state.cells.length - 1;
-    const inset = newest ? 2 : 3;
-    body += `<rect x="${px(c.x) + inset}" y="${py(c.y) + inset}" width="${cell - inset * 2}" height="${cell - inset * 2}" rx="4" fill="${colourFor(c.user)}"${newest ? ' class="new"' : ""}/>`;
+    const inset = 1.5;
+    body += `<rect x="${n(px(c.x) + inset)}" y="${n(py(c.y) + inset)}" width="${cell - inset * 2}" height="${cell - inset * 2}" rx="3" fill="${colourFor(c.user)}"${newest ? ' class="new"' : ""}><title>@${esc(c.user)}</title></rect>`;
   });
 
   const count = state.cells.length;
-  body += `<text x="${pad}" y="30" font-family="${MONO}" font-size="12" letter-spacing="2.2" fill="${faint}">CRYSTAL · ONE CELL PER PERSON</text>`;
-  body += `<text x="${W - pad}" y="30" font-family="${MONO}" font-size="12" letter-spacing="2.2" fill="${ink}" text-anchor="end">${count} ${count === 1 ? "SUPPORTER" : "SUPPORTERS"}</text>`;
-
-  const last = state.cells.length ? state.cells[state.cells.length - 1].user : null;
-  body += `<text x="${pad}" y="${H - 12}" font-family="${MONO}" font-size="11" fill="${faint}">${esc(
-    last ? `newest: @${last}` : "nobody yet — the first cell is still free"
-  )}</text>`;
+  const last = count ? state.cells[count - 1].user : null;
 
   const style = `
-text{text-rendering:geometricPrecision}
-.new{animation:land 2.4s ease-out infinite}
-@keyframes land{0%,70%{opacity:1}85%{opacity:.45}100%{opacity:1}}
+.new{animation:land 2.6s ease-in-out infinite}
+@keyframes land{0%,70%,100%{opacity:1}85%{opacity:.4}}
 @media (prefers-reduced-motion:reduce){.new{animation:none}}
 `;
 
-  const desc = `A crystal grown one cell per supporter, currently ${count} cell${count === 1 ? "" : "s"}${last ? `, most recently from ${last}` : ""}.`;
+  const desc = `${count} ${count === 1 ? "person has" : "people have"} left a mark${last ? `, most recently ${last}` : ""}.`;
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="t d" font-family="${SANS}">
-<title id="t">Supporter crystal</title><desc id="d">${esc(desc)}</desc>
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="d">
+<desc id="d">${esc(desc)}</desc>
 <style>${style}</style>
 ${body}
 </svg>`;

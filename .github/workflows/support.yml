@@ -50,7 +50,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A .github/state/crystal.json .github/assets/crystal-dark.svg .github/assets/crystal-light.svg README.md
+          git add -A .github/state/crystal.json .github/assets/crystal.svg README.md
           if git diff --cached --quiet; then
             echo "no change"
             exit 0

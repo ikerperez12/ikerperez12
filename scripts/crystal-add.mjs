@@ -45,25 +45,16 @@ if (rawTitle !== "support") {
 mkdirSync(dirname(statePath), { recursive: true });
 writeFileSync(statePath, JSON.stringify(state, null, 2), "utf8");
 mkdirSync(assets, { recursive: true });
-writeFileSync(join(assets, "crystal-dark.svg"), renderCrystal(state, "dark"), "utf8");
-writeFileSync(join(assets, "crystal-light.svg"), renderCrystal(state, "light"), "utf8");
+writeFileSync(join(assets, "crystal.svg"), renderCrystal(state), "utf8");
 
 // Credit everyone, newest first, in the README itself.
 const readmePath = join(root, "README.md");
 const text = readFileSync(readmePath, "utf8").replace(/^﻿/, "");
-const names = [...state.supporters]
-  .reverse()
-  .map((u) => `[@${u}](https://github.com/${u})`)
-  .join(" · ");
+// Just the count beside the button. Names live in the cells themselves, each
+// one carrying a <title> so hovering shows who it is.
 writeFileSync(
   readmePath,
-  replaceChunk(
-    text,
-    "crystal",
-    `<sub>**${state.cells.length}** ${state.cells.length === 1 ? "person has" : "people have"} left a cell.` +
-      (names ? ` ${names}` : "") +
-      `</sub>`
-  ),
+  replaceChunk(text, "crystal", ` <sub>${state.cells.length}</sub>`),
   "utf8"
 );
 

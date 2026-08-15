@@ -68,29 +68,10 @@ because STL carries no materials. Pipeline in
 
 ---
 
-## Crystal
-
-<sub>One cell per person. Press support below: it opens GitHub's new-issue form
-with the title already filled in, and pressing the green <b>Create</b> button
-adds your cell. Where it lands and what colour it is both come from a hash of
-your username, so you can find yourself in it. Cells attach only where the
-crystal already has mass, which is why the shape is organic and depends on the
-order people arrived in. One per account — this is a headcount, not a score.</sub>
-
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/crystal-dark.svg">
-    <img alt="A crystal grown one cell per supporter, each cell coloured from that person's username." src=".github/assets/crystal-light.svg" width="94%">
-  </picture>
+  <a href=".github/assets/crystal.svg"><img src=".github/assets/crystal.svg" alt="One coloured cell per person who has left a mark; open it to see who."></a>
+  &nbsp;<a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=support&body=Press+the+green+Create+button+below+-+that+is+all.+You+can+leave+this+text+as+it+is."><b>◆ I was here</b></a><!-- crystal:start --> <sub>0</sub><!-- crystal:end -->
 </p>
-
-<p align="center">
-  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=support&body=Press+the+green+Create+button+below+-+that+is+all.+You+can+leave+this+text+as+it+is."><b>&nbsp;◆&nbsp;leave a cell&nbsp;</b></a>
-</p>
-
-<!-- crystal:start -->
-<sub>**1** person has left a cell. [@ikerperez12](https://github.com/ikerperez12)</sub>
-<!-- crystal:end -->
 
 ---
 
@@ -135,7 +116,7 @@ such rather than quietly dropped.
 </details>
 
 <!-- stamp:start -->
-Last audit: **2026-08-15 01:48 UTC**. Everything above is read from the GitHub API by [`scripts/collect.mjs`](scripts/collect.mjs) — nothing is typed in by hand.
+Last audit: **2026-08-15 00:42 UTC**. Everything above is read from the GitHub API by [`scripts/collect.mjs`](scripts/collect.mjs) — nothing is typed in by hand.
 <!-- stamp:end -->
 
 <sub>A Coruña, Galicia · [ikerperez12](https://github.com/ikerperez12)</sub>

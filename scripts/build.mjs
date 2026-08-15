@@ -75,10 +75,9 @@ try {
   mkdirSync(dirname(statePath), { recursive: true });
   writeFileSync(statePath, JSON.stringify(crystal, null, 2), "utf8");
 }
-emit("crystal-dark.svg", renderCrystal(crystal, "dark"));
-emit("crystal-light.svg", renderCrystal(crystal, "light"));
+emit("crystal.svg", renderCrystal(crystal));
 
-console.log(`assets: hero x4, covers x${covers}, closer x1, crystal x2`);
+console.log(`assets: hero x4, covers x${covers}, closer x1, crystal x1`);
 console.log(`generated total ${(total / 1024).toFixed(1)} KB`);
 
 writeReadme(root, data);
