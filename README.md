@@ -89,7 +89,7 @@ order people arrived in. One per account — this is a headcount, not a score.</
 </p>
 
 <!-- crystal:start -->
-<sub>**0** people have left a cell.</sub>
+<sub>**1** person has left a cell. [@ikerperez12](https://github.com/ikerperez12)</sub>
 <!-- crystal:end -->
 
 ---
