@@ -63,7 +63,7 @@ function sites(state) {
  * person already has a cell, which keeps this a headcount rather than a
  * clickable score.
  */
-export function support(state, user) {
+export function support(state, user, identity = {}) {
   const s = JSON.parse(JSON.stringify(state));
   if (s.supporters.includes(user)) return { state: s, added: false };
 
@@ -72,7 +72,9 @@ export function support(state, user) {
   const pick = options[h % options.length];
   const [x, y] = pick.split(",").map(Number);
 
-  s.cells.push({ x, y, user });
+  // `url` and `label` let a supporter who is not a GitHub account be recorded
+  // without inventing a profile for them to link to.
+  s.cells.push({ x, y, user, ...(identity.url ? { url: identity.url } : {}), ...(identity.label ? { label: identity.label } : {}) });
   s.supporters.push(user);
   return { state: s, added: true };
 }
@@ -99,17 +101,21 @@ function colourFor(user) {
  * serves both GitHub themes.
  */
 export function renderSupport(state) {
-  const cell = 13;
-  const btnW = 146;
-  const btnH = 34;
-  const gap = 18;
+  const cell = 17;
+  const btnW = 152;
+  const btnH = 36;
+  const gap = 20;
 
   const cluster = renderCells(state, cell);
-  const H = Math.max(btnH, cluster.h) + 8;
+  const H = Math.max(btnH, cluster.h) + 10;
   const cy = H / 2;
   const countText = String(state.cells.length);
-  const countW = 22 + countText.length * 8;
-  const W = btnW + gap + cluster.w + gap + countW;
+  const countW = 24 + countText.length * 8;
+  // Button, rule, tiles, count. The rule keeps the control's two halves apart so
+  // the tiles read as their own field rather than as decoration on the button.
+  const ruleX = btnW + gap;
+  const clusterX = ruleX + gap;
+  const W = clusterX + cluster.w + gap + countW;
 
   const [g0, g1, g2] = ["#38bdf8", "#818cf8", "#c084fc"];
 
@@ -124,20 +130,28 @@ export function renderSupport(state) {
     .join("");
   body += `<text x="${btnW / 2}" y="${n(cy + 4)}" font-family="${MONO}" font-size="11.5" letter-spacing="2" fill="${g1}" text-anchor="middle">◆ I WAS HERE</text>`;
 
-  const clusterX = btnW + gap;
+  body += `<rect x="${n(ruleX)}" y="${n(cy - H / 2 + 3)}" width="1" height="${n(H - 6)}" fill="#8b949e" fill-opacity="0.3"/>`;
   body += `<g transform="translate(${n(clusterX)} ${n(cy - cluster.h / 2)})">${cluster.body}</g>`;
 
   const cxCount = clusterX + cluster.w + gap;
   body += `<rect x="${n(cxCount)}" y="${n(cy - 11)}" width="${countW}" height="22" rx="11" fill="#8b949e" fill-opacity="0.14"/>`;
   body += `<text x="${n(cxCount + countW / 2)}" y="${n(cy + 4)}" font-family="${MONO}" font-size="12" fill="#8b949e" text-anchor="middle">${countText}</text>`;
 
+  // Twelve staggered phases: the shimmer reads as a wave crossing the cluster
+  // however many tiles there are, without a rule per tile.
+  let edgeCss = "";
+  for (let i = 0; i < 12; i++) {
+    edgeCss += `.e${i}{animation-delay:-${n(4.8 - (i / 12) * 4.8)}s}`;
+  }
+
   const style = `
 .run{animation:chase 7s linear infinite}
 .r0{animation-delay:0s}.r1{animation-delay:-2.33s}.r2{animation-delay:-4.66s}
 @keyframes chase{to{stroke-dashoffset:-100}}
-.new{animation:land 2.6s ease-in-out infinite}
-@keyframes land{0%,70%,100%{opacity:1}85%{opacity:.4}}
-@media (prefers-reduced-motion:reduce){.run,.new{animation:none}}
+.edge{stroke-opacity:.22;animation:shine 4.8s ease-in-out infinite}
+@keyframes shine{0%,60%,100%{stroke-opacity:.22}18%{stroke-opacity:.85}}
+${edgeCss}
+@media (prefers-reduced-motion:reduce){.run,.edge{animation:none}.edge{stroke-opacity:.4}}
 `;
 
   const count = state.cells.length;
@@ -188,20 +202,21 @@ function renderCells(state, cell) {
 
   let body = "";
   state.cells.forEach((c, i) => {
-    const newest = i === state.cells.length - 1;
-    const inset = 1.2;
+    const inset = 1.3;
     const size = cell - inset * 2;
     const x = n((c.x - x0) * cell + inset);
     const y = n((c.y - y0) * cell + inset);
     const col = colourFor(c.user);
-    // A lit top edge and a darker floor give each cell a little relief, so the
-    // cluster reads as tiles rather than as flat swatches.
+    const href = c.url || `https://github.com/${c.user}`;
+    // A lit top edge and a darker floor give each cell relief, and the outline
+    // brightens in a wave across the cluster so the field is alive without any
+    // tile ever moving.
     body +=
-      `<a href="https://github.com/${esc(c.user)}" target="_blank">` +
-      `<title>@${esc(c.user)}</title>` +
-      `<rect x="${x}" y="${y}" width="${size}" height="${size}" rx="2.6" fill="${col}"${newest ? ' class="new"' : ""}/>` +
-      `<rect x="${x}" y="${y}" width="${size}" height="${size}" rx="2.6" fill="url(#sheen)"/>` +
-      `<rect x="${n(x + 0.5)}" y="${n(y + 0.5)}" width="${n(size - 1)}" height="${n(size - 1)}" rx="2.2" fill="none" stroke="#ffffff" stroke-opacity="0.28"/>` +
+      `<a href="${esc(href)}" target="_blank">` +
+      `<title>${esc(c.label || "@" + c.user)}</title>` +
+      `<rect x="${x}" y="${y}" width="${size}" height="${size}" rx="3.4" fill="${col}"/>` +
+      `<rect x="${x}" y="${y}" width="${size}" height="${size}" rx="3.4" fill="url(#sheen)"/>` +
+      `<rect x="${n(x + 0.6)}" y="${n(y + 0.6)}" width="${n(size - 1.2)}" height="${n(size - 1.2)}" rx="3" fill="none" stroke="#ffffff" class="edge e${i % 12}"/>` +
       `</a>`;
   });
 
