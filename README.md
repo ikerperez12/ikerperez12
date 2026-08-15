@@ -33,7 +33,7 @@
 </table>
 <!-- gallery:end -->
 
----
+
 
 <!-- crystal:start -->
 <p align="center">
@@ -41,50 +41,10 @@
 </p>
 <!-- crystal:end -->
 
----
 
-## Closing piece
+
 
 <img src=".github/assets/closer-scope.svg" width="100%" alt="Three Lissajous curves with frequency ratios 3:2, 5:4 and 7:5, drawn in blue, indigo and violet on black, each traced by a travelling highlight.">
 
----
-
-## Colophon
-
-This page is the output of a small program.
-[`scripts/collect.mjs`](scripts/collect.mjs) queries the GitHub API each
-morning, [`scripts/build.mjs`](scripts/build.mjs) renders the SVGs from the
-result, and [`.github/workflows/audit.yml`](.github/workflows/audit.yml) commits
-whatever changed. The generated regions are bounded by HTML comments; everything
-else here was written by hand.
-
-The banner's numbers are counted, not claimed: the workflow reads every
-repository and records only the engineering controls it can confirm — a CI
-workflow, a published `SECURITY.md`, CodeQL, accessibility tests in CI,
-dependency audits, release checksums, a software bill of materials. Gaps stay
-gaps.
-
-No third-party image services are used, so nothing here can break when someone
-else's endpoint goes down, and no request leaves GitHub when you read this.
-Motion is CSS inside the SVGs and stops for `prefers-reduced-motion`.
-
-<details>
-<summary>Deployments, last checked this morning</summary>
-
-<!-- probes:start -->
-- `answered 200` — [ip-os-linux.vercel.app](https://ip-os-linux.vercel.app)
-- `answered 200` — [ui-ip-toolkit.vercel.app](https://ui-ip-toolkit.vercel.app/)
-- `answered 200` — [e36.vercel.app](https://e36.vercel.app)
-- `answered 200` — [warpod.vercel.app](https://warpod.vercel.app)
-<!-- probes:end -->
-
-Reported as reachability only. A deployment that does not answer is recorded as
-such rather than quietly dropped.
-
-</details>
-
-<!-- stamp:start -->
-Last audit: **2026-08-15 02:17 UTC**. Everything above is read from the GitHub API by [`scripts/collect.mjs`](scripts/collect.mjs) — nothing is typed in by hand.
-<!-- stamp:end -->
 
 <sub>A Coruña, Galicia · [ikerperez12](https://github.com/ikerperez12)</sub>
