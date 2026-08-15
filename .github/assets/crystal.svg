@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 91 39" width="91" height="39" role="img" aria-labelledby="d">
-<desc id="d">0 people have left a mark.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 78 39" width="78" height="39" role="img" aria-labelledby="d">
+<desc id="d">1 person has left a mark, most recently ikerperez12.</desc>
 <style>
 .new{animation:land 2.6s ease-in-out infinite}
 @keyframes land{0%,70%,100%{opacity:1}85%{opacity:.4}}
 @media (prefers-reduced-motion:reduce){.new{animation:none}}
 </style>
-
+<rect x="40.5" y="14.5" width="10" height="10" rx="3" fill="hsl(273 76% 70%)" class="new"><title>@ikerperez12</title></rect>
 </svg>

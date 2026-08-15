@@ -70,7 +70,9 @@ because STL carries no materials. Pipeline in
 
 <p align="center">
   <a href=".github/assets/crystal.svg"><img src=".github/assets/crystal.svg" alt="One coloured cell per person who has left a mark; open it to see who."></a>
-  &nbsp;<a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=support&body=Press+the+green+Create+button+below+-+that+is+all.+You+can+leave+this+text+as+it+is."><b>◆ I was here</b></a><!-- crystal:start --> <sub>0</sub><!-- crystal:end -->
+  &nbsp;<a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=support&body=Press+the+green+Create+button+below+-+that+is+all.+You+can+leave+this+text+as+it+is."><b>◆ I was here</b></a><!-- crystal:start -->
+ <sub>1</sub>
+<!-- crystal:end -->
 </p>
 
 ---
