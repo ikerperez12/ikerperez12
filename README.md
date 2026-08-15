@@ -102,7 +102,7 @@ every move is a commit — the history is the replay.</sub>
 <!-- snake:start -->
 **Move 0** · score **0** · best **0**
 
-Waiting for the first move.
+@ikerperez12 started a new game. Press a direction to move.
 
 <sub>Recent players: nobody yet</sub>
 <!-- snake:end -->
