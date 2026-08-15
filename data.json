@@ -1,5 +1,5 @@
-{
-  "generated": "2026-08-14T17:22:18.646Z",
+﻿{
+  "generated": "2026-08-15T00:42:38.897Z",
   "user": "ikerperez12",
   "products": [
     {
@@ -324,31 +324,31 @@
       "url": "https://ip-os-linux.vercel.app",
       "status": 200,
       "ok": true,
-      "ms": 105
+      "ms": 113
     },
     {
       "url": "https://ui-ip-toolkit.vercel.app/",
       "status": 200,
       "ok": true,
-      "ms": 226
+      "ms": 124
     },
     {
       "url": "https://e36.vercel.app",
       "status": 200,
       "ok": true,
-      "ms": 226
+      "ms": 280
     },
     {
       "url": "https://warpod.vercel.app",
       "status": 200,
       "ok": true,
-      "ms": 202
+      "ms": 219
     }
   ],
   "github": {
     "createdAt": "2020-10-21T14:49:26Z",
-    "totalContributions": 2779,
-    "commits": 927,
+    "totalContributions": 2775,
+    "commits": 1572,
     "publicRepos": 18,
     "calendar": [
       [
@@ -585,7 +585,7 @@
       ],
       [
         "2025-10-07",
-        1
+        0
       ],
       [
         "2025-10-08",
@@ -597,7 +597,7 @@
       ],
       [
         "2025-10-10",
-        4
+        0
       ],
       [
         "2025-10-11",
@@ -1433,11 +1433,11 @@
       ],
       [
         "2026-05-07",
-        7
+        6
       ],
       [
         "2026-05-08",
-        20
+        21
       ],
       [
         "2026-05-09",
@@ -1830,9 +1830,388 @@
       [
         "2026-08-14",
         165
+      ],
+      [
+        "2026-08-15",
+        1
       ]
     ]
   },
+  "repos": [
+    {
+      "repo": "ikerperez12",
+      "description": "",
+      "stars": 0,
+      "forks": 0,
+      "homepage": "",
+      "pushed": "2026-08-14T17:22:33Z",
+      "license": "MIT",
+      "topics": [],
+      "release": null,
+      "languages": {
+        "JavaScript": 42947,
+        "Python": 6703
+      },
+      "langColors": {
+        "JavaScript": "#f1e05a",
+        "Python": "#3572A5"
+      }
+    },
+    {
+      "repo": "BLENDER-TOOL",
+      "description": "",
+      "stars": 2,
+      "forks": 0,
+      "homepage": "",
+      "pushed": "2026-08-14T17:00:48Z",
+      "license": "MIT",
+      "topics": [],
+      "release": {
+        "tag": "v1.0.0-rc1"
+      },
+      "languages": {
+        "Python": 221424,
+        "Inno Setup": 1652
+      },
+      "langColors": {
+        "Python": "#3572A5",
+        "Inno Setup": "#264b99"
+      }
+    },
+    {
+      "repo": "SO-SHELL-p2",
+      "description": "p2 SO",
+      "stars": 0,
+      "forks": 0,
+      "homepage": "",
+      "pushed": "2026-08-14T17:00:41Z",
+      "license": null,
+      "topics": [],
+      "release": null,
+      "languages": {
+        "C": 133722,
+        "CMake": 9658
+      },
+      "langColors": {
+        "C": "#555555",
+        "CMake": "#DA3434"
+      }
+    },
+    {
+      "repo": "1.2-AuditoriaPQC",
+      "description": "",
+      "stars": 5,
+      "forks": 0,
+      "homepage": "",
+      "pushed": "2026-08-14T17:00:34Z",
+      "license": "Apache-2.0",
+      "topics": [],
+      "release": null,
+      "languages": {
+        "Python": 51472,
+        "Shell": 3392,
+        "PowerShell": 1514
+      },
+      "langColors": {
+        "Python": "#3572A5",
+        "Shell": "#89e051",
+        "PowerShell": "#012456"
+      }
+    },
+    {
+      "repo": "warpod",
+      "description": "",
+      "stars": 4,
+      "forks": 0,
+      "homepage": "https://warpod.vercel.app",
+      "pushed": "2026-08-14T17:00:27Z",
+      "license": "MIT",
+      "topics": [],
+      "release": null,
+      "languages": {
+        "JavaScript": 46106,
+        "CSS": 20276,
+        "HTML": 579
+      },
+      "langColors": {
+        "JavaScript": "#f1e05a",
+        "CSS": "#663399",
+        "HTML": "#e34c26"
+      }
+    },
+    {
+      "repo": "EASY-LOCALHOST",
+      "description": "",
+      "stars": 4,
+      "forks": 0,
+      "homepage": "",
+      "pushed": "2026-08-14T17:00:20Z",
+      "license": "MIT",
+      "topics": [],
+      "release": {
+        "tag": "v3.0.4"
+      },
+      "languages": {
+        "Python": 84462,
+        "PowerShell": 1576
+      },
+      "langColors": {
+        "Python": "#3572A5",
+        "PowerShell": "#012456"
+      }
+    },
+    {
+      "repo": "Software-Design",
+      "description": "DS",
+      "stars": 1,
+      "forks": 0,
+      "homepage": "",
+      "pushed": "2026-08-14T17:00:12Z",
+      "license": "Apache-2.0",
+      "topics": [],
+      "release": null,
+      "languages": {
+        "Java": 66385
+      },
+      "langColors": {
+        "Java": "#b07219"
+      }
+    },
+    {
+      "repo": "SIGNAL-NEURALNETWORK",
+      "description": "",
+      "stars": 1,
+      "forks": 0,
+      "homepage": "",
+      "pushed": "2026-08-14T17:00:05Z",
+      "license": "GPL-3.0",
+      "topics": [],
+      "release": null,
+      "languages": {
+        "Python": 3410
+      },
+      "langColors": {
+        "Python": "#3572A5"
+      }
+    },
+    {
+      "repo": "UI-IP-Toolkit-v4.0",
+      "description": "UI IP Toolkit",
+      "stars": 9,
+      "forks": 2,
+      "homepage": "https://ui-ip-toolkit.vercel.app/",
+      "pushed": "2026-08-14T16:57:28Z",
+      "license": "MIT",
+      "topics": [
+        "buttons-collection",
+        "copy-paste",
+        "css",
+        "design",
+        "fonts",
+        "frontend",
+        "gradient",
+        "html"
+      ],
+      "release": null,
+      "languages": {
+        "HTML": 769063,
+        "JavaScript": 396491
+      },
+      "langColors": {
+        "HTML": "#e34c26",
+        "JavaScript": "#f1e05a"
+      }
+    },
+    {
+      "repo": "e36",
+      "description": "Cinematic BMW E36 318is Coupe Pack M web experience",
+      "stars": 4,
+      "forks": 0,
+      "homepage": "https://e36.vercel.app",
+      "pushed": "2026-08-14T16:57:23Z",
+      "license": "MIT",
+      "topics": [],
+      "release": null,
+      "languages": {
+        "HTML": 82199,
+        "JavaScript": 20036
+      },
+      "langColors": {
+        "HTML": "#e34c26",
+        "JavaScript": "#f1e05a"
+      }
+    },
+    {
+      "repo": "IP-OS-LINUX",
+      "description": "Public browser desktop OS built with React, Vite, local-first apps, glass UI, and Vercel static deployment.",
+      "stars": 12,
+      "forks": 0,
+      "homepage": "https://ip-os-linux.vercel.app",
+      "pushed": "2026-08-14T16:56:43Z",
+      "license": "MIT",
+      "topics": [
+        "desktop",
+        "glassmorphism",
+        "local-first",
+        "pwa",
+        "react",
+        "typescript",
+        "vercel",
+        "vite"
+      ],
+      "release": null,
+      "languages": {
+        "TypeScript": 1425067,
+        "HTML": 11059,
+        "CSS": 9987,
+        "JavaScript": 5771
+      },
+      "langColors": {
+        "TypeScript": "#3178c6",
+        "HTML": "#e34c26",
+        "CSS": "#663399",
+        "JavaScript": "#f1e05a"
+      }
+    },
+    {
+      "repo": "NexoIP-3D-Viewer",
+      "description": "Alpha technical preview: private, offline-first 3D model viewer for Windows. Active hardening toward a stable open-source release.",
+      "stars": 0,
+      "forks": 0,
+      "homepage": "",
+      "pushed": "2026-08-14T16:56:38Z",
+      "license": "MIT",
+      "topics": [
+        "3d-viewer",
+        "electron",
+        "offline-first",
+        "privacy",
+        "threejs",
+        "windows"
+      ],
+      "release": null,
+      "languages": {
+        "JavaScript": 318244,
+        "CSS": 4608,
+        "HTML": 903
+      },
+      "langColors": {
+        "JavaScript": "#f1e05a",
+        "CSS": "#663399",
+        "HTML": "#e34c26"
+      }
+    },
+    {
+      "repo": "WARP",
+      "description": "WEB PORTFOLIO",
+      "stars": 5,
+      "forks": 0,
+      "homepage": "https://portfolio-iker-perez.vercel.app/",
+      "pushed": "2026-08-10T00:05:13Z",
+      "license": null,
+      "topics": [],
+      "release": null,
+      "languages": {
+        "CSS": 157402,
+        "JavaScript": 111571,
+        "HTML": 31287
+      },
+      "langColors": {
+        "CSS": "#663399",
+        "JavaScript": "#f1e05a",
+        "HTML": "#e34c26"
+      }
+    },
+    {
+      "repo": "GPT_CMD",
+      "description": "",
+      "stars": 1,
+      "forks": 0,
+      "homepage": "",
+      "pushed": "2026-01-31T19:02:46Z",
+      "license": "Apache-2.0",
+      "topics": [],
+      "release": null,
+      "languages": {
+        "Python": 16172
+      },
+      "langColors": {
+        "Python": "#3572A5"
+      }
+    },
+    {
+      "repo": "ISD",
+      "description": "",
+      "stars": 1,
+      "forks": 0,
+      "homepage": "",
+      "pushed": "2025-10-02T07:31:19Z",
+      "license": "Apache-2.0",
+      "topics": [],
+      "release": null,
+      "languages": {},
+      "langColors": {}
+    },
+    {
+      "repo": "Basketball-API",
+      "description": "API REST , DJANGO. BACKEND + FRONTEND",
+      "stars": 0,
+      "forks": 0,
+      "homepage": "",
+      "pushed": "2024-12-02T12:09:24Z",
+      "license": "Apache-2.0",
+      "topics": [],
+      "release": null,
+      "languages": {
+        "Python": 948355,
+        "HTML": 65356,
+        "CSS": 4479,
+        "Dockerfile": 475
+      },
+      "langColors": {
+        "Python": "#3572A5",
+        "HTML": "#e34c26",
+        "CSS": "#663399",
+        "Dockerfile": "#384d54"
+      }
+    },
+    {
+      "repo": "SO-2324",
+      "description": "",
+      "stars": 0,
+      "forks": 0,
+      "homepage": "",
+      "pushed": "2023-11-23T17:31:03Z",
+      "license": null,
+      "topics": [],
+      "release": null,
+      "languages": {
+        "C": 87482,
+        "CMake": 22434,
+        "Makefile": 19375,
+        "TypeScript": 115
+      },
+      "langColors": {
+        "C": "#555555",
+        "CMake": "#DA3434",
+        "Makefile": "#427819",
+        "TypeScript": "#3178c6"
+      }
+    },
+    {
+      "repo": "JAVA",
+      "description": "",
+      "stars": 0,
+      "forks": 0,
+      "homepage": "",
+      "pushed": "2023-06-17T17:47:31Z",
+      "license": null,
+      "topics": [],
+      "release": null,
+      "languages": {},
+      "langColors": {}
+    }
+  ],
   "languages": [
     {
       "name": "TypeScript",

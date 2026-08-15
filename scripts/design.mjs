@@ -36,6 +36,11 @@ export const THEMES = {
     pass: "#3fb950",
     warn: "#d29922",
     idle: "#39414d",
+    // A deliberately narrow cool ramp for the animated frame. Three neighbouring
+    // hues read as one palette; spreading them across the wheel would read as a
+    // rainbow, which is the look this is trying to avoid.
+    glow: ["#38bdf8", "#818cf8", "#c084fc"],
+    deep: "#080b11",
   },
   light: {
     name: "light",
@@ -51,6 +56,8 @@ export const THEMES = {
     pass: "#1a7f37",
     warn: "#9a6700",
     idle: "#c4ccd4",
+    glow: ["#0284c7", "#4f46e5", "#9333ea"],
+    deep: "#f2f5f9",
   },
 };
 

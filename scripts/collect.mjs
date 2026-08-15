@@ -198,9 +198,21 @@ const gql = await graphql(
           weeks { contributionDays { date contributionCount } }
         }
       }
-      repositories(first: 100, ownerAffiliations: OWNER, privacy: PUBLIC, isFork: false) {
+      repositories(first: 100, ownerAffiliations: OWNER, privacy: PUBLIC, isFork: false, orderBy: {field: PUSHED_AT, direction: DESC}) {
         totalCount
-        nodes { name stargazerCount languages(first: 12, orderBy: {field: SIZE, direction: DESC}) { edges { size node { name color } } } }
+        nodes {
+          name
+          description
+          stargazerCount
+          forkCount
+          homepageUrl
+          pushedAt
+          isEmpty
+          licenseInfo { spdxId }
+          repositoryTopics(first: 8) { nodes { topic { name } } }
+          latestRelease { tagName }
+          languages(first: 12, orderBy: {field: SIZE, direction: DESC}) { edges { size node { name color } } }
+        }
       }
     }
   }`,
@@ -216,6 +228,27 @@ data.github = {
     w.contributionDays.map((d) => [d.date, d.contributionCount])
   ),
 };
+
+// Every public repository, for the gallery. Empty repositories are skipped:
+// they would render a card that points at nothing.
+data.repos = gql.user.repositories.nodes
+  .filter((r) => !r.isEmpty)
+  // Skip the profile repository itself and anything with no code in it: both
+  // would render a gallery card that leads nowhere.
+  .filter((r) => r.name !== USER && r.languages.edges.length > 0)
+  .map((r) => ({
+    repo: r.name,
+    description: r.description || "",
+    stars: r.stargazerCount,
+    forks: r.forkCount,
+    homepage: r.homepageUrl || "",
+    pushed: r.pushedAt,
+    license: r.licenseInfo ? r.licenseInfo.spdxId : null,
+    topics: r.repositoryTopics.nodes.map((t) => t.topic.name),
+    release: r.latestRelease ? { tag: r.latestRelease.tagName } : null,
+    languages: Object.fromEntries(r.languages.edges.map((e) => [e.node.name, e.size])),
+    langColors: Object.fromEntries(r.languages.edges.map((e) => [e.node.name, e.node.color])),
+  }));
 
 // Aggregate language bytes across every public non-fork repo.
 const langTotals = new Map();

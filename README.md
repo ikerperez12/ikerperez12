@@ -6,920 +6,176 @@
 </picture>
 
 <p align="center">
-  <img alt="A mechanical keyboard separating into its layers: keycaps lifting away from the switches, the switch plate and the board underneath." src=".github/assets/keyboard.webp" width="620">
+  <img src=".github/assets/keyboard.webp" width="100%" alt="A mechanical keyboard turning slowly under studio lighting against black.">
 </p>
 
-<p align="center"><sub>Todo lo que afirmo aquí se puede comprobar. Cada dato de esta página lo lee un workflow desde la API de GitHub.</sub></p>
+<details>
+<summary><sub>About this object</sub></summary>
+
+<sub>Rendered here rather than embedded from anywhere: thirty frames orbiting a
+fixed three-point rig, lit so the dark keycaps stay dark and the silhouette is
+carried by two coloured rims. It is a derivative of *NZXT miniTKL — mechanical
+Keyboard* by [BlackCube](https://sketchfab.com/blackcube4), used under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) and modified; the
+original author and NZXT do not endorse it. The render pipeline is in
+[`scripts/render-keyboard.py`](scripts/render-keyboard.py).</sub>
+
+<sub>A README cannot run scripts — GitHub strips `<script>`, `<canvas>` and
+`<iframe>` — so this is a rendered orbit rather than a viewer you can drag.</sub>
+
+</details>
 
 ---
 
-## The section
+## Work
 
-I am not a specialist who occasionally leaves their layer. I work down the whole
-stack and the same discipline travels with me: every project ships a security
-posture, an accessibility baseline, an honest account of its limits, and
-something you can actually run.
+<sub>Every public repository, refreshed daily. Scroll sideways.</sub>
+
+<!-- gallery:start -->
+| [NexoIP 3D Viewer](https://github.com/ikerperez12/NexoIP-3D-Viewer) | [IP Linux](https://github.com/ikerperez12/IP-OS-LINUX) | [UI IP Toolkit](https://github.com/ikerperez12/UI-IP-Toolkit-v4.0) | [E36 Scroll Cine](https://github.com/ikerperez12/e36) | [Warpod Studio](https://github.com/ikerperez12/warpod) | [Easy Localhost](https://github.com/ikerperez12/EASY-LOCALHOST) | [IP Blender Tool](https://github.com/ikerperez12/BLENDER-TOOL) | [QuantumGuard PQC lab](https://github.com/ikerperez12/1.2-AuditoriaPQC) | [WARP](https://github.com/ikerperez12/WARP) | [Software-Design](https://github.com/ikerperez12/Software-Design) | [SIGNAL-NEURALNETWORK](https://github.com/ikerperez12/SIGNAL-NEURALNETWORK) | [GPT_CMD](https://github.com/ikerperez12/GPT_CMD) | [SO-SHELL-p2](https://github.com/ikerperez12/SO-SHELL-p2) | [Basketball-API](https://github.com/ikerperez12/Basketball-API) | [SO-2324](https://github.com/ikerperez12/SO-2324) |
+| :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
+| <a href="https://github.com/ikerperez12/NexoIP-3D-Viewer"><img src=".github/assets/p-nexoip.webp" width="300" alt="NexoIP 3D Viewer"></a><br><sub>Offline-first desktop 3D viewer. Sandboxed renderer, private protocol, SBOM and checksums.</sub><br><sub><code>JavaScript</code> <code>MIT</code></sub> | <a href="https://github.com/ikerperez12/IP-OS-LINUX"><img src=".github/assets/p-iplinux.webp" width="300" alt="IP Linux"></a><br><sub>A desktop that runs in a tab: window manager, workspaces, IndexedDB filesystem.</sub><br><sub><code>12★</code> <code>TypeScript</code> <code>MIT</code> · <a href="https://ip-os-linux.vercel.app">live</a></sub> | <a href="https://github.com/ikerperez12/UI-IP-Toolkit-v4.0"><img src=".github/assets/p-toolkit.webp" width="300" alt="UI IP Toolkit"></a><br><sub>Copy-ready interface parts. axe-core gates serious regressions in CI.</sub><br><sub><code>9★</code> <code>HTML</code> <code>MIT</code> · <a href="https://ui-ip-toolkit.vercel.app/">live</a></sub> | <a href="https://github.com/ikerperez12/e36"><img src=".github/assets/p-e36.webp" width="300" alt="E36 Scroll Cine"></a><br><sub>Seven locked-scroll scenes, no framework. PWA with rendered accessibility tests.</sub><br><sub><code>4★</code> <code>HTML</code> <code>MIT</code> · <a href="https://e36.vercel.app">live</a></sub> | <a href="https://github.com/ikerperez12/warpod"><img src=".github/assets/p-warpod.webp" width="300" alt="Warpod Studio"></a><br><sub>Cinematic WebGL: React Three Fiber scene, GSAP choreography, smooth scroll.</sub><br><sub><code>4★</code> <code>JavaScript</code> <code>MIT</code> · <a href="https://warpod.vercel.app">live</a></sub> | <a href="https://github.com/ikerperez12/EASY-LOCALHOST"><img src=".github/assets/p-easylocalhost.webp" width="300" alt="Easy Localhost"></a><br><sub>Always-on-top panel for local dev servers. Ten releases, each with a SHA-256.</sub><br><sub><code>4★</code> <code>Python</code> <code>v3.0.4</code> <code>MIT</code></sub> | <a href="https://github.com/ikerperez12/BLENDER-TOOL"><img src=".github/assets/cover-BLENDER-TOOL.svg" width="300" alt="IP Blender Tool"></a><br><sub>Render queue for Blender. Scans .blend files for missing textures before queueing.</sub><br><sub><code>2★</code> <code>Python</code> <code>v1.0.0-rc1</code> <code>MIT</code></sub> | <a href="https://github.com/ikerperez12/1.2-AuditoriaPQC"><img src=".github/assets/cover-1.2-AuditoriaPQC.svg" width="300" alt="QuantumGuard PQC lab"></a><br><sub>Post-quantum crypto lab driving real Open Quantum Safe containers.</sub><br><sub><code>5★</code> <code>Python</code> <code>Apache-2.0</code></sub> | <a href="https://github.com/ikerperez12/WARP"><img src=".github/assets/cover-WARP.svg" width="300" alt="WARP"></a><br><sub>Personal web portfolio.</sub><br><sub><code>5★</code> <code>CSS</code></sub> | <a href="https://github.com/ikerperez12/Software-Design"><img src=".github/assets/cover-Software-Design.svg" width="300" alt="Software-Design"></a><br><sub>Software design coursework: patterns and modular object-oriented design.</sub><br><sub><code>1★</code> <code>Java</code> <code>Apache-2.0</code></sub> | <a href="https://github.com/ikerperez12/SIGNAL-NEURALNETWORK"><img src=".github/assets/cover-SIGNAL-NEURALNETWORK.svg" width="300" alt="SIGNAL-NEURALNETWORK"></a><br><sub>Signal-processing neural network experiment.</sub><br><sub><code>1★</code> <code>Python</code> <code>GPL-3.0</code></sub> | <a href="https://github.com/ikerperez12/GPT_CMD"><img src=".github/assets/cover-GPT_CMD.svg" width="300" alt="GPT_CMD"></a><br><sub>Command-line ChatGPT automation with history, export and clipboard image send.</sub><br><sub><code>1★</code> <code>Python</code> <code>Apache-2.0</code></sub> | <a href="https://github.com/ikerperez12/SO-SHELL-p2"><img src=".github/assets/cover-SO-SHELL-p2.svg" width="300" alt="SO-SHELL-p2"></a><br><sub>UNIX shell in C: process lifecycle, file descriptors, redirection.</sub><br><sub><code>C</code></sub> | <a href="https://github.com/ikerperez12/Basketball-API"><img src=".github/assets/cover-Basketball-API.svg" width="300" alt="Basketball-API"></a><br><sub>Django REST API with a frontend, containerised.</sub><br><sub><code>Python</code> <code>Apache-2.0</code></sub> | <a href="https://github.com/ikerperez12/SO-2324"><img src=".github/assets/cover-SO-2324.svg" width="300" alt="SO-2324"></a><br><sub>Operating systems coursework in C at the Universidade da Coruña.</sub><br><sub><code>C</code></sub> |
+<!-- gallery:end -->
+
+---
+
+## Closing piece — six candidates
+
+<sub>Temporary. All six are here so one can be chosen; the rest come out.
+Everything below is CSS-animated SVG generated at build time, except the last,
+which is a working game built from nested disclosure elements — a README cannot
+run scripts, so nothing here is a live simulation.</sub>
+
+<details open>
+<summary><b>A · Pendulum wave</b> — one arm per repository, period from commit count</summary>
 
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 560px)" srcset=".github/assets/section-dark-sm.svg">
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/section-dark.svg">
-  <source media="(max-width: 560px)" srcset=".github/assets/section-light-sm.svg">
-  <img alt="Nine layers, from interface down to systems: UI IP Toolkit, E36 Scroll Cine, Warpod Studio, IP Linux, NexoIP 3D Viewer, IP Blender Tool, Easy Localhost, QuantumGuard PQC lab, and operating systems in C." src=".github/assets/section-light.svg" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/closer-pendulum-dark.svg">
+  <img alt="A row of pendulums, one per repository, swinging at different periods." src=".github/assets/closer-pendulum-light.svg" width="100%">
 </picture>
 
----
-
-## The work
-
-<!-- width is required: GitHub only wraps Markdown tables in a scroll container,
-     so a raw HTML table sizes to its content and drags the whole page wider
-     than the viewport on a phone. -->
-<table width="100%">
-<tr>
-<td width="33%" valign="top">
-<a href="https://github.com/ikerperez12/NexoIP-3D-Viewer"><img src=".github/assets/p-nexoip.webp" width="100%" alt="NexoIP 3D Viewer inspecting a local model"></a>
-<b>NexoIP 3D Viewer</b><br>
-<sub>Offline-first 3D asset viewer for Windows. The Electron renderer is sandboxed with no filesystem or Node access; models reach it through a private <code>nexoip://</code> protocol. The v1.0.0 alpha ships SHA-256 sums, a CycloneDX SBOM and third-party notices — and says plainly that the binaries are not code-signed.</sub><br>
-<sub><code>Electron</code> <code>Three.js</code> <code>CodeQL</code></sub>
-</td>
-<td width="33%" valign="top">
-<a href="https://github.com/ikerperez12/IP-OS-LINUX"><img src=".github/assets/p-iplinux.webp" width="100%" alt="IP Linux browser desktop with windows, dock and launcher"></a>
-<b>IP Linux</b> · <a href="https://ip-os-linux.vercel.app">live</a><br>
-<sub>A desktop that runs in a tab: window manager, virtual workspaces, snap assist, and a filesystem backed by IndexedDB. Static build, no backend, no secrets, CSP and a restrictive permissions policy on the deployment.</sub><br>
-<sub><code>React 19</code> <code>TypeScript</code> <code>Vite</code></sub>
-</td>
-<td width="33%" valign="top">
-<a href="https://github.com/ikerperez12/UI-IP-Toolkit-v4.0"><img src=".github/assets/p-toolkit.webp" width="100%" alt="UI IP Toolkit catalog of gradients, buttons and interface fragments"></a>
-<b>UI IP Toolkit</b> · <a href="https://ui-ip-toolkit.vercel.app">live</a><br>
-<sub>A copy-ready catalogue of interface parts. Playwright and axe-core run in CI and fail on serious or critical accessibility regressions, so the snippets people paste are checked rather than assumed. Fonts, audio and scripts are self-hosted; nothing third-party loads at runtime.</sub><br>
-<sub><code>HTML</code> <code>CSS</code> <code>axe-core</code></sub>
-</td>
-</tr>
-<tr>
-<td width="33%" valign="top">
-<a href="https://github.com/ikerperez12/e36"><img src=".github/assets/p-e36.webp" width="100%" alt="E36 Scroll Cine, a vertical cinematic scroll experience"></a>
-<b>E36 Scroll Cine</b> · <a href="https://e36.vercel.app">live</a><br>
-<sub>Seven locked-scroll scenes built with no framework at all — plain HTML, CSS and JavaScript, a service worker, and two small Vercel Functions. Rendered accessibility tests and a public-route secret scan run on every push. Fan-made and explicitly non-official, with a legal page saying so.</sub><br>
-<sub><code>Vanilla JS</code> <code>PWA</code> <code>Playwright</code></sub>
-</td>
-<td width="33%" valign="top">
-<a href="https://github.com/ikerperez12/warpod"><img src=".github/assets/p-warpod.webp" width="100%" alt="Warpod Studio cinematic WebGL site"></a>
-<b>Warpod Studio</b> · <a href="https://warpod.vercel.app">live</a><br>
-<sub>Cinematic WebGL: an interactive React Three Fiber scene, GSAP ScrollTrigger choreography and Lenis smooth scroll, with video curtain transitions between sections. Strict CSP and frame protection on the deployment.</sub><br>
-<sub><code>React Three Fiber</code> <code>GSAP</code> <code>WebGL</code></sub>
-</td>
-<td width="33%" valign="top">
-<a href="https://github.com/ikerperez12/EASY-LOCALHOST"><img src=".github/assets/p-easylocalhost.webp" width="100%" alt="Easy Localhost panel listing local development servers"></a>
-<b>Easy Localhost</b><br>
-<sub>A small always-on-top panel that tells you which localhost ports are alive, which project each belongs to, and lets you close one cleanly. Reads local process and socket metadata only, never touches your source, makes no external calls. Ten releases, each with a published SHA-256; bandit and pip-audit run over the source.</sub><br>
-<sub><code>Python</code> <code>psutil</code> <code>PyInstaller</code></sub>
-</td>
-</tr>
-</table>
-
-Two more worth opening: **[IP Blender Tool](https://github.com/ikerperez12/BLENDER-TOOL)**,
-a render queue that inspects `.blend` files for missing textures before it commits
-you to an overnight job, and **[QuantumGuard](https://github.com/ikerperez12/1.2-AuditoriaPQC)**,
-a post-quantum crypto lab that drives real Open Quantum Safe containers when Docker
-is available and falls back to a deterministic model when it is not.
-
----
-
-## The core sample
-
-The solid below is generated from the audit, not drawn. Each tier is one of my
-repositories and its width is the number of engineering controls a workflow could
-actually verify in it this morning; the tiers are stacked widest-first, so the
-shape rests on the work that proves the most. **Drag it — GitHub renders ASCII STL
-natively, so the viewer is the page itself.** The same geometry lives at
-[`core.stl`](.github/assets/core.stl), which opens in NexoIP 3D Viewer.
-
-<!-- core:start -->
-```stl
-solid iker-perez-core
-facet normal 0 0 -1
-outer loop
-vertex -27.6 -27.6 -27
-vertex -27.6 27.6 -27
-vertex 27.6 27.6 -27
-endloop
-endfacet
-facet normal 0 0 -1
-outer loop
-vertex -27.6 -27.6 -27
-vertex 27.6 27.6 -27
-vertex 27.6 -27.6 -27
-endloop
-endfacet
-facet normal 0 0 1
-outer loop
-vertex -27.6 -27.6 -21
-vertex 27.6 -27.6 -21
-vertex 27.6 27.6 -21
-endloop
-endfacet
-facet normal 0 0 1
-outer loop
-vertex -27.6 -27.6 -21
-vertex 27.6 27.6 -21
-vertex -27.6 27.6 -21
-endloop
-endfacet
-facet normal 0 -1 0
-outer loop
-vertex -27.6 -27.6 -27
-vertex 27.6 -27.6 -27
-vertex 27.6 -27.6 -21
-endloop
-endfacet
-facet normal 0 -1 0
-outer loop
-vertex -27.6 -27.6 -27
-vertex 27.6 -27.6 -21
-vertex -27.6 -27.6 -21
-endloop
-endfacet
-facet normal 1 0 0
-outer loop
-vertex 27.6 -27.6 -27
-vertex 27.6 27.6 -27
-vertex 27.6 27.6 -21
-endloop
-endfacet
-facet normal 1 0 0
-outer loop
-vertex 27.6 -27.6 -27
-vertex 27.6 27.6 -21
-vertex 27.6 -27.6 -21
-endloop
-endfacet
-facet normal 0 1 0
-outer loop
-vertex 27.6 27.6 -27
-vertex -27.6 27.6 -27
-vertex -27.6 27.6 -21
-endloop
-endfacet
-facet normal 0 1 0
-outer loop
-vertex 27.6 27.6 -27
-vertex -27.6 27.6 -21
-vertex 27.6 27.6 -21
-endloop
-endfacet
-facet normal -1 0 0
-outer loop
-vertex -27.6 27.6 -27
-vertex -27.6 -27.6 -27
-vertex -27.6 -27.6 -21
-endloop
-endfacet
-facet normal -1 0 0
-outer loop
-vertex -27.6 27.6 -27
-vertex -27.6 -27.6 -21
-vertex -27.6 27.6 -21
-endloop
-endfacet
-facet normal 0 0 -1
-outer loop
-vertex -18 -18 -21
-vertex -18 18 -21
-vertex 18 18 -21
-endloop
-endfacet
-facet normal 0 0 -1
-outer loop
-vertex -18 -18 -21
-vertex 18 18 -21
-vertex 18 -18 -21
-endloop
-endfacet
-facet normal 0 0 1
-outer loop
-vertex -18 -18 -15
-vertex 18 -18 -15
-vertex 18 18 -15
-endloop
-endfacet
-facet normal 0 0 1
-outer loop
-vertex -18 -18 -15
-vertex 18 18 -15
-vertex -18 18 -15
-endloop
-endfacet
-facet normal 0 -1 0
-outer loop
-vertex -18 -18 -21
-vertex 18 -18 -21
-vertex 18 -18 -15
-endloop
-endfacet
-facet normal 0 -1 0
-outer loop
-vertex -18 -18 -21
-vertex 18 -18 -15
-vertex -18 -18 -15
-endloop
-endfacet
-facet normal 1 0 0
-outer loop
-vertex 18 -18 -21
-vertex 18 18 -21
-vertex 18 18 -15
-endloop
-endfacet
-facet normal 1 0 0
-outer loop
-vertex 18 -18 -21
-vertex 18 18 -15
-vertex 18 -18 -15
-endloop
-endfacet
-facet normal 0 1 0
-outer loop
-vertex 18 18 -21
-vertex -18 18 -21
-vertex -18 18 -15
-endloop
-endfacet
-facet normal 0 1 0
-outer loop
-vertex 18 18 -21
-vertex -18 18 -15
-vertex 18 18 -15
-endloop
-endfacet
-facet normal -1 0 0
-outer loop
-vertex -18 18 -21
-vertex -18 -18 -21
-vertex -18 -18 -15
-endloop
-endfacet
-facet normal -1 0 0
-outer loop
-vertex -18 18 -21
-vertex -18 -18 -15
-vertex -18 18 -15
-endloop
-endfacet
-facet normal 0 0 -1
-outer loop
-vertex -18 -18 -15
-vertex -18 18 -15
-vertex 18 18 -15
-endloop
-endfacet
-facet normal 0 0 -1
-outer loop
-vertex -18 -18 -15
-vertex 18 18 -15
-vertex 18 -18 -15
-endloop
-endfacet
-facet normal 0 0 1
-outer loop
-vertex -18 -18 -9
-vertex 18 -18 -9
-vertex 18 18 -9
-endloop
-endfacet
-facet normal 0 0 1
-outer loop
-vertex -18 -18 -9
-vertex 18 18 -9
-vertex -18 18 -9
-endloop
-endfacet
-facet normal 0 -1 0
-outer loop
-vertex -18 -18 -15
-vertex 18 -18 -15
-vertex 18 -18 -9
-endloop
-endfacet
-facet normal 0 -1 0
-outer loop
-vertex -18 -18 -15
-vertex 18 -18 -9
-vertex -18 -18 -9
-endloop
-endfacet
-facet normal 1 0 0
-outer loop
-vertex 18 -18 -15
-vertex 18 18 -15
-vertex 18 18 -9
-endloop
-endfacet
-facet normal 1 0 0
-outer loop
-vertex 18 -18 -15
-vertex 18 18 -9
-vertex 18 -18 -9
-endloop
-endfacet
-facet normal 0 1 0
-outer loop
-vertex 18 18 -15
-vertex -18 18 -15
-vertex -18 18 -9
-endloop
-endfacet
-facet normal 0 1 0
-outer loop
-vertex 18 18 -15
-vertex -18 18 -9
-vertex 18 18 -9
-endloop
-endfacet
-facet normal -1 0 0
-outer loop
-vertex -18 18 -15
-vertex -18 -18 -15
-vertex -18 -18 -9
-endloop
-endfacet
-facet normal -1 0 0
-outer loop
-vertex -18 18 -15
-vertex -18 -18 -9
-vertex -18 18 -9
-endloop
-endfacet
-facet normal 0 0 -1
-outer loop
-vertex -15.6 -15.6 -9
-vertex -15.6 15.6 -9
-vertex 15.6 15.6 -9
-endloop
-endfacet
-facet normal 0 0 -1
-outer loop
-vertex -15.6 -15.6 -9
-vertex 15.6 15.6 -9
-vertex 15.6 -15.6 -9
-endloop
-endfacet
-facet normal 0 0 1
-outer loop
-vertex -15.6 -15.6 -3
-vertex 15.6 -15.6 -3
-vertex 15.6 15.6 -3
-endloop
-endfacet
-facet normal 0 0 1
-outer loop
-vertex -15.6 -15.6 -3
-vertex 15.6 15.6 -3
-vertex -15.6 15.6 -3
-endloop
-endfacet
-facet normal 0 -1 0
-outer loop
-vertex -15.6 -15.6 -9
-vertex 15.6 -15.6 -9
-vertex 15.6 -15.6 -3
-endloop
-endfacet
-facet normal 0 -1 0
-outer loop
-vertex -15.6 -15.6 -9
-vertex 15.6 -15.6 -3
-vertex -15.6 -15.6 -3
-endloop
-endfacet
-facet normal 1 0 0
-outer loop
-vertex 15.6 -15.6 -9
-vertex 15.6 15.6 -9
-vertex 15.6 15.6 -3
-endloop
-endfacet
-facet normal 1 0 0
-outer loop
-vertex 15.6 -15.6 -9
-vertex 15.6 15.6 -3
-vertex 15.6 -15.6 -3
-endloop
-endfacet
-facet normal 0 1 0
-outer loop
-vertex 15.6 15.6 -9
-vertex -15.6 15.6 -9
-vertex -15.6 15.6 -3
-endloop
-endfacet
-facet normal 0 1 0
-outer loop
-vertex 15.6 15.6 -9
-vertex -15.6 15.6 -3
-vertex 15.6 15.6 -3
-endloop
-endfacet
-facet normal -1 0 0
-outer loop
-vertex -15.6 15.6 -9
-vertex -15.6 -15.6 -9
-vertex -15.6 -15.6 -3
-endloop
-endfacet
-facet normal -1 0 0
-outer loop
-vertex -15.6 15.6 -9
-vertex -15.6 -15.6 -3
-vertex -15.6 15.6 -3
-endloop
-endfacet
-facet normal 0 0 -1
-outer loop
-vertex -13.2 -13.2 -3
-vertex -13.2 13.2 -3
-vertex 13.2 13.2 -3
-endloop
-endfacet
-facet normal 0 0 -1
-outer loop
-vertex -13.2 -13.2 -3
-vertex 13.2 13.2 -3
-vertex 13.2 -13.2 -3
-endloop
-endfacet
-facet normal 0 0 1
-outer loop
-vertex -13.2 -13.2 3
-vertex 13.2 -13.2 3
-vertex 13.2 13.2 3
-endloop
-endfacet
-facet normal 0 0 1
-outer loop
-vertex -13.2 -13.2 3
-vertex 13.2 13.2 3
-vertex -13.2 13.2 3
-endloop
-endfacet
-facet normal 0 -1 0
-outer loop
-vertex -13.2 -13.2 -3
-vertex 13.2 -13.2 -3
-vertex 13.2 -13.2 3
-endloop
-endfacet
-facet normal 0 -1 0
-outer loop
-vertex -13.2 -13.2 -3
-vertex 13.2 -13.2 3
-vertex -13.2 -13.2 3
-endloop
-endfacet
-facet normal 1 0 0
-outer loop
-vertex 13.2 -13.2 -3
-vertex 13.2 13.2 -3
-vertex 13.2 13.2 3
-endloop
-endfacet
-facet normal 1 0 0
-outer loop
-vertex 13.2 -13.2 -3
-vertex 13.2 13.2 3
-vertex 13.2 -13.2 3
-endloop
-endfacet
-facet normal 0 1 0
-outer loop
-vertex 13.2 13.2 -3
-vertex -13.2 13.2 -3
-vertex -13.2 13.2 3
-endloop
-endfacet
-facet normal 0 1 0
-outer loop
-vertex 13.2 13.2 -3
-vertex -13.2 13.2 3
-vertex 13.2 13.2 3
-endloop
-endfacet
-facet normal -1 0 0
-outer loop
-vertex -13.2 13.2 -3
-vertex -13.2 -13.2 -3
-vertex -13.2 -13.2 3
-endloop
-endfacet
-facet normal -1 0 0
-outer loop
-vertex -13.2 13.2 -3
-vertex -13.2 -13.2 3
-vertex -13.2 13.2 3
-endloop
-endfacet
-facet normal 0 0 -1
-outer loop
-vertex -10.8 -10.8 3
-vertex -10.8 10.8 3
-vertex 10.8 10.8 3
-endloop
-endfacet
-facet normal 0 0 -1
-outer loop
-vertex -10.8 -10.8 3
-vertex 10.8 10.8 3
-vertex 10.8 -10.8 3
-endloop
-endfacet
-facet normal 0 0 1
-outer loop
-vertex -10.8 -10.8 9
-vertex 10.8 -10.8 9
-vertex 10.8 10.8 9
-endloop
-endfacet
-facet normal 0 0 1
-outer loop
-vertex -10.8 -10.8 9
-vertex 10.8 10.8 9
-vertex -10.8 10.8 9
-endloop
-endfacet
-facet normal 0 -1 0
-outer loop
-vertex -10.8 -10.8 3
-vertex 10.8 -10.8 3
-vertex 10.8 -10.8 9
-endloop
-endfacet
-facet normal 0 -1 0
-outer loop
-vertex -10.8 -10.8 3
-vertex 10.8 -10.8 9
-vertex -10.8 -10.8 9
-endloop
-endfacet
-facet normal 1 0 0
-outer loop
-vertex 10.8 -10.8 3
-vertex 10.8 10.8 3
-vertex 10.8 10.8 9
-endloop
-endfacet
-facet normal 1 0 0
-outer loop
-vertex 10.8 -10.8 3
-vertex 10.8 10.8 9
-vertex 10.8 -10.8 9
-endloop
-endfacet
-facet normal 0 1 0
-outer loop
-vertex 10.8 10.8 3
-vertex -10.8 10.8 3
-vertex -10.8 10.8 9
-endloop
-endfacet
-facet normal 0 1 0
-outer loop
-vertex 10.8 10.8 3
-vertex -10.8 10.8 9
-vertex 10.8 10.8 9
-endloop
-endfacet
-facet normal -1 0 0
-outer loop
-vertex -10.8 10.8 3
-vertex -10.8 -10.8 3
-vertex -10.8 -10.8 9
-endloop
-endfacet
-facet normal -1 0 0
-outer loop
-vertex -10.8 10.8 3
-vertex -10.8 -10.8 9
-vertex -10.8 10.8 9
-endloop
-endfacet
-facet normal 0 0 -1
-outer loop
-vertex -8.4 -8.4 9
-vertex -8.4 8.4 9
-vertex 8.4 8.4 9
-endloop
-endfacet
-facet normal 0 0 -1
-outer loop
-vertex -8.4 -8.4 9
-vertex 8.4 8.4 9
-vertex 8.4 -8.4 9
-endloop
-endfacet
-facet normal 0 0 1
-outer loop
-vertex -8.4 -8.4 15
-vertex 8.4 -8.4 15
-vertex 8.4 8.4 15
-endloop
-endfacet
-facet normal 0 0 1
-outer loop
-vertex -8.4 -8.4 15
-vertex 8.4 8.4 15
-vertex -8.4 8.4 15
-endloop
-endfacet
-facet normal 0 -1 0
-outer loop
-vertex -8.4 -8.4 9
-vertex 8.4 -8.4 9
-vertex 8.4 -8.4 15
-endloop
-endfacet
-facet normal 0 -1 0
-outer loop
-vertex -8.4 -8.4 9
-vertex 8.4 -8.4 15
-vertex -8.4 -8.4 15
-endloop
-endfacet
-facet normal 1 0 0
-outer loop
-vertex 8.4 -8.4 9
-vertex 8.4 8.4 9
-vertex 8.4 8.4 15
-endloop
-endfacet
-facet normal 1 0 0
-outer loop
-vertex 8.4 -8.4 9
-vertex 8.4 8.4 15
-vertex 8.4 -8.4 15
-endloop
-endfacet
-facet normal 0 1 0
-outer loop
-vertex 8.4 8.4 9
-vertex -8.4 8.4 9
-vertex -8.4 8.4 15
-endloop
-endfacet
-facet normal 0 1 0
-outer loop
-vertex 8.4 8.4 9
-vertex -8.4 8.4 15
-vertex 8.4 8.4 15
-endloop
-endfacet
-facet normal -1 0 0
-outer loop
-vertex -8.4 8.4 9
-vertex -8.4 -8.4 9
-vertex -8.4 -8.4 15
-endloop
-endfacet
-facet normal -1 0 0
-outer loop
-vertex -8.4 8.4 9
-vertex -8.4 -8.4 15
-vertex -8.4 8.4 15
-endloop
-endfacet
-facet normal 0 0 -1
-outer loop
-vertex -8.4 -8.4 15
-vertex -8.4 8.4 15
-vertex 8.4 8.4 15
-endloop
-endfacet
-facet normal 0 0 -1
-outer loop
-vertex -8.4 -8.4 15
-vertex 8.4 8.4 15
-vertex 8.4 -8.4 15
-endloop
-endfacet
-facet normal 0 0 1
-outer loop
-vertex -8.4 -8.4 21
-vertex 8.4 -8.4 21
-vertex 8.4 8.4 21
-endloop
-endfacet
-facet normal 0 0 1
-outer loop
-vertex -8.4 -8.4 21
-vertex 8.4 8.4 21
-vertex -8.4 8.4 21
-endloop
-endfacet
-facet normal 0 -1 0
-outer loop
-vertex -8.4 -8.4 15
-vertex 8.4 -8.4 15
-vertex 8.4 -8.4 21
-endloop
-endfacet
-facet normal 0 -1 0
-outer loop
-vertex -8.4 -8.4 15
-vertex 8.4 -8.4 21
-vertex -8.4 -8.4 21
-endloop
-endfacet
-facet normal 1 0 0
-outer loop
-vertex 8.4 -8.4 15
-vertex 8.4 8.4 15
-vertex 8.4 8.4 21
-endloop
-endfacet
-facet normal 1 0 0
-outer loop
-vertex 8.4 -8.4 15
-vertex 8.4 8.4 21
-vertex 8.4 -8.4 21
-endloop
-endfacet
-facet normal 0 1 0
-outer loop
-vertex 8.4 8.4 15
-vertex -8.4 8.4 15
-vertex -8.4 8.4 21
-endloop
-endfacet
-facet normal 0 1 0
-outer loop
-vertex 8.4 8.4 15
-vertex -8.4 8.4 21
-vertex 8.4 8.4 21
-endloop
-endfacet
-facet normal -1 0 0
-outer loop
-vertex -8.4 8.4 15
-vertex -8.4 -8.4 15
-vertex -8.4 -8.4 21
-endloop
-endfacet
-facet normal -1 0 0
-outer loop
-vertex -8.4 8.4 15
-vertex -8.4 -8.4 21
-vertex -8.4 8.4 21
-endloop
-endfacet
-facet normal 0 0 -1
-outer loop
-vertex -6 -6 21
-vertex -6 6 21
-vertex 6 6 21
-endloop
-endfacet
-facet normal 0 0 -1
-outer loop
-vertex -6 -6 21
-vertex 6 6 21
-vertex 6 -6 21
-endloop
-endfacet
-facet normal 0 0 1
-outer loop
-vertex -6 -6 27
-vertex 6 -6 27
-vertex 6 6 27
-endloop
-endfacet
-facet normal 0 0 1
-outer loop
-vertex -6 -6 27
-vertex 6 6 27
-vertex -6 6 27
-endloop
-endfacet
-facet normal 0 -1 0
-outer loop
-vertex -6 -6 21
-vertex 6 -6 21
-vertex 6 -6 27
-endloop
-endfacet
-facet normal 0 -1 0
-outer loop
-vertex -6 -6 21
-vertex 6 -6 27
-vertex -6 -6 27
-endloop
-endfacet
-facet normal 1 0 0
-outer loop
-vertex 6 -6 21
-vertex 6 6 21
-vertex 6 6 27
-endloop
-endfacet
-facet normal 1 0 0
-outer loop
-vertex 6 -6 21
-vertex 6 6 27
-vertex 6 -6 27
-endloop
-endfacet
-facet normal 0 1 0
-outer loop
-vertex 6 6 21
-vertex -6 6 21
-vertex -6 6 27
-endloop
-endfacet
-facet normal 0 1 0
-outer loop
-vertex 6 6 21
-vertex -6 6 27
-vertex 6 6 27
-endloop
-endfacet
-facet normal -1 0 0
-outer loop
-vertex -6 6 21
-vertex -6 -6 21
-vertex -6 -6 27
-endloop
-endfacet
-facet normal -1 0 0
-outer loop
-vertex -6 6 21
-vertex -6 -6 27
-vertex -6 6 27
-endloop
-endfacet
-endsolid iker-perez-core
-```
-<!-- core:end -->
+</details>
 
 <details>
-<summary>What each tier is</summary>
+<summary><b>B · Rule 110</b> — a Turing-complete cellular automaton, evolved at build time</summary>
 
-<!-- corelegend:start -->
-| Tier | Layer | Repository | Controls verified |
-| :-: | --- | --- | :-: |
-| 1 | desktop 3D | [NexoIP 3D Viewer](https://github.com/ikerperez12/NexoIP-3D-Viewer) | 9 |
-| 2 | dev tooling | [Easy Localhost](https://github.com/ikerperez12/EASY-LOCALHOST) | 5 |
-| 3 | web experience | [E36 Scroll Cine](https://github.com/ikerperez12/e36) | 5 |
-| 4 | web platform | [IP Linux](https://github.com/ikerperez12/IP-OS-LINUX) | 4 |
-| 5 | interface | [UI IP Toolkit](https://github.com/ikerperez12/UI-IP-Toolkit-v4.0) | 3 |
-| 6 | pipeline | [IP Blender Tool](https://github.com/ikerperez12/BLENDER-TOOL) | 2 |
-| 7 | security | [QuantumGuard PQC lab](https://github.com/ikerperez12/1.2-AuditoriaPQC) | 1 |
-| 8 | real-time 3D | [Warpod Studio](https://github.com/ikerperez12/warpod) | 1 |
-| 9 | systems | [SO-2324](https://github.com/ikerperez12/SO-2324) | 0 |
-<!-- corelegend:end -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/closer-automaton-dark.svg">
+  <img alt="The Rule 110 cellular automaton evolving downward from a seeded row." src=".github/assets/closer-automaton-light.svg" width="100%">
+</picture>
 
-A repository that proves nothing produces a sliver. That is the point: this is a
-shape only these repositories can make, and it changes when they do.
+</details>
+
+<details>
+<summary><b>C · Lissajous figures</b> — phase curves traced on a graticule</summary>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/closer-scope-dark.svg">
+  <img alt="Three Lissajous curves traced on an oscilloscope graticule." src=".github/assets/closer-scope-light.svg" width="100%">
+</picture>
+
+</details>
+
+<details>
+<summary><b>D · Orbits</b> — one orbit per repository, period from repository size</summary>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/closer-orbits-dark.svg">
+  <img alt="Elliptical orbits, one per public repository." src=".github/assets/closer-orbits-light.svg" width="100%">
+</picture>
+
+</details>
+
+<details>
+<summary><b>E · Hilbert curve</b> — one continuous path through 1024 cells</summary>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/closer-hilbert-dark.svg">
+  <img alt="An order-5 Hilbert space-filling curve with a light travelling along it." src=".github/assets/closer-hilbert-light.svg" width="100%">
+</picture>
+
+</details>
+
+<details>
+<summary><b>F · Descend</b> — a playable route down the stack, no JavaScript involved</summary>
+
+<sub>Every layer is a repository of mine. Pick the call that actually goes
+deeper. Open the wrong one and you will be told why.</sub>
+
+<blockquote>
+<details>
+<summary><b>Start.</b> You are in a browser tab. Go down.</summary>
+
+<blockquote>
+<details>
+<summary><code>fetch()</code> — ask a server</summary>
+<sub>Sideways, not down. You left the machine entirely and are now someone
+else's problem. <b>Back up and try again.</b></sub>
+</details>
+
+<details>
+<summary><code>IndexedDB.open()</code> — write to the disk under the tab</summary>
+
+<blockquote><sub>Right. That is <a href="https://github.com/ikerperez12/IP-OS-LINUX">IP Linux</a>'s filesystem. Keep going.</sub>
+
+<details>
+<summary><code>WebGL draw call</code> — hand geometry to the GPU</summary>
+
+<blockquote><sub>Right again — <a href="https://github.com/ikerperez12/warpod">Warpod</a> lives here. Deeper.</sub>
+
+<details>
+<summary><code>Electron preload bridge</code> — leave the sandbox, carefully</summary>
+
+<blockquote><sub><a href="https://github.com/ikerperez12/NexoIP-3D-Viewer">NexoIP</a>: the renderer gets no filesystem and no Node. One narrow bridge. Deeper.</sub>
+
+<details>
+<summary><code>execve()</code> — become another program</summary>
+
+<blockquote><sub>You are in <a href="https://github.com/ikerperez12/SO-SHELL-p2">SO-SHELL-p2</a> now, in C, holding a process by its file descriptors.</sub>
+
+<details>
+<summary><code>Kyber-1024 key exchange</code> — the floor</summary>
+<sub><b>You made it.</b> <a href="https://github.com/ikerperez12/1.2-AuditoriaPQC">QuantumGuard</a>: post-quantum key exchange, measured on real Open Quantum Safe containers. From a browser tab to the cryptography under it — every step a repository you can open.</sub>
+</details>
+</blockquote>
+</details>
+</blockquote>
+</details>
+</blockquote>
+</details>
+</blockquote>
+</details>
+
+<details>
+<summary><code>localStorage.setItem()</code> — remember a preference</summary>
+<sub>Shallow. That is a UI preference, not a layer. <b>Back up.</b></sub>
+</details>
+</blockquote>
+</details>
+</blockquote>
 
 </details>
 
 ---
 
-## The audit
+## Colophon
 
-A workflow reads every project each morning and records what it can confirm —
-not what I would like to claim. Gaps are left visible on purpose.
+This page is the output of a small program.
+[`scripts/collect.mjs`](scripts/collect.mjs) queries the GitHub API each
+morning, [`scripts/build.mjs`](scripts/build.mjs) renders the SVGs from the
+result, and [`.github/workflows/audit.yml`](.github/workflows/audit.yml) commits
+whatever changed. The generated regions are bounded by HTML comments; everything
+else here was written by hand.
 
-<!-- audit:start -->
-| Project | CI | CQL | SEC | LIC | CTB | ARC | A11Y | DEP | SHA | SBOM | Verified |
-| --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| [NexoIP 3D Viewer](https://github.com/ikerperez12/NexoIP-3D-Viewer) | ● | ● | ● | ● | ● | ● | ● | · | ● | ● | 9/10 |
-| [IP Linux](https://github.com/ikerperez12/IP-OS-LINUX) | ● | · | ● | ● | · | · | · | ● | · | · | 4/10 |
-| [UI IP Toolkit](https://github.com/ikerperez12/UI-IP-Toolkit-v4.0) | ● | · | · | ● | · | · | ● | · | · | · | 3/10 |
-| [E36 Scroll Cine](https://github.com/ikerperez12/e36) | ● | · | ● | ● | · | · | ● | ● | · | · | 5/10 |
-| [Warpod Studio](https://github.com/ikerperez12/warpod) | · | · | · | ● | · | · | · | · | · | · | 1/10 |
-| [IP Blender Tool](https://github.com/ikerperez12/BLENDER-TOOL) | · | · | · | ● | · | · | · | · | ● | · | 2/10 |
-| [Easy Localhost](https://github.com/ikerperez12/EASY-LOCALHOST) | ● | · | ● | ● | · | · | · | ● | ● | · | 5/10 |
-| [QuantumGuard PQC lab](https://github.com/ikerperez12/1.2-AuditoriaPQC) | · | · | · | ● | · | · | · | · | · | · | 1/10 |
-<!-- audit:end -->
+The banner's numbers are counted, not claimed: the workflow reads every
+repository and records only the engineering controls it can confirm — a CI
+workflow, a published `SECURITY.md`, CodeQL, accessibility tests in CI,
+dependency audits, release checksums, a software bill of materials. Gaps stay
+gaps.
 
-<details>
-<summary>What each column means</summary>
-
-<!-- auditlegend:start -->
-- `CI` — a CI workflow exists
-- `CQL` — CodeQL analysis runs
-- `SEC` — SECURITY.md is published
-- `LIC` — the repository is licensed
-- `CTB` — CONTRIBUTING.md is published
-- `ARC` — an architecture document exists
-- `A11Y` — accessibility tests run in CI
-- `DEP` — dependencies are audited in CI
-- `SHA` — releases publish SHA-256 sums
-- `SBOM` — releases publish a software bill of materials
-<!-- auditlegend:end -->
-
-A dot is not a criticism. A static catalogue does not need a software bill of
-materials, and a research lab does not need a signed release. The table records
-what is present, so the shape of each row says what kind of project it is.
-
-</details>
+No third-party image services are used, so nothing here can break when someone
+else's endpoint goes down, and no request leaves GitHub when you read this.
+Motion is CSS inside the SVGs and stops for `prefers-reduced-motion`.
 
 <details>
 <summary>Deployments, last checked this morning</summary>
@@ -936,28 +192,8 @@ such rather than quietly dropped.
 
 </details>
 
----
-
-## Colophon
-
-This page is the output of a small program. [`scripts/collect.mjs`](scripts/collect.mjs)
-queries the GitHub API, [`scripts/build.mjs`](scripts/build.mjs) renders the SVGs
-and the STL from the result, and
-[`.github/workflows/audit.yml`](.github/workflows/audit.yml) commits whatever
-changed. The generated regions are bounded by HTML comments; everything else here
-was written by hand.
-
-No third-party image services are used, so nothing on this page can break when
-someone else's endpoint goes down, and no request leaves GitHub when you read it.
-Motion is CSS inside the SVGs and is disabled for `prefers-reduced-motion`.
-
-The keyboard is a derivative of *NZXT miniTKL — mechanical Keyboard* by
-[BlackCube](https://sketchfab.com/blackcube4), used under
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) and modified; the
-original author and NZXT do not endorse it.
-
 <!-- stamp:start -->
-Last audit: **2026-08-14 17:22 UTC**. Everything above is read from the GitHub API by [`scripts/collect.mjs`](scripts/collect.mjs) — nothing is typed in by hand.
+Last audit: **2026-08-15 00:42 UTC**. Everything above is read from the GitHub API by [`scripts/collect.mjs`](scripts/collect.mjs) — nothing is typed in by hand.
 <!-- stamp:end -->
 
 <sub>A Coruña, Galicia · [ikerperez12](https://github.com/ikerperez12)</sub>

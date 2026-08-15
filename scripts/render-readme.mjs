@@ -96,20 +96,115 @@ function coreLegendTable(data) {
   return ["| Tier | Layer | Repository | Controls verified |", "| :-: | --- | --- | :-: |", ...rows].join("\n");
 }
 
+/** Projects that have a real screenshot; everything else gets generated cover art. */
+const SHOTS = {
+  "NexoIP-3D-Viewer": "p-nexoip.webp",
+  "IP-OS-LINUX": "p-iplinux.webp",
+  "UI-IP-Toolkit-v4.0": "p-toolkit.webp",
+  e36: "p-e36.webp",
+  warpod: "p-warpod.webp",
+  "EASY-LOCALHOST": "p-easylocalhost.webp",
+};
+
+/** One short, checkable line per project. Anything not listed falls back to the
+ *  repository's own description, so a new repository still lands in the gallery. */
+const BLURB = {
+  "NexoIP-3D-Viewer": "Offline-first desktop 3D viewer. Sandboxed renderer, private protocol, SBOM and checksums.",
+  "IP-OS-LINUX": "A desktop that runs in a tab: window manager, workspaces, IndexedDB filesystem.",
+  "UI-IP-Toolkit-v4.0": "Copy-ready interface parts. axe-core gates serious regressions in CI.",
+  e36: "Seven locked-scroll scenes, no framework. PWA with rendered accessibility tests.",
+  warpod: "Cinematic WebGL: React Three Fiber scene, GSAP choreography, smooth scroll.",
+  "EASY-LOCALHOST": "Always-on-top panel for local dev servers. Ten releases, each with a SHA-256.",
+  "BLENDER-TOOL": "Render queue for Blender. Scans .blend files for missing textures before queueing.",
+  "1.2-AuditoriaPQC": "Post-quantum crypto lab driving real Open Quantum Safe containers.",
+  GPT_CMD: "Command-line ChatGPT automation with history, export and clipboard image send.",
+  "SIGNAL-NEURALNETWORK": "Signal-processing neural network experiment.",
+  WARP: "Personal web portfolio.",
+  "Software-Design": "Software design coursework: patterns and modular object-oriented design.",
+  "Basketball-API": "Django REST API with a frontend, containerised.",
+  "SO-SHELL-p2": "UNIX shell in C: process lifecycle, file descriptors, redirection.",
+  "SO-2324": "Operating systems coursework in C at the Universidade da Coruña.",
+};
+
+/**
+ * The gallery as a Markdown table.
+ *
+ * GitHub wraps Markdown tables — and only Markdown tables — in a horizontally
+ * scrollable container. A single wide row is therefore a native scrolling
+ * gallery, with no CSS, which is otherwise impossible here because class and
+ * style attributes are stripped.
+ */
+/** Curated lead order; everything after it falls back to stars, then recency. */
+const LEAD = [
+  "NexoIP-3D-Viewer",
+  "IP-OS-LINUX",
+  "UI-IP-Toolkit-v4.0",
+  "e36",
+  "warpod",
+  "EASY-LOCALHOST",
+  "BLENDER-TOOL",
+  "1.2-AuditoriaPQC",
+];
+
+function gallery(data) {
+  // Only advertise a deployment the probe actually reached this morning, so a
+  // dead homepage in repository metadata never becomes a broken link here.
+  const liveUrls = new Set(
+    (data.probes || []).filter((p) => p && p.ok).map((p) => p.url.replace(/\/$/, ""))
+  );
+
+  const repos = (data.repos || [])
+    .filter((r) => r.repo !== data.user)
+    .filter((r) => Object.keys(r.languages || {}).length > 0)
+    .sort((a, b) => {
+      const ia = LEAD.indexOf(a.repo);
+      const ib = LEAD.indexOf(b.repo);
+      if (ia !== -1 || ib !== -1) return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+      if (b.stars !== a.stars) return b.stars - a.stars;
+      return String(b.pushed).localeCompare(String(a.pushed));
+    });
+
+  const head = [];
+  const cells = [];
+
+  for (const r of repos) {
+    const url = `https://github.com/${data.user}/${r.repo}`;
+    const img = SHOTS[r.repo]
+      ? `.github/assets/${SHOTS[r.repo]}`
+      : `.github/assets/cover-${r.repo}.svg`;
+    const title = DISPLAY[r.repo] || r.repo;
+    head.push(`[${title}](${url})`);
+
+    const tags = [];
+    if (r.stars) tags.push(`${r.stars}★`);
+    const lang = Object.keys(r.languages || {})[0];
+    if (lang) tags.push(lang);
+    if (r.release && r.release.tag) tags.push(r.release.tag);
+    if (r.license) tags.push(r.license);
+
+    const blurb = BLURB[r.repo] || r.description || "";
+    const reachable = r.homepage && liveUrls.has(r.homepage.replace(/\/$/, ""));
+    const live = reachable ? ` · <a href="${r.homepage}">live</a>` : "";
+
+    cells.push(
+      `<a href="${url}"><img src="${img}" width="300" alt="${title}"></a><br>` +
+        `<sub>${blurb}</sub><br>` +
+        `<sub><code>${tags.join("</code> <code>")}</code>${live}</sub>`
+    );
+  }
+
+  return [
+    `| ${head.join(" | ")} |`,
+    `| ${head.map(() => ":--").join(" | ")} |`,
+    `| ${cells.join(" | ")} |`,
+  ].join("\n");
+}
+
 export function writeReadme(root, data) {
   const path = join(root, "README.md");
   let text = readFileSync(path, "utf8").replace(/^﻿/, "");
-  text = replaceChunk(text, "audit", auditTable(data));
-  text = replaceChunk(
-    text,
-    "auditlegend",
-    Object.keys(CONTROL_LABELS)
-      .map((k) => `- \`${CONTROL_LABELS[k]}\` — ${CONTROL_MEANING[k]}`)
-      .join("\n")
-  );
+  text = replaceChunk(text, "gallery", gallery(data));
   text = replaceChunk(text, "probes", probeList(data));
-  text = replaceChunk(text, "core", coreBlock(data));
-  text = replaceChunk(text, "corelegend", coreLegendTable(data));
   text = replaceChunk(
     text,
     "stamp",

@@ -1,11 +1,12 @@
-"""Render the keyboard's `Open` action to transparent PNG frames.
+"""Render the keyboard as a turntable on pure black.
 
-Called from Blender in background mode:
-    blender --background --factory-startup --python render_kb.py -- \
-        --out DIR --size 720 --frames 14 --start 0 --end 160 [--samples 48]
+A product-shot orbit: the camera circles the assembled keyboard under a fixed
+three-point rig, so the light stays put and the object turns through it. Black
+is rendered rather than left transparent, because the section it lands in is
+full black and a baked background compresses far better than an alpha edge.
 
-The model is a CC BY 4.0 derivative (see ATTRIBUTION.md beside the .glb); the
-credit travels with the generated asset into the profile repository.
+    blender --background --factory-startup --python render_turntable.py -- \
+        --out DIR --w 900 --h 560 --frames 36 --samples 96
 """
 import bpy, sys, os, math, mathutils
 
@@ -17,50 +18,44 @@ def arg(name, default):
 
 
 GLB = r"C:\BLENDER\assets\sketchfab\nzxt-minitkl-keyboard\mechanical_keyboard_sanitized_2k.glb"
-OUT = arg("--out", r"C:\PROYECTOS\IDEAS\ikerperez12\_src\kb")
-SIZE = int(arg("--size", 720))
-RW = int(arg("--w", SIZE))
-RH = int(arg("--h", SIZE))
-DIST = float(arg("--dist", 4.7))
-NFRAMES = int(arg("--frames", 14))
-F0 = float(arg("--start", 0))
-F1 = float(arg("--end", 160))
-SAMPLES = int(arg("--samples", 48))
-ENGINE = arg("--engine", "BLENDER_EEVEE")
+OUT = arg("--out", r"C:\PROYECTOS\IDEAS\ikerperez12\_src\turn")
+RW = int(arg("--w", 900))
+RH = int(arg("--h", 560))
+NF = int(arg("--frames", 36))
+SAMPLES = int(arg("--samples", 96))
+DIST = float(arg("--dist", 4.6))
+ELEV = float(arg("--elev", 26))
+OPEN_AT = float(arg("--open", 0))  # action frame to hold; 0 = fully assembled
 
 os.makedirs(OUT, exist_ok=True)
 
 bpy.ops.wm.read_factory_settings(use_empty=True)
 bpy.ops.import_scene.gltf(filepath=GLB)
 
-# A material-less helper sphere ships with the file; it is not product geometry.
 for name in ("Icosphere",):
     ob = bpy.data.objects.get(name)
     if ob:
         bpy.data.objects.remove(ob, do_unlink=True)
 
 scene = bpy.context.scene
-scene.render.engine = ENGINE
+scene.render.engine = "BLENDER_EEVEE"
 scene.render.resolution_x = RW
 scene.render.resolution_y = RH
-scene.render.resolution_percentage = 100
-scene.render.film_transparent = True
+scene.render.film_transparent = False
 scene.render.image_settings.file_format = "PNG"
-scene.render.image_settings.color_mode = "RGBA"
+scene.render.image_settings.color_mode = "RGB"
 scene.render.image_settings.compression = 15
 
-if ENGINE == "CYCLES":
-    scene.cycles.samples = SAMPLES
-    scene.cycles.use_denoising = True
-else:
-    ee = scene.eevee
-    if hasattr(ee, "taa_render_samples"):
-        ee.taa_render_samples = max(16, SAMPLES)
-    for flag in ("use_raytracing", "use_shadows"):
-        if hasattr(ee, flag):
-            setattr(ee, flag, True)
+ee = scene.eevee
+if hasattr(ee, "taa_render_samples"):
+    ee.taa_render_samples = SAMPLES
+for flag in ("use_raytracing", "use_shadows"):
+    if hasattr(ee, flag):
+        setattr(ee, flag, True)
 
-# ---- bounds of real geometry, used to frame the shot -----------------------
+scene.frame_set(int(OPEN_AT))
+
+# ---- bounds -----------------------------------------------------------------
 mn = mathutils.Vector((1e9, 1e9, 1e9))
 mx = mathutils.Vector((-1e9, -1e9, -1e9))
 for ob in bpy.data.objects:
@@ -74,61 +69,54 @@ for ob in bpy.data.objects:
 center = (mn + mx) / 2
 radius = max((mx - mn).x, (mx - mn).y, (mx - mn).z) / 2
 
-# ---- camera ----------------------------------------------------------------
-cam_data = bpy.data.cameras.new("HeroCam")
-cam_data.lens = 85
-cam = bpy.data.objects.new("HeroCam", cam_data)
+# ---- pure black world -------------------------------------------------------
+world = bpy.data.worlds.new("W")
+world.use_nodes = True
+bgnode = world.node_tree.nodes["Background"]
+bgnode.inputs[0].default_value = (0, 0, 0, 1)
+bgnode.inputs[1].default_value = 0.0
+scene.world = world
+
+# ---- camera -----------------------------------------------------------------
+cam_data = bpy.data.cameras.new("TurnCam")
+cam_data.lens = 95
+cam = bpy.data.objects.new("TurnCam", cam_data)
 scene.collection.objects.link(cam)
 scene.camera = cam
 
-# Three-quarter view from slightly above: reads as a product shot and keeps the
-# opening mechanism legible rather than foreshortened.
-az = math.radians(52)
-el = math.radians(30)
-dist = radius * DIST
-cam.location = center + mathutils.Vector(
-    (math.cos(el) * math.cos(az), math.cos(el) * math.sin(az), math.sin(el))
-) * dist
-direction = center - cam.location
-cam.rotation_euler = direction.to_track_quat("-Z", "Y").to_euler()
-
-
-def add_area(name, loc, energy, size, rot=(0, 0, 0), color=(1, 1, 1)):
+# ---- fixed lighting rig -----------------------------------------------------
+def add_area(name, loc, energy, size, color=(1, 1, 1)):
     d = bpy.data.lights.new(name, type="AREA")
     d.energy = energy
     d.size = size
     d.color = color
     o = bpy.data.objects.new(name, d)
     o.location = center + mathutils.Vector(loc)
-    o.rotation_euler = rot
     scene.collection.objects.link(o)
-    # Aim the light at the subject.
-    dv = center - o.location
-    o.rotation_euler = dv.to_track_quat("-Z", "Y").to_euler()
+    o.rotation_euler = (center - o.location).to_track_quat("-Z", "Y").to_euler()
     return o
 
 
+# Restrained key light so the dark keycaps stay dark; the shot is carried by
+# two coloured rims instead, which is what keeps a black-on-black product
+# read legible without washing the subject out.
 r = radius
-# Key light front-left, cool fill opposite, and a hot rim behind so the silhouette
-# survives on GitHub's near-black canvas as well as on white.
-add_area("Key", (-2.4 * r, -2.0 * r, 3.0 * r), 900 * r * r, 3.2 * r, color=(1.0, 0.97, 0.92))
-add_area("Fill", (3.0 * r, -1.4 * r, 1.0 * r), 260 * r * r, 4.0 * r, color=(0.82, 0.88, 1.0))
-add_area("Rim", (1.2 * r, 3.2 * r, 2.2 * r), 1500 * r * r, 2.2 * r, color=(1.0, 0.86, 0.62))
-add_area("Under", (0, -0.6 * r, -2.6 * r), 120 * r * r, 4.0 * r, color=(0.7, 0.8, 1.0))
+add_area("Key", (-2.4 * r, -2.4 * r, 3.4 * r), 260 * r * r, 3.6 * r, (1.0, 0.97, 0.92))
+add_area("Fill", (3.2 * r, -1.4 * r, 1.2 * r), 45 * r * r, 4.4 * r, (0.76, 0.85, 1.0))
+add_area("RimA", (1.8 * r, 3.2 * r, 1.6 * r), 620 * r * r, 1.6 * r, (0.45, 0.75, 1.0))
+add_area("RimB", (-3.2 * r, 2.4 * r, 1.2 * r), 480 * r * r, 1.6 * r, (0.78, 0.60, 1.0))
 
-world = bpy.data.worlds.new("W")
-world.use_nodes = True
-world.node_tree.nodes["Background"].inputs[0].default_value = (0.05, 0.055, 0.07, 1)
-world.node_tree.nodes["Background"].inputs[1].default_value = 0.35
-scene.world = world
-
-# ---- render the sampled action --------------------------------------------
-step = (F1 - F0) / max(1, NFRAMES - 1)
-for i in range(NFRAMES):
-    f = F0 + step * i
-    scene.frame_set(int(round(f)))
-    scene.render.filepath = os.path.join(OUT, f"f{i:03d}.png")
+# ---- orbit ------------------------------------------------------------------
+el = math.radians(ELEV)
+dist = radius * DIST
+for i in range(NF):
+    az = 2 * math.pi * i / NF + math.radians(35)
+    cam.location = center + mathutils.Vector(
+        (math.cos(el) * math.cos(az), math.cos(el) * math.sin(az), math.sin(el))
+    ) * dist
+    cam.rotation_euler = (center - cam.location).to_track_quat("-Z", "Y").to_euler()
+    scene.render.filepath = os.path.join(OUT, f"t{i:03d}.png")
     bpy.ops.render.render(write_still=True)
-    print(f"###FRAME {i} at {f:.1f}")
+    print(f"###FRAME {i}")
 
 print("###DONE")
