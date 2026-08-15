@@ -70,9 +70,14 @@ because STL carries no materials. Pipeline in
 
 ## Snake
 
-<sub>Everyone shares one board. Press a direction: it opens a prefilled issue,
-a workflow moves the snake one cell, redraws this image and closes the issue.
-The edges wrap, so only running into the tail ends a run. State lives in
+<sub>Everyone shares one board, and it takes <b>two clicks</b>: a direction below
+opens GitHub's new-issue form with the move already filled in, and then you press
+the green <b>Create</b> button. That second click is the move. A workflow reads
+it, advances the snake one cell, redraws this image and closes the issue —
+usually within a minute. There is no one-click version: GitHub has no way to
+create an issue straight from a link.</sub>
+
+<sub>The edges wrap, so only running into the tail ends a run. State lives in
 <a href=".github/state/snake.json"><code>.github/state/snake.json</code></a> and
 every move is a commit — the history is the replay.</sub>
 
@@ -84,20 +89,20 @@ every move is a commit — the history is the replay.</sub>
 </p>
 
 <p align="center">
-  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=snake%7Cstart&body=Press+the+green+button.+Nothing+else+is+needed."><b>▶&nbsp;start&nbsp;a&nbsp;new&nbsp;game</b></a>
+  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=snake%7Cstart&body=Opens+GitHub%27s+new-issue+form+with+the+move+already+filled+in.+Press+the+green+Create+button+below+-+that+is+the+move.+You+can+leave+this+text+as+it+is."><b>▶&nbsp;start&nbsp;a&nbsp;new&nbsp;game</b></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=snake%7Cup&body=Press+the+green+button.+Nothing+else+is+needed."><b>&nbsp;↑&nbsp;up&nbsp;</b></a> &nbsp;·&nbsp;
-  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=snake%7Cleft&body=Press+the+green+button.+Nothing+else+is+needed."><b>&nbsp;←&nbsp;left&nbsp;</b></a> &nbsp;·&nbsp;
-  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=snake%7Cdown&body=Press+the+green+button.+Nothing+else+is+needed."><b>&nbsp;↓&nbsp;down&nbsp;</b></a> &nbsp;·&nbsp;
-  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=snake%7Cright&body=Press+the+green+button.+Nothing+else+is+needed."><b>&nbsp;→&nbsp;right&nbsp;</b></a>
+  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=snake%7Cup&body=Opens+GitHub%27s+new-issue+form+with+the+move+already+filled+in.+Press+the+green+Create+button+below+-+that+is+the+move.+You+can+leave+this+text+as+it+is."><b>&nbsp;↑&nbsp;up&nbsp;</b></a> &nbsp;·&nbsp;
+  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=snake%7Cleft&body=Opens+GitHub%27s+new-issue+form+with+the+move+already+filled+in.+Press+the+green+Create+button+below+-+that+is+the+move.+You+can+leave+this+text+as+it+is."><b>&nbsp;←&nbsp;left&nbsp;</b></a> &nbsp;·&nbsp;
+  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=snake%7Cdown&body=Opens+GitHub%27s+new-issue+form+with+the+move+already+filled+in.+Press+the+green+Create+button+below+-+that+is+the+move.+You+can+leave+this+text+as+it+is."><b>&nbsp;↓&nbsp;down&nbsp;</b></a> &nbsp;·&nbsp;
+  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=snake%7Cright&body=Opens+GitHub%27s+new-issue+form+with+the+move+already+filled+in.+Press+the+green+Create+button+below+-+that+is+the+move.+You+can+leave+this+text+as+it+is."><b>&nbsp;→&nbsp;right&nbsp;</b></a>
 </p>
 
 <!-- snake:start -->
 **Move 0** · score **0** · best **0**
 
-@a tried to reverse into the neck. Ignored.
+Waiting for the first move.
 
 <sub>Recent players: nobody yet</sub>
 <!-- snake:end -->
@@ -145,7 +150,7 @@ such rather than quietly dropped.
 </details>
 
 <!-- stamp:start -->
-Last audit: **2026-08-15 01:30 UTC**. Everything above is read from the GitHub API by [`scripts/collect.mjs`](scripts/collect.mjs) — nothing is typed in by hand.
+Last audit: **2026-08-15 00:42 UTC**. Everything above is read from the GitHub API by [`scripts/collect.mjs`](scripts/collect.mjs) — nothing is typed in by hand.
 <!-- stamp:end -->
 
 <sub>A Coruña, Galicia · [ikerperez12](https://github.com/ikerperez12)</sub>
