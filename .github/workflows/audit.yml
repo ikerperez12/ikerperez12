@@ -34,6 +34,10 @@ jobs:
     steps:
       - name: Check out
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Needed to rebase onto a main that the support workflow may have
+          # moved while this run was collecting.
+          fetch-depth: 0
 
       - name: Set up Node
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
@@ -62,7 +66,16 @@ jobs:
             exit 0
           fi
           git commit -m "Audit $(date -u +%Y-%m-%d)"
-          # A concurrent push (a manual edit landing mid-run) would otherwise
-          # make this a non-fast-forward and fail the job.
-          git pull --rebase --autostash
-          git push
+          # Someone pressing support mid-run moves main under this job, so
+          # rebase onto whatever is there now and retry rather than failing.
+          for attempt in 1 2 3 4 5; do
+            git fetch -q origin main
+            git rebase -q origin/main || { git rebase --abort; exit 1; }
+            if git push -q origin HEAD:main; then
+              echo "pushed on attempt $attempt"
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          echo "could not push after 5 attempts"
+          exit 1
