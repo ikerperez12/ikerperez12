@@ -85,6 +85,11 @@ every move is a commit — the history is the replay.</sub>
 </p>
 
 <!-- snake:start -->
+**Move 0** · score **0** · best **0**
+
+@a tried to reverse into the neck. Ignored.
+
+<sub>Recent players: nobody yet</sub>
 <!-- snake:end -->
 
 ---
