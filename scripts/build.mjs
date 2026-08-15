@@ -9,7 +9,7 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, unlinkSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { newCrystal, renderCrystal } from "./crystal.mjs";
+import { newCrystal, renderSupport } from "./crystal.mjs";
 import { renderHero } from "./render-hero.mjs";
 import { renderCover } from "./render-cover.mjs";
 import { CLOSERS } from "./render-closers.mjs";
@@ -69,7 +69,7 @@ emit("closer-scope.svg", CLOSERS.scope());
 // crystal with the version its own stale ledger implies — which is exactly
 // what happened once. Only create it if it is missing.
 const statePath = join(root, ".github", "state", "crystal.json");
-const crystalPath = join(out, "crystal.svg");
+const crystalPath = join(out, "support.svg");
 if (!existsSync(crystalPath) || !existsSync(statePath)) {
   let crystal;
   try {
@@ -79,7 +79,7 @@ if (!existsSync(crystalPath) || !existsSync(statePath)) {
     mkdirSync(dirname(statePath), { recursive: true });
     writeFileSync(statePath, JSON.stringify(crystal, null, 2), "utf8");
   }
-  emit("crystal.svg", renderCrystal(crystal));
+  emit("support.svg", renderSupport(crystal));
 }
 
 console.log(`assets: hero x4, covers x${covers}, closer x1, crystal x1`);

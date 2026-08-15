@@ -15,7 +15,7 @@
  * alone, and anyone can find their own cell.
  */
 
-import { esc, n } from "./design.mjs";
+import { esc, n, MONO } from "./design.mjs";
 
 export const COLS = 47;
 export const ROWS = 23;
@@ -87,13 +87,93 @@ function colourFor(user) {
 }
 
 /**
- * Cells and nothing else.
+ * The whole control as one image: button, cells, count.
  *
- * No frame, no heading, no padding, and no background — which also means one
- * file serves both GitHub themes instead of two. The image is cropped to the
- * cells themselves, so it starts almost invisible and grows only as people
- * arrive; the count and the button live in the README as plain text.
+ * A README cannot style a link — GitHub strips class and style — so a plain
+ * anchor can only ever be default-blue underlined text. Drawing the button
+ * inside the SVG is the only way it can carry a lit border and sit level with
+ * the cells; the image is then wrapped in the issue link, so pressing anywhere
+ * on it opens the form.
+ *
+ * Transparent background and a palette that reads on either canvas, so one file
+ * serves both GitHub themes.
  */
+export function renderSupport(state) {
+  const cell = 13;
+  const btnW = 146;
+  const btnH = 34;
+  const gap = 18;
+
+  const cluster = renderCells(state, cell);
+  const H = Math.max(btnH, cluster.h) + 8;
+  const cy = H / 2;
+  const countText = String(state.cells.length);
+  const countW = 22 + countText.length * 8;
+  const W = btnW + gap + cluster.w + gap + countW;
+
+  const [g0, g1, g2] = ["#38bdf8", "#818cf8", "#c084fc"];
+
+  const btnY = cy - btnH / 2;
+  let body = `<rect x="1" y="${n(btnY)}" width="${btnW - 2}" height="${btnH}" rx="${btnH / 2}" fill="none" stroke="#8b949e" stroke-opacity="0.35"/>`;
+  // Three lights chasing the pill, matching the banner's frame.
+  body += [g0, g1, g2]
+    .map(
+      (c, i) =>
+        `<rect x="1" y="${n(btnY)}" width="${btnW - 2}" height="${btnH}" rx="${btnH / 2}" fill="none" stroke="${c}" stroke-width="1.8" pathLength="100" stroke-dasharray="20 80" stroke-linecap="round" class="run r${i}"/>`
+    )
+    .join("");
+  body += `<text x="${btnW / 2}" y="${n(cy + 4)}" font-family="${MONO}" font-size="11.5" letter-spacing="2" fill="${g1}" text-anchor="middle">◆ I WAS HERE</text>`;
+
+  const clusterX = btnW + gap;
+  body += `<g transform="translate(${n(clusterX)} ${n(cy - cluster.h / 2)})">${cluster.body}</g>`;
+
+  const cxCount = clusterX + cluster.w + gap;
+  body += `<rect x="${n(cxCount)}" y="${n(cy - 11)}" width="${countW}" height="22" rx="11" fill="#8b949e" fill-opacity="0.14"/>`;
+  body += `<text x="${n(cxCount + countW / 2)}" y="${n(cy + 4)}" font-family="${MONO}" font-size="12" fill="#8b949e" text-anchor="middle">${countText}</text>`;
+
+  const style = `
+.run{animation:chase 7s linear infinite}
+.r0{animation-delay:0s}.r1{animation-delay:-2.33s}.r2{animation-delay:-4.66s}
+@keyframes chase{to{stroke-dashoffset:-100}}
+.new{animation:land 2.6s ease-in-out infinite}
+@keyframes land{0%,70%,100%{opacity:1}85%{opacity:.4}}
+@media (prefers-reduced-motion:reduce){.run,.new{animation:none}}
+`;
+
+  const count = state.cells.length;
+  const last = count ? state.cells[count - 1].user : null;
+  const desc = `Leave a mark. ${count} ${count === 1 ? "person has" : "people have"} pressed so far${last ? `, most recently ${last}` : ""}.`;
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${n(W)} ${n(H)}" width="${n(W)}" height="${n(H)}" role="img" aria-labelledby="d">
+<desc id="d">${esc(desc)}</desc>
+<style>${style}</style>
+${body}
+</svg>`;
+}
+
+/** The cell cluster on its own, cropped tight, for embedding in the control. */
+function renderCells(state, cell) {
+  const xs = state.cells.length ? state.cells.map((c) => c.x) : [state.seed[0]];
+  const ys = state.cells.length ? state.cells.map((c) => c.y) : [state.seed[1]];
+  const x0 = Math.min(...xs);
+  const x1 = Math.max(...xs);
+  const y0 = Math.min(...ys);
+  const y1 = Math.max(...ys);
+
+  const w = (x1 - x0 + 1) * cell;
+  const h = (y1 - y0 + 1) * cell;
+
+  let body = "";
+  state.cells.forEach((c, i) => {
+    const newest = i === state.cells.length - 1;
+    const inset = 1.5;
+    body += `<rect x="${n((c.x - x0) * cell + inset)}" y="${n((c.y - y0) * cell + inset)}" width="${cell - inset * 2}" height="${cell - inset * 2}" rx="3" fill="${colourFor(c.user)}"${newest ? ' class="new"' : ""}><title>@${esc(c.user)}</title></rect>`;
+  });
+
+  return { w: state.cells.length ? w : 0, h: state.cells.length ? h : cell, body };
+}
+
+/** Cells alone, kept for anyone wanting the raw picture. */
 export function renderCrystal(state) {
   const cell = 13;
   const pad = 0;

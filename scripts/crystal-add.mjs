@@ -9,8 +9,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { newCrystal, support, renderCrystal } from "./crystal.mjs";
-import { replaceChunk } from "./render-readme.mjs";
+import { newCrystal, support, renderSupport } from "./crystal.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const statePath = join(root, ".github", "state", "crystal.json");
@@ -45,17 +44,7 @@ if (rawTitle !== "support") {
 mkdirSync(dirname(statePath), { recursive: true });
 writeFileSync(statePath, JSON.stringify(state, null, 2), "utf8");
 mkdirSync(assets, { recursive: true });
-writeFileSync(join(assets, "crystal.svg"), renderCrystal(state), "utf8");
+writeFileSync(join(assets, "support.svg"), renderSupport(state), "utf8");
 
-// Credit everyone, newest first, in the README itself.
-const readmePath = join(root, "README.md");
-const text = readFileSync(readmePath, "utf8").replace(/^﻿/, "");
-// Just the count beside the button. Names live in the cells themselves, each
-// one carrying a <title> so hovering shows who it is.
-writeFileSync(
-  readmePath,
-  replaceChunk(text, "crystal", ` <sub>${state.cells.length}</sub>`),
-  "utf8"
-);
 
 console.log(message);

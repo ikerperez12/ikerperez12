@@ -6,26 +6,11 @@
  *   - the frame, where three lights chase the perimeter on a narrow cool ramp;
  *   - the field behind the type, a slow drift of soft light so the panel is not
  *     a flat rectangle;
- *   - the cadence bars, which are the owner's real monthly commit counts with a
- *     playhead running across them. The bar heights are data and never animate;
- *     only the highlight moves, so the graphic cannot flatter the numbers.
- *
- * The chips are derived from audit results rather than typed, so the banner
- * cannot keep advertising a control after it stops existing.
+ *   - the pendulum wave, one arm per public repository, with arm lengths that
+ *     differ just enough for the row to drift in and out of phase.
  */
 
 import { THEMES, baseStyle, svg, esc, n } from "./design.mjs";
-
-function chipsFor(data) {
-  const any = (key) => data.products.some((p) => p.controls && p.controls[key]);
-  const out = [];
-  if (any("sbom")) out.push("CYCLONEDX SBOM");
-  if (any("signed_release")) out.push("SHA-256 SUMS");
-  if (any("a11y_ci")) out.push("AXE-CORE IN CI");
-  if (any("codeql")) out.push("CODEQL");
-  if (any("security")) out.push("SECURITY.MD");
-  return out.slice(0, 5);
-}
 
 /** Roll the contribution calendar up into the last twelve months. */
 function cadence(data) {
@@ -51,51 +36,38 @@ export function renderHero(data, { theme = "dark", variant = "wide" } = {}) {
     ? { bar: 13, mark: 76, copy: 21, chip: 12, foot: 13, cap: 11 }
     : { bar: 15, mark: 64, copy: 23, chip: 14, foot: 15, cap: 13 };
 
-  const chips = chipsFor(data);
-  const { months, max } = cadence(data);
+  const { months } = cadence(data);
   const totalCommits = months.reduce((s, m) => s + m[1], 0);
-  const live = data.probes.filter((p) => p && p.ok).length;
-  const verified = data.products.reduce(
-    (s, p) => s + Object.values(p.controls || {}).filter(Boolean).length,
-    0
-  );
 
   const barH = wide ? 44 : 50;
   const tx = pad + 16;
 
   const copy = wide
     ? [
-        ["From C and operating systems up to real-time 3D.", t.dim],
         ["Every layer ships the same contract — security, accessibility,", t.dim],
         ["and something you can actually run.", t.accent],
       ]
     : [
-        ["From C and operating systems", t.dim],
-        ["up to real-time 3D. Every layer ships", t.dim],
-        ["the same contract — security,", t.dim],
-        ["accessibility, and something", t.dim],
-        ["you can actually run.", t.accent],
+        ["Every layer ships the same contract —", t.dim],
+        ["security, accessibility, and", t.dim],
+        ["something you can actually run.", t.accent],
       ];
 
   const markY = barH + (wide ? 104 : 96);
   const copy0 = markY + (wide ? 42 : 40);
   const lead = wide ? 28 : 30;
-  const chipY = copy0 + copy.length * lead + (wide ? 22 : 26);
-  const chipH = wide ? 28 : 34;
-  const chipRows = wide ? 1 : Math.ceil(chips.length / 2);
-  const chipBottom = chipY + chipRows * chipH + (chipRows - 1) * 12;
+  const textBottom = copy0 + copy.length * lead;
 
   // Pendulum panel: right column on desktop, its own band underneath on mobile.
   const cadW = wide ? 420 : W - pad * 2 - 32;
   const cadX = wide ? W - pad - 16 - cadW : tx;
-  const cadTop = wide ? barH + 70 : chipBottom + 40;
+  const cadTop = wide ? barH + 70 : textBottom + 40;
   const cadH = wide ? 168 : 130;
 
   // The pendulum column is often deeper than the text column, so the panel has
   // to be sized by whichever side ends lower.
-  const cadBottom = cadTop + cadH + 44;
-  const footY = wide ? Math.max(chipBottom + 44, cadBottom) : cadBottom + 34;
-  const H = footY + (wide ? 26 : 34);
+  const cadBottom = cadTop + cadH + 16;
+  const H = (wide ? Math.max(textBottom, cadBottom) : cadBottom) + (wide ? 30 : 30);
 
   // ---- background -----------------------------------------------------------
   let body = `<rect x="0" y="0" width="${W}" height="${H}" rx="12" fill="${t.panel}"/>`;
@@ -111,7 +83,7 @@ export function renderHero(data, { theme = "dark", variant = "wide" } = {}) {
   body += `<rect x="1" y="${barH}" width="${W - 2}" height="1" fill="${t.line}"/>`;
   body += `<circle cx="${pad + 6}" cy="${barH / 2}" r="4" fill="${t.pass}" class="pulse"/>`;
   body += `<text x="${pad + 22}" y="${barH / 2 + 4}" class="mono" font-size="${fs.bar}" letter-spacing="1.6" fill="${t.dim}">IKER PEREZ // COMPUTER ENGINEER</text>`;
-  body += `<text x="${W - pad}" y="${barH / 2 + 4}" class="mono" font-size="${fs.bar}" letter-spacing="1.6" fill="${t.faint}" text-anchor="end">A CORUÑA [ES] · AUDITED ${data.generated.slice(0, 10)}</text>`;
+  body += `<text x="${W - pad}" y="${barH / 2 + 4}" class="mono" font-size="${fs.bar}" letter-spacing="1.6" fill="${t.faint}" text-anchor="end">A CORUÑA [ES]</text>`;
 
   // ---- identity -------------------------------------------------------------
   body += `<text x="${tx}" y="${markY}" font-size="${fs.mark}" font-weight="700" letter-spacing="-1.6" fill="${t.ink}">IKER PEREZ</text>`;
@@ -119,18 +91,6 @@ export function renderHero(data, { theme = "dark", variant = "wide" } = {}) {
     body += `<text x="${tx}" y="${copy0 + i * lead}" font-size="${fs.copy}" fill="${c[1]}">${esc(c[0])}</text>`;
   });
 
-  let cx = tx;
-  let cy = chipY;
-  chips.forEach((c, i) => {
-    const w = c.length * (wide ? 7.6 : 9.2) + (wide ? 26 : 28);
-    if (!wide && i % 2 === 0 && i > 0) {
-      cx = tx;
-      cy += chipH + 12;
-    }
-    body += `<rect x="${cx}" y="${cy}" width="${w}" height="${chipH}" rx="4" fill="none" stroke="${t.line}"/>`;
-    body += `<text x="${cx + w / 2}" y="${cy + chipH / 2 + 4}" class="mono" font-size="${fs.chip}" letter-spacing="1.2" fill="${t.dim}" text-anchor="middle">${esc(c)}</text>`;
-    cx += w + 10;
-  });
 
   // ---- pendulum wave --------------------------------------------------------
   // One arm per public repository. Arm length grows along the row, so the
@@ -143,7 +103,6 @@ export function renderHero(data, { theme = "dark", variant = "wide" } = {}) {
   const armSpan = cadW - swingRoom * 2;
   const armX0 = cadX + swingRoom;
   const step = arms.length > 1 ? armSpan / (arms.length - 1) : 0;
-  body += `<text x="${cadX}" y="${cadTop - 14}" class="mono" font-size="${fs.cap}" letter-spacing="2" fill="${t.faint}">PENDULUM WAVE · ONE ARM PER REPOSITORY</text>`;
   body += `<rect x="${n(cadX)}" y="${cadTop}" width="${n(cadW)}" height="1" fill="${t.line}"/>`;
 
   let armCss = "";
@@ -157,18 +116,8 @@ export function renderHero(data, { theme = "dark", variant = "wide" } = {}) {
 <circle cx="${n(x)}" cy="${n(cadTop + len)}" r="${wide ? 4.2 : 5}" fill="${c}"/></g>`;
     armCss += `.a${i}{animation-duration:${n(2.9 + i * 0.155)}s}`;
   });
-  body += `<text x="${cadX + cadW}" y="${cadTop + cadH + 30}" class="mono" font-size="${fs.cap}" fill="${t.faint}" text-anchor="end">${arms.length} repositories · ${totalCommits.toLocaleString("en-US")} commits this year</text>`;
 
   // ---- footing --------------------------------------------------------------
-  const footLines = wide
-    ? [`${data.github.publicRepos} public repositories · ${verified} engineering controls verified today · ${live} deployments answering`]
-    : [
-        `${data.github.publicRepos} public repositories · ${live} deployments answering`,
-        `${verified} engineering controls verified today`,
-      ];
-  footLines.forEach((l, i) => {
-    body += `<text x="${tx}" y="${footY + i * 22}" class="mono" font-size="${fs.foot}" fill="${t.faint}">${esc(l)}</text>`;
-  });
 
   // ---- animated frame -------------------------------------------------------
   // pathLength normalises the perimeter to 100, so the dash pattern and the
@@ -222,7 +171,7 @@ ${armCss}
 @media (prefers-reduced-motion:reduce){.pw{transform:rotate(0)}}
 `;
 
-  const desc = `Iker Perez, computer engineer in A Coruña. Works from C and operating systems up to real-time 3D. Today's audit: ${verified} engineering controls verified across ${data.github.publicRepos} public repositories, ${live} live deployments answering. Confirmed practices: ${chips.join(", ")}. Beside the text, a pendulum wave with one arm per public repository, ${totalCommits} commits this year.`;
+  const desc = `Iker Perez, computer engineer in A Coruña. Every layer ships the same contract: security, accessibility, and something you can actually run. Beside the text, a pendulum wave with one arm per public repository, ${totalCommits} commits this year.`;
 
   return svg({ w: W, h: H, title: "Iker Perez — computer engineer", desc, style, body: defs + body });
 }

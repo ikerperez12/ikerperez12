@@ -5,39 +5,6 @@
   <img alt="Iker Perez — computer engineer in A Coruña. Works from C and operating systems up to real-time 3D." src=".github/assets/hero-light.svg" width="100%">
 </picture>
 
-<p align="center">
-  <img src=".github/assets/keyboard.webp" width="100%" alt="A mechanical keyboard rendered mid-disassembly: the keycap layer floating above the switches, the switch plate and the case, on black.">
-</p>
-
-<p align="center"><sub><b><a href=".github/assets/keyboard.stl">Open the mesh in GitHub's 3D viewer</a></b> — rotate, pan and zoom the real geometry.</sub></p>
-
-<details>
-<summary><sub>About this object</sub></summary>
-
-<sub>A derivative of <i>NZXT miniTKL — mechanical Keyboard</i> by
-<a href="https://sketchfab.com/blackcube4">BlackCube</a>, used under
-<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and
-modified; the original author and NZXT do not endorse it.</sub>
-
-<sub>The image is a single Blender frame at 256 samples, held at the point in
-the model's own <code>Open</code> action where the keycaps have lifted clear of
-the switches. The linked <code>.stl</code> is the same model with the internals
-removed and decimated to 4,200 triangles, which GitHub opens in its native 3D
-viewer. It could not be embedded in this page: GitHub refuses to render an STL
-block that large, and the sizes it does accept destroy the keycaps. Untextured,
-because STL carries no materials. Pipeline in
-<a href="scripts/render-keyboard.py"><code>render-keyboard.py</code></a>,
-<a href="scripts/export-stl.py"><code>export-stl.py</code></a> and
-<a href="scripts/compact-stl.mjs"><code>compact-stl.mjs</code></a>.</sub>
-
-</details>
-
----
-
-## Work
-
-<sub>Every public repository, refreshed daily.</sub>
-
 <!-- gallery:start -->
 <table width="100%">
 <tr>
@@ -69,11 +36,10 @@ because STL carries no materials. Pipeline in
 ---
 
 <p align="center">
-  <a href=".github/assets/crystal.svg"><img src=".github/assets/crystal.svg" alt="One coloured cell per person who has left a mark; open it to see who."></a>
-  &nbsp;<a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=support&body=Press+the+green+Create+button+below+-+that+is+all.+You+can+leave+this+text+as+it+is."><b>◆ I was here</b></a><!-- crystal:start -->
- <sub>1</sub>
-<!-- crystal:end -->
+  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=support&body=Press+the+green+Create+button+below+-+that+is+all.+You+can+leave+this+text+as+it+is."><img src=".github/assets/support.svg" alt="I was here — press to leave a cell. One coloured cell per person."></a>
 </p>
+<!-- crystal:start -->
+<!-- crystal:end -->
 
 ---
 
@@ -118,7 +84,7 @@ such rather than quietly dropped.
 </details>
 
 <!-- stamp:start -->
-Last audit: **2026-08-15 01:56 UTC**. Everything above is read from the GitHub API by [`scripts/collect.mjs`](scripts/collect.mjs) — nothing is typed in by hand.
+Last audit: **2026-08-15 00:42 UTC**. Everything above is read from the GitHub API by [`scripts/collect.mjs`](scripts/collect.mjs) — nothing is typed in by hand.
 <!-- stamp:end -->
 
 <sub>A Coruña, Galicia · [ikerperez12](https://github.com/ikerperez12)</sub>

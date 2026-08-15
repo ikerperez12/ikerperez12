@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 770" width="760" height="770" role="img" aria-labelledby="t d" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif">
-<title id="t">Iker Perez — computer engineer</title><desc id="d">Iker Perez, computer engineer in A Coruña. Works from C and operating systems up to real-time 3D. Today's audit: 30 engineering controls verified across 18 public repositories, 4 live deployments answering. Confirmed practices: CYCLONEDX SBOM, SHA-256 SUMS, AXE-CORE IN CI, CODEQL, SECURITY.MD. Beside the text, a pendulum wave with one arm per public repository, 2780 commits this year.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 492" width="760" height="492" role="img" aria-labelledby="t d" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif">
+<title id="t">Iker Perez — computer engineer</title><desc id="d">Iker Perez, computer engineer in A Coruña. Every layer ships the same contract: security, accessibility, and something you can actually run. Beside the text, a pendulum wave with one arm per public repository, 2766 commits this year.</desc>
 <style>
 .p{fill:#ffffff}
 .ink{fill:#1f2328}
@@ -36,7 +36,7 @@ text{text-rendering:geometricPrecision}
 @media (prefers-reduced-motion:reduce){.pw{transform:rotate(0)}}
 </style>
 <defs>
-<clipPath id="panel"><rect x="0" y="0" width="760" height="770" rx="12"/></clipPath>
+<clipPath id="panel"><rect x="0" y="0" width="760" height="492" rx="12"/></clipPath>
 <linearGradient id="field" x1="0" y1="0" x2="0" y2="1">
   <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f2f5f9"/>
 </linearGradient>
@@ -48,36 +48,36 @@ text{text-rendering:geometricPrecision}
 <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">
   <stop offset="0" stop-color="#0284c7"/><stop offset="0.5" stop-color="#4f46e5"/><stop offset="1" stop-color="#9333ea"/>
 </linearGradient>
-</defs><rect x="0" y="0" width="760" height="770" rx="12" fill="#ffffff"/><rect x="0" y="0" width="760" height="770" rx="12" fill="url(#field)"/><g class="motion-only" clip-path="url(#panel)">
-<ellipse cx="182.4" cy="231" rx="258.40000000000003" ry="477.4" fill="url(#l1)" class="d1"/>
-<ellipse cx="547.1999999999999" cy="554.4" rx="228" ry="423.50000000000006" fill="url(#l2)" class="d2"/>
-</g><rect x="1" y="50" width="758" height="1" fill="#d1d9e0"/><circle cx="34" cy="25" r="4" fill="#1a7f37" class="pulse"/><text x="50" y="29" class="mono" font-size="15" letter-spacing="1.6" fill="#59636e">IKER PEREZ // COMPUTER ENGINEER</text><text x="732" y="29" class="mono" font-size="15" letter-spacing="1.6" fill="#818b98" text-anchor="end">A CORUÑA [ES] · AUDITED 2026-08-15</text><text x="44" y="146" font-size="64" font-weight="700" letter-spacing="-1.6" fill="#1f2328">IKER PEREZ</text><text x="44" y="186" font-size="23" fill="#59636e">From C and operating systems</text><text x="44" y="216" font-size="23" fill="#59636e">up to real-time 3D. Every layer ships</text><text x="44" y="246" font-size="23" fill="#59636e">the same contract — security,</text><text x="44" y="276" font-size="23" fill="#59636e">accessibility, and something</text><text x="44" y="306" font-size="23" fill="#8a5d0f">you can actually run.</text><rect x="44" y="362" width="156.79999999999998" height="34" rx="4" fill="none" stroke="#d1d9e0"/><text x="122.39999999999999" y="383" class="mono" font-size="14" letter-spacing="1.2" fill="#59636e" text-anchor="middle">CYCLONEDX SBOM</text><rect x="210.79999999999998" y="362" width="138.39999999999998" height="34" rx="4" fill="none" stroke="#d1d9e0"/><text x="280" y="383" class="mono" font-size="14" letter-spacing="1.2" fill="#59636e" text-anchor="middle">SHA-256 SUMS</text><rect x="44" y="408" width="156.79999999999998" height="34" rx="4" fill="none" stroke="#d1d9e0"/><text x="122.39999999999999" y="429" class="mono" font-size="14" letter-spacing="1.2" fill="#59636e" text-anchor="middle">AXE-CORE IN CI</text><rect x="210.79999999999998" y="408" width="83.19999999999999" height="34" rx="4" fill="none" stroke="#d1d9e0"/><text x="252.39999999999998" y="429" class="mono" font-size="14" letter-spacing="1.2" fill="#59636e" text-anchor="middle">CODEQL</text><rect x="44" y="454" width="129.2" height="34" rx="4" fill="none" stroke="#d1d9e0"/><text x="108.6" y="475" class="mono" font-size="14" letter-spacing="1.2" fill="#59636e" text-anchor="middle">SECURITY.MD</text><text x="44" y="514" class="mono" font-size="13" letter-spacing="2" fill="#818b98">PENDULUM WAVE · ONE ARM PER REPOSITORY</text><rect x="44" y="528" width="672" height="1" fill="#d1d9e0"/><line x1="78" y1="528" x2="78" y2="580" stroke="#e4e8ed" stroke-width="1"/><g class="pw a0" style="transform-origin:78px 528px">
-<line x1="78" y1="528" x2="78" y2="580" stroke="#0284c7" stroke-width="1.1" opacity="0.5"/>
-<circle cx="78" cy="580" r="5" fill="#0284c7"/></g><line x1="124.46" y1="528" x2="124.46" y2="585" stroke="#e4e8ed" stroke-width="1"/><g class="pw a1" style="transform-origin:124.46px 528px">
-<line x1="124.46" y1="528" x2="124.46" y2="585" stroke="#4f46e5" stroke-width="1.1" opacity="0.5"/>
-<circle cx="124.46" cy="585" r="5" fill="#4f46e5"/></g><line x1="170.92" y1="528" x2="170.92" y2="590" stroke="#e4e8ed" stroke-width="1"/><g class="pw a2" style="transform-origin:170.92px 528px">
-<line x1="170.92" y1="528" x2="170.92" y2="590" stroke="#9333ea" stroke-width="1.1" opacity="0.5"/>
-<circle cx="170.92" cy="590" r="5" fill="#9333ea"/></g><line x1="217.38" y1="528" x2="217.38" y2="595" stroke="#e4e8ed" stroke-width="1"/><g class="pw a3" style="transform-origin:217.38px 528px">
-<line x1="217.38" y1="528" x2="217.38" y2="595" stroke="#0284c7" stroke-width="1.1" opacity="0.5"/>
-<circle cx="217.38" cy="595" r="5" fill="#0284c7"/></g><line x1="263.85" y1="528" x2="263.85" y2="600" stroke="#e4e8ed" stroke-width="1"/><g class="pw a4" style="transform-origin:263.85px 528px">
-<line x1="263.85" y1="528" x2="263.85" y2="600" stroke="#4f46e5" stroke-width="1.1" opacity="0.5"/>
-<circle cx="263.85" cy="600" r="5" fill="#4f46e5"/></g><line x1="310.31" y1="528" x2="310.31" y2="605" stroke="#e4e8ed" stroke-width="1"/><g class="pw a5" style="transform-origin:310.31px 528px">
-<line x1="310.31" y1="528" x2="310.31" y2="605" stroke="#9333ea" stroke-width="1.1" opacity="0.5"/>
-<circle cx="310.31" cy="605" r="5" fill="#9333ea"/></g><line x1="356.77" y1="528" x2="356.77" y2="610" stroke="#e4e8ed" stroke-width="1"/><g class="pw a6" style="transform-origin:356.77px 528px">
-<line x1="356.77" y1="528" x2="356.77" y2="610" stroke="#0284c7" stroke-width="1.1" opacity="0.5"/>
-<circle cx="356.77" cy="610" r="5" fill="#0284c7"/></g><line x1="403.23" y1="528" x2="403.23" y2="615" stroke="#e4e8ed" stroke-width="1"/><g class="pw a7" style="transform-origin:403.23px 528px">
-<line x1="403.23" y1="528" x2="403.23" y2="615" stroke="#4f46e5" stroke-width="1.1" opacity="0.5"/>
-<circle cx="403.23" cy="615" r="5" fill="#4f46e5"/></g><line x1="449.69" y1="528" x2="449.69" y2="620" stroke="#e4e8ed" stroke-width="1"/><g class="pw a8" style="transform-origin:449.69px 528px">
-<line x1="449.69" y1="528" x2="449.69" y2="620" stroke="#9333ea" stroke-width="1.1" opacity="0.5"/>
-<circle cx="449.69" cy="620" r="5" fill="#9333ea"/></g><line x1="496.15" y1="528" x2="496.15" y2="625" stroke="#e4e8ed" stroke-width="1"/><g class="pw a9" style="transform-origin:496.15px 528px">
-<line x1="496.15" y1="528" x2="496.15" y2="625" stroke="#0284c7" stroke-width="1.1" opacity="0.5"/>
-<circle cx="496.15" cy="625" r="5" fill="#0284c7"/></g><line x1="542.62" y1="528" x2="542.62" y2="630" stroke="#e4e8ed" stroke-width="1"/><g class="pw a10" style="transform-origin:542.62px 528px">
-<line x1="542.62" y1="528" x2="542.62" y2="630" stroke="#4f46e5" stroke-width="1.1" opacity="0.5"/>
-<circle cx="542.62" cy="630" r="5" fill="#4f46e5"/></g><line x1="589.08" y1="528" x2="589.08" y2="635" stroke="#e4e8ed" stroke-width="1"/><g class="pw a11" style="transform-origin:589.08px 528px">
-<line x1="589.08" y1="528" x2="589.08" y2="635" stroke="#9333ea" stroke-width="1.1" opacity="0.5"/>
-<circle cx="589.08" cy="635" r="5" fill="#9333ea"/></g><line x1="635.54" y1="528" x2="635.54" y2="640" stroke="#e4e8ed" stroke-width="1"/><g class="pw a12" style="transform-origin:635.54px 528px">
-<line x1="635.54" y1="528" x2="635.54" y2="640" stroke="#0284c7" stroke-width="1.1" opacity="0.5"/>
-<circle cx="635.54" cy="640" r="5" fill="#0284c7"/></g><line x1="682" y1="528" x2="682" y2="645" stroke="#e4e8ed" stroke-width="1"/><g class="pw a13" style="transform-origin:682px 528px">
-<line x1="682" y1="528" x2="682" y2="645" stroke="#4f46e5" stroke-width="1.1" opacity="0.5"/>
-<circle cx="682" cy="645" r="5" fill="#4f46e5"/></g><text x="716" y="688" class="mono" font-size="13" fill="#818b98" text-anchor="end">14 repositories · 2,780 commits this year</text><text x="44" y="736" class="mono" font-size="15" fill="#818b98">18 public repositories · 4 deployments answering</text><text x="44" y="758" class="mono" font-size="15" fill="#818b98">30 engineering controls verified today</text><rect x="1" y="1" width="758" height="768" rx="11" fill="none" stroke="#d1d9e0" stroke-width="1"/><g class="motion-only"><rect x="1" y="1" width="758" height="768" rx="11" fill="none" stroke="#0284c7" stroke-width="2" pathLength="100" stroke-dasharray="16 84" stroke-linecap="round" class="run r0" opacity="0.8"/><rect x="1" y="1" width="758" height="768" rx="11" fill="none" stroke="#4f46e5" stroke-width="2" pathLength="100" stroke-dasharray="16 84" stroke-linecap="round" class="run r1" opacity="0.8"/><rect x="1" y="1" width="758" height="768" rx="11" fill="none" stroke="#9333ea" stroke-width="2" pathLength="100" stroke-dasharray="16 84" stroke-linecap="round" class="run r2" opacity="0.8"/></g><rect x="1" y="1" width="758" height="768" rx="11" fill="none" stroke="url(#edge)" stroke-width="2" class="static-only"/>
+</defs><rect x="0" y="0" width="760" height="492" rx="12" fill="#ffffff"/><rect x="0" y="0" width="760" height="492" rx="12" fill="url(#field)"/><g class="motion-only" clip-path="url(#panel)">
+<ellipse cx="182.4" cy="147.6" rx="258.40000000000003" ry="305.04" fill="url(#l1)" class="d1"/>
+<ellipse cx="547.1999999999999" cy="354.24" rx="228" ry="270.6" fill="url(#l2)" class="d2"/>
+</g><rect x="1" y="50" width="758" height="1" fill="#d1d9e0"/><circle cx="34" cy="25" r="4" fill="#1a7f37" class="pulse"/><text x="50" y="29" class="mono" font-size="15" letter-spacing="1.6" fill="#59636e">IKER PEREZ // COMPUTER ENGINEER</text><text x="732" y="29" class="mono" font-size="15" letter-spacing="1.6" fill="#818b98" text-anchor="end">A CORUÑA [ES]</text><text x="44" y="146" font-size="64" font-weight="700" letter-spacing="-1.6" fill="#1f2328">IKER PEREZ</text><text x="44" y="186" font-size="23" fill="#59636e">Every layer ships the same contract —</text><text x="44" y="216" font-size="23" fill="#59636e">security, accessibility, and</text><text x="44" y="246" font-size="23" fill="#8a5d0f">something you can actually run.</text><rect x="44" y="316" width="672" height="1" fill="#d1d9e0"/><line x1="78" y1="316" x2="78" y2="368" stroke="#e4e8ed" stroke-width="1"/><g class="pw a0" style="transform-origin:78px 316px">
+<line x1="78" y1="316" x2="78" y2="368" stroke="#0284c7" stroke-width="1.1" opacity="0.5"/>
+<circle cx="78" cy="368" r="5" fill="#0284c7"/></g><line x1="124.46" y1="316" x2="124.46" y2="373" stroke="#e4e8ed" stroke-width="1"/><g class="pw a1" style="transform-origin:124.46px 316px">
+<line x1="124.46" y1="316" x2="124.46" y2="373" stroke="#4f46e5" stroke-width="1.1" opacity="0.5"/>
+<circle cx="124.46" cy="373" r="5" fill="#4f46e5"/></g><line x1="170.92" y1="316" x2="170.92" y2="378" stroke="#e4e8ed" stroke-width="1"/><g class="pw a2" style="transform-origin:170.92px 316px">
+<line x1="170.92" y1="316" x2="170.92" y2="378" stroke="#9333ea" stroke-width="1.1" opacity="0.5"/>
+<circle cx="170.92" cy="378" r="5" fill="#9333ea"/></g><line x1="217.38" y1="316" x2="217.38" y2="383" stroke="#e4e8ed" stroke-width="1"/><g class="pw a3" style="transform-origin:217.38px 316px">
+<line x1="217.38" y1="316" x2="217.38" y2="383" stroke="#0284c7" stroke-width="1.1" opacity="0.5"/>
+<circle cx="217.38" cy="383" r="5" fill="#0284c7"/></g><line x1="263.85" y1="316" x2="263.85" y2="388" stroke="#e4e8ed" stroke-width="1"/><g class="pw a4" style="transform-origin:263.85px 316px">
+<line x1="263.85" y1="316" x2="263.85" y2="388" stroke="#4f46e5" stroke-width="1.1" opacity="0.5"/>
+<circle cx="263.85" cy="388" r="5" fill="#4f46e5"/></g><line x1="310.31" y1="316" x2="310.31" y2="393" stroke="#e4e8ed" stroke-width="1"/><g class="pw a5" style="transform-origin:310.31px 316px">
+<line x1="310.31" y1="316" x2="310.31" y2="393" stroke="#9333ea" stroke-width="1.1" opacity="0.5"/>
+<circle cx="310.31" cy="393" r="5" fill="#9333ea"/></g><line x1="356.77" y1="316" x2="356.77" y2="398" stroke="#e4e8ed" stroke-width="1"/><g class="pw a6" style="transform-origin:356.77px 316px">
+<line x1="356.77" y1="316" x2="356.77" y2="398" stroke="#0284c7" stroke-width="1.1" opacity="0.5"/>
+<circle cx="356.77" cy="398" r="5" fill="#0284c7"/></g><line x1="403.23" y1="316" x2="403.23" y2="403" stroke="#e4e8ed" stroke-width="1"/><g class="pw a7" style="transform-origin:403.23px 316px">
+<line x1="403.23" y1="316" x2="403.23" y2="403" stroke="#4f46e5" stroke-width="1.1" opacity="0.5"/>
+<circle cx="403.23" cy="403" r="5" fill="#4f46e5"/></g><line x1="449.69" y1="316" x2="449.69" y2="408" stroke="#e4e8ed" stroke-width="1"/><g class="pw a8" style="transform-origin:449.69px 316px">
+<line x1="449.69" y1="316" x2="449.69" y2="408" stroke="#9333ea" stroke-width="1.1" opacity="0.5"/>
+<circle cx="449.69" cy="408" r="5" fill="#9333ea"/></g><line x1="496.15" y1="316" x2="496.15" y2="413" stroke="#e4e8ed" stroke-width="1"/><g class="pw a9" style="transform-origin:496.15px 316px">
+<line x1="496.15" y1="316" x2="496.15" y2="413" stroke="#0284c7" stroke-width="1.1" opacity="0.5"/>
+<circle cx="496.15" cy="413" r="5" fill="#0284c7"/></g><line x1="542.62" y1="316" x2="542.62" y2="418" stroke="#e4e8ed" stroke-width="1"/><g class="pw a10" style="transform-origin:542.62px 316px">
+<line x1="542.62" y1="316" x2="542.62" y2="418" stroke="#4f46e5" stroke-width="1.1" opacity="0.5"/>
+<circle cx="542.62" cy="418" r="5" fill="#4f46e5"/></g><line x1="589.08" y1="316" x2="589.08" y2="423" stroke="#e4e8ed" stroke-width="1"/><g class="pw a11" style="transform-origin:589.08px 316px">
+<line x1="589.08" y1="316" x2="589.08" y2="423" stroke="#9333ea" stroke-width="1.1" opacity="0.5"/>
+<circle cx="589.08" cy="423" r="5" fill="#9333ea"/></g><line x1="635.54" y1="316" x2="635.54" y2="428" stroke="#e4e8ed" stroke-width="1"/><g class="pw a12" style="transform-origin:635.54px 316px">
+<line x1="635.54" y1="316" x2="635.54" y2="428" stroke="#0284c7" stroke-width="1.1" opacity="0.5"/>
+<circle cx="635.54" cy="428" r="5" fill="#0284c7"/></g><line x1="682" y1="316" x2="682" y2="433" stroke="#e4e8ed" stroke-width="1"/><g class="pw a13" style="transform-origin:682px 316px">
+<line x1="682" y1="316" x2="682" y2="433" stroke="#4f46e5" stroke-width="1.1" opacity="0.5"/>
+<circle cx="682" cy="433" r="5" fill="#4f46e5"/></g><rect x="1" y="1" width="758" height="490" rx="11" fill="none" stroke="#d1d9e0" stroke-width="1"/><g class="motion-only"><rect x="1" y="1" width="758" height="490" rx="11" fill="none" stroke="#0284c7" stroke-width="2" pathLength="100" stroke-dasharray="16 84" stroke-linecap="round" class="run r0" opacity="0.8"/><rect x="1" y="1" width="758" height="490" rx="11" fill="none" stroke="#4f46e5" stroke-width="2" pathLength="100" stroke-dasharray="16 84" stroke-linecap="round" class="run r1" opacity="0.8"/><rect x="1" y="1" width="758" height="490" rx="11" fill="none" stroke="#9333ea" stroke-width="2" pathLength="100" stroke-dasharray="16 84" stroke-linecap="round" class="run r2" opacity="0.8"/></g><rect x="1" y="1" width="758" height="490" rx="11" fill="none" stroke="url(#edge)" stroke-width="2" class="static-only"/>
 </svg>
