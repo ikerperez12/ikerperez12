@@ -37,7 +37,7 @@
 
 <!-- crystal:start -->
 <p align="center">
-  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=support&body=Just+press+Create.+Nothing+here+needs+changing."><img src=".github/assets/support.svg?v=qzfvs1" title="1 here: @claude" alt="I was here. 1 person has left a cell."></a>
+  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=support&body=Just+press+Create.+Nothing+here+needs+changing."><img src=".github/assets/support.svg?v=1nu3wmb" title="2 here: @ikerperez12, @claude" alt="I was here. 2 people have left a cell."></a>
 </p>
 <!-- crystal:end -->
 

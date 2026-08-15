@@ -10,9 +10,15 @@
       "user": "claude",
       "url": "https://claude.com/claude-code",
       "label": "Claude — built this page"
+    },
+    {
+      "x": 22,
+      "y": 10,
+      "user": "ikerperez12"
     }
   ],
   "supporters": [
-    "claude"
+    "claude",
+    "ikerperez12"
   ]
 }
