@@ -2,7 +2,7 @@
   <source media="(prefers-color-scheme: dark) and (max-width: 560px)" srcset=".github/assets/hero-dark-sm.svg">
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/hero-dark.svg">
   <source media="(max-width: 560px)" srcset=".github/assets/hero-light-sm.svg">
-  <img alt="Iker Perez â€” computer engineer in A CoruÃ±a. Works from C and operating systems up to real-time 3D." src=".github/assets/hero-light.svg" width="100%">
+  <img alt="Iker Perez — computer engineer in A Coruña. Works from C and operating systems up to real-time 3D." src=".github/assets/hero-light.svg" width="100%">
 </picture>
 
 <p align="center">
@@ -14,14 +14,15 @@
 
 <sub>Rendered here rather than embedded from anywhere: thirty frames orbiting a
 fixed three-point rig, lit so the dark keycaps stay dark and the silhouette is
-carried by two coloured rims. It is a derivative of *NZXT miniTKL â€” mechanical
-Keyboard* by [BlackCube](https://sketchfab.com/blackcube4), used under
-[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) and modified; the
-original author and NZXT do not endorse it. The render pipeline is in
-[`scripts/render-keyboard.py`](scripts/render-keyboard.py).</sub>
+carried by two coloured rims. It is a derivative of <i>NZXT miniTKL — mechanical
+Keyboard</i> by <a href="https://sketchfab.com/blackcube4">BlackCube</a>, used
+under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> and
+modified; the original author and NZXT do not endorse it. The render pipeline is
+in <a href="scripts/render-keyboard.py"><code>scripts/render-keyboard.py</code></a>.</sub>
 
-<sub>A README cannot run scripts â€” GitHub strips `<script>`, `<canvas>` and
-`<iframe>` â€” so this is a rendered orbit rather than a viewer you can drag.</sub>
+<sub>It is an orbit, not a viewer you can drag. GitHub strips <code>script</code>,
+<code>canvas</code> and <code>iframe</code> from README files, so a real 3D
+viewer cannot exist on this page.</sub>
 
 </details>
 
@@ -61,15 +62,14 @@ original author and NZXT do not endorse it. The render pipeline is in
 
 ---
 
-## Closing piece â€” six candidates
+## Closing piece — six candidates
 
-<sub>Temporary. All six are here so one can be chosen; the rest come out.
-Everything below is CSS-animated SVG generated at build time, except the last,
-which is a working game built from nested disclosure elements â€” a README cannot
-run scripts, so nothing here is a live simulation.</sub>
+<sub>Temporary: all six are here so one can be chosen, and the rest come out.
+Five are CSS-animated SVG generated at build time. The sixth is a game you can
+actually play, built entirely from nested disclosure elements.</sub>
 
 <details open>
-<summary><b>A Â· Pendulum wave</b> â€” one arm per repository, period from commit count</summary>
+<summary><b>A · Pendulum wave</b> — one arm per repository, period from commit count</summary>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/closer-pendulum-dark.svg">
@@ -79,7 +79,7 @@ run scripts, so nothing here is a live simulation.</sub>
 </details>
 
 <details>
-<summary><b>B Â· Rule 110</b> â€” a Turing-complete cellular automaton, evolved at build time</summary>
+<summary><b>B · Rule 110</b> — a Turing-complete cellular automaton, evolved at build time</summary>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/closer-automaton-dark.svg">
@@ -89,7 +89,7 @@ run scripts, so nothing here is a live simulation.</sub>
 </details>
 
 <details>
-<summary><b>C Â· Lissajous figures</b> â€” phase curves traced on a graticule</summary>
+<summary><b>C · Lissajous figures</b> — phase curves traced on a graticule</summary>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/closer-scope-dark.svg">
@@ -99,7 +99,7 @@ run scripts, so nothing here is a live simulation.</sub>
 </details>
 
 <details>
-<summary><b>D Â· Orbits</b> â€” one orbit per repository, period from repository size</summary>
+<summary><b>D · Orbits</b> — one orbit per repository, period from repository size</summary>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/closer-orbits-dark.svg">
@@ -109,7 +109,7 @@ run scripts, so nothing here is a live simulation.</sub>
 </details>
 
 <details>
-<summary><b>E Â· Hilbert curve</b> â€” one continuous path through 1024 cells</summary>
+<summary><b>E · Hilbert curve</b> — one continuous path through 1024 cells</summary>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/closer-hilbert-dark.svg">
@@ -119,7 +119,7 @@ run scripts, so nothing here is a live simulation.</sub>
 </details>
 
 <details>
-<summary><b>F Â· Descend</b> â€” a playable route down the stack, no JavaScript involved</summary>
+<summary><b>F · Descend</b> — a playable route down the stack, with no JavaScript</summary>
 
 <sub>Every layer is a repository of mine. Pick the call that actually goes
 deeper. Open the wrong one and you will be told why.</sub>
@@ -130,34 +130,34 @@ deeper. Open the wrong one and you will be told why.</sub>
 
 <blockquote>
 <details>
-<summary><code>fetch()</code> â€” ask a server</summary>
-<sub>Sideways, not down. You left the machine entirely and are now someone
-else's problem. <b>Back up and try again.</b></sub>
+<summary><code>fetch()</code> — ask a server</summary>
+<sub>Sideways, not down. You left the machine entirely and became someone else's
+problem. <b>Back up and try again.</b></sub>
 </details>
 
 <details>
-<summary><code>IndexedDB.open()</code> â€” write to the disk under the tab</summary>
+<summary><code>IndexedDB.open()</code> — write to the disk under the tab</summary>
 
 <blockquote><sub>Right. That is <a href="https://github.com/ikerperez12/IP-OS-LINUX">IP Linux</a>'s filesystem. Keep going.</sub>
 
 <details>
-<summary><code>WebGL draw call</code> â€” hand geometry to the GPU</summary>
+<summary><code>WebGL draw call</code> — hand geometry to the GPU</summary>
 
-<blockquote><sub>Right again â€” <a href="https://github.com/ikerperez12/warpod">Warpod</a> lives here. Deeper.</sub>
+<blockquote><sub>Right again — <a href="https://github.com/ikerperez12/warpod">Warpod</a> lives here. Deeper.</sub>
 
 <details>
-<summary><code>Electron preload bridge</code> â€” leave the sandbox, carefully</summary>
+<summary><code>Electron preload bridge</code> — leave the sandbox, carefully</summary>
 
 <blockquote><sub><a href="https://github.com/ikerperez12/NexoIP-3D-Viewer">NexoIP</a>: the renderer gets no filesystem and no Node. One narrow bridge. Deeper.</sub>
 
 <details>
-<summary><code>execve()</code> â€” become another program</summary>
+<summary><code>execve()</code> — become another program</summary>
 
 <blockquote><sub>You are in <a href="https://github.com/ikerperez12/SO-SHELL-p2">SO-SHELL-p2</a> now, in C, holding a process by its file descriptors.</sub>
 
 <details>
-<summary><code>Kyber-1024 key exchange</code> â€” the floor</summary>
-<sub><b>You made it.</b> <a href="https://github.com/ikerperez12/1.2-AuditoriaPQC">QuantumGuard</a>: post-quantum key exchange, measured on real Open Quantum Safe containers. From a browser tab to the cryptography under it â€” every step a repository you can open.</sub>
+<summary><code>post-quantum key exchange</code> — the floor</summary>
+<sub><b>You made it.</b> <a href="https://github.com/ikerperez12/1.2-AuditoriaPQC">QuantumGuard</a> measures post-quantum key exchange against real Open Quantum Safe containers. From a browser tab down to the cryptography underneath it, every step a repository you can open.</sub>
 </details>
 </blockquote>
 </details>
@@ -169,8 +169,8 @@ else's problem. <b>Back up and try again.</b></sub>
 </details>
 
 <details>
-<summary><code>localStorage.setItem()</code> â€” remember a preference</summary>
-<sub>Shallow. That is a UI preference, not a layer. <b>Back up.</b></sub>
+<summary><code>localStorage.setItem()</code> — remember a preference</summary>
+<sub>Shallow. That is a user-interface preference, not a layer. <b>Back up.</b></sub>
 </details>
 </blockquote>
 </details>
@@ -190,7 +190,7 @@ whatever changed. The generated regions are bounded by HTML comments; everything
 else here was written by hand.
 
 The banner's numbers are counted, not claimed: the workflow reads every
-repository and records only the engineering controls it can confirm â€” a CI
+repository and records only the engineering controls it can confirm — a CI
 workflow, a published `SECURITY.md`, CodeQL, accessibility tests in CI,
 dependency audits, release checksums, a software bill of materials. Gaps stay
 gaps.
@@ -218,5 +218,4 @@ such rather than quietly dropped.
 Last audit: **2026-08-15 00:42 UTC**. Everything above is read from the GitHub API by [`scripts/collect.mjs`](scripts/collect.mjs) — nothing is typed in by hand.
 <!-- stamp:end -->
 
-<sub>A CoruÃ±a, Galicia Â· [ikerperez12](https://github.com/ikerperez12)</sub>
-
+<sub>A Coruña, Galicia · [ikerperez12](https://github.com/ikerperez12)</sub>
