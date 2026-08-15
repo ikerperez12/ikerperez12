@@ -164,16 +164,13 @@ function gallery(data) {
       return String(b.pushed).localeCompare(String(a.pushed));
     });
 
-  const head = [];
-  const cells = [];
-
-  for (const r of repos) {
+  const COLS = 4;
+  const cells = repos.map((r) => {
     const url = `https://github.com/${data.user}/${r.repo}`;
     const img = SHOTS[r.repo]
       ? `.github/assets/${SHOTS[r.repo]}`
       : `.github/assets/cover-${r.repo}.svg`;
     const title = DISPLAY[r.repo] || r.repo;
-    head.push(`[${title}](${url})`);
 
     const tags = [];
     if (r.stars) tags.push(`${r.stars}★`);
@@ -186,18 +183,26 @@ function gallery(data) {
     const reachable = r.homepage && liveUrls.has(r.homepage.replace(/\/$/, ""));
     const live = reachable ? ` · <a href="${r.homepage}">live</a>` : "";
 
-    cells.push(
-      `<a href="${url}"><img src="${img}" width="300" alt="${title}"></a><br>` +
-        `<sub>${blurb}</sub><br>` +
-        `<sub><code>${tags.join("</code> <code>")}</code>${live}</sub>`
+    return (
+      `<td width="25%" valign="top">` +
+      `<a href="${url}"><img src="${img}" width="100%" alt="${title}"></a><br>` +
+      `<b><a href="${url}">${title}</a></b><br>` +
+      `<sub>${blurb}</sub><br>` +
+      `<sub><code>${tags.join("</code> <code>")}</code>${live}</sub>` +
+      `</td>`
     );
-  }
+  });
 
-  return [
-    `| ${head.join(" | ")} |`,
-    `| ${head.map(() => ":--").join(" | ")} |`,
-    `| ${cells.join(" | ")} |`,
-  ].join("\n");
+  // A four-column grid rather than one wide scrolling row. GitHub's table
+  // layout compresses a fifteen-column row until the thumbnails collapse to
+  // thumbnail-of-a-thumbnail size, and images cannot resist it because the
+  // stylesheet gives every image max-width:100%. A fixed percentage grid is the
+  // only layout here that renders at a predictable size.
+  const rows = [];
+  for (let i = 0; i < cells.length; i += COLS) {
+    rows.push(`<tr>\n${cells.slice(i, i + COLS).join("\n")}\n</tr>`);
+  }
+  return `<table width="100%">\n${rows.join("\n")}\n</table>`;
 }
 
 export function writeReadme(root, data) {
