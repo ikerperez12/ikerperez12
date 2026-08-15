@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Renders every generated asset from data.json into .github/assets/.
  *
  * Kept deliberately dumb: collect.mjs owns all network access and writes
@@ -13,7 +13,7 @@ import { newGame, renderBoard } from "./snake.mjs";
 import { renderHero } from "./render-hero.mjs";
 import { renderCover } from "./render-cover.mjs";
 import { CLOSERS } from "./render-closers.mjs";
-import { writeReadme, writeReadmeStl } from "./render-readme.mjs";
+import { writeReadme } from "./render-readme.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const out = join(root, ".github", "assets");
@@ -78,14 +78,9 @@ try {
 emit("snake-dark.svg", renderBoard(snakeState, "dark"));
 emit("snake-light.svg", renderBoard(snakeState, "light"));
 
-// The keyboard STL is exported from Blender by scripts/render-keyboard.py and
-// compacted by scripts/compact-stl.mjs; it is committed, not rebuilt here.
-const stlPath = join(out, "keyboard.stl");
-const stl = readFileSync(stlPath, "utf8");
-writeReadmeStl(root, stl);
-
 console.log(`assets: hero x4, covers x${covers}, closer x1, snake x2`);
 console.log(`generated total ${(total / 1024).toFixed(1)} KB`);
 
 writeReadme(root, data);
 console.log("README.md generated regions updated");
+
