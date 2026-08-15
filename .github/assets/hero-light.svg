@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 328" width="1200" height="328" role="img" aria-labelledby="t d" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif">
-<title id="t">Iker Perez — computer engineer</title><desc id="d">Iker Perez, computer engineer in A Coruña. Every layer ships the same contract: security, accessibility, and something you can actually run. Beside the text, a pendulum wave with one arm per public repository, 2780 commits this year.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 272" width="1200" height="272" role="img" aria-labelledby="t d" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif">
+<title id="t">Iker Perez — computer engineer</title><desc id="d">Iker Perez, computer engineer in A Coruña. Every layer ships the same contract: security, accessibility, and something you can actually run. Beside the text, a pendulum wave with one arm per public repository, 2766 commits this year.</desc>
 <style>
 .p{fill:#ffffff}
 .ink{fill:#1f2328}
@@ -36,7 +36,7 @@ text{text-rendering:geometricPrecision}
 @media (prefers-reduced-motion:reduce){.pw{transform:rotate(0)}}
 </style>
 <defs>
-<clipPath id="panel"><rect x="0" y="0" width="1200" height="328" rx="12"/></clipPath>
+<clipPath id="panel"><rect x="0" y="0" width="1200" height="272" rx="12"/></clipPath>
 <linearGradient id="field" x1="0" y1="0" x2="0" y2="1">
   <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f2f5f9"/>
 </linearGradient>
@@ -48,36 +48,36 @@ text{text-rendering:geometricPrecision}
 <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">
   <stop offset="0" stop-color="#0284c7"/><stop offset="0.5" stop-color="#4f46e5"/><stop offset="1" stop-color="#9333ea"/>
 </linearGradient>
-</defs><rect x="0" y="0" width="1200" height="328" rx="12" fill="#ffffff"/><rect x="0" y="0" width="1200" height="328" rx="12" fill="url(#field)"/><g class="motion-only" clip-path="url(#panel)">
-<ellipse cx="288" cy="98.39999999999999" rx="408.00000000000006" ry="203.35999999999999" fill="url(#l1)" class="d1"/>
-<ellipse cx="864" cy="236.16" rx="360" ry="180.4" fill="url(#l2)" class="d2"/>
-</g><rect x="1" y="44" width="1198" height="1" fill="#d1d9e0"/><circle cx="46" cy="22" r="4" fill="#1a7f37" class="pulse"/><text x="62" y="26" class="mono" font-size="13" letter-spacing="1.6" fill="#59636e">IKER PEREZ // COMPUTER ENGINEER</text><text x="1160" y="26" class="mono" font-size="13" letter-spacing="1.6" fill="#818b98" text-anchor="end">A CORUÑA [ES]</text><text x="56" y="148" font-size="76" font-weight="700" letter-spacing="-1.6" fill="#1f2328">IKER PEREZ</text><text x="56" y="190" font-size="21" fill="#59636e">Every layer ships the same contract — security, accessibility,</text><text x="56" y="218" font-size="21" fill="#8a5d0f">and something you can actually run.</text><rect x="724" y="114" width="420" height="1" fill="#d1d9e0"/><line x1="766" y1="114" x2="766" y2="181.2" stroke="#e4e8ed" stroke-width="1"/><g class="pw a0" style="transform-origin:766px 114px">
-<line x1="766" y1="114" x2="766" y2="181.2" stroke="#0284c7" stroke-width="1.1" opacity="0.5"/>
-<circle cx="766" cy="181.2" r="4.2" fill="#0284c7"/></g><line x1="791.85" y1="114" x2="791.85" y2="187.66" stroke="#e4e8ed" stroke-width="1"/><g class="pw a1" style="transform-origin:791.85px 114px">
-<line x1="791.85" y1="114" x2="791.85" y2="187.66" stroke="#4f46e5" stroke-width="1.1" opacity="0.5"/>
-<circle cx="791.85" cy="187.66" r="4.2" fill="#4f46e5"/></g><line x1="817.69" y1="114" x2="817.69" y2="194.12" stroke="#e4e8ed" stroke-width="1"/><g class="pw a2" style="transform-origin:817.69px 114px">
-<line x1="817.69" y1="114" x2="817.69" y2="194.12" stroke="#9333ea" stroke-width="1.1" opacity="0.5"/>
-<circle cx="817.69" cy="194.12" r="4.2" fill="#9333ea"/></g><line x1="843.54" y1="114" x2="843.54" y2="200.58" stroke="#e4e8ed" stroke-width="1"/><g class="pw a3" style="transform-origin:843.54px 114px">
-<line x1="843.54" y1="114" x2="843.54" y2="200.58" stroke="#0284c7" stroke-width="1.1" opacity="0.5"/>
-<circle cx="843.54" cy="200.58" r="4.2" fill="#0284c7"/></g><line x1="869.38" y1="114" x2="869.38" y2="207.05" stroke="#e4e8ed" stroke-width="1"/><g class="pw a4" style="transform-origin:869.38px 114px">
-<line x1="869.38" y1="114" x2="869.38" y2="207.05" stroke="#4f46e5" stroke-width="1.1" opacity="0.5"/>
-<circle cx="869.38" cy="207.05" r="4.2" fill="#4f46e5"/></g><line x1="895.23" y1="114" x2="895.23" y2="213.51" stroke="#e4e8ed" stroke-width="1"/><g class="pw a5" style="transform-origin:895.23px 114px">
-<line x1="895.23" y1="114" x2="895.23" y2="213.51" stroke="#9333ea" stroke-width="1.1" opacity="0.5"/>
-<circle cx="895.23" cy="213.51" r="4.2" fill="#9333ea"/></g><line x1="921.08" y1="114" x2="921.08" y2="219.97" stroke="#e4e8ed" stroke-width="1"/><g class="pw a6" style="transform-origin:921.08px 114px">
-<line x1="921.08" y1="114" x2="921.08" y2="219.97" stroke="#0284c7" stroke-width="1.1" opacity="0.5"/>
-<circle cx="921.08" cy="219.97" r="4.2" fill="#0284c7"/></g><line x1="946.92" y1="114" x2="946.92" y2="226.43" stroke="#e4e8ed" stroke-width="1"/><g class="pw a7" style="transform-origin:946.92px 114px">
-<line x1="946.92" y1="114" x2="946.92" y2="226.43" stroke="#4f46e5" stroke-width="1.1" opacity="0.5"/>
-<circle cx="946.92" cy="226.43" r="4.2" fill="#4f46e5"/></g><line x1="972.77" y1="114" x2="972.77" y2="232.89" stroke="#e4e8ed" stroke-width="1"/><g class="pw a8" style="transform-origin:972.77px 114px">
-<line x1="972.77" y1="114" x2="972.77" y2="232.89" stroke="#9333ea" stroke-width="1.1" opacity="0.5"/>
-<circle cx="972.77" cy="232.89" r="4.2" fill="#9333ea"/></g><line x1="998.62" y1="114" x2="998.62" y2="239.35" stroke="#e4e8ed" stroke-width="1"/><g class="pw a9" style="transform-origin:998.62px 114px">
-<line x1="998.62" y1="114" x2="998.62" y2="239.35" stroke="#0284c7" stroke-width="1.1" opacity="0.5"/>
-<circle cx="998.62" cy="239.35" r="4.2" fill="#0284c7"/></g><line x1="1024.46" y1="114" x2="1024.46" y2="245.82" stroke="#e4e8ed" stroke-width="1"/><g class="pw a10" style="transform-origin:1024.46px 114px">
-<line x1="1024.46" y1="114" x2="1024.46" y2="245.82" stroke="#4f46e5" stroke-width="1.1" opacity="0.5"/>
-<circle cx="1024.46" cy="245.82" r="4.2" fill="#4f46e5"/></g><line x1="1050.31" y1="114" x2="1050.31" y2="252.28" stroke="#e4e8ed" stroke-width="1"/><g class="pw a11" style="transform-origin:1050.31px 114px">
-<line x1="1050.31" y1="114" x2="1050.31" y2="252.28" stroke="#9333ea" stroke-width="1.1" opacity="0.5"/>
-<circle cx="1050.31" cy="252.28" r="4.2" fill="#9333ea"/></g><line x1="1076.15" y1="114" x2="1076.15" y2="258.74" stroke="#e4e8ed" stroke-width="1"/><g class="pw a12" style="transform-origin:1076.15px 114px">
-<line x1="1076.15" y1="114" x2="1076.15" y2="258.74" stroke="#0284c7" stroke-width="1.1" opacity="0.5"/>
-<circle cx="1076.15" cy="258.74" r="4.2" fill="#0284c7"/></g><line x1="1102" y1="114" x2="1102" y2="265.2" stroke="#e4e8ed" stroke-width="1"/><g class="pw a13" style="transform-origin:1102px 114px">
-<line x1="1102" y1="114" x2="1102" y2="265.2" stroke="#4f46e5" stroke-width="1.1" opacity="0.5"/>
-<circle cx="1102" cy="265.2" r="4.2" fill="#4f46e5"/></g><rect x="1" y="1" width="1198" height="326" rx="11" fill="none" stroke="#d1d9e0" stroke-width="1"/><g class="motion-only"><rect x="1" y="1" width="1198" height="326" rx="11" fill="none" stroke="#0284c7" stroke-width="2" pathLength="100" stroke-dasharray="16 84" stroke-linecap="round" class="run r0" opacity="0.8"/><rect x="1" y="1" width="1198" height="326" rx="11" fill="none" stroke="#4f46e5" stroke-width="2" pathLength="100" stroke-dasharray="16 84" stroke-linecap="round" class="run r1" opacity="0.8"/><rect x="1" y="1" width="1198" height="326" rx="11" fill="none" stroke="#9333ea" stroke-width="2" pathLength="100" stroke-dasharray="16 84" stroke-linecap="round" class="run r2" opacity="0.8"/></g><rect x="1" y="1" width="1198" height="326" rx="11" fill="none" stroke="url(#edge)" stroke-width="2" class="static-only"/>
+</defs><rect x="0" y="0" width="1200" height="272" rx="12" fill="#ffffff"/><rect x="0" y="0" width="1200" height="272" rx="12" fill="url(#field)"/><g class="motion-only" clip-path="url(#panel)">
+<ellipse cx="288" cy="81.6" rx="408.00000000000006" ry="168.64" fill="url(#l1)" class="d1"/>
+<ellipse cx="864" cy="195.84" rx="360" ry="149.60000000000002" fill="url(#l2)" class="d2"/>
+</g><rect x="1" y="44" width="1198" height="1" fill="#d1d9e0"/><circle cx="46" cy="22" r="4" fill="#1a7f37" class="pulse"/><text x="62" y="26" class="mono" font-size="13" letter-spacing="1.6" fill="#59636e">IKER PEREZ // COMPUTER ENGINEER</text><text x="1160" y="26" class="mono" font-size="13" letter-spacing="1.6" fill="#818b98" text-anchor="end">A CORUÑA [ES]</text><text x="56" y="148" font-size="76" font-weight="700" letter-spacing="-1.6" fill="#1f2328">IKER PEREZ</text><text x="56" y="190" font-size="21" fill="#59636e">Every layer ships the same contract — security, accessibility,</text><text x="56" y="218" font-size="21" fill="#8a5d0f">and something you can actually run.</text><rect x="724" y="106" width="420" height="1" fill="#d1d9e0"/><line x1="766" y1="106" x2="766" y2="158.8" stroke="#e4e8ed" stroke-width="1"/><g class="pw a0" style="transform-origin:766px 106px">
+<line x1="766" y1="106" x2="766" y2="158.8" stroke="#0284c7" stroke-width="1.1" opacity="0.5"/>
+<circle cx="766" cy="158.8" r="3.6" fill="#0284c7"/></g><line x1="791.85" y1="106" x2="791.85" y2="163.88" stroke="#e4e8ed" stroke-width="1"/><g class="pw a1" style="transform-origin:791.85px 106px">
+<line x1="791.85" y1="106" x2="791.85" y2="163.88" stroke="#4f46e5" stroke-width="1.1" opacity="0.5"/>
+<circle cx="791.85" cy="163.88" r="3.6" fill="#4f46e5"/></g><line x1="817.69" y1="106" x2="817.69" y2="168.95" stroke="#e4e8ed" stroke-width="1"/><g class="pw a2" style="transform-origin:817.69px 106px">
+<line x1="817.69" y1="106" x2="817.69" y2="168.95" stroke="#9333ea" stroke-width="1.1" opacity="0.5"/>
+<circle cx="817.69" cy="168.95" r="3.6" fill="#9333ea"/></g><line x1="843.54" y1="106" x2="843.54" y2="174.03" stroke="#e4e8ed" stroke-width="1"/><g class="pw a3" style="transform-origin:843.54px 106px">
+<line x1="843.54" y1="106" x2="843.54" y2="174.03" stroke="#0284c7" stroke-width="1.1" opacity="0.5"/>
+<circle cx="843.54" cy="174.03" r="3.6" fill="#0284c7"/></g><line x1="869.38" y1="106" x2="869.38" y2="179.11" stroke="#e4e8ed" stroke-width="1"/><g class="pw a4" style="transform-origin:869.38px 106px">
+<line x1="869.38" y1="106" x2="869.38" y2="179.11" stroke="#4f46e5" stroke-width="1.1" opacity="0.5"/>
+<circle cx="869.38" cy="179.11" r="3.6" fill="#4f46e5"/></g><line x1="895.23" y1="106" x2="895.23" y2="184.18" stroke="#e4e8ed" stroke-width="1"/><g class="pw a5" style="transform-origin:895.23px 106px">
+<line x1="895.23" y1="106" x2="895.23" y2="184.18" stroke="#9333ea" stroke-width="1.1" opacity="0.5"/>
+<circle cx="895.23" cy="184.18" r="3.6" fill="#9333ea"/></g><line x1="921.08" y1="106" x2="921.08" y2="189.26" stroke="#e4e8ed" stroke-width="1"/><g class="pw a6" style="transform-origin:921.08px 106px">
+<line x1="921.08" y1="106" x2="921.08" y2="189.26" stroke="#0284c7" stroke-width="1.1" opacity="0.5"/>
+<circle cx="921.08" cy="189.26" r="3.6" fill="#0284c7"/></g><line x1="946.92" y1="106" x2="946.92" y2="194.34" stroke="#e4e8ed" stroke-width="1"/><g class="pw a7" style="transform-origin:946.92px 106px">
+<line x1="946.92" y1="106" x2="946.92" y2="194.34" stroke="#4f46e5" stroke-width="1.1" opacity="0.5"/>
+<circle cx="946.92" cy="194.34" r="3.6" fill="#4f46e5"/></g><line x1="972.77" y1="106" x2="972.77" y2="199.42" stroke="#e4e8ed" stroke-width="1"/><g class="pw a8" style="transform-origin:972.77px 106px">
+<line x1="972.77" y1="106" x2="972.77" y2="199.42" stroke="#9333ea" stroke-width="1.1" opacity="0.5"/>
+<circle cx="972.77" cy="199.42" r="3.6" fill="#9333ea"/></g><line x1="998.62" y1="106" x2="998.62" y2="204.49" stroke="#e4e8ed" stroke-width="1"/><g class="pw a9" style="transform-origin:998.62px 106px">
+<line x1="998.62" y1="106" x2="998.62" y2="204.49" stroke="#0284c7" stroke-width="1.1" opacity="0.5"/>
+<circle cx="998.62" cy="204.49" r="3.6" fill="#0284c7"/></g><line x1="1024.46" y1="106" x2="1024.46" y2="209.57" stroke="#e4e8ed" stroke-width="1"/><g class="pw a10" style="transform-origin:1024.46px 106px">
+<line x1="1024.46" y1="106" x2="1024.46" y2="209.57" stroke="#4f46e5" stroke-width="1.1" opacity="0.5"/>
+<circle cx="1024.46" cy="209.57" r="3.6" fill="#4f46e5"/></g><line x1="1050.31" y1="106" x2="1050.31" y2="214.65" stroke="#e4e8ed" stroke-width="1"/><g class="pw a11" style="transform-origin:1050.31px 106px">
+<line x1="1050.31" y1="106" x2="1050.31" y2="214.65" stroke="#9333ea" stroke-width="1.1" opacity="0.5"/>
+<circle cx="1050.31" cy="214.65" r="3.6" fill="#9333ea"/></g><line x1="1076.15" y1="106" x2="1076.15" y2="219.72" stroke="#e4e8ed" stroke-width="1"/><g class="pw a12" style="transform-origin:1076.15px 106px">
+<line x1="1076.15" y1="106" x2="1076.15" y2="219.72" stroke="#0284c7" stroke-width="1.1" opacity="0.5"/>
+<circle cx="1076.15" cy="219.72" r="3.6" fill="#0284c7"/></g><line x1="1102" y1="106" x2="1102" y2="224.8" stroke="#e4e8ed" stroke-width="1"/><g class="pw a13" style="transform-origin:1102px 106px">
+<line x1="1102" y1="106" x2="1102" y2="224.8" stroke="#4f46e5" stroke-width="1.1" opacity="0.5"/>
+<circle cx="1102" cy="224.8" r="3.6" fill="#4f46e5"/></g><rect x="1" y="1" width="1198" height="270" rx="11" fill="none" stroke="#d1d9e0" stroke-width="1"/><g class="motion-only"><rect x="1" y="1" width="1198" height="270" rx="11" fill="none" stroke="#0284c7" stroke-width="2" pathLength="100" stroke-dasharray="16 84" stroke-linecap="round" class="run r0" opacity="0.8"/><rect x="1" y="1" width="1198" height="270" rx="11" fill="none" stroke="#4f46e5" stroke-width="2" pathLength="100" stroke-dasharray="16 84" stroke-linecap="round" class="run r1" opacity="0.8"/><rect x="1" y="1" width="1198" height="270" rx="11" fill="none" stroke="#9333ea" stroke-width="2" pathLength="100" stroke-dasharray="16 84" stroke-linecap="round" class="run r2" opacity="0.8"/></g><rect x="1" y="1" width="1198" height="270" rx="11" fill="none" stroke="url(#edge)" stroke-width="2" class="static-only"/>
 </svg>

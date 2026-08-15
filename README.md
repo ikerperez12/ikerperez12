@@ -35,10 +35,10 @@
 
 ---
 
-<p align="center">
-  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=support&body=Press+the+green+Create+button+below+-+that+is+all.+You+can+leave+this+text+as+it+is."><img src=".github/assets/support.svg" alt="I was here — press to leave a cell. One coloured cell per person."></a>
-</p>
 <!-- crystal:start -->
+<p align="center">
+  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=support&body=Just+press+Create.+Nothing+here+needs+changing."><img src=".github/assets/support.svg" title="1 here: @ikerperez12" alt="I was here. 1 person has left a cell."></a>
+</p>
 <!-- crystal:end -->
 
 ---
@@ -84,7 +84,7 @@ such rather than quietly dropped.
 </details>
 
 <!-- stamp:start -->
-Last audit: **2026-08-15 01:59 UTC**. Everything above is read from the GitHub API by [`scripts/collect.mjs`](scripts/collect.mjs) — nothing is typed in by hand.
+Last audit: **2026-08-15 00:42 UTC**. Everything above is read from the GitHub API by [`scripts/collect.mjs`](scripts/collect.mjs) — nothing is typed in by hand.
 <!-- stamp:end -->
 
 <sub>A Coruña, Galicia · [ikerperez12](https://github.com/ikerperez12)</sub>

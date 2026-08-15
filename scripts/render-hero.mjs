@@ -61,13 +61,13 @@ export function renderHero(data, { theme = "dark", variant = "wide" } = {}) {
   // Pendulum panel: right column on desktop, its own band underneath on mobile.
   const cadW = wide ? 420 : W - pad * 2 - 32;
   const cadX = wide ? W - pad - 16 - cadW : tx;
-  const cadTop = wide ? barH + 70 : textBottom + 40;
-  const cadH = wide ? 168 : 130;
+  const cadTop = wide ? barH + 62 : textBottom + 34;
+  const cadH = wide ? 132 : 108;
 
   // The pendulum column is often deeper than the text column, so the panel has
   // to be sized by whichever side ends lower.
-  const cadBottom = cadTop + cadH + 16;
-  const H = (wide ? Math.max(textBottom, cadBottom) : cadBottom) + (wide ? 30 : 30);
+  const cadBottom = cadTop + cadH + 8;
+  const H = (wide ? Math.max(textBottom + 12, cadBottom) : cadBottom) + (wide ? 14 : 18);
 
   // ---- background -----------------------------------------------------------
   let body = `<rect x="0" y="0" width="${W}" height="${H}" rx="12" fill="${t.panel}"/>`;
@@ -113,7 +113,7 @@ export function renderHero(data, { theme = "dark", variant = "wide" } = {}) {
     body += `<line x1="${n(x)}" y1="${cadTop}" x2="${n(x)}" y2="${n(cadTop + len)}" stroke="${t.lineSoft}" stroke-width="1"/>`;
     body += `<g class="pw a${i}" style="transform-origin:${n(x)}px ${cadTop}px">
 <line x1="${n(x)}" y1="${cadTop}" x2="${n(x)}" y2="${n(cadTop + len)}" stroke="${c}" stroke-width="1.1" opacity="0.5"/>
-<circle cx="${n(x)}" cy="${n(cadTop + len)}" r="${wide ? 4.2 : 5}" fill="${c}"/></g>`;
+<circle cx="${n(x)}" cy="${n(cadTop + len)}" r="${wide ? 3.6 : 4.4}" fill="${c}"/></g>`;
     armCss += `.a${i}{animation-duration:${n(2.9 + i * 0.155)}s}`;
   });
 

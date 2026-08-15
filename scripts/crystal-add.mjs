@@ -9,7 +9,8 @@
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { newCrystal, support, renderSupport } from "./crystal.mjs";
+import { newCrystal, support, renderSupport, supportTooltip } from "./crystal.mjs";
+import { replaceChunk } from "./render-readme.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const statePath = join(root, ".github", "state", "crystal.json");
@@ -46,5 +47,23 @@ writeFileSync(statePath, JSON.stringify(state, null, 2), "utf8");
 mkdirSync(assets, { recursive: true });
 writeFileSync(join(assets, "support.svg"), renderSupport(state), "utf8");
 
+
+// The img title is the only hover GitHub will fire, so it carries the names.
+const readmePath = join(root, "README.md");
+const readme = readFileSync(readmePath, "utf8").replace(/^﻿/, "");
+const link =
+  "https://github.com/ikerperez12/ikerperez12/issues/new?title=support&body=" +
+  "Just+press+Create.+Nothing+here+needs+changing.";
+writeFileSync(
+  readmePath,
+  replaceChunk(
+    readme,
+    "crystal",
+    `<p align="center">
+  <a href="${link}"><img src=".github/assets/support.svg" title="${supportTooltip(state).replace(/"/g, "&quot;")}" alt="I was here. ${state.cells.length} ${state.cells.length === 1 ? "person has" : "people have"} left a cell."></a>
+</p>`
+  ),
+  "utf8"
+);
 
 console.log(message);

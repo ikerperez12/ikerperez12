@@ -144,14 +144,37 @@ export function renderSupport(state) {
   const last = count ? state.cells[count - 1].user : null;
   const desc = `Leave a mark. ${count} ${count === 1 ? "person has" : "people have"} pressed so far${last ? `, most recently ${last}` : ""}.`;
 
+  const defs = `<defs>
+<linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#ffffff" stop-opacity="0.30"/>
+  <stop offset="0.55" stop-color="#ffffff" stop-opacity="0.04"/>
+  <stop offset="1" stop-color="#000000" stop-opacity="0.20"/>
+</linearGradient>
+</defs>`;
+
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${n(W)} ${n(H)}" width="${n(W)}" height="${n(H)}" role="img" aria-labelledby="d">
 <desc id="d">${esc(desc)}</desc>
 <style>${style}</style>
-${body}
+${defs}${body}
 </svg>`;
 }
 
-/** The cell cluster on its own, cropped tight, for embedding in the control. */
+/** Tooltip text for the img element: the only hover GitHub will actually fire. */
+export function supportTooltip(state) {
+  if (!state.cells.length) return "Nobody yet — be the first";
+  const names = [...state.supporters].reverse().slice(0, 12).map((u) => "@" + u);
+  const more = state.supporters.length - names.length;
+  return `${state.cells.length} here: ${names.join(", ")}${more > 0 ? ` and ${more} more` : ""}`;
+}
+
+/**
+ * The cell cluster, cropped tight.
+ *
+ * Each cell is wrapped in a link to that person's profile and carries their
+ * name as a title. Neither fires while the SVG is displayed through an <img>,
+ * which is how GitHub renders it — but opening the file makes both live, so the
+ * crystal doubles as a clickable index of who is in it.
+ */
 function renderCells(state, cell) {
   const xs = state.cells.length ? state.cells.map((c) => c.x) : [state.seed[0]];
   const ys = state.cells.length ? state.cells.map((c) => c.y) : [state.seed[1]];
@@ -166,8 +189,20 @@ function renderCells(state, cell) {
   let body = "";
   state.cells.forEach((c, i) => {
     const newest = i === state.cells.length - 1;
-    const inset = 1.5;
-    body += `<rect x="${n((c.x - x0) * cell + inset)}" y="${n((c.y - y0) * cell + inset)}" width="${cell - inset * 2}" height="${cell - inset * 2}" rx="3" fill="${colourFor(c.user)}"${newest ? ' class="new"' : ""}><title>@${esc(c.user)}</title></rect>`;
+    const inset = 1.2;
+    const size = cell - inset * 2;
+    const x = n((c.x - x0) * cell + inset);
+    const y = n((c.y - y0) * cell + inset);
+    const col = colourFor(c.user);
+    // A lit top edge and a darker floor give each cell a little relief, so the
+    // cluster reads as tiles rather than as flat swatches.
+    body +=
+      `<a href="https://github.com/${esc(c.user)}" target="_blank">` +
+      `<title>@${esc(c.user)}</title>` +
+      `<rect x="${x}" y="${y}" width="${size}" height="${size}" rx="2.6" fill="${col}"${newest ? ' class="new"' : ""}/>` +
+      `<rect x="${x}" y="${y}" width="${size}" height="${size}" rx="2.6" fill="url(#sheen)"/>` +
+      `<rect x="${n(x + 0.5)}" y="${n(y + 0.5)}" width="${n(size - 1)}" height="${n(size - 1)}" rx="2.2" fill="none" stroke="#ffffff" stroke-opacity="0.28"/>` +
+      `</a>`;
   });
 
   return { w: state.cells.length ? w : 0, h: state.cells.length ? h : cell, body };
