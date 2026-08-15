@@ -60,7 +60,7 @@ writeFileSync(
     readme,
     "crystal",
     `<p align="center">
-  <a href="${link}"><img src=".github/assets/support.svg" title="${supportTooltip(state).replace(/"/g, "&quot;")}" alt="I was here. ${state.cells.length} ${state.cells.length === 1 ? "person has" : "people have"} left a cell."></a>
+  <a href="${link}"><img src=".github/assets/support.svg?v=${state.cells.length}" title="${supportTooltip(state).replace(/"/g, "&quot;")}" alt="I was here. ${state.cells.length} ${state.cells.length === 1 ? "person has" : "people have"} left a cell."></a>
 </p>`
   ),
   "utf8"
