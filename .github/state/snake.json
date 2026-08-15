@@ -1,15 +1,15 @@
 {
   "snake": [
     [
+      11,
+      6
+    ],
+    [
       10,
       6
     ],
     [
       9,
-      6
-    ],
-    [
-      8,
       6
     ]
   ],
@@ -20,9 +20,11 @@
   ],
   "score": 0,
   "high": 0,
-  "moves": 0,
-  "players": [],
+  "moves": 1,
+  "players": [
+    "ikerperez12"
+  ],
   "last": "ikerperez12",
   "over": false,
-  "message": "@ikerperez12 started a new game. Press a direction to move."
+  "message": "@ikerperez12 moved right."
 }

@@ -100,11 +100,11 @@ every move is a commit — the history is the replay.</sub>
 </p>
 
 <!-- snake:start -->
-**Move 0** · score **0** · best **0**
+**Move 1** · score **0** · best **0**
 
-@ikerperez12 started a new game. Press a direction to move.
+@ikerperez12 moved right.
 
-<sub>Recent players: nobody yet</sub>
+<sub>Recent players: [@ikerperez12](https://github.com/ikerperez12)</sub>
 <!-- snake:end -->
 
 ---
