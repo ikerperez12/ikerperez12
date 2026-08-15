@@ -5,20 +5,14 @@
   ],
   "cells": [
     {
-      "x": 24,
-      "y": 11,
-      "user": "ikerperez12"
-    },
-    {
-      "x": 22,
-      "y": 11,
+      "x": 23,
+      "y": 10,
       "user": "claude",
       "url": "https://claude.com/claude-code",
       "label": "Claude — built this page"
     }
   ],
   "supporters": [
-    "ikerperez12",
     "claude"
   ]
 }
