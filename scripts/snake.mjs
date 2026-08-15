@@ -62,6 +62,17 @@ function freeCell(state, rand) {
  */
 export function step(state, dir, player, rand = Math.random) {
   const s = JSON.parse(JSON.stringify(state));
+
+  // `start` is its own command so a stalled or finished board can be cleared
+  // without waiting for someone to crash it deliberately.
+  if (dir === "start") {
+    const fresh = newGame(Math.max(state.high || 0, state.score || 0));
+    fresh.players = s.players;
+    fresh.last = player;
+    fresh.message = `@${player} started a new game. Press a direction to move.`;
+    return fresh;
+  }
+
   if (!DIRS[dir]) return { ...s, message: "Unknown move, ignored." };
 
   const opposite = { up: "down", down: "up", left: "right", right: "left" };

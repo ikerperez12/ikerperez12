@@ -13,7 +13,7 @@ import { newGame, renderBoard } from "./snake.mjs";
 import { renderHero } from "./render-hero.mjs";
 import { renderCover } from "./render-cover.mjs";
 import { CLOSERS } from "./render-closers.mjs";
-import { writeReadme } from "./render-readme.mjs";
+import { writeReadme, writeReadmeStl } from "./render-readme.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const out = join(root, ".github", "assets");
@@ -56,11 +56,12 @@ for (const r of data.repos || []) {
   covers++;
 }
 
-// ---- closing pieces ---------------------------------------------------------
-for (const [name, fn] of Object.entries(CLOSERS)) {
-  emit(`closer-${name}-dark.svg`, fn(data, "dark"));
-  emit(`closer-${name}-light.svg`, fn(data, "light"));
+// ---- closing piece ----------------------------------------------------------
+// Dark only: it is a light drawing on black in both themes.
+for (const f of readdirSync(out)) {
+  if (f.startsWith("closer-") && f !== "closer-scope.svg") unlinkSync(join(out, f));
 }
+emit("closer-scope.svg", CLOSERS.scope());
 
 // ---- snake board ------------------------------------------------------------
 // Rendered from whatever state the last player left behind, so a fresh clone
@@ -77,7 +78,13 @@ try {
 emit("snake-dark.svg", renderBoard(snakeState, "dark"));
 emit("snake-light.svg", renderBoard(snakeState, "light"));
 
-console.log(`assets: hero x4, covers x${covers}, closers x${Object.keys(CLOSERS).length * 2}, snake x2`);
+// The keyboard STL is exported from Blender by scripts/render-keyboard.py and
+// compacted by scripts/compact-stl.mjs; it is committed, not rebuilt here.
+const stlPath = join(out, "keyboard.stl");
+const stl = readFileSync(stlPath, "utf8");
+writeReadmeStl(root, stl);
+
+console.log(`assets: hero x4, covers x${covers}, closer x1, snake x2`);
 console.log(`generated total ${(total / 1024).toFixed(1)} KB`);
 
 writeReadme(root, data);

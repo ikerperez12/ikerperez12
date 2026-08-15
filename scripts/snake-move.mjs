@@ -23,7 +23,8 @@ const rawUser = process.env.ISSUE_USER || "";
 // `snake|<direction>` and nothing else. Anything that does not match exactly is
 // discarded rather than interpreted.
 const m = /^snake\|([a-z]{2,5})$/.exec(rawTitle.trim().toLowerCase());
-const dir = m && Object.hasOwn(DIRS, m[1]) ? m[1] : null;
+const command = m ? m[1] : null;
+const dir = command === "start" || (command && Object.hasOwn(DIRS, command)) ? command : null;
 const player = /^[A-Za-z0-9](?:[A-Za-z0-9]|-(?=[A-Za-z0-9])){0,38}$/.test(rawUser)
   ? rawUser
   : "someone";

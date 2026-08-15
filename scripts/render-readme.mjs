@@ -151,6 +151,18 @@ function gallery(data) {
   return `<table width="100%">\n${rows.join("\n")}\n</table>`;
 }
 
+/**
+ * Drops the keyboard mesh into the README as a fenced `stl` block, which GitHub
+ * renders with its own 3D viewer — the only real, mouse-driven 3D available on
+ * the platform. The model is written straight through so the file on disk and
+ * the block on the page can never disagree.
+ */
+export function writeReadmeStl(root, stl) {
+  const path = join(root, "README.md");
+  const text = readFileSync(path, "utf8").replace(/^﻿/, "");
+  writeFileSync(path, replaceChunk(text, "model", "```stl\n" + stl.trim() + "\n```"), "utf8");
+}
+
 export function writeReadme(root, data) {
   const path = join(root, "README.md");
   let text = readFileSync(path, "utf8").replace(/^﻿/, "");
