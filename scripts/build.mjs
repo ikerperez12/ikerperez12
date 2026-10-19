@@ -6,14 +6,13 @@
  * be re-rendered offline while iterating on the design.
  */
 
-import { readFileSync, writeFileSync, mkdirSync, readdirSync, unlinkSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, unlinkSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { newCrystal, renderSupport } from "./crystal.mjs";
 import { renderHero } from "./render-hero.mjs";
 import { renderCover } from "./render-cover.mjs";
-import { CLOSERS } from "./render-closers.mjs";
 import { writeReadme } from "./render-readme.mjs";
+import { GALLERY_REPOS, GALLERY_TITLES } from "./gallery-config.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const out = join(root, ".github", "assets");
@@ -51,38 +50,12 @@ const SHOTS = new Set([
 ]);
 let covers = 0;
 for (const r of data.repos || []) {
-  if (SHOTS.has(r.repo) || r.repo === data.user) continue;
-  emit(`cover-${r.repo}.svg`, renderCover(r));
+  if (SHOTS.has(r.repo) || !GALLERY_REPOS.includes(r.repo)) continue;
+  emit(`cover-${r.repo}.svg`, renderCover({ ...r, display: GALLERY_TITLES[r.repo] || r.repo }));
   covers++;
 }
 
-// ---- closing piece ----------------------------------------------------------
-// Dark only: it is a light drawing on black in both themes.
-for (const f of readdirSync(out)) {
-  if (f.startsWith("closer-") && f !== "closer-scope.svg") unlinkSync(join(out, f));
-}
-emit("closer-scope.svg", CLOSERS.scope());
-
-// ---- supporter crystal ------------------------------------------------------
-// crystal-add.mjs owns this image. Regenerating it here would let the audit
-// run, whose checkout predates a support press, overwrite a freshly grown
-// crystal with the version its own stale ledger implies — which is exactly
-// what happened once. Only create it if it is missing.
-const statePath = join(root, ".github", "state", "crystal.json");
-const crystalPath = join(out, "support.svg");
-if (!existsSync(crystalPath) || !existsSync(statePath)) {
-  let crystal;
-  try {
-    crystal = JSON.parse(readFileSync(statePath, "utf8"));
-  } catch {
-    crystal = newCrystal();
-    mkdirSync(dirname(statePath), { recursive: true });
-    writeFileSync(statePath, JSON.stringify(crystal, null, 2), "utf8");
-  }
-  emit("support.svg", renderSupport(crystal));
-}
-
-console.log(`assets: hero x4, covers x${covers}, closer x1, crystal x1`);
+console.log(`assets: hero x4, featured covers x${covers}`);
 console.log(`generated total ${(total / 1024).toFixed(1)} KB`);
 
 writeReadme(root, data);
