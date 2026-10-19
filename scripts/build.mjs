@@ -47,6 +47,8 @@ const SHOTS = new Set([
   "e36",
   "warpod",
   "EASY-LOCALHOST",
+  "1-click-world-showcase",
+  "KINIELA-showcase",
 ]);
 let covers = 0;
 for (const r of data.repos || []) {
