@@ -43,7 +43,11 @@ function probeList(data) {
     .join("\n");
 }
 
-/** Projects that have a real screenshot; everything else gets generated cover art. */
+/** Projects that have real screenshots; everything else gets generated cover art.
+ *  The two public game screenshots pass through a cached image transformer
+ *  (560x350, 8:5, cover crop) to match the existing gallery dimensions.
+ *  Their original full-resolution PNG files remain in each showcase repo.
+ */
 const SHOTS = {
   "NexoIP-3D-Viewer": "p-nexoip.webp",
   "IP-OS-LINUX": "p-iplinux.webp",
@@ -51,8 +55,8 @@ const SHOTS = {
   e36: "p-e36.webp",
   warpod: "p-warpod.webp",
   "EASY-LOCALHOST": "p-easylocalhost.webp",
-  "1-click-world-showcase": "https://raw.githubusercontent.com/ikerperez12/1-click-world-showcase/main/media/screenshots/01-round-start.png",
-  "KINIELA-showcase": "https://raw.githubusercontent.com/ikerperez12/KINIELA-showcase/main/media/images/inicio/inicio-escritorio.png",
+  "1-click-world-showcase": "https://images.weserv.nl/?url=raw.githubusercontent.com%2Fikerperez12%2F1-click-world-showcase%2Fmain%2Fmedia%2Fscreenshots%2F01-round-start.png&w=560&h=350&fit=cover&output=webp&q=85",
+  "KINIELA-showcase": "https://images.weserv.nl/?url=raw.githubusercontent.com%2Fikerperez12%2FKINIELA-showcase%2Fmain%2Fmedia%2Fimages%2Finicio%2Finicio-escritorio.png&w=560&h=350&fit=cover&output=webp&q=85",
 };
 
 /** One short, checkable line per project. Anything not listed falls back to the
@@ -128,7 +132,7 @@ function gallery(data) {
 
     return (
       `<td width="25%" valign="top">` +
-      `<a href="${url}"><img src="${img}" width="100%" alt="${title}"></a><br>` +
+      `<a href="${url}"><img src="${img.replace(/&/g, "&amp;")}" width="100%" alt="${title}"></a><br>` +
       `<b><a href="${url}">${title}</a></b><br>` +
       `<sub>${blurb}</sub><br>` +
       `<sub><code>${tags.join("</code> <code>")}</code>${live}</sub>` +
