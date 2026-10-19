@@ -8,6 +8,7 @@
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { GALLERY_REPOS, GALLERY_TITLES, SHOWCASE_REPOS } from "./gallery-config.mjs";
 
 /** Replace the interior of a marker pair, leaving the markers in place. */
 export function replaceChunk(text, marker, content) {
@@ -64,6 +65,8 @@ const BLURB = {
   "BLENDER-TOOL": "Render queue for Blender. Scans .blend files for missing textures before queueing.",
   "1.2-AuditoriaPQC": "Post-quantum crypto lab driving real Open Quantum Safe containers.",
   GPT_CMD: "Command-line ChatGPT automation with history, export and clipboard image send.",
+  "1-click-world-showcase": "Daily geography game — public showcase and product gallery.",
+  "KINIELA-showcase": "Social football prediction game — public showcase and reference demo.",
   "SIGNAL-NEURALNETWORK": "Signal-processing neural network experiment.",
   WARP: "Personal web portfolio.",
   "Software-Design": "Software design coursework: patterns and modular object-oriented design.",
@@ -80,17 +83,8 @@ const BLURB = {
  * gallery, with no CSS, which is otherwise impossible here because class and
  * style attributes are stripped.
  */
-/** Curated lead order; everything after it falls back to stars, then recency. */
-const LEAD = [
-  "NexoIP-3D-Viewer",
-  "IP-OS-LINUX",
-  "UI-IP-Toolkit-v4.0",
-  "e36",
-  "warpod",
-  "EASY-LOCALHOST",
-  "BLENDER-TOOL",
-  "1.2-AuditoriaPQC",
-];
+/** The gallery always remains three rows of four projects. */
+const LEAD = GALLERY_REPOS;
 
 function gallery(data) {
   // Only advertise a deployment the probe actually reached this morning, so a
@@ -100,8 +94,7 @@ function gallery(data) {
   );
 
   const repos = (data.repos || [])
-    .filter((r) => r.repo !== data.user)
-    .filter((r) => Object.keys(r.languages || {}).length > 0)
+    .filter((r) => GALLERY_REPOS.includes(r.repo))
     .sort((a, b) => {
       const ia = LEAD.indexOf(a.repo);
       const ib = LEAD.indexOf(b.repo);
@@ -116,14 +109,15 @@ function gallery(data) {
     const img = SHOTS[r.repo]
       ? `.github/assets/${SHOTS[r.repo]}`
       : `.github/assets/cover-${r.repo}.svg`;
-    const title = DISPLAY[r.repo] || r.repo;
+    const title = GALLERY_TITLES[r.repo] || DISPLAY[r.repo] || r.repo;
 
     const tags = [];
+    if (SHOWCASE_REPOS.includes(r.repo)) tags.push("Showcase");
     if (r.stars) tags.push(`${r.stars}★`);
     const lang = Object.keys(r.languages || {})[0];
     if (lang) tags.push(lang);
     if (r.release && r.release.tag) tags.push(r.release.tag);
-    if (r.license) tags.push(r.license);
+    if (r.license && r.license !== "NOASSERTION") tags.push(r.license);
 
     const blurb = BLURB[r.repo] || r.description || "";
     const reachable = r.homepage && liveUrls.has(r.homepage.replace(/\/$/, ""));
@@ -167,9 +161,9 @@ export function writeReadme(root, data) {
   const path = join(root, "README.md");
   let text = readFileSync(path, "utf8").replace(/^﻿/, "");
   text = replaceChunk(text, "gallery", gallery(data));
-  text = replaceChunk(text, "probes", probeList(data));
+  if (text.includes("<!-- probes:start -->")) text = replaceChunk(text, "probes", probeList(data));
   // The snake scoreboard is owned by snake-move.mjs; leave whatever is there.
-  text = replaceChunk(
+  if (text.includes("<!-- stamp:start -->")) text = replaceChunk(
     text,
     "stamp",
     `Last audit: **${data.generated.slice(0, 16).replace("T", " ")} UTC**. ` +
