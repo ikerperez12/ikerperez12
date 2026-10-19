@@ -8,6 +8,7 @@
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { FEATURED_REPOS, PUBLIC_SHOWCASES } from "./profile-projects.mjs";
 
 /** Replace the interior of a marker pair, leaving the markers in place. */
 export function replaceChunk(text, marker, content) {
@@ -29,6 +30,8 @@ const DISPLAY = {
   "BLENDER-TOOL": "IP Blender Tool",
   "EASY-LOCALHOST": "Easy Localhost",
   "1.2-AuditoriaPQC": "QuantumGuard PQC lab",
+  "1-click-world-showcase": "1 Click World",
+  "KINIELA-showcase": "KINIELA",
 };
 
 /** Live deployment probe results, reported without embellishment. */
@@ -50,6 +53,8 @@ const SHOTS = {
   e36: "p-e36.webp",
   warpod: "p-warpod.webp",
   "EASY-LOCALHOST": "p-easylocalhost.webp",
+  "1-click-world-showcase": "https://raw.githubusercontent.com/ikerperez12/1-click-world-showcase/main/media/screenshots/01-round-start.png",
+  "KINIELA-showcase": "https://raw.githubusercontent.com/ikerperez12/KINIELA-showcase/main/media/images/inicio/inicio-escritorio.png",
 };
 
 /** One short, checkable line per project. Anything not listed falls back to the
@@ -63,6 +68,8 @@ const BLURB = {
   "EASY-LOCALHOST": "Always-on-top panel for local dev servers. Ten releases, each with a SHA-256.",
   "BLENDER-TOOL": "Render queue for Blender. Scans .blend files for missing textures before queueing.",
   "1.2-AuditoriaPQC": "Post-quantum crypto lab driving real Open Quantum Safe containers.",
+  "1-click-world-showcase": "Geography game: guess real-world locations from photos, with daily challenges and friends.",
+  "KINIELA-showcase": "LALIGA predictions: match results, scores, scorers, leagues, cups and head-to-head challenges.",
   GPT_CMD: "Command-line ChatGPT automation with history, export and clipboard image send.",
   "SIGNAL-NEURALNETWORK": "Signal-processing neural network experiment.",
   WARP: "Personal web portfolio.",
@@ -81,16 +88,7 @@ const BLURB = {
  * style attributes are stripped.
  */
 /** Curated lead order; everything after it falls back to stars, then recency. */
-const LEAD = [
-  "NexoIP-3D-Viewer",
-  "IP-OS-LINUX",
-  "UI-IP-Toolkit-v4.0",
-  "e36",
-  "warpod",
-  "EASY-LOCALHOST",
-  "BLENDER-TOOL",
-  "1.2-AuditoriaPQC",
-];
+const LEAD = FEATURED_REPOS;
 
 function gallery(data) {
   // Only advertise a deployment the probe actually reached this morning, so a
@@ -100,8 +98,8 @@ function gallery(data) {
   );
 
   const repos = (data.repos || [])
-    .filter((r) => r.repo !== data.user)
-    .filter((r) => Object.keys(r.languages || {}).length > 0)
+    .filter((r) => FEATURED_REPOS.includes(r.repo))
+    .filter((r) => Object.keys(r.languages || {}).length > 0 || PUBLIC_SHOWCASES.includes(r.repo))
     .sort((a, b) => {
       const ia = LEAD.indexOf(a.repo);
       const ib = LEAD.indexOf(b.repo);
@@ -114,16 +112,17 @@ function gallery(data) {
   const cells = repos.map((r) => {
     const url = `https://github.com/${data.user}/${r.repo}`;
     const img = SHOTS[r.repo]
-      ? `.github/assets/${SHOTS[r.repo]}`
+      ? (SHOTS[r.repo].startsWith("https://") ? SHOTS[r.repo] : `.github/assets/${SHOTS[r.repo]}`)
       : `.github/assets/cover-${r.repo}.svg`;
     const title = DISPLAY[r.repo] || r.repo;
 
     const tags = [];
+    if (PUBLIC_SHOWCASES.includes(r.repo)) tags.push("Showcase");
     if (r.stars) tags.push(`${r.stars}★`);
     const lang = Object.keys(r.languages || {})[0];
     if (lang) tags.push(lang);
     if (r.release && r.release.tag) tags.push(r.release.tag);
-    if (r.license) tags.push(r.license);
+    if (r.license && r.license !== "NOASSERTION") tags.push(r.license);
 
     const blurb = BLURB[r.repo] || r.description || "";
     const reachable = r.homepage && liveUrls.has(r.homepage.replace(/\/$/, ""));
@@ -167,14 +166,19 @@ export function writeReadme(root, data) {
   const path = join(root, "README.md");
   let text = readFileSync(path, "utf8").replace(/^﻿/, "");
   text = replaceChunk(text, "gallery", gallery(data));
-  text = replaceChunk(text, "probes", probeList(data));
-  // The snake scoreboard is owned by snake-move.mjs; leave whatever is there.
-  text = replaceChunk(
-    text,
-    "stamp",
-    `Last audit: **${data.generated.slice(0, 16).replace("T", " ")} UTC**. ` +
-      `Everything above is read from the GitHub API by [\`scripts/collect.mjs\`](scripts/collect.mjs) — nothing is typed in by hand.`
-  );
+  // The current minimal README has no probes/stamp markers. Preserve these
+  // optional legacy regions only if a future design adds them back.
+  if (text.includes("<!-- probes:start -->")) {
+    text = replaceChunk(text, "probes", probeList(data));
+  }
+  if (text.includes("<!-- stamp:start -->")) {
+    text = replaceChunk(
+      text,
+      "stamp",
+      `Last audit: **${data.generated.slice(0, 16).replace("T", " ")} UTC**. ` +
+        `Metadata is refreshed from GitHub by [\`scripts/collect.mjs\`](scripts/collect.mjs).`
+    );
+  }
   writeFileSync(path, text, "utf8");
   return path;
 }
