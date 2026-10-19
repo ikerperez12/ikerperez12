@@ -1,3 +1,5 @@
+import { SHOWCASE_REPOS } from "./gallery-config.mjs";
+
 /**
  * Collects verifiable engineering facts from Iker's own repositories.
  *
@@ -235,7 +237,7 @@ data.repos = gql.user.repositories.nodes
   .filter((r) => !r.isEmpty)
   // Skip the profile repository itself and anything with no code in it: both
   // would render a gallery card that leads nowhere.
-  .filter((r) => r.name !== USER && r.languages.edges.length > 0)
+  .filter((r) => r.name !== USER && (r.languages.edges.length > 0 || SHOWCASE_REPOS.includes(r.name)))
   .map((r) => ({
     repo: r.name,
     description: r.description || "",
