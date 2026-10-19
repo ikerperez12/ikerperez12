@@ -51,6 +51,8 @@ const SHOTS = {
   e36: "p-e36.webp",
   warpod: "p-warpod.webp",
   "EASY-LOCALHOST": "p-easylocalhost.webp",
+  "1-click-world-showcase": "https://raw.githubusercontent.com/ikerperez12/1-click-world-showcase/main/media/screenshots/01-round-start.png",
+  "KINIELA-showcase": "https://raw.githubusercontent.com/ikerperez12/KINIELA-showcase/main/media/images/inicio/inicio-escritorio.png",
 };
 
 /** One short, checkable line per project. Anything not listed falls back to the
@@ -106,8 +108,9 @@ function gallery(data) {
   const COLS = 4;
   const cells = repos.map((r) => {
     const url = `https://github.com/${data.user}/${r.repo}`;
-    const img = SHOTS[r.repo]
-      ? `.github/assets/${SHOTS[r.repo]}`
+    const shot = SHOTS[r.repo];
+    const img = shot
+      ? (shot.startsWith("https://") ? shot : `.github/assets/${shot}`)
       : `.github/assets/cover-${r.repo}.svg`;
     const title = GALLERY_TITLES[r.repo] || DISPLAY[r.repo] || r.repo;
 
