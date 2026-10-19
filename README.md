@@ -20,31 +20,13 @@
 <td width="25%" valign="top"><a href="https://github.com/ikerperez12/1.2-AuditoriaPQC"><img src=".github/assets/cover-1.2-AuditoriaPQC.svg" width="100%" alt="QuantumGuard PQC lab"></a><br><b><a href="https://github.com/ikerperez12/1.2-AuditoriaPQC">QuantumGuard PQC lab</a></b><br><sub>Post-quantum crypto lab driving real Open Quantum Safe containers.</sub><br><sub><code>5★</code> <code>Python</code> <code>Apache-2.0</code></sub></td>
 </tr>
 <tr>
-<td width="25%" valign="top"><a href="https://github.com/ikerperez12/WARP"><img src=".github/assets/cover-WARP.svg" width="100%" alt="WARP"></a><br><b><a href="https://github.com/ikerperez12/WARP">WARP</a></b><br><sub>Personal web portfolio.</sub><br><sub><code>5★</code> <code>CSS</code></sub></td>
-<td width="25%" valign="top"><a href="https://github.com/ikerperez12/Software-Design"><img src=".github/assets/cover-Software-Design.svg" width="100%" alt="Software-Design"></a><br><b><a href="https://github.com/ikerperez12/Software-Design">Software-Design</a></b><br><sub>Software design coursework: patterns and modular object-oriented design.</sub><br><sub><code>1★</code> <code>Java</code> <code>Apache-2.0</code></sub></td>
 <td width="25%" valign="top"><a href="https://github.com/ikerperez12/SIGNAL-NEURALNETWORK"><img src=".github/assets/cover-SIGNAL-NEURALNETWORK.svg" width="100%" alt="SIGNAL-NEURALNETWORK"></a><br><b><a href="https://github.com/ikerperez12/SIGNAL-NEURALNETWORK">SIGNAL-NEURALNETWORK</a></b><br><sub>Signal-processing neural network experiment.</sub><br><sub><code>1★</code> <code>Python</code> <code>GPL-3.0</code></sub></td>
 <td width="25%" valign="top"><a href="https://github.com/ikerperez12/GPT_CMD"><img src=".github/assets/cover-GPT_CMD.svg" width="100%" alt="GPT_CMD"></a><br><b><a href="https://github.com/ikerperez12/GPT_CMD">GPT_CMD</a></b><br><sub>Command-line ChatGPT automation with history, export and clipboard image send.</sub><br><sub><code>1★</code> <code>Python</code> <code>Apache-2.0</code></sub></td>
-</tr>
-<tr>
-<td width="25%" valign="top"><a href="https://github.com/ikerperez12/SO-SHELL-p2"><img src=".github/assets/cover-SO-SHELL-p2.svg" width="100%" alt="SO-SHELL-p2"></a><br><b><a href="https://github.com/ikerperez12/SO-SHELL-p2">SO-SHELL-p2</a></b><br><sub>UNIX shell in C: process lifecycle, file descriptors, redirection.</sub><br><sub><code>C</code></sub></td>
-<td width="25%" valign="top"><a href="https://github.com/ikerperez12/Basketball-API"><img src=".github/assets/cover-Basketball-API.svg" width="100%" alt="Basketball-API"></a><br><b><a href="https://github.com/ikerperez12/Basketball-API">Basketball-API</a></b><br><sub>Django REST API with a frontend, containerised.</sub><br><sub><code>Python</code> <code>Apache-2.0</code></sub></td>
-<td width="25%" valign="top"><a href="https://github.com/ikerperez12/SO-2324"><img src=".github/assets/cover-SO-2324.svg" width="100%" alt="SO-2324"></a><br><b><a href="https://github.com/ikerperez12/SO-2324">SO-2324</a></b><br><sub>Operating systems coursework in C at the Universidade da Coruña.</sub><br><sub><code>C</code></sub></td>
+<td width="25%" valign="top"><a href="https://github.com/ikerperez12/1-click-world-showcase"><img src=".github/assets/cover-1-click-world-showcase.svg" width="100%" alt="One Click World"></a><br><b><a href="https://github.com/ikerperez12/1-click-world-showcase">One Click World</a></b><br><sub>Daily geography game — public showcase and product gallery.</sub><br><sub><code>Showcase</code> <code>MIT</code></sub></td>
+<td width="25%" valign="top"><a href="https://github.com/ikerperez12/KINIELA-showcase"><img src=".github/assets/cover-KINIELA-showcase.svg" width="100%" alt="KINIELA"></a><br><b><a href="https://github.com/ikerperez12/KINIELA-showcase">KINIELA</a></b><br><sub>Social football prediction game — public showcase and reference demo.</sub><br><sub><code>Showcase</code> <code>JavaScript</code></sub></td>
 </tr>
 </table>
 <!-- gallery:end -->
-
-
-
-<!-- crystal:start -->
-<p align="center">
-  <a href="https://github.com/ikerperez12/ikerperez12/issues/new?title=support&body=Just+press+Create.+Nothing+here+needs+changing."><img src=".github/assets/support.svg?v=1nu3wmb" title="2 here: @ikerperez12, @claude" alt="I was here. 2 people have left a cell."></a>
-</p>
-<!-- crystal:end -->
-
-
-
-
-<img src=".github/assets/closer-scope.svg" width="100%" alt="Three Lissajous curves with frequency ratios 3:2, 5:4 and 7:5, drawn in blue, indigo and violet on black, each traced by a travelling highlight.">
 
 
 <sub>A Coruña, Galicia · [ikerperez12](https://github.com/ikerperez12)</sub>
