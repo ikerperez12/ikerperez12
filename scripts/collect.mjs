@@ -1,3 +1,5 @@
+import { FEATURED_REPOS, PUBLIC_SHOWCASES } from "./profile-projects.mjs";
+
 /**
  * Collects verifiable engineering facts from Iker's own repositories.
  *
@@ -232,10 +234,12 @@ data.github = {
 // Every public repository, for the gallery. Empty repositories are skipped:
 // they would render a card that points at nothing.
 data.repos = gql.user.repositories.nodes
+  // Keep an explicit curated gallery, rather than bringing back projects
+  // that were intentionally hidden the next time the audit runs.
+  .filter((r) => FEATURED_REPOS.includes(r.name))
   .filter((r) => !r.isEmpty)
-  // Skip the profile repository itself and anything with no code in it: both
-  // would render a gallery card that leads nowhere.
-  .filter((r) => r.name !== USER && r.languages.edges.length > 0)
+  // Showcase repositories can contain only media and documentation.
+  .filter((r) => r.languages.edges.length > 0 || PUBLIC_SHOWCASES.includes(r.name))
   .map((r) => ({
     repo: r.name,
     description: r.description || "",
